@@ -48,12 +48,9 @@ public class LoginFrame extends javax.swing.JFrame {
         lblIcon = new javax.swing.JLabel();
         rPanel = new javax.swing.JPanel();
         txtUname = new javax.swing.JTextField();
-        btnSignup = new rojerusan.RSButtonMetro();
-        btnLogin = new rojerusan.RSButtonMetro();
         lblTitle = new javax.swing.JLabel();
         lblInvalid = new javax.swing.JLabel();
         txtPswrd = new javax.swing.JPasswordField();
-        btnClose = new rojerusan.RSButtonMetro();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -94,27 +91,6 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         rPanel.add(txtUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 200, 30));
 
-        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
-        btnSignup.setForeground(new java.awt.Color(121, 237, 39));
-        btnSignup.setText("New User? Sign Up Here");
-        btnSignup.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnSignup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignupActionPerformed(evt);
-            }
-        });
-        rPanel.add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 200, 40));
-
-        btnLogin.setBackground(new java.awt.Color(121, 237, 39));
-        btnLogin.setText("Login");
-        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 30));
-
         lblTitle.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(121, 237, 39));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -144,20 +120,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 30));
-
-        btnClose.setBackground(new java.awt.Color(255, 255, 255));
-        btnClose.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
-        btnClose.setForeground(new java.awt.Color(255, 51, 51));
-        btnClose.setText("X");
-        btnClose.setAutoscrolls(true);
-        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-        rPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
         mainPanel.add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 400, 500));
 
@@ -271,9 +233,6 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSButtonMetro btnClose;
-    private rojerusan.RSButtonMetro btnLogin;
-    private rojerusan.RSButtonMetro btnSignup;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel lPanel;
     private javax.swing.JLabel lblIcon;
