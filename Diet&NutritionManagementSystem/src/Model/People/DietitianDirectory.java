@@ -20,78 +20,77 @@ import Model.Utilities.UtilityFunctions;
  */
 public class DietitianDirectory {
     
-    public static ArrayList<User> userList = new ArrayList<User>();
+    public static ArrayList<Dietitian> dietitianList = new ArrayList<Dietitian>();
     
-    public static ArrayList<User> getPatientList() {
-        return userList;
+    public static ArrayList<Dietitian> getDietitianList() {
+        return dietitianList;
     }
 
-    public void setPatientList(ArrayList<User> userList) {
-        this.userList = userList;
+    public void setDietitianList(ArrayList<Dietitian> dietitianList) {
+        this.dietitianList = dietitianList;
     }
     
-    public User addNewUser(String name, Date dob, int age, String gender, long phNumber, String address, String bloodGroup, float height, float weight, boolean diabetic, String allergies, String purposeOfDiet, String foodPreference, String workoutFrequency, List<String> favorites){
+    public Dietitian addNewDietitian(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, String specialization, int slotsAvailable, String associatedHospital, String type){
         
-        User newUser = new User(name, dob, age, gender, phNumber, address, bloodGroup, height, weight, diabetic, allergies, purposeOfDiet, foodPreference, workoutFrequency, favorites);
+        Dietitian newDietitian = new Dietitian(  name,  dob,  age,  gender,  phNumber,  address,  doj,  experience, qualification,  specialization,  slotsAvailable,  associatedHospital,  type);
         
-        userList.add(newUser);
+        dietitianList.add(newDietitian);
         
         //Add user details to DB
-        addNewUserToDB(name, dob, age, gender, phNumber, address, bloodGroup, height, weight, diabetic, allergies, purposeOfDiet, foodPreference, workoutFrequency, favorites);
-        return newUser;
+        addNewDietitianToDB( name,  dob,  age,  gender,  phNumber,  address,  doj, experience, qualification,  specialization,  slotsAvailable,  associatedHospital,  type);
+        return newDietitian;
     }
     
    
     
-    public void deletePatient(User p){
-        userList.remove(p);
+    public void deletePatient(Dietitian p){
+        dietitianList.remove(p);
     }
     
-    public void addNewUserToDB(String name, Date dob, int age, String gender, long phNumber, String address, String bloodGroup, float height, float weight, boolean diabetic, String allergies, String purposeOfDiet, String foodPreference, String workoutFrequency, List<String> favorites){
+    public void addNewDietitianToDB(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, String specialization, int slotsAvailable, String associatedHospital, String type){
     
         Connection dbconn = DBconnection.connectDB();
         try {
+            
+            
             /*
-            Refer column names
-            CREATE TABLE `end_users` (
-                `UserID` int NOT NULL AUTO_INCREMENT,
+           
+            CREATE TABLE `dietitians` (
+                `ID` int NOT NULL AUTO_INCREMENT,
                 `Name` varchar(255) DEFAULT NULL,
                 `DOB` date DEFAULT NULL,
                 `Gender` varchar(10) DEFAULT NULL,
-                `Contact` mediumtext,
+                `Contact` long DEFAULT NULL,
                 `Address` varchar(255) DEFAULT NULL,
-                `Height` float DEFAULT NULL,
-                `Weight` float DEFAULT NULL,
-                `BloodGroup` varchar(10) DEFAULT NULL,
-                `Purpose` varchar(50) DEFAULT NULL,
-                `Diabetic` tinyint(1) DEFAULT NULL,
-                `Allergies` varchar(100) DEFAULT NULL,
-                `Food_Preference` varchar(100) NOT NULL,
-                `Workout_Frequency` varchar(10) DEFAULT NULL,
-                `Favorites` varchar(300) DEFAULT NULL,
+                `DOJ` date DEFAULT NULL,
+                `Experience` int ,
+                `Qualification` varchar(100) NOT NULL,
+                `Specialization` varchar(10) DEFAULT NULL,
+                `Hospital` varchar(10) DEFAULT NULL,
+                `Type` varchar(50) DEFAULT NULL
+                `Slots` int ,
                 `Age` int NOT NULL,
-                PRIMARY KEY (`UserID`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-            */
+                PRIMARY KEY (`ID`)
+            )
             
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO end_users(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `BloodGroup`,`Height`, `Weight`, `Diabetic`, `Allergies`, `Purpose`, `Food_Preference`, `Workout_Frequency`, `Favorites`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            */
+           
+//            PreparedStatement query = (PreparedStatement)dbconn.prepareStatement("")
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `DOJ`,`Experience`, `Qualification`, `Specialization`, `Hospital`, `Type`, `Slots`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));
             st.setInt(3, age);
             st.setString(4,gender);
             st.setLong(5, phNumber);
             st.setString(6, address);
-            st.setString(7, bloodGroup);
-            st.setFloat(8, height);
-            st.setFloat(9, weight);
+            st.setDate(7, new UtilityFunctions().convertFromJAVADateToSQLDate(doj));
+            st.setInt(8, experience);
+            st.setString(9, qualification);
+            st.setString(10, specialization);
+            st.setString(11, associatedHospital);
+            st.setString(12, type);
+            st.setInt(13, slotsAvailable);
             
-            
-            st.setBoolean(10, diabetic);
-            st.setString(11, allergies);
-            st.setString(12, purposeOfDiet);
-            st.setString(13, foodPreference);
-            st.setString(14, workoutFrequency);
-            st.setString(15, new UtilityFunctions().commaSeparate(favorites));
             
             int res = st.executeUpdate();
         } catch (SQLException ex) {
@@ -113,19 +112,5 @@ public class DietitianDirectory {
         }
     }
     
-//    public boolean checkPID(int pID){
-//        int flag = 0;
-//        for(User p: getPatientList()){
-//            if(p.getpID() == pID)
-//                flag = 1;
-//            else
-//                flag = 0;
-//        }
-//        if(flag>0)
-//            return true;
-//        else
-//            return false;
-//    }
-  
-    
+
 }

@@ -13,113 +13,86 @@ import java.util.List;
  */
 public class Dietitian extends Person {
     
-    public String bloodGroup;
-    public float weight;
-    public float height;
-    public boolean diabetic;
-    public String allergies;
-    
-    public String purposeOfDiet;
-    public String foodPreference;
-    public String workoutFrequency;
-    public List<String> favorites;
-    
-//    private VitalSigns vitalSigns;
-//    private EncounterHistory encounterHistory;
+    public Date doj;
+    public int experience;
+    public String qualification;
+    public String specialization;
+    public int slotsAvailable;
+    public String associatedHospital;
+    public String type;
 
     public Dietitian(){
         
     }
     
-    public Dietitian(String name, Date dob, int age, String gender, long phNumber, String address, String bloodGroup, float height, float weight, boolean diabetic, String allergies, String purposeOfDiet, String foodPreference, String workoutFrequency, List<String> favorites) {
+    public Dietitian(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, String specialization, int slotsAvailable, String associatedHospital, String type) {
         super( name,  dob, age, gender,  phNumber,  address);
-        this.height = height;
-        this.weight = weight;
-        this.bloodGroup = bloodGroup;
-        
-        this.diabetic = diabetic;
-        this.allergies = allergies;
-        
-        this.purposeOfDiet = purposeOfDiet;
-        this.foodPreference = foodPreference;
-        this.workoutFrequency = workoutFrequency;
-        this.favorites = favorites;
+        this.doj = doj;
+        this.experience = experience;
+        this.qualification = qualification;
+        this.specialization = specialization;
+        this.slotsAvailable = slotsAvailable;
+        this.associatedHospital = associatedHospital;
+        this.type = type;
     }
 
-    public String getFoodPreference() {
-        return foodPreference;
+    public int getSlotsAvailable() {
+        return slotsAvailable;
     }
 
-    public void setFoodPreference(String foodPreference) {
-        this.foodPreference = foodPreference;
-    }
-    
-    public String getPurposeOfDiet() {
-        return purposeOfDiet;
-    }
-
-    public void setPurposeOfDiet(String purposeOfDiet) {
-        this.purposeOfDiet = purposeOfDiet;
-    }
-
-    public String getWorkoutFrequency() {
-        return workoutFrequency;
-    }
-
-    public void setWorkoutFrequency(String workoutFrequency) {
-        this.workoutFrequency = workoutFrequency;
-    }
-
-    public List<String> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(List<String> favorites) {
-        this.favorites = favorites;
+    public void setSlotsAvailable(int slotsAvailable) {
+        this.slotsAvailable = slotsAvailable;
     }
     
     
+    public Date getDoj() {
+        return doj;
+    }
+
+    public void setDoj(Date doj) {
+        this.doj = doj;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public String getAssociatedHospital() {
+        return associatedHospital;
+    }
+
+    public void setAssociatedHospital(String associatedHospital) {
+        this.associatedHospital = associatedHospital;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
     
-    public boolean isDiabetic() {
-        return diabetic;
-    }
-
-    public void setDiabetic(boolean diabetic) {
-        this.diabetic = diabetic;
-    }
-
-    public String getAllergies() {
-        return allergies;
-    }
     
-    public void setAllergies(String allergies) {
-        this.allergies = allergies;
-    }
-    
-    
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
 
 }

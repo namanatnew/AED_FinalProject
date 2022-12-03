@@ -167,29 +167,25 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace pref="137" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="panelMedical" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="panelPersonalInfo" max="32767" attributes="0"/>
+                                      <Component id="panelMedical" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="panelPersonalInfo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnRegister" linkSize="8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnClear" linkSize="8" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnView1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="panelAddress" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
-                          <Component id="btnRegister" linkSize="8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnClear" linkSize="8" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnView1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -197,14 +193,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="panelPersonalInfo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="panelMedical" min="-2" pref="180" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="panelAddress" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="panelPersonalInfo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="panelMedical" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -219,6 +210,9 @@
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="panelPersonalInfo">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new java.awt.Color(255, 255, 255, 85)" type="code"/>
+                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Personal Information">
@@ -243,9 +237,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtAddress" max="32767" attributes="0"/>
-                                  <Component id="txtContact" alignment="0" pref="215" max="32767" attributes="0"/>
-                                  <Component id="txtName" alignment="0" pref="215" max="32767" attributes="0"/>
-                                  <Component id="comboGender" pref="215" max="32767" attributes="0"/>
+                                  <Component id="txtContact" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboGender" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="dateDOB" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -290,7 +284,7 @@
                                   <Component id="txtAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="40" max="32767" attributes="0"/>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -376,9 +370,12 @@
                 </Container>
                 <Container class="javax.swing.JPanel" name="panelMedical">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new java.awt.Color(255, 255, 255, 85)" type="code"/>
+                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Medical">
+                        <TitledBorder title="Professional">
                           <Font PropertyName="font" name="sansserif" size="10" style="3"/>
                         </TitledBorder>
                       </Border>
@@ -390,45 +387,35 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblBloodGroup" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblHeight" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtHeight" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="comboBloodGroup" alignment="1" pref="215" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="lblWeight" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                                      <Component id="lblDiabetes" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="lblAllergies" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="lblHospital" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="comboDiabetic" pref="215" max="32767" attributes="0"/>
-                                          <Component id="txtAllergies" max="32767" attributes="0"/>
-                                          <Component id="txtWeight" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblSpecialization" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblType" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblQualification" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="lblDOJ" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="lblSlots" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtSlots" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="dateDOJ" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                                      <Component id="lblExperience" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtExperience" min="-2" pref="45" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="comboHospital" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtQualification" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtSpecialization" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboType" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -439,41 +426,45 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="comboBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboHospital" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dateDOJ" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDOJ" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtExperience" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblExperience" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtHeight" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblHeight" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtWeight" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtQualification" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblQualification" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblDiabetes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="comboDiabetic" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSpecialization" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSpecialization" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtAllergies" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="lblAllergies" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboType" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtSlots" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSlots" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="9" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="txtHeight">
-                      <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHeightKeyTyped"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="comboBloodGroup">
+                    <Component class="javax.swing.JComboBox" name="comboHospital">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="8">
@@ -492,53 +483,87 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblBloodGroup">
+                    <Component class="javax.swing.JLabel" name="lblHospital">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Blood Group:"/>
+                        <Property name="text" type="java.lang.String" value="Hospital:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblWeight">
+                    <Component class="javax.swing.JLabel" name="lblDOJ">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Weight:"/>
+                        <Property name="text" type="java.lang.String" value="DOJ:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="comboDiabetic">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dateDOJ">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="dateDOJKeyTyped"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblExperience">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Experience(years):"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtExperience">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtExperienceKeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtExperienceKeyTyped"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtQualification">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQualificationKeyTyped"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblQualification">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Qualification:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblSpecialization">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Specialization:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtSpecialization">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSpecializationKeyTyped"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="comboType">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Yes"/>
-                            <StringItem index="1" value="No"/>
+                          <StringArray count="8">
+                            <StringItem index="0" value="A+"/>
+                            <StringItem index="1" value="B+"/>
+                            <StringItem index="2" value="AB+"/>
+                            <StringItem index="3" value="O+"/>
+                            <StringItem index="4" value="A-"/>
+                            <StringItem index="5" value="B-"/>
+                            <StringItem index="6" value="AB-"/>
+                            <StringItem index="7" value="O-"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="-1"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblDiabetes">
+                    <Component class="javax.swing.JLabel" name="lblType">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Diabetes:"/>
+                        <Property name="text" type="java.lang.String" value="Type:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblAllergies">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Any Allergies:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtAllergies">
+                    <Component class="javax.swing.JTextField" name="txtSlots">
                       <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAllergiesKeyTyped"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSlotsKeyTyped"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtWeight">
-                      <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtWeightKeyTyped"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblHeight">
+                    <Component class="javax.swing.JLabel" name="lblSlots">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Height:"/>
+                        <Property name="text" type="java.lang.String" value="Slots:"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -571,207 +596,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
                   </Events>
                 </Component>
-                <Container class="javax.swing.JPanel" name="panelAddress">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Hospital Address ">
-                          <Font PropertyName="font" name="sansserif" size="10" style="3"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblPurpose" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="210" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblPreference" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="comboPreference" min="-2" pref="210" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblWorkoutFrequency" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="comboWorkoutFrequency" min="-2" pref="210" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblFavFood" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane3" min="-2" pref="210" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblPurpose" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane2" min="-2" pref="56" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="comboPreference" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPreference" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="comboWorkoutFrequency" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblWorkoutFrequency" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane3" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblFavFood" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblPurpose">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Purpose of Diet:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblPreference">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Food Preference:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="comboPreference">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Vegeterian"/>
-                            <StringItem index="1" value="Non-Vegeterian"/>
-                            <StringItem index="2" value="Eggiterian"/>
-                            <StringItem index="3" value="Vegan"/>
-                          </StringArray>
-                        </Property>
-                        <Property name="selectedIndex" type="int" value="-1"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboPreferenceActionPerformed"/>
-                      </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JList" name="listPurpose">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                              <StringArray count="6">
-                                <StringItem index="0" value="Diebetes Control"/>
-                                <StringItem index="1" value="BP Control"/>
-                                <StringItem index="2" value="Cholestrol Control"/>
-                                <StringItem index="3" value="Weight Loss"/>
-                                <StringItem index="4" value="Weight Gain"/>
-                                <StringItem index="5" value="Core Strengthening"/>
-                              </StringArray>
-                            </Property>
-                            <Property name="layoutOrientation" type="int" value="1"/>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Component class="javax.swing.JLabel" name="lblWorkoutFrequency">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Workout Frequency:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="comboWorkoutFrequency">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Never"/>
-                            <StringItem index="1" value="Rarely"/>
-                            <StringItem index="2" value="Once in a week"/>
-                            <StringItem index="3" value="Frequent"/>
-                          </StringArray>
-                        </Property>
-                        <Property name="selectedIndex" type="int" value="-1"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboWorkoutFrequencyActionPerformed"/>
-                      </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JList" name="listFavorites">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                              <StringArray count="16">
-                                <StringItem index="0" value="Avacados"/>
-                                <StringItem index="1" value="Banana"/>
-                                <StringItem index="2" value="Eggs White"/>
-                                <StringItem index="3" value="Beans"/>
-                                <StringItem index="4" value="Whole Eggs"/>
-                                <StringItem index="5" value="Milk (Low Fat)"/>
-                                <StringItem index="6" value="Milk (Whole)"/>
-                                <StringItem index="7" value="Milk (Almond)"/>
-                                <StringItem index="8" value="Cottage Cheese"/>
-                                <StringItem index="9" value="Tofu"/>
-                                <StringItem index="10" value="Yogurt (No Sugar)"/>
-                                <StringItem index="11" value="Yogurt (With Sugar)"/>
-                                <StringItem index="12" value="Chicken"/>
-                                <StringItem index="13" value="Beaf"/>
-                                <StringItem index="14" value="Pork"/>
-                                <StringItem index="15" value=" "/>
-                              </StringArray>
-                            </Property>
-                            <Property name="dragEnabled" type="boolean" value="true"/>
-                            <Property name="dropMode" type="javax.swing.DropMode" editor="org.netbeans.modules.form.editors.EnumEditor">
-                              <Value id="ON"/>
-                            </Property>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Component class="javax.swing.JLabel" name="lblFavFood">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Favorites:"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="javax.swing.JButton" name="btnView1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
