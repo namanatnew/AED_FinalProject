@@ -1,7 +1,6 @@
 package UI.Authenticate;
 
 import Model.DBconnection;
-import UI.MainFrame;
 import UI.Authenticate.SignupFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
@@ -55,7 +54,6 @@ public class LoginFrame extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         lblInvalid = new javax.swing.JLabel();
         txtPswrd = new javax.swing.JPasswordField();
-        btnClose = new rojerusan.RSButtonMetro();
         btnLogin = new javax.swing.JButton();
         btnLogin1 = new javax.swing.JButton();
 
@@ -127,20 +125,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 30));
-
-        btnClose.setBackground(new java.awt.Color(255, 255, 255));
-        btnClose.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
-        btnClose.setForeground(new java.awt.Color(255, 51, 51));
-        btnClose.setText("X");
-        btnClose.setAutoscrolls(true);
-        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-        rPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
         btnLogin.setBackground(new java.awt.Color(121, 237, 39));
         btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -317,7 +301,6 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSButtonMetro btnClose;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogin1;
     private javax.swing.JPasswordField jPasswordField1;
@@ -340,9 +323,9 @@ public class LoginFrame extends javax.swing.JFrame {
             ResultSet res = st.executeQuery();
             if(res.next()){
                 dispose();
-                SAHomePage frame = new SAHomePage();
-                frame.setVisible(true);
-                dispose();
+                SAHomePage mf = new SAHomePage();
+                mf.setVisible(true);
+                this.setVisible(false);
             }
             else{
                 lblInvalid.setText("Please use valid credentials!");
