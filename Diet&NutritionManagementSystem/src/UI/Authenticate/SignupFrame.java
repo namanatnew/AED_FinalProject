@@ -1,9 +1,9 @@
-package UI;
+package UI.Authenticate;
 
 import Model.DBconnection;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +46,9 @@ public class SignupFrame extends javax.swing.JFrame {
         lblInvalid = new javax.swing.JLabel();
         txtPswrdCon = new javax.swing.JPasswordField();
         txtPswrd = new javax.swing.JPasswordField();
+        btnClose = new rojerusan.RSButtonMetro();
+        btnSignup = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -138,6 +141,65 @@ public class SignupFrame extends javax.swing.JFrame {
         });
         rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 200, 30));
 
+        btnClose.setBackground(new java.awt.Color(255, 255, 255));
+        btnClose.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
+        btnClose.setForeground(new java.awt.Color(255, 51, 51));
+        btnClose.setText("X");
+        btnClose.setAutoscrolls(true);
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        rPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
+
+        btnSignup.setBackground(new java.awt.Color(121, 237, 39));
+        btnSignup.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnSignup.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignup.setText("Signup");
+        btnSignup.setBorder(null);
+        btnSignup.setBorderPainted(false);
+        btnSignup.setFocusPainted(false);
+        btnSignup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSignup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSignupMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSignupMouseExited(evt);
+            }
+        });
+        btnSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignupActionPerformed(evt);
+            }
+        });
+        rPanel.add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 140, 30));
+
+        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(121, 237, 39));
+        btnLogin.setText("Back to Login");
+        btnLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnLogin.setBorderPainted(false);
+        btnLogin.setFocusPainted(false);
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoginMouseExited(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 140, 30));
+
         mainPanel.add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 400, 500));
 
         getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -149,34 +211,6 @@ public class SignupFrame extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        LoginFrame lf = new LoginFrame();
-        lf.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
-        // TODO add your handling code here:
-        String username = txtUname.getText();
-        String password = txtPswrdCon.getText();
-        String confirmpassword = txtPswrdCon.getText();
-        String email = txtEmail.getText();
-
-        if (username.equals("Enter Username") || password.equals("Enter Password") 
-                || confirmpassword.equals("Confirm Password") || email.equals("Enter Email Address")){
-            lblInvalid.setText("Please fill all the fields!");
-        }
-        else if (!password.equals(confirmpassword)){
-            lblInvalid.setText("Password does not match!");
-        }
-        else{
-            userSignup(username,password,email);
-        }
-
-    }//GEN-LAST:event_btnSignupActionPerformed
 
     private void txtPswrdConFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPswrdConFocusGained
         // TODO add your handling code here:
@@ -247,8 +281,56 @@ public class SignupFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void btnSignupMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignupMouseEntered
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(0,204,51));
+    }//GEN-LAST:event_btnSignupMouseEntered
+
+    private void btnSignupMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignupMouseExited
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(121,237,39));
+    }//GEN-LAST:event_btnSignupMouseExited
+
+    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
+        // TODO add your handling code here:
+        String username = txtUname.getText();
+        String password = txtPswrdCon.getText();
+        String confirmpassword = txtPswrdCon.getText();
+        String email = txtEmail.getText();
+
+        if (username.equals("Enter Username") || password.equals("Enter Password") 
+                || confirmpassword.equals("Confirm Password") || email.equals("Enter Email Address")){
+            lblInvalid.setText("Please fill all the fields!");
+        }
+        else if (!password.equals(confirmpassword)){
+            lblInvalid.setText("Password does not match!");
+        }
+        else{
+            userSignup(username,password,email);
+        }
+    }//GEN-LAST:event_btnSignupActionPerformed
+
+    private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginMouseEntered
+
+    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginMouseExited
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        LoginFrame lf = new LoginFrame();
+        lf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLoginActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSButtonMetro btnClose;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnSignup;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel lPanel;
     private javax.swing.JLabel lblIcon;

@@ -22,11 +22,11 @@ public class UserDirectory {
     
     public static ArrayList<User> userList = new ArrayList<User>();
     
-    public static ArrayList<User> getPatientList() {
+    public static ArrayList<User> getUserList() {
         return userList;
     }
 
-    public void setPatientList(ArrayList<User> userList) {
+    public void setUserList(ArrayList<User> userList) {
         this.userList = userList;
     }
     
@@ -43,7 +43,7 @@ public class UserDirectory {
     
    
     
-    public void deletePatient(User p){
+    public void deleteUser(User p){
         userList.remove(p);
     }
     
@@ -99,7 +99,7 @@ public class UserDirectory {
         }
     }
     
-    public void deletePatientFromDB(User p){
+    public void deleteUserFromDB(User p){
         
         Connection dbconn = DBconnection.connectDB();
         try {
