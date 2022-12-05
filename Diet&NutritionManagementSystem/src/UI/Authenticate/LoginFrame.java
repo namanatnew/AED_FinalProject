@@ -1,6 +1,6 @@
 package UI.Authenticate;
 
-import Model.DBconnection;
+import Model.Database.DBconnection;
 import UI.Authenticate.SignupFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
