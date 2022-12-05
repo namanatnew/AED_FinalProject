@@ -5,7 +5,7 @@
 package Model.People;
 
 import java.util.ArrayList;
-import Model.DBconnection;
+import Model.Database.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
