@@ -68,16 +68,15 @@ public class DietitianRegistration extends javax.swing.JFrame {
         lblContact = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         comboGender = new javax.swing.JComboBox<>();
-        dateDOB = new com.toedter.calendar.JDateChooser();
         lblAge = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
         lblAddress = new javax.swing.JLabel();
+        dateDOB = new com.toedter.calendar.JDateChooser();
         panelMedical = new javax.swing.JPanel();
         comboHospital = new javax.swing.JComboBox<>();
         lblHospital = new javax.swing.JLabel();
         lblDOJ = new javax.swing.JLabel();
-        dateDOJ = new com.toedter.calendar.JDateChooser();
         lblExperience = new javax.swing.JLabel();
         txtExperience = new javax.swing.JTextField();
         txtQualification = new javax.swing.JTextField();
@@ -88,6 +87,7 @@ public class DietitianRegistration extends javax.swing.JFrame {
         lblType = new javax.swing.JLabel();
         txtSlots = new javax.swing.JTextField();
         lblSlots = new javax.swing.JLabel();
+        dateDOJ = new com.toedter.calendar.JDateChooser();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnView1 = new javax.swing.JButton();
@@ -177,12 +177,6 @@ public class DietitianRegistration extends javax.swing.JFrame {
         comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Non-Binary", "Other" }));
         comboGender.setSelectedIndex(-1);
 
-        dateDOB.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                dateDOBKeyTyped(evt);
-            }
-        });
-
         lblAge.setText("Age:");
 
         txtAge.setEditable(false);
@@ -222,7 +216,7 @@ public class DietitianRegistration extends javax.swing.JFrame {
                     .addComponent(txtName)
                     .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelPersonalInfoLayout.createSequentialGroup()
-                        .addComponent(dateDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dateDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblAge)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -242,11 +236,11 @@ public class DietitianRegistration extends javax.swing.JFrame {
                     .addComponent(lblGender))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDOB)
                     .addGroup(panelPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblAge)))
+                        .addComponent(lblAge))
+                    .addComponent(dateDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,12 +260,6 @@ public class DietitianRegistration extends javax.swing.JFrame {
         lblHospital.setText("Hospital:");
 
         lblDOJ.setText("DOJ:");
-
-        dateDOJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                dateDOJKeyTyped(evt);
-            }
-        });
 
         lblExperience.setText("Experience(years):");
 
@@ -334,8 +322,8 @@ public class DietitianRegistration extends javax.swing.JFrame {
                 .addGroup(panelMedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSlots)
                     .addGroup(panelMedicalLayout.createSequentialGroup()
-                        .addComponent(dateDOJ, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(dateDOJ, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(lblExperience)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtExperience, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -354,11 +342,12 @@ public class DietitianRegistration extends javax.swing.JFrame {
                     .addComponent(lblHospital))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateDOJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDOJ)
                     .addGroup(panelMedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtExperience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblExperience)))
+                        .addComponent(lblExperience))
+                    .addGroup(panelMedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(dateDOJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblDOJ)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

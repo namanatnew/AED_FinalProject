@@ -67,11 +67,11 @@ public class UserRegistration extends javax.swing.JFrame {
         lblContact = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         comboGender = new javax.swing.JComboBox<>();
-        dateDOB = new com.toedter.calendar.JDateChooser();
         lblAge = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
         lblAddress = new javax.swing.JLabel();
+        dateDOB = new com.toedter.calendar.JDateChooser();
         panelMedical = new javax.swing.JPanel();
         txtHeight = new javax.swing.JTextField();
         comboBloodGroup = new javax.swing.JComboBox<>();
@@ -194,13 +194,6 @@ public class UserRegistration extends javax.swing.JFrame {
         comboGender.setSelectedIndex(-1);
         panelPersonalInfo.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 200, -1));
 
-        dateDOB.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                dateDOBKeyTyped(evt);
-            }
-        });
-        panelPersonalInfo.add(dateDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 110, -1));
-
         lblAge.setText("Age:");
         panelPersonalInfo.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
@@ -224,6 +217,7 @@ public class UserRegistration extends javax.swing.JFrame {
 
         lblAddress.setText("Address:");
         panelPersonalInfo.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        panelPersonalInfo.add(dateDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 110, -1));
 
         panelMedical.setBackground(new java.awt.Color(255, 255, 255, 150));
         panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Health", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
