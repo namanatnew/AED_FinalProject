@@ -1,7 +1,7 @@
 package UI.Authenticate;
 
+import Model.Account.Account;
 import Model.Database.DBconnection;
-import UI.Authenticate.SignupFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
 import java.sql.Connection;
@@ -236,7 +236,6 @@ public class LoginFrame extends javax.swing.JFrame {
         String username = txtUname.getText();
         String password = txtPswrd.getText();
         if (username.equals("Enter username") || password.equals("Enter password")){
-//            JOptionPane.showMessageDialog(this,"Username or Password is empty","Error",JOptionPane.ERROR_MESSAGE);
             lblInvalid.setText("Username or Password is empty!");
         }
         else{
@@ -315,17 +314,52 @@ public class LoginFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void userLogin(String username,String password){
-        Connection dbconn = DBconnection.connectDB();
+        
         try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
-            st.setString(1, username);
-            st.setString(2, password);
-            ResultSet res = st.executeQuery();
+            Account ac = new Account();
+            ResultSet res = ac.checkCredential(username, password);
             if(res.next()){
                 dispose();
-                SAHomePage mf = new SAHomePage();
-                mf.setVisible(true);
-                this.setVisible(false);
+                switch (res.getString(1)) {
+                    case "User":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "Dietician":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "Research Dietician":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "Hospital Admin":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "System Admin":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    default:
+                        break;
+                }
+                
             }
             else{
                 lblInvalid.setText("Please use valid credentials!");
