@@ -1,6 +1,10 @@
-package UI;
+package UI.Authenticate;
 
 import Model.DBconnection;
+import UI.MainFrame;
+import UI.Authenticate.SignupFrame;
+import UI.SystemAdmin.SAHomePage;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -48,12 +52,12 @@ public class LoginFrame extends javax.swing.JFrame {
         lblIcon = new javax.swing.JLabel();
         rPanel = new javax.swing.JPanel();
         txtUname = new javax.swing.JTextField();
-        btnSignup = new rojerusan.RSButtonMetro();
-        btnLogin = new rojerusan.RSButtonMetro();
         lblTitle = new javax.swing.JLabel();
         lblInvalid = new javax.swing.JLabel();
         txtPswrd = new javax.swing.JPasswordField();
         btnClose = new rojerusan.RSButtonMetro();
+        btnLogin = new javax.swing.JButton();
+        btnLogin1 = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -93,27 +97,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         rPanel.add(txtUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 200, 30));
-
-        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
-        btnSignup.setForeground(new java.awt.Color(121, 237, 39));
-        btnSignup.setText("New User? Sign Up Here");
-        btnSignup.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnSignup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignupActionPerformed(evt);
-            }
-        });
-        rPanel.add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 200, 40));
-
-        btnLogin.setBackground(new java.awt.Color(121, 237, 39));
-        btnLogin.setText("Login");
-        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 30));
 
         lblTitle.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(121, 237, 39));
@@ -159,6 +142,51 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         rPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
+        btnLogin.setBackground(new java.awt.Color(121, 237, 39));
+        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Login");
+        btnLogin.setBorder(null);
+        btnLogin.setBorderPainted(false);
+        btnLogin.setFocusPainted(false);
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoginMouseExited(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 30));
+
+        btnLogin1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnLogin1.setForeground(new java.awt.Color(121, 237, 39));
+        btnLogin1.setText("New User? Sign Up Here");
+        btnLogin1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnLogin1.setBorderPainted(false);
+        btnLogin1.setFocusPainted(false);
+        btnLogin1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLogin1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLogin1MouseExited(evt);
+            }
+        });
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
+            }
+        });
+        rPanel.add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 180, 30));
+
         mainPanel.add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 400, 500));
 
         getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -166,27 +194,6 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        SignupFrame sf = new SignupFrame();
-        sf.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSignupActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        String username = txtUname.getText();
-        String password = txtPswrd.getText();
-        if (username.equals("Enter username") || password.equals("Enter password")){
-//            JOptionPane.showMessageDialog(this,"Username or Password is empty","Error",JOptionPane.ERROR_MESSAGE);
-            lblInvalid.setText("Username or Password is empty!");
-        }
-        else{
-            userLogin(username,password);
-        }
-    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPswrdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPswrdFocusGained
         // TODO add your handling code here:
@@ -234,6 +241,45 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(0,204,51));
+    }//GEN-LAST:event_btnLoginMouseEntered
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        String username = txtUname.getText();
+        String password = txtPswrd.getText();
+        if (username.equals("Enter username") || password.equals("Enter password")){
+//            JOptionPane.showMessageDialog(this,"Username or Password is empty","Error",JOptionPane.ERROR_MESSAGE);
+            lblInvalid.setText("Username or Password is empty!");
+        }
+        else{
+            userLogin(username,password);
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(121,237,39));
+    }//GEN-LAST:event_btnLoginMouseExited
+
+    private void btnLogin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogin1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin1MouseEntered
+
+    private void btnLogin1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogin1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin1MouseExited
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        SignupFrame sf = new SignupFrame();
+        sf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLogin1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -272,8 +318,8 @@ public class LoginFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSButtonMetro btnClose;
-    private rojerusan.RSButtonMetro btnLogin;
-    private rojerusan.RSButtonMetro btnSignup;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel lPanel;
     private javax.swing.JLabel lblIcon;
@@ -294,9 +340,9 @@ public class LoginFrame extends javax.swing.JFrame {
             ResultSet res = st.executeQuery();
             if(res.next()){
                 dispose();
-                MainFrame mf = new MainFrame();
-                mf.setVisible(true);
-                this.setVisible(false);
+                SAHomePage frame = new SAHomePage();
+                frame.setVisible(true);
+                dispose();
             }
             else{
                 lblInvalid.setText("Please use valid credentials!");
