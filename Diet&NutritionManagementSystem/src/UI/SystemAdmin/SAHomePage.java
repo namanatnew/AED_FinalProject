@@ -51,7 +51,7 @@ public class SAHomePage extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 

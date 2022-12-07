@@ -241,7 +241,7 @@
                                   <Component id="txtName" alignment="0" max="32767" attributes="0"/>
                                   <Component id="comboGender" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="dateDOB" min="-2" pref="233" max="-2" attributes="0"/>
+                                      <Component id="dateDOB" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lblAge" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -267,12 +267,12 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dateDOB" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDOB" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtAge" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblAge" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="dateDOB" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -337,6 +337,11 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="dateDOB">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="dateDOBKeyTyped"/>
+                      </Events>
+                    </Component>
                     <Component class="javax.swing.JLabel" name="lblAge">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Age:"/>
@@ -360,8 +365,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Address:"/>
                       </Properties>
-                    </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dateDOB">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -403,8 +406,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtSlots" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="dateDOJ" pref="176" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="dateDOJ" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <EmptySpace pref="43" max="32767" attributes="0"/>
                                       <Component id="lblExperience" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txtExperience" min="-2" pref="45" max="-2" attributes="0"/>
@@ -428,13 +431,11 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dateDOJ" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDOJ" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtExperience" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblExperience" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="dateDOJ" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDOJ" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -491,6 +492,11 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="DOJ:"/>
                       </Properties>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="dateDOJ">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="dateDOJKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblExperience">
                       <Properties>
@@ -559,8 +565,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Slots:"/>
                       </Properties>
-                    </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dateDOJ">
                     </Component>
                   </SubComponents>
                 </Container>
