@@ -17,9 +17,8 @@
 
 1.  Hospitals
 2.  Diet Meal Service
-3.  Pharmacy Stores
-4.  Grocery Stores
-5.  Government Units / NGOs
+3.  Grocery Stores
+4.  Government Units / NGOs
 
 ### Organizations:
 
