@@ -8,7 +8,7 @@ import UI.User.*;
 import Model.People.Dietitian;
 import Model.People.DietitianDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.MainFrame;
+import UI.Main.MainFrame;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;

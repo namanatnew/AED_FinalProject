@@ -7,7 +7,8 @@ package UI.User;
 import Model.People.User;
 import Model.People.UserDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.MainFrame;
+import UI.Main.MainFrame;
+import UI.SystemAdmin.SAHomePage;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -52,26 +53,15 @@ public class UserRegistration extends javax.swing.JFrame {
 
         btnGroupGender = new javax.swing.ButtonGroup();
         btnGroupDiabetes = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        pnlTitleBar = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        pnlWorkArea = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
-        panelRegistration = new javax.swing.JPanel();
-        panelPersonalInfo = new javax.swing.JPanel();
-        txtName = new javax.swing.JTextField();
-        txtContact = new javax.swing.JTextField();
-        lblGender = new javax.swing.JLabel();
-        lblDOB = new javax.swing.JLabel();
-        lblContact = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
-        comboGender = new javax.swing.JComboBox<>();
-        dateDOB = new com.toedter.calendar.JDateChooser();
-        lblAge = new javax.swing.JLabel();
-        txtAge = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
-        lblAddress = new javax.swing.JLabel();
+        pnlRegistration = new javax.swing.JPanel();
         panelMedical = new javax.swing.JPanel();
         txtHeight = new javax.swing.JTextField();
         comboBloodGroup = new javax.swing.JComboBox<>();
@@ -97,135 +87,126 @@ public class UserRegistration extends javax.swing.JFrame {
         listFavorites = new javax.swing.JList<>();
         lblFavFood = new javax.swing.JLabel();
         btnView1 = new javax.swing.JButton();
+        pnlView = new javax.swing.JPanel();
+        txtSearch = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableUserView = new javax.swing.JTable();
+        pnlSideOptions = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(66, 179, 172));
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
 
-        lblTitle.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("USER DASHBOARD");
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-
-        btnHome.setText("Home");
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193)
-                .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout)
-                    .addComponent(btnHome))
-                .addContainerGap())
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
+        jLabel4.setText("Welcome, System Admin");
 
-        tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
-        tabbedPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tabbedPane.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Diet Management System");
 
-        panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
-
-        panelPersonalInfo.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelPersonalInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-        panelPersonalInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNameKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNameKeyTyped(evt);
-            }
-        });
-        panelPersonalInfo.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 210, -1));
-
-        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContactKeyTyped(evt);
+        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("X");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
             }
         });
-        panelPersonalInfo.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 210, -1));
 
-        lblGender.setText("Gender:");
-        panelPersonalInfo.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        javax.swing.GroupLayout pnlTitleBarLayout = new javax.swing.GroupLayout(pnlTitleBar);
+        pnlTitleBar.setLayout(pnlTitleBarLayout);
+        pnlTitleBarLayout.setHorizontalGroup(
+            pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTitleBarLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 575, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18))
+            .addGroup(pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTitleBarLayout.createSequentialGroup()
+                    .addContainerGap(732, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(59, 59, 59)))
+        );
+        pnlTitleBarLayout.setVerticalGroup(
+            pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTitleBarLayout.createSequentialGroup()
+                .addGroup(pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTitleBarLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlTitleBarLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTitleBarLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addContainerGap()))
+        );
 
-        lblDOB.setText("DOB:");
-        panelPersonalInfo.add(lblDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        getContentPane().add(pnlTitleBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 60));
 
-        lblContact.setText("Contact:");
-        panelPersonalInfo.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        pnlWorkArea.setBackground(new java.awt.Color(255, 255, 255));
+        pnlWorkArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblName.setText("Name:");
-        panelPersonalInfo.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        tabbedPane.setBackground(new java.awt.Color(255, 51, 51));
+        tabbedPane.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabbedPane.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        tabbedPane.setName(""); // NOI18N
 
-        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Non-Binary", "Other" }));
-        comboGender.setSelectedIndex(-1);
-        panelPersonalInfo.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 200, -1));
+        pnlRegistration.setBackground(new java.awt.Color(255, 255, 255));
 
-        dateDOB.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                dateDOBKeyTyped(evt);
-            }
-        });
-        panelPersonalInfo.add(dateDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 110, -1));
-
-        lblAge.setText("Age:");
-        panelPersonalInfo.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
-
-        txtAge.setEditable(false);
-        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtAgeKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAgeKeyTyped(evt);
-            }
-        });
-        panelPersonalInfo.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 51, -1));
-
-        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAddressKeyTyped(evt);
-            }
-        });
-        panelPersonalInfo.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 210, 20));
-
-        lblAddress.setText("Address:");
-        panelPersonalInfo.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        panelMedical.setBackground(new java.awt.Color(255, 255, 255, 150));
+        panelMedical.setBackground(new java.awt.Color(255, 255, 255, 180));
         panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Health", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelMedical.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -234,43 +215,48 @@ public class UserRegistration extends javax.swing.JFrame {
                 txtHeightKeyTyped(evt);
             }
         });
-        panelMedical.add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, -1));
+        panelMedical.add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
 
         comboBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "B+", "AB+", "O+", "A-", "B-", "AB-", "O-" }));
-        panelMedical.add(comboBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 200, -1));
+        panelMedical.add(comboBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, 30));
 
-        lblBloodGroup.setText("Blood Group:");
+        lblBloodGroup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/bloodgrp_29px.png"))); // NOI18N
+        lblBloodGroup.setText(" Blood Group:");
         panelMedical.add(lblBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        lblWeight.setText("Weight:");
-        panelMedical.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        lblWeight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/weight_px.png"))); // NOI18N
+        lblWeight.setText("         Weight:");
+        panelMedical.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         comboDiabetic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
         comboDiabetic.setSelectedIndex(-1);
-        panelMedical.add(comboDiabetic, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 200, -1));
+        panelMedical.add(comboDiabetic, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 32, 200, 30));
 
-        lblDiabetes.setText("Diabetes:");
-        panelMedical.add(lblDiabetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 109, -1, -1));
+        lblDiabetes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-diabetes-32.png"))); // NOI18N
+        lblDiabetes.setText("       Diabetes:");
+        panelMedical.add(lblDiabetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 120, -1));
 
-        lblAllergies.setText("Any Allergies:");
-        panelMedical.add(lblAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 141, -1, -1));
+        lblAllergies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
+        lblAllergies.setText(" Any Allergies:");
+        panelMedical.add(lblAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         txtAllergies.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtAllergiesKeyTyped(evt);
             }
         });
-        panelMedical.add(txtAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 200, 30));
+        panelMedical.add(txtAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 200, 50));
 
         txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtWeightKeyTyped(evt);
             }
         });
-        panelMedical.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 200, -1));
+        panelMedical.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 122, 200, 30));
 
-        lblHeight.setText("Height:");
-        panelMedical.add(lblHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        lblHeight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
+        lblHeight.setText("          Height:");
+        panelMedical.add(lblHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
 
         btnRegister.setBackground(new java.awt.Color(255, 51, 51));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,12 +276,15 @@ public class UserRegistration extends javax.swing.JFrame {
             }
         });
 
-        panelAddress.setBackground(new java.awt.Color(255, 255, 255, 150));
+        panelAddress.setBackground(new java.awt.Color(255, 255, 255, 180));
         panelAddress.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diet Related", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelAddress.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPurpose.setText("Purpose of Diet:");
+        panelAddress.add(lblPurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         lblPreference.setText("Food Preference:");
+        panelAddress.add(lblPreference, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
         comboPreference.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegeterian", "Non-Vegeterian", "Eggiterian", "Vegan" }));
         comboPreference.setSelectedIndex(-1);
@@ -304,6 +293,7 @@ public class UserRegistration extends javax.swing.JFrame {
                 comboPreferenceActionPerformed(evt);
             }
         });
+        panelAddress.add(comboPreference, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 140, 40));
 
         listPurpose.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Diebetes Control", "BP Control", "Cholestrol Control", "Weight Loss", "Weight Gain", "Core Strengthening" };
@@ -313,7 +303,10 @@ public class UserRegistration extends javax.swing.JFrame {
         listPurpose.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
         jScrollPane2.setViewportView(listPurpose);
 
+        panelAddress.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 200, 56));
+
         lblWorkoutFrequency.setText("Workout Frequency:");
+        panelAddress.add(lblWorkoutFrequency, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         comboWorkoutFrequency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Never", "Rarely", "Once in a week", "Frequent" }));
         comboWorkoutFrequency.setSelectedIndex(-1);
@@ -322,6 +315,7 @@ public class UserRegistration extends javax.swing.JFrame {
                 comboWorkoutFrequencyActionPerformed(evt);
             }
         });
+        panelAddress.add(comboWorkoutFrequency, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 200, 40));
 
         listFavorites.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Avacados", "Banana", "Eggs White", "Beans", "Whole Eggs", "Milk (Low Fat)", "Milk (Whole)", "Milk (Almond)", "Cottage Cheese", "Tofu", "Yogurt (No Sugar)", "Yogurt (With Sugar)", "Chicken", "Beaf", "Pork", " " };
@@ -332,56 +326,10 @@ public class UserRegistration extends javax.swing.JFrame {
         listFavorites.setDropMode(javax.swing.DropMode.ON);
         jScrollPane3.setViewportView(listFavorites);
 
-        lblFavFood.setText("Favorites:");
+        panelAddress.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 140, 70));
 
-        javax.swing.GroupLayout panelAddressLayout = new javax.swing.GroupLayout(panelAddress);
-        panelAddress.setLayout(panelAddressLayout);
-        panelAddressLayout.setHorizontalGroup(
-            panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddressLayout.createSequentialGroup()
-                .addContainerGap(180, Short.MAX_VALUE)
-                .addGroup(panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddressLayout.createSequentialGroup()
-                        .addComponent(lblFavFood)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddressLayout.createSequentialGroup()
-                        .addComponent(lblWorkoutFrequency)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboWorkoutFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddressLayout.createSequentialGroup()
-                        .addComponent(lblPreference)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboPreference, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddressLayout.createSequentialGroup()
-                        .addComponent(lblPurpose)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22))
-        );
-        panelAddressLayout.setVerticalGroup(
-            panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddressLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPurpose)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboPreference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPreference))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboWorkoutFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWorkoutFrequency))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                    .addGroup(panelAddressLayout.createSequentialGroup()
-                        .addComponent(lblFavFood)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        lblFavFood.setText("Favorites:");
+        panelAddress.add(lblFavFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
 
         btnView1.setBackground(new java.awt.Color(255, 51, 51));
         btnView1.setForeground(new java.awt.Color(255, 255, 255));
@@ -392,108 +340,214 @@ public class UserRegistration extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
-        panelRegistration.setLayout(panelRegistrationLayout);
-        panelRegistrationLayout.setHorizontalGroup(
-            panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelMedical, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelRegistrationLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnRegister))
-                    .addComponent(panelPersonalInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRegistrationLayout.createSequentialGroup()
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnView1))
-                    .addComponent(panelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        javax.swing.GroupLayout pnlRegistrationLayout = new javax.swing.GroupLayout(pnlRegistration);
+        pnlRegistration.setLayout(pnlRegistrationLayout);
+        pnlRegistrationLayout.setHorizontalGroup(
+            pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
+                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(btnView1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(183, 183, 183))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
+                        .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(panelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21))))
+        );
+        pnlRegistrationLayout.setVerticalGroup(
+            pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegistrationLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(panelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnView1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        panelRegistrationLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnRegister});
+        tabbedPane.addTab("Registration", pnlRegistration);
 
-        panelRegistrationLayout.setVerticalGroup(
-            panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelRegistrationLayout.createSequentialGroup()
-                        .addComponent(panelPersonalInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelMedical, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
-                    .addComponent(btnView1)
-                    .addComponent(btnRegister))
-                .addGap(15, 15, 15))
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+
+        tableUserView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Email", "Gender", "Age", "Contact", "Address", "Blood Group", "Height(cm)", "Weight(lbs)", "Diabetes", "Allergies"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Long.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Boolean.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableUserView);
+
+        javax.swing.GroupLayout pnlViewLayout = new javax.swing.GroupLayout(pnlView);
+        pnlView.setLayout(pnlViewLayout);
+        pnlViewLayout.setHorizontalGroup(
+            pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlViewLayout.createSequentialGroup()
+                .addGap(244, 244, 244)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
+            .addGroup(pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlViewLayout.createSequentialGroup()
+                    .addGap(63, 63, 63)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(55, Short.MAX_VALUE)))
+        );
+        pnlViewLayout.setVerticalGroup(
+            pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlViewLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(535, Short.MAX_VALUE))
+            .addGroup(pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlViewLayout.createSequentialGroup()
+                    .addGap(68, 68, 68)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(127, Short.MAX_VALUE)))
         );
 
-        tabbedPane.addTab("Registration", panelRegistration);
+        tabbedPane.addTab("Modifications", pnlView);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        pnlWorkArea.add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -9, 820, 620));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 41, -1, -1));
+        getContentPane().add(pnlWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 63, 810, 610));
 
-        setSize(new java.awt.Dimension(1033, 648));
+        pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
+        pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Exit_26px_2.png"))); // NOI18N
+        jLabel1.setText("   Logout");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, -1));
+
+        pnlSideOptions.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 190, 45));
+
+        jPanel7.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel8.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        jLabel8.setText("  Home Page");
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
+
+        jPanel9.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        jLabel9.setText("  Home Page");
+        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+
+        jPanel10.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        jLabel10.setText("  Home Page");
+        jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+
+        jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
+
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
+        jLabel12.setText(" Manage Users");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+
+        pnlSideOptions.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        jLabel7.setText(" Manage Products");
+        pnlSideOptions.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, -1));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
+        jLabel13.setText(" Manage Dietitians");
+        pnlSideOptions.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 170, -1));
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
+        jLabel14.setText(" Manage Hospitals");
+        pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 170, -1));
+
+        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        jLabel11.setText("  Home Page");
+        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+
+        pnlSideOptions.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
+
+        getContentPane().add(pnlSideOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 620));
+
+        setSize(new java.awt.Dimension(1014, 673));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
-       
         
-    }//GEN-LAST:event_txtNameKeyReleased
-
-    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
-        // TODO add your handling code here:
-        char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
-            evt.consume();
-        }
-        //Restrict the length to 256 
-        if(txtName.getText().length() > 255){
-                evt.consume();
-        }
-    }//GEN-LAST:event_txtNameKeyTyped
-
-    private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
-        // TODO add your handling code here:
-        char typedPhoneNumber = evt.getKeyChar();
-        if(!Character.isDigit(typedPhoneNumber)){
-            evt.consume();
-        }
-        //Restrict the length to 10 
-        if(txtContact.getText().length() > 9){
-                evt.consume();
-        }
-    }//GEN-LAST:event_txtContactKeyTyped
-    
     public void resetForm(){
         
-        txtName.setText(null);
-        dateDOB.setDate(null);
-        txtAge.setText(null);
-        txtContact.setText(null);
-        comboGender.setSelectedIndex(-1);
-        txtAddress.setText(null);
+//        txtName.setText(null);
+//        dateDOB.setDate(null);
+//        txtAge.setText(null);
+//        txtContact.setText(null);
+//        comboGender.setSelectedIndex(-1);
+//        txtAddress.setText(null);
         
         comboBloodGroup.setSelectedIndex(-1);
         txtHeight.setText(null);
@@ -519,17 +573,17 @@ public class UserRegistration extends javax.swing.JFrame {
         
         if(true){
             //Personal Info
-            String name = txtName.getText();
-            Date dob = dateDOB.getDate();
-            LocalDate today = LocalDate.now();
-            int age = Period.between(convertToLocalDateViaInstant(dob), today).getYears();
-            System.out.print(age);
-            String gender = comboGender.getSelectedItem().toString();
-            long contact = Long.parseLong(txtContact.getText());
+//            String name = txtName.getText();
+//            Date dob = dateDOB.getDate();
+//            LocalDate today = LocalDate.now();
+//            int age = Period.between(convertToLocalDateViaInstant(dob), today).getYears();
+//            System.out.print(age);
+//            String gender = comboGender.getSelectedItem().toString();
+//            long contact = Long.parseLong(txtContact.getText());
             //add line for photo (ImageIcon)
 
            //Address
-           String address = txtAddress.getText();
+//           String address = txtAddress.getText();
            
            //Health details
            String bloodGroup = comboBloodGroup.getSelectedItem().toString();
@@ -552,32 +606,32 @@ public class UserRegistration extends javax.swing.JFrame {
            String workoutFrequency = comboWorkoutFrequency.getSelectedItem().toString();
            List<String> favorites = listFavorites.getSelectedValuesList();
            
-            User user = records.addNewUser(name, dob, age, gender, contact, address, bloodGroup, height, weight, diabetic, allergies, puposeList, preference, workoutFrequency, favorites);
+//            User user = records.addNewUser(name, dob, age, gender, contact, address, bloodGroup, height, weight, diabetic, allergies, puposeList, preference, workoutFrequency, favorites);
 
-           user.setName(name);
-           user.setGender(gender);
-           user.setPhNumber(contact);
-           user.setAge(age);
-           user.setAddress(address);
+//           user.setName(name);
+//           user.setGender(gender);
+//           user.setPhNumber(contact);
+//           user.setAge(age);
+//           user.setAddress(address);
            
            //Health
-           user.setBloodGroup(bloodGroup);
-           user.setHeight(height);
-           user.setWeight(weight);
-           user.setAllergies(allergies);
-           user.setDiabetic(diabetic);
-
-           //Account creds
-           user.setPurposeOfDiet(puposeList);
-           user.setFoodPreference(preference);
-           user.setWorkoutFrequency(workoutFrequency);
-           user.setFavorites(favorites);
+//           user.setBloodGroup(bloodGroup);
+//           user.setHeight(height);
+//           user.setWeight(weight);
+//           user.setAllergies(allergies);
+//           user.setDiabetic(diabetic);
+//
+//           //Account creds
+//           user.setPurposeOfDiet(puposeList);
+//           user.setFoodPreference(preference);
+//           user.setWorkoutFrequency(workoutFrequency);
+//           user.setFavorites(favorites);
            
            JOptionPane.showMessageDialog(this, "Account Information Upodated");
 
            resetForm();
 
-           System.out.println(gender);
+//           System.out.println(gender);
 //           populateTableData();
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
@@ -589,20 +643,6 @@ public class UserRegistration extends javax.swing.JFrame {
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
-
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        LoginFrame newLoginPage = new LoginFrame();
-        newLoginPage.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
-        MainFrame frame = new MainFrame();
-        frame.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void txtHeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHeightKeyTyped
         // TODO add your handling code here:
@@ -632,18 +672,6 @@ public class UserRegistration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtWeightKeyTyped
 
-    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAgeKeyReleased
-
-    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAgeKeyTyped
-
-    private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressKeyTyped
-
     private void comboPreferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPreferenceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboPreferenceActionPerformed
@@ -652,17 +680,32 @@ public class UserRegistration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboWorkoutFrequencyActionPerformed
 
-    private void dateDOBKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dateDOBKeyTyped
-        // TODO add your handling code here:
-        Date dob = dateDOB.getDate();
-        LocalDate today = LocalDate.now();
-        int age = Period.between(convertToLocalDateViaInstant(dob), today).getYears();
-        txtAge.setText(String.valueOf(age));
-    }//GEN-LAST:event_dateDOBKeyTyped
-
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        LoginFrame frame = new LoginFrame();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        UserRegistration frame = new UserRegistration();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel3MouseClicked
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;
@@ -891,49 +934,58 @@ public class UserRegistration extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.ButtonGroup btnGroupDiabetes;
     private javax.swing.ButtonGroup btnGroupGender;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnView1;
     private javax.swing.JComboBox<String> comboBloodGroup;
     private javax.swing.JComboBox<String> comboDiabetic;
-    private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JComboBox<String> comboPreference;
     private javax.swing.JComboBox<String> comboWorkoutFrequency;
-    private com.toedter.calendar.JDateChooser dateDOB;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAllergies;
     private javax.swing.JLabel lblBloodGroup;
-    private javax.swing.JLabel lblContact;
-    private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblDiabetes;
     private javax.swing.JLabel lblFavFood;
-    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblHeight;
-    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPreference;
     private javax.swing.JLabel lblPurpose;
-    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWeight;
     private javax.swing.JLabel lblWorkoutFrequency;
     private javax.swing.JList<String> listFavorites;
     private javax.swing.JList<String> listPurpose;
     private javax.swing.JPanel panelAddress;
     private javax.swing.JPanel panelMedical;
-    private javax.swing.JPanel panelPersonalInfo;
-    private javax.swing.JPanel panelRegistration;
+    private javax.swing.JPanel pnlRegistration;
+    private javax.swing.JPanel pnlSideOptions;
+    private javax.swing.JPanel pnlTitleBar;
+    private javax.swing.JPanel pnlView;
+    private javax.swing.JPanel pnlWorkArea;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtAge;
+    private javax.swing.JTable tableUserView;
     private javax.swing.JTextField txtAllergies;
-    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtHeight;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 }
