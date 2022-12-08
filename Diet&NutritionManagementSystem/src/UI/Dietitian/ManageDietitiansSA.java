@@ -5,33 +5,24 @@
 package UI.Dietitian;
 
 import Model.Account.Account;
-import UI.User.*;
-import java.sql.Connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
-import Model.People.Dietitian;
 import Model.People.DietitianDirectory;
-import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
-import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.*;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -39,7 +30,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import net.proteanit.sql.DbUtils;
 /**
  *
  * @author vipul
