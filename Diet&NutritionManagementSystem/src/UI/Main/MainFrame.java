@@ -9,6 +9,7 @@ import Model.People.User;
 import Model.People.UserDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.SystemAdmin.SAHomePage;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -118,6 +119,12 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
             }
         });
 
@@ -297,6 +304,16 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        // TODO add your handling code here:
+        jLabel3.setForeground(Color.red);
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        // TODO add your handling code here:
+        jLabel3.setForeground(Color.white);
+    }//GEN-LAST:event_jLabel3MouseExited
     
     /**
      * @param args the command line arguments
