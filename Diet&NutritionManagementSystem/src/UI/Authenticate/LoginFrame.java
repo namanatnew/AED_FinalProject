@@ -1,8 +1,9 @@
 package UI.Authenticate;
 
+import Model.Account.Account;
 import Model.Database.DBconnection;
-import UI.Authenticate.SignupFrame;
 import UI.SystemAdmin.SAHomePage;
+import UI.User.UserHomePage;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,7 +51,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lPanel = new javax.swing.JPanel();
         lblIcon = new javax.swing.JLabel();
         rPanel = new javax.swing.JPanel();
-        txtUname = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
         lblInvalid = new javax.swing.JLabel();
         txtPswrd = new javax.swing.JPasswordField();
@@ -83,18 +84,18 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         rPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtUname.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        txtUname.setText("Enter Username");
-        txtUname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtUname.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        txtEmail.setText("Enter Email");
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUnameFocusGained(evt);
+                txtEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUnameFocusLost(evt);
+                txtEmailFocusLost(evt);
             }
         });
-        rPanel.add(txtUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 200, 30));
+        rPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 200, 30));
 
         lblTitle.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(121, 237, 39));
@@ -206,20 +207,20 @@ public class LoginFrame extends javax.swing.JFrame {
         this.requestFocusInWindow();
     }//GEN-LAST:event_lblTitleFocusGained
 
-    private void txtUnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnameFocusGained
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
         // TODO add your handling code here:
-        if ("Enter Username".equals(txtUname.getText())){ 
-            txtUname.setText(null);
-            txtUname.requestFocus();
+        if ("Enter Email".equals(txtEmail.getText())){ 
+            txtEmail.setText(null);
+            txtEmail.requestFocus();
         }
-    }//GEN-LAST:event_txtUnameFocusGained
+    }//GEN-LAST:event_txtEmailFocusGained
 
-    private void txtUnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnameFocusLost
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
         // TODO add your handling code here:
-        if(txtUname.getText().length()==0){
-            txtUname.setText("Enter Username");
+        if(txtEmail.getText().length()==0){
+            txtEmail.setText("Enter Email");
         }
-    }//GEN-LAST:event_txtUnameFocusLost
+    }//GEN-LAST:event_txtEmailFocusLost
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
@@ -233,14 +234,13 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String username = txtUname.getText();
+        String email = txtEmail.getText();
         String password = txtPswrd.getText();
-        if (username.equals("Enter username") || password.equals("Enter password")){
-//            JOptionPane.showMessageDialog(this,"Username or Password is empty","Error",JOptionPane.ERROR_MESSAGE);
-            lblInvalid.setText("Username or Password is empty!");
+        if (email.equals("Enter Email") || password.equals("Enter Password")){
+            lblInvalid.setText("Email or Password is empty!");
         }
         else{
-            userLogin(username,password);
+            userLogin(email,password);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -310,22 +310,57 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rPanel;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPswrd;
-    private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
 
-    private void userLogin(String username,String password){
-        Connection dbconn = DBconnection.connectDB();
+    private void userLogin(String email,String password){
+        
         try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
-            st.setString(1, username);
-            st.setString(2, password);
-            ResultSet res = st.executeQuery();
+            Account ac = new Account();
+            ResultSet res = ac.checkCredential(email, password);
             if(res.next()){
                 dispose();
-                SAHomePage mf = new SAHomePage();
-                mf.setVisible(true);
-                this.setVisible(false);
+                switch (res.getString(1)) {
+                    case "User":
+                        {
+                            UserHomePage mf = new UserHomePage(email);
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "Dietician":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "Research Dietician":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "Hospital Admin":
+                        {
+                            SAHomePage mf = new SAHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    case "System Admin":
+                        {
+                            SAHomePage mf = new SAHomePage(email);
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        }
+                    default:
+                        break;
+                }
+                
             }
             else{
                 lblInvalid.setText("Please use valid credentials!");
