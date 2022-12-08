@@ -5,7 +5,7 @@
 package Model.People;
 
 import java.util.ArrayList;
-import Model.DBconnection;
+import Model.Database.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +37,7 @@ public class PersonDirectory {
     
         Connection dbconn = DBconnection.connectDB();
         try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO person_details(`Name`, `DOB`, 'Age', `Gender`, `Contact`, `Address`) VALUES(?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO person(`Name`, `DOB`, 'Age', `Gender`, `Contact`, `Address`) VALUES(?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, (java.sql.Date)dob);
             st.setInt(3, age);

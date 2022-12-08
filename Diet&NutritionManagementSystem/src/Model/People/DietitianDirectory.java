@@ -4,7 +4,7 @@
  */
 package Model.People;
 
-import Model.DBconnection;
+import Model.Database.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -30,14 +30,14 @@ public class DietitianDirectory {
         this.dietitianList = dietitianList;
     }
     
-    public Dietitian addNewDietitian(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, String specialization, int slotsAvailable, String associatedHospital, String type){
+    public Dietitian addNewDietitian(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, int slotsAvailable, String associatedHospital, String type){
         
-        Dietitian newDietitian = new Dietitian(  name,  dob,  age,  gender,  phNumber,  address,  doj,  experience, qualification,  specialization,  slotsAvailable,  associatedHospital,  type);
+        Dietitian newDietitian = new Dietitian(  name,  dob,  age,  gender,  phNumber,  address,  doj,  experience, qualification,  slotsAvailable,  associatedHospital,  type);
         
         dietitianList.add(newDietitian);
         
         //Add user details to DB
-        addNewDietitianToDB( name,  dob,  age,  gender,  phNumber,  address,  doj, experience, qualification,  specialization,  slotsAvailable,  associatedHospital,  type);
+        addNewDietitianToDB( name,  dob,  age,  gender,  phNumber,  address,  doj, experience, qualification, slotsAvailable,  associatedHospital,  type);
         return newDietitian;
     }
     
@@ -47,7 +47,7 @@ public class DietitianDirectory {
         dietitianList.remove(p);
     }
     
-    public void addNewDietitianToDB(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, String specialization, int slotsAvailable, String associatedHospital, String type){
+    public void addNewDietitianToDB(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, int slotsAvailable, String associatedHospital, String type){
     
         Connection dbconn = DBconnection.connectDB();
         try {
@@ -76,7 +76,7 @@ public class DietitianDirectory {
             */
            
 //            PreparedStatement query = (PreparedStatement)dbconn.prepareStatement("")
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `DOJ`,`Experience`, `Qualification`, `Specialization`, `Hospital`, `Type`, `Slots`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `DOJ`,`Experience`, `Qualification`, `Hospital`, `Type`, `Slots`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));
             st.setInt(3, age);
@@ -86,10 +86,9 @@ public class DietitianDirectory {
             st.setDate(7, new UtilityFunctions().convertFromJAVADateToSQLDate(doj));
             st.setInt(8, experience);
             st.setString(9, qualification);
-            st.setString(10, specialization);
-            st.setString(11, associatedHospital);
-            st.setString(12, type);
-            st.setInt(13, slotsAvailable);
+            st.setString(10, associatedHospital);
+            st.setString(11, type);
+            st.setInt(12, slotsAvailable);
             
             
             int res = st.executeUpdate();
@@ -98,13 +97,12 @@ public class DietitianDirectory {
         }
     }
     
-    public void deletePatientFromDB(User p){
+    public void deletePatientFromDB(int id){
         
         Connection dbconn = DBconnection.connectDB();
         try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("DELETE * FROM end_users WHERE `Name` = ? AND `Address` = ?");
-            st.setString(1, p.getName());
-            st.setString(2, p.getAddress());
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("DELETE * FROM end_users WHERE ID = ?");
+            st.setString(1, String.valueOf(id));
             
             
         } catch (SQLException ex) {

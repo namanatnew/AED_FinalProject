@@ -1,12 +1,8 @@
 package UI.Authenticate;
 
-import Model.DBconnection;
+import Model.Account.Account;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -41,13 +37,18 @@ public class SignupFrame extends javax.swing.JFrame {
         lblIcon = new javax.swing.JLabel();
         rPanel = new javax.swing.JPanel();
         txtEmail = new javax.swing.JTextField();
-        txtUname = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
         lblInvalid = new javax.swing.JLabel();
         txtPswrdCon = new javax.swing.JPasswordField();
         txtPswrd = new javax.swing.JPasswordField();
         btnSignup = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        comboGender = new javax.swing.JComboBox<>();
+        dateDOB = new com.toedter.calendar.JDateChooser();
+        txtContact = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+        btnClose = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -86,31 +87,18 @@ public class SignupFrame extends javax.swing.JFrame {
                 txtEmailActionPerformed(evt);
             }
         });
-        rPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 200, 30));
-
-        txtUname.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        txtUname.setText("Enter Username");
-        txtUname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtUname.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUnameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUnameFocusLost(evt);
-            }
-        });
-        rPanel.add(txtUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 200, 30));
+        rPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 200, 30));
 
         lblTitle.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(121, 237, 39));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("My HEALTH Buddy");
-        rPanel.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 400, 100));
+        rPanel.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, 50));
 
         lblInvalid.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         lblInvalid.setForeground(new java.awt.Color(255, 51, 51));
         lblInvalid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rPanel.add(lblInvalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 380, 20));
+        rPanel.add(lblInvalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 380, 20));
 
         txtPswrdCon.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         txtPswrdCon.setText("Confirm Password");
@@ -124,7 +112,7 @@ public class SignupFrame extends javax.swing.JFrame {
                 txtPswrdConFocusLost(evt);
             }
         });
-        rPanel.add(txtPswrdCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 200, 30));
+        rPanel.add(txtPswrdCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 200, 30));
 
         txtPswrd.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         txtPswrd.setText("Enter Password");
@@ -138,7 +126,7 @@ public class SignupFrame extends javax.swing.JFrame {
                 txtPswrdFocusLost(evt);
             }
         });
-        rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 200, 30));
+        rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 200, 30));
 
         btnSignup.setBackground(new java.awt.Color(121, 237, 39));
         btnSignup.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -161,7 +149,7 @@ public class SignupFrame extends javax.swing.JFrame {
                 btnSignupActionPerformed(evt);
             }
         });
-        rPanel.add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 140, 30));
+        rPanel.add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 140, 30));
 
         btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(121, 237, 39));
@@ -184,6 +172,67 @@ public class SignupFrame extends javax.swing.JFrame {
             }
         });
         rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 140, 30));
+
+        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        txtName.setText("Enter Full Name");
+        txtName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
+            }
+        });
+        rPanel.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 200, 30));
+
+        comboGender.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female", "Non-binary", "Don't want to disclose" }));
+        comboGender.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        rPanel.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 200, -1));
+
+        dateDOB.setBackground(new java.awt.Color(121, 237, 39));
+        dateDOB.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        dateDOB.setToolTipText("DOB");
+        dateDOB.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        rPanel.add(dateDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 200, -1));
+
+        txtContact.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        txtContact.setText("Enter Mobile Number");
+        txtContact.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtContact.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContactFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContactFocusLost(evt);
+            }
+        });
+        rPanel.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 200, 30));
+
+        txtAddress.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        txtAddress.setText("Enter Address");
+        txtAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAddressFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAddressFocusLost(evt);
+            }
+        });
+        rPanel.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 200, 30));
+
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(255, 51, 51));
+        btnClose.setText("X");
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        rPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
 
         mainPanel.add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 400, 500));
 
@@ -231,21 +280,6 @@ public class SignupFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPswrdFocusLost
 
-    private void txtUnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnameFocusGained
-        // TODO add your handling code here:
-        if ("Enter Username".equals(txtUname.getText())){ 
-            txtUname.setText(null);
-            txtUname.requestFocus();
-        }
-    }//GEN-LAST:event_txtUnameFocusGained
-
-    private void txtUnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnameFocusLost
-        // TODO add your handling code here:
-        if(txtUname.getText().length()==0){
-            txtUname.setText("Enter Username");
-        }
-    }//GEN-LAST:event_txtUnameFocusLost
-
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
         // TODO add your handling code here:
         if ("Enter Email Address".equals(txtEmail.getText())){ 
@@ -278,20 +312,26 @@ public class SignupFrame extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
-        String username = txtUname.getText();
+        String name = txtName.getText();
         String password = txtPswrdCon.getText();
         String confirmpassword = txtPswrdCon.getText();
         String email = txtEmail.getText();
+        String gender = comboGender.getSelectedItem().toString();
+        Date dob = dateDOB.getDate();
+        String address = txtAddress.getText();
+        long mobile = Long.parseLong(txtContact.getText());
 
-        if (username.equals("Enter Username") || password.equals("Enter Password") 
-                || confirmpassword.equals("Confirm Password") || email.equals("Enter Email Address")){
+        if (email.equals("Enter Email") || password.equals("Enter Password") 
+                || confirmpassword.equals("Confirm Password") || name.equals("Enter Full Name")
+                || gender.equals(" ") || dob.toString().isEmpty()
+                || address.equals("Enter Address") || txtContact.getText().equals("Enter Mobile Number")){
             lblInvalid.setText("Please fill all the fields!");
         }
         else if (!password.equals(confirmpassword)){
             lblInvalid.setText("Password does not match!");
         }
         else{
-            userSignup(username,password,email);
+            userSignup(email,password,name,gender,dob,address,mobile);
         }
     }//GEN-LAST:event_btnSignupActionPerformed
 
@@ -306,16 +346,42 @@ public class SignupFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
-//        LoginFrame lf = new LoginFrame();
         LoginFrame lf = new LoginFrame();
         lf.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void txtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameFocusGained
+
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameFocusLost
+
+    private void txtContactFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContactFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContactFocusGained
+
+    private void txtContactFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContactFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContactFocusLost
+
+    private void txtAddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddressFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressFocusGained
+
+    private void txtAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddressFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSignup;
+    private javax.swing.JComboBox<String> comboGender;
+    private com.toedter.calendar.JDateChooser dateDOB;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel lPanel;
     private javax.swing.JLabel lblIcon;
@@ -323,30 +389,31 @@ public class SignupFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rPanel;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPswrd;
     private javax.swing.JPasswordField txtPswrdCon;
-    private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
 
-    private void userSignup(String username, String password, String email) {
-        Connection dbconn = DBconnection.connectDB();
-        try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO users (username,password,usertype,email) VALUES(?,?,?,?)");
-            st.setString(1, username);
-            st.setString(2, password);
-            st.setString(3,"User");
-            st.setString(4, email);
-            int res = st.executeUpdate();
-            lblInvalid.setText("You are all set! \n Go back to the Login page.");
-            
-            txtUname.setText("Enter username");
-            txtPswrdCon.setText("Enter password");
-            txtPswrdCon.setText("Confirm password");
-            txtEmail.setText("Email address");
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void userSignup(String email, String password, String name,String gender,Date dob,
+            String address,long mobile) {
+        Account ac = new Account();
+        ac.addUserCredential(email, password);
+        ac.addPerson(email,name,gender,dob,address,mobile);
+        ac.addUser(email,name,gender,dob,address,mobile);
+
+        lblInvalid.setText("You are all set! \n Go back to the Login page.");
+
+        txtPswrd.setText("Enter password");
+        txtPswrdCon.setText("Confirm password");
+        txtEmail.setText("Email address");
+        txtAddress.setText("Enter Address");
+        txtContact.setText("Enter Mobile Number");
+        dateDOB.setDate(null);
+        txtContact.setText("Enter Mobile Number");
+        comboGender.setSelectedItem(null);
+       
     }
 }
