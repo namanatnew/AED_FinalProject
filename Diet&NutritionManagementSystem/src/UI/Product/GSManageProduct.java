@@ -7,7 +7,7 @@ package UI.Product;
 import Model.Product.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
-import UI.MainFrame;
+import UI.Main.MainFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.sql.ResultSet;
@@ -42,9 +42,6 @@ public class GSManageProduct extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGroupGender = new javax.swing.ButtonGroup();
-        btnGroupDiabetes = new javax.swing.ButtonGroup();
-        evaluatorFloat1 = new org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat();
         jPanel1 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
@@ -375,7 +372,7 @@ public class GSManageProduct extends javax.swing.JFrame {
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnRegister))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Registration", panelRegistration);
@@ -889,8 +886,6 @@ public class GSManageProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnClear1;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDelete1;
-    private javax.swing.ButtonGroup btnGroupDiabetes;
-    private javax.swing.ButtonGroup btnGroupGender;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
@@ -904,7 +899,6 @@ public class GSManageProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnView2;
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JComboBox<String> comboType1;
-    private org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat evaluatorFloat1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

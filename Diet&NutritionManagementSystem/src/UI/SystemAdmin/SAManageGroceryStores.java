@@ -42,9 +42,6 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGroupGender = new javax.swing.ButtonGroup();
-        btnGroupDiabetes = new javax.swing.ButtonGroup();
-        evaluatorFloat1 = new org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat();
         jPanel1 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
@@ -433,14 +430,11 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete1;
-    private javax.swing.ButtonGroup btnGroupDiabetes;
-    private javax.swing.ButtonGroup btnGroupGender;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate1;
     private javax.swing.JButton btnView1;
-    private org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat evaluatorFloat1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;

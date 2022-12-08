@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author naman
  */
 public class DBconnection {
-    //Use below line Microsoft for SQL server(Naman)
+    //Use below line Microsoft for SQL server
     static final String connectionUrl = "jdbc:sqlserver://DESKTOP-2C1PKQK;databaseName=nutritiondb;integratedSecurity=true;encrypt=false";
     
     //Use below line for mysql db(Vipul)
@@ -34,6 +34,8 @@ public class DBconnection {
             conn =  DriverManager.getConnection(connectionUrl);
 //            conn =  DriverManager.getConnection(connectionUrl, "root", "NEUgrad2024");
 //            System.out.println("Connected to the DB");
+//            conn =  DriverManager.getConnection(connectionUrl, "root", "NEUgrad2024");
+            System.out.println("Connected to the DB");
             return conn;
         } 
         catch (SQLException ex) {

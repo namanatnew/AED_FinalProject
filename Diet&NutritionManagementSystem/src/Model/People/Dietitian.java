@@ -16,7 +16,6 @@ public class Dietitian extends Person {
     public Date doj;
     public int experience;
     public String qualification;
-    public String specialization;
     public int slotsAvailable;
     public String associatedHospital;
     public String type;
@@ -25,12 +24,11 @@ public class Dietitian extends Person {
         
     }
     
-    public Dietitian(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, String specialization, int slotsAvailable, String associatedHospital, String type) {
+    public Dietitian(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, int slotsAvailable, String associatedHospital, String type) {
         super( name,  dob, age, gender,  phNumber,  address);
         this.doj = doj;
         this.experience = experience;
         this.qualification = qualification;
-        this.specialization = specialization;
         this.slotsAvailable = slotsAvailable;
         this.associatedHospital = associatedHospital;
         this.type = type;
@@ -59,14 +57,6 @@ public class Dietitian extends Person {
 
     public void setQualification(String qualification) {
         this.qualification = qualification;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
     }
 
     public String getAssociatedHospital() {

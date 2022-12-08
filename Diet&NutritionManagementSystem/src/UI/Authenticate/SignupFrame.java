@@ -2,6 +2,7 @@ package UI.Authenticate;
 
 import Model.Account.Account;
 import java.awt.Color;
+import java.util.Date;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -316,14 +317,14 @@ public class SignupFrame extends javax.swing.JFrame {
         String confirmpassword = txtPswrdCon.getText();
         String email = txtEmail.getText();
         String gender = comboGender.getSelectedItem().toString();
-        String dob = dateDOB.getDate().toString();
+        Date dob = dateDOB.getDate();
         String address = txtAddress.getText();
-        String mobile = txtContact.getText();
+        long mobile = Long.parseLong(txtContact.getText());
 
         if (email.equals("Enter Email") || password.equals("Enter Password") 
                 || confirmpassword.equals("Confirm Password") || name.equals("Enter Full Name")
-                || gender.equals(" ") || dob.isEmpty()
-                || address.equals("Enter Address") || mobile.equals("Enter Mobile Number")){
+                || gender.equals(" ") || dob.toString().isEmpty()
+                || address.equals("Enter Address") || txtContact.getText().equals("Enter Mobile Number")){
             lblInvalid.setText("Please fill all the fields!");
         }
         else if (!password.equals(confirmpassword)){
@@ -396,11 +397,12 @@ public class SignupFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPswrdCon;
     // End of variables declaration//GEN-END:variables
 
-    private void userSignup(String email, String password, String name,String gender,String dob,
-            String address,String mobile) {
+    private void userSignup(String email, String password, String name,String gender,Date dob,
+            String address,long mobile) {
         Account ac = new Account();
         ac.addUserCredential(email, password);
         ac.addPerson(email,name,gender,dob,address,mobile);
+        ac.addUser(email,name,gender,dob,address,mobile);
 
         lblInvalid.setText("You are all set! \n Go back to the Login page.");
 

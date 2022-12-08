@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.7" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="btnGroupGender">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="btnGroupDiabetes">
-    </Component>
-    <Component class="org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat" name="evaluatorFloat1">
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -199,7 +191,7 @@
                               <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnRegister" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="145" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
