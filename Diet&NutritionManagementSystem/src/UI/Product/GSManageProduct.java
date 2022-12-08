@@ -21,16 +21,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author naman
  */
-public class GSAddProduct extends javax.swing.JFrame {
+public class GSManageProduct extends javax.swing.JFrame {
     DefaultTableModel model;
-
+    
     /**
      * Creates new form NewJFrame
      */
 
-    public GSAddProduct() {
+    public GSManageProduct() {
         initComponents();
-
+        populateTable("");
     }
 
     /**
@@ -59,7 +59,6 @@ public class GSAddProduct extends javax.swing.JFrame {
         comboType = new javax.swing.JComboBox<>();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        panelAddress = new javax.swing.JPanel();
         panelNutrition = new javax.swing.JPanel();
         lblFat = new javax.swing.JLabel();
         txtProtein = new javax.swing.JTextField();
@@ -75,6 +74,14 @@ public class GSAddProduct extends javax.swing.JFrame {
         txtChol = new javax.swing.JTextField();
         txtSodium = new javax.swing.JTextField();
         txtCarbs = new javax.swing.JTextField();
+        panelAddress2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblProduct1 = new javax.swing.JTable();
+        txtSearch1 = new javax.swing.JTextField();
+        btnView1 = new javax.swing.JButton();
+        btnDelete1 = new javax.swing.JButton();
+        btnSend1 = new javax.swing.JButton();
+        btnUpdate1 = new javax.swing.JButton();
         panelModify = new javax.swing.JPanel();
         btnRegister1 = new javax.swing.JButton();
         btnClear1 = new javax.swing.JButton();
@@ -148,7 +155,7 @@ public class GSAddProduct extends javax.swing.JFrame {
         panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
 
         panelProduct.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Product Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -190,21 +197,7 @@ public class GSAddProduct extends javax.swing.JFrame {
             }
         });
 
-        panelAddress.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelAddress.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diet Related", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-
-        javax.swing.GroupLayout panelAddressLayout = new javax.swing.GroupLayout(panelAddress);
-        panelAddress.setLayout(panelAddressLayout);
-        panelAddressLayout.setHorizontalGroup(
-            panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
-        );
-        panelAddressLayout.setVerticalGroup(
-            panelAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
-        );
-
-        panelNutrition.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutrition Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 10))); // NOI18N
+        panelNutrition.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Nutrition Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 10))); // NOI18N
         panelNutrition.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblFat.setText("Total Fat:");
@@ -250,24 +243,121 @@ public class GSAddProduct extends javax.swing.JFrame {
         txtCarbs.setText("5");
         panelNutrition.add(txtCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 210, -1));
 
+        panelAddress2.setBackground(new java.awt.Color(255, 255, 255, 150));
+        panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+
+        tblProduct1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Name", "Product Type", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblProduct1);
+
+        txtSearch1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearch1KeyReleased(evt);
+            }
+        });
+
+        btnView1.setText("View");
+        btnView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView1ActionPerformed(evt);
+            }
+        });
+
+        btnDelete1.setText("Delete");
+        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete1ActionPerformed(evt);
+            }
+        });
+
+        btnSend1.setText("Request to add product");
+        btnSend1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSend1ActionPerformed(evt);
+            }
+        });
+
+        btnUpdate1.setText("Update");
+        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdate1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAddress2Layout = new javax.swing.GroupLayout(panelAddress2);
+        panelAddress2.setLayout(panelAddress2Layout);
+        panelAddress2Layout.setHorizontalGroup(
+            panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAddress2Layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelAddress2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAddress2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnView1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDelete1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnUpdate1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(56, 56, 56))
+                    .addGroup(panelAddress2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSend1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        panelAddress2Layout.setVerticalGroup(
+            panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddress2Layout.createSequentialGroup()
+                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelAddress2Layout.createSequentialGroup()
+                        .addComponent(btnSend1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnView1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
         panelRegistration.setLayout(panelRegistrationLayout);
         panelRegistrationLayout.setHorizontalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelNutrition, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
-                    .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(3, 3, 3))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(373, Short.MAX_VALUE)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(439, 439, 439))
+            .addGroup(panelRegistrationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
+                        .addComponent(panelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelNutrition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelAddress2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelRegistrationLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnRegister});
@@ -277,16 +367,15 @@ public class GSAddProduct extends javax.swing.JFrame {
             .addGroup(panelRegistrationLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelRegistrationLayout.createSequentialGroup()
-                        .addComponent(panelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelNutrition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(panelNutrition, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                    .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnRegister))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Registration", panelRegistration);
@@ -600,7 +689,7 @@ public class GSAddProduct extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        GSAddProduct frame = new GSAddProduct();
+        GSManageProduct frame = new GSManageProduct();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
@@ -676,7 +765,7 @@ public class GSAddProduct extends javax.swing.JFrame {
             model = (DefaultTableModel) tblProduct.getModel();
 
             String product_name = model.getValueAt(selectedRow,0).toString();
-//            System.out.print(product_name + "XXXXX");
+            System.out.print(product_name + "XXXXX");
             ProductDirectory product = new ProductDirectory();
 
             ResultSet res = product.exactProductLookup(product_name);
@@ -692,7 +781,7 @@ public class GSAddProduct extends javax.swing.JFrame {
             txtCarbs1.setText(res.getString(8));
             txtProtein1.setText(res.getString(9));
         } catch (SQLException ex) {
-            Logger.getLogger(GSAddProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnViewActionPerformed
 
@@ -724,6 +813,7 @@ public class GSAddProduct extends javax.swing.JFrame {
             txtSodium1.setText(null);
             txtCarbs1.setText(null);
             txtProtein1.setText(null);
+            populateTable("");
             JOptionPane.showMessageDialog(this, "Product is updated in the catalog!", 
                 "Product updated",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -738,7 +828,7 @@ public class GSAddProduct extends javax.swing.JFrame {
         ProductDirectory product = new ProductDirectory();
 
         product.deleteProduct(product_name);
-        
+        populateTable("");
         JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!", 
                 "Product deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -757,6 +847,26 @@ public class GSAddProduct extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!", 
                 "Product deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearch1KeyReleased
+
+    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDelete1ActionPerformed
+
+    private void btnSend1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSend1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSend1ActionPerformed
+
+    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdate1ActionPerformed
        
     
     
@@ -769,7 +879,7 @@ public class GSAddProduct extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GSAddProduct().setVisible(true);
+                new GSManageProduct().setVisible(true);
             }
         });
     }
@@ -778,6 +888,7 @@ public class GSAddProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClear1;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDelete1;
     private javax.swing.ButtonGroup btnGroupDiabetes;
     private javax.swing.ButtonGroup btnGroupGender;
     private javax.swing.JButton btnHome;
@@ -785,8 +896,11 @@ public class GSAddProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnRegister1;
     private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnSend1;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpdate1;
     private javax.swing.JButton btnView;
+    private javax.swing.JButton btnView1;
     private javax.swing.JButton btnView2;
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JComboBox<String> comboType1;
@@ -794,6 +908,7 @@ public class GSAddProduct extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCalorie;
     private javax.swing.JLabel lblCalorie1;
     private javax.swing.JLabel lblCarbs;
@@ -813,8 +928,8 @@ public class GSAddProduct extends javax.swing.JFrame {
     private javax.swing.JLabel lblSodium;
     private javax.swing.JLabel lblSodium1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel panelAddress;
     private javax.swing.JPanel panelAddress1;
+    private javax.swing.JPanel panelAddress2;
     private javax.swing.JPanel panelModify;
     private javax.swing.JPanel panelNutrition;
     private javax.swing.JPanel panelNutrition1;
@@ -823,6 +938,7 @@ public class GSAddProduct extends javax.swing.JFrame {
     private javax.swing.JPanel panelRegistration;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable tblProduct;
+    private javax.swing.JTable tblProduct1;
     private javax.swing.JTextField txtCalorie;
     private javax.swing.JTextField txtCalorie1;
     private javax.swing.JTextField txtCarbs;
@@ -838,6 +954,7 @@ public class GSAddProduct extends javax.swing.JFrame {
     private javax.swing.JTextField txtRefQty;
     private javax.swing.JTextField txtRefQty1;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSodium;
     private javax.swing.JTextField txtSodium1;
     // End of variables declaration//GEN-END:variables

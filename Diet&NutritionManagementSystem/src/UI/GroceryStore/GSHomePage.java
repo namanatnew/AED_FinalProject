@@ -6,7 +6,7 @@ package UI.GroceryStore;
 
 import Model.Product.ProductDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.Product.GSAddProduct;
+import UI.Product.GSManageProduct;
 import UI.User.UserRegistration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -195,10 +195,7 @@ public class GSHomePage extends javax.swing.JFrame {
 
         tblProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Product Name", "Product Type", "Status"
@@ -262,7 +259,7 @@ public class GSHomePage extends javax.swing.JFrame {
     private void panelProductsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelProductsKeyPressed
         // TODO add your handling code here:
         System.out.print("open register");
-        GSAddProduct addprd = new GSAddProduct();
+        GSManageProduct addprd = new GSManageProduct();
         addprd.setVisible(true);
         dispose();
     }//GEN-LAST:event_panelProductsKeyPressed
