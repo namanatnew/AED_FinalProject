@@ -3,6 +3,7 @@ package UI.Authenticate;
 import Model.Account.Account;
 import Model.Database.DBconnection;
 import UI.SystemAdmin.SAHomePage;
+import UI.User.UserHomePage;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -323,7 +324,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 switch (res.getString(1)) {
                     case "User":
                         {
-                            SAHomePage mf = new SAHomePage();
+                            UserHomePage mf = new UserHomePage(email);
                             mf.setVisible(true);
 //                  this.setVisible(false);
                             break;
@@ -351,7 +352,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         }
                     case "System Admin":
                         {
-                            SAHomePage mf = new SAHomePage();
+                            SAHomePage mf = new SAHomePage(email);
                             mf.setVisible(true);
 //                  this.setVisible(false);
                             break;

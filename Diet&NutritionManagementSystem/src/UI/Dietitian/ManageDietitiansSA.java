@@ -4,6 +4,7 @@
  */
 package UI.Dietitian;
 
+import Model.Account.Account;
 import UI.User.*;
 import java.sql.Connection;
 import java.sql.Connection;
@@ -152,12 +153,13 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
 
         txtAllergies4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -583,7 +585,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         lblPurpose2.setText("Hospital");
         panelDiet1.add(lblPurpose2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        comboType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Never", "Rarely", "Once in a week", "Frequent" }));
+        comboType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consultant", "Clinical", "Pediatric", "Sports", "Research" }));
         comboType1.setSelectedIndex(-1);
         comboType1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -592,7 +594,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         });
         panelDiet1.add(comboType1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
 
-        comboHospital1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diebetes Control", "BP Control", "Cholestrol Control", "Weight Loss", "Weight Gain", "Core Strengthening" }));
+        comboHospital1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Independent", "Boston General", "Noble Care" }));
         comboHospital1.setSelectedIndex(-1);
         panelDiet1.add(comboHospital1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
 
@@ -686,25 +688,6 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
 
         jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
-        jLabel12.setText(" Manage Users");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
-
-        pnlSideOptions.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
-        jLabel7.setText(" Manage Products");
-        pnlSideOptions.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, -1));
-
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
@@ -714,13 +697,21 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
-        pnlSideOptions.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 170, -1));
+        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        pnlSideOptions.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 190, 45));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        jLabel7.setText(" Manage Products");
+        pnlSideOptions.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
-        pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 170, -1));
+        pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 170, -1));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -738,6 +729,22 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
 
         pnlSideOptions.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
+        jPanel12.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
+        jLabel18.setText(" Manage Users");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+
+        pnlSideOptions.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
+
         getContentPane().add(pnlSideOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 620));
 
         setSize(new java.awt.Dimension(1014, 673));
@@ -749,10 +756,10 @@ public void resetUpdateForm(){
       
         txtName1.setText(null);
         dateDOB1.setDate(null);
-        comboGender1.setSelectedItem(-1);
+        comboGender1.setSelectedIndex(-1);
         txtContact1.setText(null);
         txtAddress1.setText(null);
-        comboHospital1.setSelectedItem(-1);
+        comboHospital1.setSelectedIndex(-1);
         txtQualification1.setText(null);
         
         txtEmail1.setText(null);
@@ -760,7 +767,7 @@ public void resetUpdateForm(){
         pwdRePassword1.setText(null);
         
         dateDOJ1.setDate(null);
-        comboType1.setSelectedItem(-1);
+        comboType1.setSelectedIndex(-1);
         txtSlots1.setText(null);
          
     }
@@ -769,17 +776,17 @@ public void resetUpdateForm(){
         
         txtName.setText(null);
         dateDOB.setDate(null);
-        comboGender.setSelectedItem(-1);
+        comboGender.setSelectedIndex(-1);
         txtContact.setText(null);
         txtAddress.setText(null);
-        comboHospital.setSelectedItem(-1);
+        comboHospital.setSelectedIndex(-1);
         txtQualification.setText(null);
         
         txtEmail.setText(null);
         pwdPassword.setText(null);
         pwdRePassword.setText(null);
         dateDOJ.setDate(null);
-        comboType.setSelectedItem(-1);
+        comboType.setSelectedIndex(-1);
         txtSlots.setText(null);
          
     }
@@ -815,10 +822,28 @@ public void resetUpdateForm(){
            int experience = Period.between(convertToLocalDateViaInstant(doj), today).getYears();
            String type = comboType.getSelectedItem().toString();
            int slots = Integer.parseInt(txtSlots.getText());
-                      
-           //(String name, Date dob, int age, String gender, long phNumber, String address, Date doj, int experience, String qualification, int slotsAvailable, String associatedHospital, String type)
+           
+           String email = txtEmail.getText();
+           String password =new String(pwdPassword.getPassword());
+           String confirmpassword = new String(pwdRePassword.getPassword());
            
            new DietitianDirectory().addNewDietitianToDB(name, dob, age, gender, contact, address, doj, experience, qualification, slots, hospital, type);
+           
+        if (email.equals("Enter Email") || password.equals("Enter Password") 
+                || confirmpassword.equals("Confirm Password") ){
+            JOptionPane.showMessageDialog(this, "Please fill all the fields!");
+        }
+        else if (!password.equals(confirmpassword)){
+            System.out.println(password);
+            System.out.println(confirmpassword);
+            JOptionPane.showMessageDialog(this, "Password doesn't match!");
+        }
+        else{
+            Account ac = new Account();
+            ac.addUserCredential(email, password);
+            ac.addPerson(email,name,gender,dob,address, contact);
+            ac.addDietitian(email,name,gender,dob,address,contact);
+        }
            
            JOptionPane.showMessageDialog(this, "Account Information Upodated");
 
@@ -835,9 +860,6 @@ public void resetUpdateForm(){
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        ManageDietitiansSA frame = new ManageDietitiansSA();
-        frame.setVisible(true);
-        setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
@@ -930,13 +952,6 @@ public void resetUpdateForm(){
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        // TODO add your handling code here:
-        ManageDietitiansSA frame = new ManageDietitiansSA();
-        frame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
@@ -1095,6 +1110,10 @@ public void resetUpdateForm(){
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseClicked
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;
@@ -1350,9 +1369,9 @@ public void resetUpdateForm(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1362,6 +1381,7 @@ public void resetUpdateForm(){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

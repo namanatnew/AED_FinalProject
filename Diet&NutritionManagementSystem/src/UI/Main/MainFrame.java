@@ -236,7 +236,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, -1));
 
         pnlSideOptions.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
 
