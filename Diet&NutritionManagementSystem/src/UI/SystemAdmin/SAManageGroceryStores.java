@@ -4,8 +4,7 @@
  */
 package UI.SystemAdmin;
 
-import Model.Organisation.GroceryStores;
-import Model.Product.ProductDirectory;
+import Model.Organisation.GroceryStoresDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
 import javax.swing.JOptionPane;
@@ -30,7 +29,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     public SAManageGroceryStores() {
         initComponents();
-//        populateTable("");
+        populateTable("");
     }
 
     /**
@@ -49,18 +48,20 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
         panelRegistration = new javax.swing.JPanel();
-        panelProduct = new javax.swing.JPanel();
-        txtEmail = new javax.swing.JTextField();
-        lblGender = new javax.swing.JLabel();
+        panelStore = new javax.swing.JPanel();
+        txtContact = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
-        lblGender1 = new javax.swing.JLabel();
+        lblContact = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         panelAddress2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblProduct1 = new javax.swing.JTable();
+        tblStore = new javax.swing.JTable();
         txtSearch1 = new javax.swing.JTextField();
         btnUpdate1 = new javax.swing.JButton();
         btnView1 = new javax.swing.JButton();
@@ -105,27 +106,27 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
         panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
 
-        panelProduct.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Grocery Store Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-        panelProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelStore.setBackground(new java.awt.Color(255, 255, 255, 150));
+        panelStore.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Grocery Store Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelStore.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEmailKeyReleased(evt);
+                txtContactKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtEmailKeyTyped(evt);
+                txtContactKeyTyped(evt);
             }
         });
-        panelProduct.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, -1));
+        panelStore.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 210, -1));
 
-        lblGender.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblGender.setText("Password:");
-        panelProduct.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 110, -1));
+        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPassword.setText("Password:");
+        panelStore.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 110, -1));
 
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblName.setText("Store Name:");
-        panelProduct.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 110, -1));
+        panelStore.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 110, -1));
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -135,7 +136,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
                 txtPasswordKeyTyped(evt);
             }
         });
-        panelProduct.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 210, -1));
+        panelStore.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 210, -1));
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -145,11 +146,25 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
                 txtNameKeyTyped(evt);
             }
         });
-        panelProduct.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 210, -1));
+        panelStore.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 210, -1));
 
-        lblGender1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblGender1.setText("Email:");
-        panelProduct.add(lblGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 110, -1));
+        lblContact.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblContact.setText("Contact:");
+        panelStore.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 110, -1));
+
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblEmail.setText("Email:");
+        panelStore.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 110, -1));
+
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
+        panelStore.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, -1));
 
         btnRegister.setBackground(new java.awt.Color(255, 51, 51));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,24 +187,29 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         panelAddress2.setBackground(new java.awt.Color(255, 255, 255, 150));
         panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View & Modify Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
 
-        tblProduct1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStore.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Store Name", "Email ID", "Created At"
+                "Store Name", "Contact", "Email ID", "Created At"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblProduct1);
+        jScrollPane2.setViewportView(tblStore);
 
+        txtSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearch1ActionPerformed(evt);
+            }
+        });
         txtSearch1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearch1KeyReleased(evt);
@@ -201,12 +221,13 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         panelAddress2Layout.setHorizontalGroup(
             panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAddress2Layout.createSequentialGroup()
-                .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAddress2Layout.createSequentialGroup()
-                        .addGap(354, 354, 354)
-                        .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(354, 354, 354)
+                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(389, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddress2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         panelAddress2Layout.setVerticalGroup(
             panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,14 +285,14 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelAddress2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelStore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelRegistrationLayout.setVerticalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistrationLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelStore, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister)
@@ -281,7 +302,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
                     .addComponent(btnDelete1))
                 .addGap(18, 18, 18)
                 .addComponent(panelAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Registration", panelRegistration);
@@ -310,6 +331,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     public void resetForm(){
         
         txtName.setText(null);
+        txtContact.setText(null);
         txtEmail.setText(null);
         txtPassword.setText(null);           
          
@@ -336,18 +358,66 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblStore.getSelectedRow();
+        model = (DefaultTableModel) tblStore.getModel();
+
+        if(tblStore.getSelectedRowCount()==1){
+            String name = txtName.getText();
+            String contact = txtContact.getText();
+            String email = txtEmail.getText();        
+            String password = txtPassword.getText();
+
+            GroceryStoresDirectory store = new GroceryStoresDirectory();
+            store.updateStore(name, contact, email, password);
+            resetForm();
+            populateTable("");
+            JOptionPane.showMessageDialog(this, "Store is updated in the directory!",
+                "Store updated",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdate1ActionPerformed
 
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblStore.getSelectedRow();
+        model = (DefaultTableModel) tblStore.getModel();
+
+        String store_name = model.getValueAt(selectedRow,0).toString();
+
+        GroceryStoresDirectory store = new GroceryStoresDirectory();
+        store.deleteStore(store_name);
+        populateTable("");
+        JOptionPane.showMessageDialog(this, "Store is deleted from the directory!",
+            "Store deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            int selectedRow = tblStore.getSelectedRow();
+            model = (DefaultTableModel) tblStore.getModel();
+            
+            String store_name = model.getValueAt(selectedRow,0).toString();
+//        System.out.print(store_name + "XXXXX");
+            GroceryStoresDirectory store = new GroceryStoresDirectory();
+
+            ResultSet res = store.exactStoreLookup(store_name);
+//        System.out.print(res + "YYYY");
+            while(res.next()){
+            txtName.setText(res.getString(1));
+            txtContact.setText(res.getString(2));
+            txtEmail.setText(res.getString(3));
+//            txtPassword.setText(res.getString(4));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnView1ActionPerformed
 
     private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
         // TODO add your handling code here:
+        String search = txtSearch1.getText();
+        populateTable(search);
     }//GEN-LAST:event_txtSearch1KeyReleased
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -361,20 +431,23 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         String name = txtName.getText();
-        String email = txtEmail.getText();
+        String contact = txtContact.getText();
+        String email = txtEmail.getText();        
         String password = txtPassword.getText();
 
-        GroceryStores store = new GroceryStores();
+        GroceryStoresDirectory store = new GroceryStoresDirectory();
 
         if(store.alreadyExist(name)){
             JOptionPane.showMessageDialog(this,"The given store already exists in the directory",
-                "Product already exists",JOptionPane.WARNING_MESSAGE);
+                "Store already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            store.addStore(name, email, password);
+            store.addStore(name, contact, email);
+            store.addUserCredential(email, password);
             JOptionPane.showMessageDialog(this, "Store is added to the directory",
-                "Product added",JOptionPane.INFORMATION_MESSAGE);
+                "Store added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
+            populateTable("");
         }
 
     }//GEN-LAST:event_btnRegisterActionPerformed
@@ -395,24 +468,29 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordKeyReleased
 
-    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+    private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
         // TODO add your handling code here:
-        char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+        if(!Character.isDigit(evt.getKeyChar())){
             evt.consume();
         }
-        //Restrict the length to 256
-        if(txtName.getText().length() > 255){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtEmailKeyTyped
+    }//GEN-LAST:event_txtContactKeyTyped
+
+    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
+
+    }//GEN-LAST:event_txtContactKeyReleased
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyReleased
-           
-    
-    
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailKeyTyped
+
+    private void txtSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearch1ActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -438,24 +516,26 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblGender1;
+    private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel panelAddress2;
-    private javax.swing.JPanel panelProduct;
     private javax.swing.JPanel panelRegistration;
+    private javax.swing.JPanel panelStore;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTable tblProduct1;
+    private javax.swing.JTable tblStore;
+    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSearch1;
     // End of variables declaration//GEN-END:variables
 
-//    private void populateTable(String search) {
-//        ProductDirectory product = new ProductDirectory();
-//        ResultSet res = product.getProductData(search);
-//        tblProduct.setModel(DbUtils.resultSetToTableModel(res));
-//    }
+    private void populateTable(String search) {
+        GroceryStoresDirectory store = new GroceryStoresDirectory();
+        ResultSet res = store.getStoreData(search);
+        tblStore.setModel(DbUtils.resultSetToTableModel(res));
+    }
 }
