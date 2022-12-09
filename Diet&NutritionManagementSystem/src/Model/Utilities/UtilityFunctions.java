@@ -6,6 +6,8 @@ package Model.Utilities;
 
 import java.util.Arrays;
 import java.sql.Date;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +24,13 @@ public class UtilityFunctions {
     }
     
     public List<String> covertToList(String st){
-    
-        List<String> list = Arrays.asList(st.split(",", -1));
+        List<String> list;
+        if(st != null){
+            list = Arrays.asList(st.split(",", -1));
+        }
+        else{
+            list = new ArrayList<String>();
+        }
         return list;
     }
     
@@ -33,6 +40,12 @@ public class UtilityFunctions {
             sqlDate = new Date(javaDate.getTime());
         }
         return sqlDate;
+    }
+    
+    public java.sql.Time convertJavaTimeToSQLTime(LocalTime javaTime){
+    
+        java.sql.Time sqlTime = java.sql.Time.valueOf(javaTime);
+        return sqlTime;
     }
     
 }

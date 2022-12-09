@@ -15,10 +15,12 @@ import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
+import UI.Dietitian.ManageDietitiansSA;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author vipul
  */
-public class UserUpdateInfo extends javax.swing.JFrame {
+public class UserAppointmentBooking extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
@@ -48,12 +50,12 @@ public class UserUpdateInfo extends javax.swing.JFrame {
     String userName;
     
     private TableRowSorter sorter;
-    public UserUpdateInfo(String userName) {
+    public UserAppointmentBooking(String userName) {
         initComponents();
         this.userName = userName;
         //this.records = records;
         lblWelcome.setText("Welcome, " + this.userName);
-        viewDetails(this.userName);
+        
     }
     
 
@@ -76,40 +78,37 @@ public class UserUpdateInfo extends javax.swing.JFrame {
         lblWelcome = new javax.swing.JLabel();
         pnlWorkArea = new javax.swing.JPanel();
         pnlRegistration = new javax.swing.JPanel();
-        panelMedical = new javax.swing.JPanel();
-        txtHeight = new javax.swing.JTextField();
-        comboBloodGroup = new javax.swing.JComboBox<>();
-        lblBloodGroup = new javax.swing.JLabel();
-        lblWeight = new javax.swing.JLabel();
-        comboDiabetic = new javax.swing.JComboBox<>();
-        lblDiabetes = new javax.swing.JLabel();
-        lblAllergies = new javax.swing.JLabel();
-        txtAllergies = new javax.swing.JTextField();
-        txtWeight = new javax.swing.JTextField();
-        lblHeight = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
         panelDiet = new javax.swing.JPanel();
-        lblPurpose = new javax.swing.JLabel();
-        lblPreference = new javax.swing.JLabel();
-        comboPreference = new javax.swing.JComboBox<>();
-        lblWorkoutFrequency = new javax.swing.JLabel();
-        comboWorkoutFrequency = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listFavorites = new javax.swing.JList<>();
-        lblFavFood = new javax.swing.JLabel();
-        comboPurpose = new javax.swing.JComboBox<>();
+        comboType = new javax.swing.JComboBox<>();
+        lblWorkoutFrequency2 = new javax.swing.JLabel();
+        panelMedical1 = new javax.swing.JPanel();
+        txtDietitianName = new javax.swing.JTextField();
+        lblDiabetes2 = new javax.swing.JLabel();
+        lblHeight2 = new javax.swing.JLabel();
+        dateAppointment = new com.toedter.calendar.JDateChooser();
+        txtHospitalName = new javax.swing.JTextField();
+        lblHeight3 = new javax.swing.JLabel();
+        lblDiabetes3 = new javax.swing.JLabel();
+        timeAppointment = new com.github.lgooddatepicker.components.TimePicker();
+        btnBook = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableView = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblLogout = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        lblAccount = new javax.swing.JLabel();
-        lblDailyIntake = new javax.swing.JLabel();
         lblAppointment = new javax.swing.JLabel();
+        lblDailyIntake = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         lblHomePage = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        lblAccount2 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        lblAccount3 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        lblAccount1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(66, 179, 172));
@@ -203,131 +202,111 @@ public class UserUpdateInfo extends javax.swing.JFrame {
         pnlRegistration.setBackground(new java.awt.Color(255, 255, 255));
         pnlRegistration.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMedical.setBackground(new java.awt.Color(255, 255, 255, 180));
-        panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Health", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-        panelMedical.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtHeight.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHeightKeyTyped(evt);
-            }
-        });
-        panelMedical.add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
-
-        comboBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "B+", "AB+", "O+", "A-", "B-", "AB-", "O-" }));
-        comboBloodGroup.setSelectedIndex(-1);
-        panelMedical.add(comboBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, 30));
-
-        lblBloodGroup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/bloodgrp_29px.png"))); // NOI18N
-        lblBloodGroup.setText(" Blood Group:");
-        panelMedical.add(lblBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        lblWeight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/weight_px.png"))); // NOI18N
-        lblWeight.setText("         Weight:");
-        panelMedical.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
-
-        comboDiabetic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
-        comboDiabetic.setSelectedIndex(-1);
-        panelMedical.add(comboDiabetic, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 32, 200, 30));
-
-        lblDiabetes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-diabetes-32.png"))); // NOI18N
-        lblDiabetes.setText("       Diabetes:");
-        panelMedical.add(lblDiabetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 120, -1));
-
-        lblAllergies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
-        lblAllergies.setText(" Any Allergies:");
-        panelMedical.add(lblAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
-
-        txtAllergies.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAllergiesKeyTyped(evt);
-            }
-        });
-        panelMedical.add(txtAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 200, 50));
-
-        txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtWeightKeyTyped(evt);
-            }
-        });
-        panelMedical.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 122, 200, 30));
-
-        lblHeight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
-        lblHeight.setText("          Height:");
-        panelMedical.add(lblHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
-
-        pnlRegistration.add(panelMedical, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 36, 751, 174));
-
-        btnUpdate.setBackground(new java.awt.Color(255, 51, 51));
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        pnlRegistration.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 537, 95, 35));
-
-        btnClear.setBackground(new java.awt.Color(255, 51, 51));
-        btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-        pnlRegistration.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 537, 81, 35));
-
         panelDiet.setBackground(new java.awt.Color(255, 255, 255, 180));
         panelDiet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diet Related", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelDiet.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPurpose.setText("Purpose of Diet:");
-        panelDiet.add(lblPurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        lblPreference.setText("Food Preference:");
-        panelDiet.add(lblPreference, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
-
-        comboPreference.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegeterian", "Non-Vegeterian", "Eggiterian", "Vegan" }));
-        comboPreference.setSelectedIndex(-1);
-        comboPreference.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPreferenceActionPerformed(evt);
+        comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consultant", "Clinical", "Pediatric", "Sports", "Research" }));
+        comboType.setSelectedIndex(-1);
+        comboType.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboTypeItemStateChanged(evt);
             }
         });
-        panelDiet.add(comboPreference, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 180, 40));
-
-        lblWorkoutFrequency.setText("Workout Frequency:");
-        panelDiet.add(lblWorkoutFrequency, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
-
-        comboWorkoutFrequency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Never", "Rarely", "Once in a week", "Frequent" }));
-        comboWorkoutFrequency.setSelectedIndex(-1);
-        comboWorkoutFrequency.addActionListener(new java.awt.event.ActionListener() {
+        comboType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboWorkoutFrequencyActionPerformed(evt);
+                comboTypeActionPerformed(evt);
             }
         });
-        panelDiet.add(comboWorkoutFrequency, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 200, 40));
+        panelDiet.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 200, 30));
 
-        listFavorites.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Avacados", "Banana", "Eggs White", "Beans", "Whole Eggs", "Milk (Low Fat)", "Milk (Whole)", "Milk (Almond)", "Cottage Cheese", "Tofu", "Yogurt (No Sugar)", "Yogurt (With Sugar)", "Chicken", "Beaf", "Pork", " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        lblWorkoutFrequency2.setText("Type");
+        panelDiet.add(lblWorkoutFrequency2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+
+        pnlRegistration.add(panelDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 770, 80));
+
+        panelMedical1.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelMedical1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Health", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelMedical1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtDietitianName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDietitianNameKeyTyped(evt);
+            }
         });
-        listFavorites.setDragEnabled(true);
-        listFavorites.setDropMode(javax.swing.DropMode.ON);
-        jScrollPane3.setViewportView(listFavorites);
+        panelMedical1.add(txtDietitianName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 200, 30));
 
-        panelDiet.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 180, 70));
+        lblDiabetes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-diabetes-32.png"))); // NOI18N
+        lblDiabetes2.setText("Appointment Time");
+        panelMedical1.add(lblDiabetes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, -1));
 
-        lblFavFood.setText("Favorites:");
-        panelDiet.add(lblFavFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
+        lblHeight2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
+        lblHeight2.setText("  Dietitian Name");
+        panelMedical1.add(lblHeight2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 130, -1));
+        panelMedical1.add(dateAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 200, 30));
 
-        comboPurpose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diebetes Control", "BP Control", "Cholestrol Control", "Weight Loss", "Weight Gain", "Core Strengthening" }));
-        comboPurpose.setSelectedIndex(-1);
-        panelDiet.add(comboPurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 200, 40));
+        txtHospitalName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHospitalNameKeyTyped(evt);
+            }
+        });
+        panelMedical1.add(txtHospitalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 200, 30));
 
-        pnlRegistration.add(panelDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 241, 751, 213));
+        lblHeight3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
+        lblHeight3.setText("  Hosital Name");
+        panelMedical1.add(lblHeight3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 130, -1));
+
+        lblDiabetes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-diabetes-32.png"))); // NOI18N
+        lblDiabetes3.setText("Appointment Date");
+        panelMedical1.add(lblDiabetes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 140, -1));
+        panelMedical1.add(timeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 200, 30));
+
+        btnBook.setBackground(new java.awt.Color(255, 51, 51));
+        btnBook.setForeground(new java.awt.Color(255, 255, 255));
+        btnBook.setText("Send Appointment Request");
+        btnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookActionPerformed(evt);
+            }
+        });
+        panelMedical1.add(btnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 180, 40));
+
+        pnlRegistration.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 770, 180));
+
+        tableView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Gender", "Age", "Contact", "Hospital", "Type", "Qualification", "Experience", "Slots Available"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableViewMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableView);
+
+        pnlRegistration.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 770, 130));
 
         pnlWorkArea.add(pnlRegistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 610));
 
@@ -360,18 +339,18 @@ public class UserUpdateInfo extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 51, 51));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAccount.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        lblAccount.setForeground(new java.awt.Color(255, 255, 255));
-        lblAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
-        lblAccount.setText(" Account");
-        lblAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblAppointment.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblAppointment.setForeground(new java.awt.Color(255, 255, 255));
+        lblAppointment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
+        lblAppointment.setText(" Consult a Dietitian");
+        lblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAccountMouseClicked(evt);
+                lblAppointmentMouseClicked(evt);
             }
         });
-        jPanel7.add(lblAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
+        jPanel7.add(lblAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, -1));
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 190, 45));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 190, 45));
 
         lblDailyIntake.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblDailyIntake.setForeground(new java.awt.Color(255, 255, 255));
@@ -383,17 +362,6 @@ public class UserUpdateInfo extends javax.swing.JFrame {
             }
         });
         jPanel3.add(lblDailyIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, -1));
-
-        lblAppointment.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        lblAppointment.setForeground(new java.awt.Color(255, 255, 255));
-        lblAppointment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
-        lblAppointment.setText(" Consult a Dietitian");
-        lblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAppointmentMouseClicked(evt);
-            }
-        });
-        jPanel3.add(lblAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 180, -1));
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -422,6 +390,54 @@ public class UserUpdateInfo extends javax.swing.JFrame {
 
         jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAccount2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblAccount2.setForeground(new java.awt.Color(255, 255, 255));
+        lblAccount2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
+        lblAccount2.setText(" Account");
+        lblAccount2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAccount2MouseClicked(evt);
+            }
+        });
+        jPanel10.add(lblAccount2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
+
+        jPanel11.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAccount3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblAccount3.setForeground(new java.awt.Color(255, 255, 255));
+        lblAccount3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
+        lblAccount3.setText(" Account");
+        lblAccount3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAccount3MouseClicked(evt);
+            }
+        });
+        jPanel11.add(lblAccount3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
+
+        jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 190, 45));
+
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 190, 45));
+
+        jPanel9.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAccount1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblAccount1.setForeground(new java.awt.Color(255, 255, 255));
+        lblAccount1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
+        lblAccount1.setText(" Account");
+        lblAccount1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAccount1MouseClicked(evt);
+            }
+        });
+        jPanel9.add(lblAccount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
+
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 190, 45));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 610));
 
         setSize(new java.awt.Dimension(1014, 673));
@@ -429,68 +445,9 @@ public class UserUpdateInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
 
-    public void viewDetails(String name){
-        
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
-        
-        try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM end_users WHERE Name = ?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
-            
-            while(res.next()){
-                comboBloodGroup.setSelectedItem(res.getString("BloodGroup"));
-                txtHeight.setText(String.valueOf(res.getFloat("Height")));
-                txtWeight.setText(String.valueOf(res.getFloat("Weight")));
-                txtAllergies.setText(res.getString("Allergies"));
-                
-                if (res.getBoolean("Diabetic")){
-                    comboDiabetic.setSelectedItem("Yes");
-                }
-                else{
-                    comboDiabetic.setSelectedItem("No");
-                }
-                
-                comboWorkoutFrequency.setSelectedItem(res.getString("Workout_Frequency"));
-                comboPreference.setSelectedItem(res.getString("Food_Preference"));
-                
-//                listFavorites1.setSelectedIndices(indices);
-                listFavorites.setSelectedValue(new UtilityFunctions().covertToList( res.getString("Favorites")), true);
-                listFavorites.setSelectionBackground(Color.lightGray);
-//                listFavorites1.setSelectedValueList(new UtilityFunctions().covertToList( res.getString("Favorites")), true);
-                comboPurpose.setSelectedItem(res.getString("Purpose"));
-            }
-            System.out.println(res);
-            
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    }
-    
     
     public void resetForm(){
         
-//        txtName.setText(null);
-//        dateDOB.setDate(null);
-//        txtAge.setText(null);
-//        txtContact.setText(null);
-//        comboGender.setSelectedIndex(-1);
-//        txtAddress.setText(null);
-        
-        comboBloodGroup.setSelectedIndex(-1);
-        txtHeight.setText(null);
-        txtWeight.setText(null);
-        comboDiabetic.setSelectedIndex(-1);
-        txtAllergies.setText(null);
-       
-        comboPurpose.setSelectedIndex(-1);
-        listFavorites.setSelectedIndex(-1);
-        comboPreference.setSelectedIndex(-1);
-        comboWorkoutFrequency.setSelectedIndex(-1);
          
     }
     
@@ -534,93 +491,55 @@ public class UserUpdateInfo extends javax.swing.JFrame {
     private void lblAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAppointmentMouseClicked
         // TODO add your handling code here:
         
+        
+        
     }//GEN-LAST:event_lblAppointmentMouseClicked
 
-    private void lblAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountMouseClicked
-        // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
-        frame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblAccountMouseClicked
-
-    private void txtHeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHeightKeyTyped
-        // TODO add your handling code here:
-        char typedAge = evt.getKeyChar();
-        if(!Character.isDigit(typedAge)){
-            evt.consume();
-        }
-        //Restrict the length to 5
-        if(txtHeight.getText().length() > 2){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtHeightKeyTyped
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
         // TODO add your handling code here:
 
         if(true){
+            
+            String dietitianName = txtDietitianName.getText();
+            String hospitalName = txtHospitalName.getText();
+            Date date = dateAppointment.getDate();
+            LocalTime time = timeAppointment.getTime(); 
+        
             Connection dbconn = DBconnection.connectDB();
             PreparedStatement st;
         
             try{
-                String query = "UPDATE end_users SET BloodGroup = ?, Height = ?, Weight = ?, Diabetic = ?, Allergies = ?, Purpose = ?, Food_Preference = ?, Workout_Frequency = ?, Favorites = ? WHERE Name = ?";
+                String query = "INSERT INTO appointments(userName, dietitianName, hospital, date, time, status) VALUES (?,?,?,?,?,?)";
                 st = (PreparedStatement)dbconn.prepareStatement(query);
-                st.setString(1, comboBloodGroup.getSelectedItem().toString()); //bg
-                st.setString(2, txtHeight.getText());
-                st.setString(3, txtWeight.getText());
-                if(comboDiabetic.getSelectedItem().toString().equals("Yes")){
-                    st.setString(4, "1");                
-                }
-                else{
-                    st.setString(4, "0");
-                }
-                st.setString(5, txtAllergies.getText());
-                st.setString(6, comboPurpose.getSelectedItem().toString());
-                st.setString(7, comboPreference.getSelectedItem().toString());
-                st.setString(8, comboWorkoutFrequency.getSelectedItem().toString());
-                st.setString(9, new UtilityFunctions().commaSeparate( listFavorites.getSelectedValuesList()));
-                st.setString(10, this.userName);
+                st.setString(1, this.userName); //bg
+                st.setString(2, dietitianName);
+                st.setString(3, hospitalName);
+                st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
+                st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
+                st.setString(6, "Requested");
+                
                 st.executeUpdate();
                 
             }
             catch(SQLException ex){
                 Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
             }
-                resetForm();
+            
+            try{
+                String query = "UPDATE dietitians SET Slots = Slots - 1 WHERE Name=?";
+                st = (PreparedStatement)dbconn.prepareStatement(query);
+                st.setString(1, dietitianName); //bg
+                
+                st.executeUpdate();
+                
+            }
+            catch(SQLException ex){
+                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            populateTableData();
+            resetForm();
         }
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
-        resetForm();
-        UserRegistration frame = new UserRegistration();
-        frame.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnClearActionPerformed
-
-    private void comboPreferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPreferenceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboPreferenceActionPerformed
-
-    private void comboWorkoutFrequencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboWorkoutFrequencyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboWorkoutFrequencyActionPerformed
-
-    private void txtAllergiesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAllergiesKeyTyped
-        // TODO add your handling code here:
-        char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
-            evt.consume();
-        }
-        //Restrict the length to 256
-        if(txtAllergies.getText().length() > 255){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtAllergiesKeyTyped
-
-    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtWeightKeyTyped
+    }//GEN-LAST:event_btnBookActionPerformed
 
     private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
         // TODO add your handling code here:
@@ -635,6 +554,61 @@ public class UserUpdateInfo extends javax.swing.JFrame {
         fr.setVisible(true);
         dispose();
     }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void lblAccount2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccount2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAccount2MouseClicked
+
+    private void lblAccount3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccount3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAccount3MouseClicked
+
+    private void lblAccount1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccount1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAccount1MouseClicked
+
+    private void comboTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTypeActionPerformed
+
+    private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
+        // TODO add your handling code here:
+        populateTableData();
+    }//GEN-LAST:event_comboTypeItemStateChanged
+
+    private void txtDietitianNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDietitianNameKeyTyped
+        // TODO add your handling code here:
+        char typedName = evt.getKeyChar();
+        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+            evt.consume();
+        }
+        //Restrict the length to 256
+        if(txtDietitianName.getText().length() > 255){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDietitianNameKeyTyped
+
+    private void txtHospitalNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHospitalNameKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHospitalNameKeyTyped
+
+    private void tableViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tableView.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableView.getModel();
+        
+        String dietitianName = String.valueOf(model.getValueAt(rowIndex,1));
+        String hospital = String.valueOf(model.getValueAt(rowIndex,5));
+        System.out.println("------------" + hospital );
+        txtDietitianName.setText(dietitianName);
+        txtHospitalName.setText(hospital);
+        txtDietitianName.setEditable(false);
+        txtHospitalName.setEditable(false);
+        
+        Date appointmentDate = dateAppointment.getDate();
+        LocalTime appointmentTime = timeAppointment.getTime();
+        
+    }//GEN-LAST:event_tableViewMouseClicked
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;
@@ -792,6 +766,47 @@ public class UserUpdateInfo extends javax.swing.JFrame {
        
     }
     
+    private void populateTableData() {
+        
+        Connection dbconn = DBconnection.connectDB();
+        //Type-cast table model into default table model
+        DefaultTableModel model = (DefaultTableModel) tableView.getModel();
+        
+        //Clear the table 
+        model.setRowCount(0);
+        
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ?");
+            st.setString(1, comboType.getSelectedItem().toString());
+            ResultSet res = st.executeQuery();
+            
+            while(res.next()){
+                Object[] row = new Object[11];
+                row[0] = res.getInt("ID");
+                row[1] = res.getString("Name");
+                row[2] = res.getString("Gender");
+                row[3] = res.getInt("Age");
+                row[4] = res.getLong("Contact");
+                row[6] = res.getString("Hospital");
+                row[7] = res.getString("Type");
+                row[8] = res.getString("Qualification");
+                row[9] = res.getInt("Experience");
+                row[10] = res.getInt("Slots");
+                
+                
+                model.addRow(row);
+            }
+            System.out.println(res);
+            
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }
     /**
      * @param args the command line arguments
      */
@@ -806,49 +821,46 @@ public class UserUpdateInfo extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnBook;
     private javax.swing.ButtonGroup btnGroupDiabetes;
     private javax.swing.ButtonGroup btnGroupGender;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> comboBloodGroup;
-    private javax.swing.JComboBox<String> comboDiabetic;
-    private javax.swing.JComboBox<String> comboPreference;
-    private javax.swing.JComboBox<String> comboPurpose;
-    private javax.swing.JComboBox<String> comboWorkoutFrequency;
+    private javax.swing.JComboBox<String> comboType;
+    private com.toedter.calendar.JDateChooser dateAppointment;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblAccount;
-    private javax.swing.JLabel lblAllergies;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAccount1;
+    private javax.swing.JLabel lblAccount2;
+    private javax.swing.JLabel lblAccount3;
     private javax.swing.JLabel lblAppointment;
-    private javax.swing.JLabel lblBloodGroup;
     private javax.swing.JLabel lblDailyIntake;
-    private javax.swing.JLabel lblDiabetes;
-    private javax.swing.JLabel lblFavFood;
-    private javax.swing.JLabel lblHeight;
+    private javax.swing.JLabel lblDiabetes2;
+    private javax.swing.JLabel lblDiabetes3;
+    private javax.swing.JLabel lblHeight2;
+    private javax.swing.JLabel lblHeight3;
     private javax.swing.JLabel lblHomePage;
     private javax.swing.JLabel lblLogout;
-    private javax.swing.JLabel lblPreference;
-    private javax.swing.JLabel lblPurpose;
-    private javax.swing.JLabel lblWeight;
     private javax.swing.JLabel lblWelcome;
-    private javax.swing.JLabel lblWorkoutFrequency;
-    private javax.swing.JList<String> listFavorites;
+    private javax.swing.JLabel lblWorkoutFrequency2;
     private javax.swing.JPanel panelDiet;
-    private javax.swing.JPanel panelMedical;
+    private javax.swing.JPanel panelMedical1;
     private javax.swing.JPanel pnlRegistration;
     private javax.swing.JPanel pnlTitleBar;
     private javax.swing.JPanel pnlWorkArea;
-    private javax.swing.JTextField txtAllergies;
-    private javax.swing.JTextField txtHeight;
-    private javax.swing.JTextField txtWeight;
+    private javax.swing.JTable tableView;
+    private com.github.lgooddatepicker.components.TimePicker timeAppointment;
+    private javax.swing.JTextField txtDietitianName;
+    private javax.swing.JTextField txtHospitalName;
     // End of variables declaration//GEN-END:variables
 }

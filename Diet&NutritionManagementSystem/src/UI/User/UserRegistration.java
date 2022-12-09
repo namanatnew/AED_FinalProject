@@ -35,7 +35,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import net.proteanit.sql.DbUtils;
 /**
  *
  * @author vipul

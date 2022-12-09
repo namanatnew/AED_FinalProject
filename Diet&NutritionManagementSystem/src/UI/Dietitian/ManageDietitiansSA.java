@@ -817,7 +817,7 @@ public void resetUpdateForm(){
            String password =new String(pwdPassword.getPassword());
            String confirmpassword = new String(pwdRePassword.getPassword());
            
-           new DietitianDirectory().addNewDietitianToDB(name, dob, age, gender, contact, address, doj, experience, qualification, slots, hospital, type);
+           new DietitianDirectory().addNewDietitianToDB(name, dob, age, gender, contact, address, doj, experience, qualification, slots, hospital, type, email);
            
         if (email.equals("Enter Email") || password.equals("Enter Password") 
                 || confirmpassword.equals("Confirm Password") ){
@@ -830,9 +830,7 @@ public void resetUpdateForm(){
         }
         else{
             Account ac = new Account();
-            ac.addUserCredential(email, password);
-            ac.addPerson(email,name,gender,dob,address, contact);
-            ac.addDietitian(email,name,gender,dob,address,contact);
+            ac.addUserCredential(email, password, "Dietitian");
         }
            
            JOptionPane.showMessageDialog(this, "Account Information Upodated");
@@ -901,22 +899,22 @@ public void resetUpdateForm(){
             st.setLong(4, Long.parseLong(txtContact1.getText()));
             st.setString(5, txtAddress1.getText());
             
-            
-            st.setDate(6, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOJ1.getDate()));
-            
             LocalDate today = LocalDate.now();
-            int age = Period.between(convertToLocalDateViaInstant(dateDOB1.getDate()), today).getYears();
+            st.setDate(6, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOJ1.getDate()));
+            int exp = Period.between(convertToLocalDateViaInstant(dateDOJ1.getDate()), today).getYears();
+            st.setInt(7, exp); //age
             
-            st.setInt(7, age); // exp
             st.setString(8, txtQualification1.getText());
             st.setString(9, comboHospital1.getSelectedItem().toString());
             st.setString(10, comboType1.getSelectedItem().toString());
             st.setInt(11, Integer.parseInt(txtSlots1.getText()));
             
-            int exp = Period.between(convertToLocalDateViaInstant(dateDOJ1.getDate()), today).getYears();
-            st.setInt(12, exp); //age
-            st.setInt(13, id);
+            int age = Period.between(convertToLocalDateViaInstant(dateDOB1.getDate()), today).getYears();
             
+            st.setInt(12, age); // exp
+            
+            
+            st.setInt(13, id);
             
             st.executeUpdate();
             
@@ -1005,6 +1003,7 @@ public void resetUpdateForm(){
                 txtContact1.setText(String.valueOf(res.getLong("Contact")));
                 txtAddress1.setText(res.getString("Address"));
                 
+                txtEmail1.setText(res.getString("Email"));
                 comboHospital1.setSelectedItem(res.getString("Hospital"));
                 txtQualification1.setText(res.getString("Qualification"));
                 dateDOJ1.setDate(res.getDate("DOJ"));

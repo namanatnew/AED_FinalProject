@@ -35,7 +35,7 @@ public class Account {
         }
     }
     
-    public void addUserCredential(String email, String password){
+    public void addUserCredential(String email, String password, String type){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -43,7 +43,7 @@ public class Account {
                     "INSERT INTO users (email,password,usertype) VALUES(?,?,?)");
             st.setString(1, email);
             st.setString(2, password);
-            st.setString(3,"User");
+            st.setString(3, type);
             int res = st.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,7 +97,7 @@ public class Account {
             Connection dbconn = DBconnection.connectDB();
             
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement(
-                    "INSERT INTO dietitian (Email,Name,Gender,DOB,Address,Contact) VALUES(?,?,?,?,?,?)");
+                    "INSERT INTO dietitians (Email,Name,Gender,DOB,Address,Contact) VALUES(?,?,?,?,?,?)");
             st.setString(1, email);
             st.setString(2, name);
             st.setString(3,gender);
