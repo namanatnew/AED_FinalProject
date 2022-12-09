@@ -46,46 +46,6 @@ public class GroceryStores {
         this.password = password;
     }
     
-    public void addStore(String name, String email, String password){
-        Connection dbconn = DBconnection.connectDB();
-        try {
-            PreparedStatement st = (PreparedStatement)dbconn
-                    .prepareStatement("""
-                                    INSERT INTO grocerystores (name, email, password) 
-                                    VALUES(?,?,?)""");
-            st.setString(1,name);
-            st.setString(2,email);
-            st.setString(10,password);
-            
-            int res = st.executeUpdate();
-            System.out.println("store added"); 
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
-    public boolean alreadyExist(String product_name){
-        Connection dbconn = DBconnection.connectDB();
-        
-            PreparedStatement st;
-            boolean isExist = false;
-        try {
-            st = (PreparedStatement)dbconn.prepareStatement("""
-                                                            SELECT * FROM grocerystores 
-                                                            WHERE name = ?""");
-            st.setString(1, product_name);
-            ResultSet res = st.executeQuery();
-            if(res.next()){
-                isExist = true;
-            }
-            return isExist;
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-            
-            return isExist;
-        }
-            
-    }
     
 }
