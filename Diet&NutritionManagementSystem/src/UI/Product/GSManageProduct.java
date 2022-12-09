@@ -470,12 +470,13 @@ public class GSManageProduct extends javax.swing.JFrame {
         model = (DefaultTableModel) tblProduct1.getModel();
 
         String product_name = model.getValueAt(selectedRow,0).toString();
-        System.out.print(product_name + "XXXXX");
+//        System.out.print(product_name + "XXXXX");
         ProductDirectory product = new ProductDirectory();
 
         ResultSet res = product.exactProductLookup(product_name);
-        System.out.print(res + "YYYY");
+//        System.out.print(res + "YYYY");
         try {
+            while(res.next()){
             txtName.setText(res.getString(1));
             txtType.setText(res.getString(2));
             txtRefQty.setText(res.getString(3));
@@ -485,7 +486,8 @@ public class GSManageProduct extends javax.swing.JFrame {
             txtSodium.setText(res.getString(7));
             txtCarbs.setText(res.getString(8));
             txtProtein.setText(res.getString(9));
-        } catch (SQLException ex) {
+        }}
+            catch (SQLException ex) {
             Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnView1ActionPerformed

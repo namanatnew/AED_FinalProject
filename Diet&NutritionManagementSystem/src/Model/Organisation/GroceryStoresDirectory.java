@@ -4,7 +4,9 @@
  */
 package Model.Organisation;
 
+//import Model.Account.Account;
 import Model.Database.DBconnection;
+import Model.Product.ProductDirectory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,19 +20,18 @@ import java.util.logging.Logger;
  */
 public class GroceryStoresDirectory {
     
-    public void addStore(String name, String contact, String email, String password){
+    public void addStore(String name, String contact, String email){
         Connection dbconn = DBconnection.connectDB();
         try {
             PreparedStatement st = (PreparedStatement)dbconn
                     .prepareStatement("""
-                                    INSERT INTO grocerystores (name, contact, email, password) 
+                                    INSERT INTO grocerystores (name, contact, email) 
                                     VALUES(?,?,?)""");
             st.setString(1,name);            
             st.setString(2,contact);
-            st.setString(3,email);
-            st.setString(4,password);
+            st.setString(3,email);            
+            st.executeUpdate();
             
-            int res = st.executeUpdate();
             System.out.println("store added"); 
             
         } catch (SQLException ex) {
@@ -66,11 +67,11 @@ public class GroceryStoresDirectory {
             Connection dbconn = DBconnection.connectDB();
             
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                            DELETE FROM storedirectory
+                                                                            DELETE FROM grocerystores
                                                                             WHERE name = ? """);
         
             st.setString(1, store_name);
-            ResultSet res = st.executeQuery();
+            st.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,25 +81,15 @@ public class GroceryStoresDirectory {
         try {
             Connection dbconn = DBconnection.connectDB();
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                            UPDATE storedirectory
+                                                                            UPDATE grocerystores
                                                                             SET name = ?,
-                                                                            contact = ?,
-                                                                            email = ?
+                                                                            contact = ?
                                                                             WHERE name = ?""");
             st.setString(1, name);
             st.setString(2, contact);
-            st.setString(3, email);
+            st.setString(3, name);
+            st.executeUpdate();
             
-            PreparedStatement st1 = (PreparedStatement)dbconn.prepareStatement("""
-                                                                            UPDATE users
-                                                                            SET email = ?,
-                                                                            password = ?,
-                                                                            usertype = ?
-                                                                            WHERE name = ?""");
-            st1.setString(1, email);
-            st1.setString(2, password);
-            st1.setString(3, "Grocery Store Manager");
-            st1.setString(4, name);
         } catch (SQLException ex) {
             Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -112,7 +103,7 @@ public class GroceryStoresDirectory {
             
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                                     SELECT name, contact, email, created_at
-                                                                    FROM storedirectory
+                                                                    FROM grocerystores
                                                                     WHERE name like ? """);
             
             st.setString(1, '%'+search_name+'%');
@@ -121,6 +112,43 @@ public class GroceryStoresDirectory {
         } catch (SQLException ex) {
             Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    
+    public ResultSet exactStoreLookup(String store_name){
+         
+            Connection dbconn = DBconnection.connectDB();
+            
+        try {
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
+                                                                        SELECT name ,contact , 
+                                                                              email
+                                                                        FROM grocerystores
+                                                                        WHERE name = ?""");
+        
+            st.setString(1, store_name);
+            System.out.print("tryy");
+            ResultSet res = st.executeQuery();
+            System.out.print("found it");
+            return res;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return null;
+    }
+    
+    public void addUserCredential(String email, String password){
+        try {
+            Connection dbconn = DBconnection.connectDB();
+            
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement(
+                    "INSERT INTO users (email,password,usertype) VALUES(?,?,?)");
+            st.setString(1, email);
+            st.setString(2, password);
+            st.setString(3,"Grocery Store Manager");
+            int res = st.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

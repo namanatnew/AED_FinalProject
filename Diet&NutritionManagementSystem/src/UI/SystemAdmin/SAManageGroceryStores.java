@@ -10,6 +10,9 @@ import UI.GroceryStore.GSHomePage;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -26,7 +29,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     public SAManageGroceryStores() {
         initComponents();
-//        populateTable("");
+        populateTable("");
     }
 
     /**
@@ -388,11 +391,33 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            int selectedRow = tblStore.getSelectedRow();
+            model = (DefaultTableModel) tblStore.getModel();
+            
+            String store_name = model.getValueAt(selectedRow,0).toString();
+//        System.out.print(store_name + "XXXXX");
+            GroceryStoresDirectory store = new GroceryStoresDirectory();
+
+            ResultSet res = store.exactStoreLookup(store_name);
+//        System.out.print(res + "YYYY");
+            while(res.next()){
+            txtName.setText(res.getString(1));
+            txtContact.setText(res.getString(2));
+            txtEmail.setText(res.getString(3));
+//            txtPassword.setText(res.getString(4));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnView1ActionPerformed
 
     private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
         // TODO add your handling code here:
+        String search = txtSearch1.getText();
+        populateTable(search);
     }//GEN-LAST:event_txtSearch1KeyReleased
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -417,10 +442,12 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
                 "Store already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            store.addStore(name, contact, email, password);
+            store.addStore(name, contact, email);
+            store.addUserCredential(email, password);
             JOptionPane.showMessageDialog(this, "Store is added to the directory",
                 "Store added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
+            populateTable("");
         }
 
     }//GEN-LAST:event_btnRegisterActionPerformed
@@ -443,12 +470,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
         // TODO add your handling code here:
-        char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
-            evt.consume();
-        }
-        //Restrict the length to 256
-        if(txtName.getText().length() > 255){
+        if(!Character.isDigit(evt.getKeyChar())){
             evt.consume();
         }
     }//GEN-LAST:event_txtContactKeyTyped
@@ -468,9 +490,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     private void txtSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearch1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearch1ActionPerformed
-           
-    
-    
+
     
     /**
      * @param args the command line arguments
