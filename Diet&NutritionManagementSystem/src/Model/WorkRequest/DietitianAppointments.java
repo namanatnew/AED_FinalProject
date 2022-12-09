@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.User;
+package Model.WorkRequest;
 
+import UI.Dietitian.*;
+import UI.User.*;
 import Model.Database.DBconnection;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
@@ -23,26 +25,29 @@ import javax.swing.table.TableRowSorter;
  *
  * @author vipul
  */
-public class UserHomePage extends javax.swing.JFrame {
+public class DietitianAppointments extends javax.swing.JFrame {
 
     /**
      * Creates new form SAHomePage
      */
     public String email_id;
     public String userName;
-    public UserHomePage(String email_id) {
+    public DietitianAppointments(String email_id) {
         this.email_id = email_id;
         initComponents();
         this.userName = getUserNameFromEmail(email_id);
         System.out.println(userName);
         lblWelcome.setText("Welcome, " + this.userName);
+        
+        populateTableData();
     }
     
     //comment after testing
-    public UserHomePage(String name, int i) {
+    public DietitianAppointments(String name, int i) {
         initComponents();
         this.userName = name;
-        
+        lblWelcome.setText("Welcome, " + this.userName);
+        populateTableData();
     }
 
     /**
@@ -65,12 +70,16 @@ public class UserHomePage extends javax.swing.JFrame {
         lblLogout = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblHomePage = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        lblAppointment = new javax.swing.JLabel();
+        lblApppointments = new javax.swing.JLabel();
         lblAccount = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableView = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        btnAccept = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -185,31 +194,28 @@ public class UserHomePage extends javax.swing.JFrame {
         lblHomePage.setForeground(new java.awt.Color(255, 255, 255));
         lblHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
         lblHomePage.setText("  Home Page");
+        lblHomePage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHomePageMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHomePageMouseEntered(evt);
+            }
+        });
         jPanel7.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
-        jLabel12.setText("   Today's Intake");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblApppointments.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblApppointments.setForeground(new java.awt.Color(255, 255, 255));
+        lblApppointments.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
+        lblApppointments.setText("   Appointments");
+        lblApppointments.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                lblApppointmentsMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 160, -1));
-
-        lblAppointment.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        lblAppointment.setForeground(new java.awt.Color(255, 255, 255));
-        lblAppointment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
-        lblAppointment.setText(" Consult a Dietitian");
-        lblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAppointmentMouseClicked(evt);
-            }
-        });
-        jPanel3.add(lblAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 180, -1));
+        jPanel3.add(lblApppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 160, -1));
 
         lblAccount.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblAccount.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,7 +226,7 @@ public class UserHomePage extends javax.swing.JFrame {
                 lblAccountMouseClicked(evt);
             }
         });
-        jPanel3.add(lblAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 170, -1));
+        jPanel3.add(lblAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, -1));
 
         jPanel8.setBackground(new java.awt.Color(255, 51, 51));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -237,6 +243,68 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tableView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Appointment ID", "Date", "Time", "User Name", "Gender", "Age", "Contact", "Purpose", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableViewMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableView);
+
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 770, 130));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Variable", 1, 16)); // NOI18N
+        jLabel1.setText("Your Scheduled Appointments:");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        btnAccept.setBackground(new java.awt.Color(255, 51, 51));
+        btnAccept.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnAccept.setForeground(new java.awt.Color(255, 255, 255));
+        btnAccept.setText("Accept");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 102, 35));
+
+        btnReject.setBackground(new java.awt.Color(255, 51, 51));
+        btnReject.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 102, 35));
+
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
         setSize(new java.awt.Dimension(1019, 641));
@@ -255,12 +323,12 @@ public class UserHomePage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblLogoutMouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void lblApppointmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblApppointmentsMouseClicked
         // TODO add your handling code here:
         UserRegistration frame = new UserRegistration();
         frame.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_lblApppointmentsMouseClicked
 
     private void lblCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseEntered
         // TODO add your handling code here:
@@ -272,19 +340,102 @@ public class UserHomePage extends javax.swing.JFrame {
         lblClose.setForeground(Color.white);
     }//GEN-LAST:event_lblCloseMouseExited
 
-    private void lblAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAppointmentMouseClicked
-        // TODO add your handling code here:
-        UserAppointmentBooking frame = new UserAppointmentBooking(this.userName);
-        frame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblAppointmentMouseClicked
-
     private void lblAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountMouseClicked
         // TODO add your handling code here:
-        UserUpdateInfo frame = new UserUpdateInfo(this.userName);
+        DietitianUpdateInfo frame = new DietitianUpdateInfo(this.userName);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblAccountMouseClicked
+
+    private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
+        // TODO add your handling code here:
+        DietitianHomePage fr = new DietitianHomePage(this.userName, 0);
+        fr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblHomePageMouseClicked
+
+    private void tableViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tableView.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableView.getModel();
+
+        String status = String.valueOf(model.getValueAt(rowIndex,8));
+        
+        if(status.equals("Confirmed")){
+            btnAccept.setEnabled(false);
+            btnReject.setEnabled(false);
+        }
+        else{
+            btnAccept.setEnabled(true);
+            btnReject.setEnabled(true);
+        }
+        
+
+    }//GEN-LAST:event_tableViewMouseClicked
+
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:
+        int rowIndex = tableView.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableView.getModel();
+        //        User selectedUser =(User)model.getValueAt(rowIndex,1);
+
+        int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
+
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+
+        try{
+
+            String query = "UPDATE appointments SET status = ? WHERE appointmentID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, "Confirmed"); //bg
+            st.setInt(2, id);
+            st.executeUpdate();
+
+            populateTableData();
+            //            System.out.println(res);
+
+            //            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int rowIndex = tableView.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableView.getModel();
+        //        User selectedUser =(User)model.getValueAt(rowIndex,1);
+
+        int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
+
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+
+        try{
+
+            String query = "UPDATE appointments SET status = ? WHERE appointmentID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, "Declined"); //bg
+            st.setInt(2, id);
+            st.executeUpdate();
+
+            populateTableData();
+            //            System.out.println(res);
+
+            //            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void lblHomePageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblHomePageMouseEntered
     
     public String getUserNameFromEmail(String email_id){
         
@@ -294,7 +445,7 @@ public class UserHomePage extends javax.swing.JFrame {
         PreparedStatement st;
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from end_users WHERE Email=?");
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from dietitians WHERE Email=?");
             st.setString(1, email_id);
             ResultSet res = st.executeQuery();
             
@@ -310,6 +461,47 @@ public class UserHomePage extends javax.swing.JFrame {
         return this.userName;
     }
     
+    public void populateTableData(){
+    
+        Connection dbconn = DBconnection.connectDB();
+        //Type-cast table model into default table model
+        DefaultTableModel model = (DefaultTableModel) tableView.getModel();
+        
+        //Clear the table 
+        model.setRowCount(0);
+        
+        PreparedStatement st;
+        
+        try{
+            
+            String query = "SELECT u.Name, u.Gender, u.Age, u.Contact, u.Purpose, a.appointmentID, a.dietitianName, a.date, a.time, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, this.userName);
+            ResultSet res = st.executeQuery();
+            
+            while(res.next()){
+                Object[] row = new Object[9];
+                row[0] = res.getInt("appointmentID");
+                row[1] = res.getDate("date");
+                row[2] = res.getTime("time");
+                row[3] = res.getString("Name");
+                row[4] = res.getString("Gender");
+                row[5] = res.getInt("Age");
+                row[6] = res.getLong("Contact");
+                row[7] = res.getString("Purpose");
+                row[8] = res.getString("Status");
+                
+                model.addRow(row);
+            }
+            System.out.println(res);
+            
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
     /**
      * @param args the command line arguments
      */
@@ -347,7 +539,9 @@ public class UserHomePage extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnReject;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -358,11 +552,13 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAccount;
-    private javax.swing.JLabel lblAppointment;
+    private javax.swing.JLabel lblApppointments;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblHomePage;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JTable tableView;
     // End of variables declaration//GEN-END:variables
 }
