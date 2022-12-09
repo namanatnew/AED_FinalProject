@@ -181,6 +181,11 @@ public class GSHomePage extends javax.swing.JFrame {
         panelProducts.setForeground(new java.awt.Color(255, 255, 255));
         panelProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
         panelProducts.setText(" Manage Products");
+        panelProducts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelProductsMouseClicked(evt);
+            }
+        });
         panelProducts.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 panelProductsKeyPressed(evt);
@@ -258,11 +263,16 @@ public class GSHomePage extends javax.swing.JFrame {
 
     private void panelProductsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelProductsKeyPressed
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_panelProductsKeyPressed
+
+    private void panelProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductsMouseClicked
+        // TODO add your handling code here:
         System.out.print("open register");
         GSManageProduct addprd = new GSManageProduct();
         addprd.setVisible(true);
         dispose();
-    }//GEN-LAST:event_panelProductsKeyPressed
+    }//GEN-LAST:event_panelProductsMouseClicked
 
     
     /**
@@ -332,19 +342,13 @@ public class GSHomePage extends javax.swing.JFrame {
     }
     
     private void show_stats(){
-        try {
             ProductDirectory product = new ProductDirectory();
-            ResultSet res1 = product.getTotalProducts();
-            ResultSet res2 = product.getApprovedProducts();
-            ResultSet res3 = product.getPendingProductData();
-            lblTotalval.setText(res1.getString(1));
-            lblApprovedval.setText(res2.getString(1));
-            lblPendingval.setText(res3.getString(1));
-        } catch (SQLException ex) {
-            lblTotalval.setText("0");
-            lblApprovedval.setText("0");
-            lblPendingval.setText("0");
-            Logger.getLogger(GSHomePage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            String res1 = product.getTotalProducts();
+            String res2 = product.getApprovedProducts();
+            String res3 = product.getPendingProducts();
+            lblTotalval.setText(res1);
+            lblApprovedval.setText(res2);
+            lblPendingval.setText(res3);
+        
     }
 }
