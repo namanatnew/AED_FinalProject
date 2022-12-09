@@ -350,7 +350,7 @@ public class LoginFrame extends javax.swing.JFrame {
 //                  this.setVisible(false);
                             break;
                         }
-                    case "System Admin":
+                    case "admin":
                         {
                             SAHomePage mf = new SAHomePage(email);
                             mf.setVisible(true);

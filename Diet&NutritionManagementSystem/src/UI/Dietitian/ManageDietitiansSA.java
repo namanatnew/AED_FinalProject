@@ -39,7 +39,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 /**
  *
  * @author vipul
@@ -275,6 +275,11 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Health", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelMedical.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameKeyTyped(evt);
@@ -796,7 +801,6 @@ public void resetUpdateForm(){
         return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
     
-    
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         
@@ -903,15 +907,16 @@ public void resetUpdateForm(){
         
         try{
              
-            String query = "UPDATE dietitians SET Name = ?, DOB = ?, Gender = ?, Contact = ?, Address = ?, DOJ = ?, Experience = ?, Qualification = ?, Hospital = ? , Type = ?, Slots = ?, Age = ? WHERE ID = ?";
+            String query = "UPDATE dietitians SET Name = ?,"
+                    + " DOB = ?, Gender = ?, Contact = ?, "
+                    + "Address = ?, DOJ = ?, Experience = ?, "
+                    + "Qualification = ?, Hospital = ? , Type = ?, Slots = ?, Age = ? WHERE ID = ?";
             st = (PreparedStatement)dbconn.prepareStatement(query);
             st.setString(1, txtName1.getText()); //bg
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOB1.getDate()));
             st.setString(3, comboGender1.getSelectedItem().toString());
             st.setLong(4, Long.parseLong(txtContact1.getText()));
             st.setString(5, txtAddress1.getText());
-            
-            
             st.setDate(6, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOJ1.getDate()));
             
             LocalDate today = LocalDate.now();
@@ -1114,158 +1119,13 @@ public void resetUpdateForm(){
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
     
     boolean isDataValid(){
-//        String id, name, emailId, gender, community, city, state, username ;
-//        String houseNumber, zipCode, age, bloodGroup, height, weight;
-//        String contactDetails;
-////        Date dob;
-//        //String patternEmail = "^[A-Za-z0-9+_.-]+@(.+)$";
-//        String patternEmail = "^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$";
-//        String bmi = "[(0-9\\.)]{2,}$";
-//               
-//        id = txtDoctorID.getText();
-//        name = txtName.getText();
-//        emailId = txtEmail.getText();
-//        contactDetails = txtContact.getText();
-//        age = txtAge.getText();
-////        dob = DOBtxt.getDate();
-//        if(comboPurpose.getSelectedItem() == null){
-//            houseNumber = "";
-//        }
-//        else{
-//            houseNumber = comboPurpose.getSelectedItem().toString();
-//        }
-//        
-//        
-//        if(comboCommunity.getSelectedItem() == null){
-//            community = "";
-//        }
-//        else{
-//            community = comboCommunity.getSelectedItem().toString();
-//        }
-//        
-//        
-//        if(comboCity.getSelectedItem() == null){
-//            city = "";
-//        }
-//        else{
-//            city = comboCity.getSelectedItem().toString();
-//        }
-//        state = txtState.getText();
-//        zipCode = txtZipCode.getText();
-//        //bloodGroup = (String) patientBloodGroupTxt.getSelectedItem();
-//        String qualification = txtQualification.getText();
-//        String specialization = txtSpecialization.getText();
-//        String slots = txtHeight.getText();
-//        String password = new String(txtPassword.getText());
-//        String rePassword = new String(txtPassword2.getPassword());
-//        
-//        
-//       
-//        if(comboGender.getSelectedItem() == null){
-//            gender = "";
-//        }
-//        else{
-//            gender = comboGender.getSelectedItem().toString(); 
-//        }
-//        
-//        String hospital;
-//        if(comboBloodGroup.getSelectedItem() == null){
-//            hospital = "";
-//        }
-//        else{
-//            hospital = comboBloodGroup.getSelectedItem().toString(); 
-//        }
-//        
-//        
-//        if (id.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter Patient ID");
-//            return false;
-//        }
-//       
-//        if (name.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter name");
-//            return false;
-//        }
-//        
-//        if (gender.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please select gender");
-//            return false;
-//        }
-//        
-//        if (hospital.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please select hospital");
-//            return false;
-//        }
-//        
-//        if (contactDetails.equals("") || !(txtContact.getText().length()==10))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter valid contact Number");
-//            txtContact.setText("");
-//           
-//            return false;
-//        }
-//        //emailIDTxt.getText().isBlank() &&
-//        if( !txtEmail.getText().matches(patternEmail)){
-//                JOptionPane.showMessageDialog(this, "Please enter a valid Email.");
-//                txtEmail.setText("");
-//                return false;
-//            }
-//       
-//        if (age.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter age");
-//            return false;
-//        }
-//       
-//        if (slots.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter number of slots available");
-//            return false;
-//        }
-//        
-//        if (qualification.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter qualification");
-//            return false;
-//        }
-//        if (specialization.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter specialization");
-//            return false;
-//        }
-       
-       
-//        if (zipCode.equals("") || !(txtZipCode.getText().length()==5))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter zipCode");
-//            txtZipCode.setText("");
-//            return false;
-//        }
-//       
-//   
-//       
-//        if (password.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter password");
-//            return false;
-//        }
-//       
-//        if (rePassword.equals(""))
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter rePassword");
-//            return false;
-//        }
-//       
-//        if (!(password).equals(rePassword)){
-//            JOptionPane.showMessageDialog(this, "Password doesn't match");
-//            return false;
-//        }
+
        
         return true;
        

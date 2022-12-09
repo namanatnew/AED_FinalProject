@@ -35,7 +35,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 /**
  *
  * @author vipul
@@ -652,6 +652,11 @@ public class UserRegistration extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 170, -1));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
@@ -1016,6 +1021,10 @@ public void resetUpdateForm(){
         // TODO add your handling code here:
         jLabel3.setForeground(Color.white);
     }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;
