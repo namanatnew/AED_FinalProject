@@ -53,7 +53,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
-        comboType = new javax.swing.JComboBox<>();
+        txtType = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         panelNutrition = new javax.swing.JPanel();
@@ -79,38 +79,6 @@ public class GSManageProduct extends javax.swing.JFrame {
         btnDelete1 = new javax.swing.JButton();
         btnSend1 = new javax.swing.JButton();
         btnUpdate1 = new javax.swing.JButton();
-        panelModify = new javax.swing.JPanel();
-        btnRegister1 = new javax.swing.JButton();
-        btnClear1 = new javax.swing.JButton();
-        panelAddress1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblProduct = new javax.swing.JTable();
-        txtSearch = new javax.swing.JTextField();
-        btnView = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnSend = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnView2 = new javax.swing.JButton();
-        panelProduct1 = new javax.swing.JPanel();
-        txtName1 = new javax.swing.JTextField();
-        lblGender2 = new javax.swing.JLabel();
-        lblName2 = new javax.swing.JLabel();
-        comboType1 = new javax.swing.JComboBox<>();
-        panelNutrition1 = new javax.swing.JPanel();
-        lblFat1 = new javax.swing.JLabel();
-        txtProtein1 = new javax.swing.JTextField();
-        lblRefQty1 = new javax.swing.JLabel();
-        lblCalorie1 = new javax.swing.JLabel();
-        lblChol1 = new javax.swing.JLabel();
-        lblSodium1 = new javax.swing.JLabel();
-        lblCarbs1 = new javax.swing.JLabel();
-        lblProtein1 = new javax.swing.JLabel();
-        txtRefQty1 = new javax.swing.JTextField();
-        txtCalorie1 = new javax.swing.JTextField();
-        txtFat1 = new javax.swing.JTextField();
-        txtChol1 = new javax.swing.JTextField();
-        txtSodium1 = new javax.swing.JTextField();
-        txtCarbs1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(66, 179, 172));
@@ -173,8 +141,17 @@ public class GSManageProduct extends javax.swing.JFrame {
         lblName.setText("Product Name:");
         panelProduct.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 110, -1));
 
-        comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        panelProduct.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, -1));
+        txtType.setEditable(false);
+        txtType.setText("Grocery Store Product");
+        txtType.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTypeKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTypeKeyTyped(evt);
+            }
+        });
+        panelProduct.add(txtType, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, -1));
 
         btnRegister.setBackground(new java.awt.Color(255, 51, 51));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
@@ -377,245 +354,6 @@ public class GSManageProduct extends javax.swing.JFrame {
 
         tabbedPane.addTab("Registration", panelRegistration);
 
-        panelModify.setBackground(new java.awt.Color(51, 51, 51));
-
-        btnRegister1.setBackground(new java.awt.Color(255, 51, 51));
-        btnRegister1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister1.setText("Add Product");
-        btnRegister1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegister1ActionPerformed(evt);
-            }
-        });
-
-        btnClear1.setBackground(new java.awt.Color(255, 51, 51));
-        btnClear1.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear1.setText("Clear");
-        btnClear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClear1ActionPerformed(evt);
-            }
-        });
-
-        panelAddress1.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelAddress1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diet Related", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-
-        tblProduct.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Product Name", "Product Type", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblProduct);
-
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchKeyReleased(evt);
-            }
-        });
-
-        btnView.setText("View");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnSend.setText("Request to add product");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelAddress1Layout = new javax.swing.GroupLayout(panelAddress1);
-        panelAddress1.setLayout(panelAddress1Layout);
-        panelAddress1Layout.setHorizontalGroup(
-            panelAddress1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddress1Layout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelAddress1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelAddress1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAddress1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelAddress1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnView, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(56, 56, 56))
-                    .addGroup(panelAddress1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        panelAddress1Layout.setVerticalGroup(
-            panelAddress1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddress1Layout.createSequentialGroup()
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAddress1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelAddress1Layout.createSequentialGroup()
-                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnView)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        btnView2.setBackground(new java.awt.Color(255, 51, 51));
-        btnView2.setForeground(new java.awt.Color(255, 255, 255));
-        btnView2.setText("View Details");
-        btnView2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnView2ActionPerformed(evt);
-            }
-        });
-
-        panelProduct1.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelProduct1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-        panelProduct1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtName1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtName1KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtName1KeyTyped(evt);
-            }
-        });
-        panelProduct1.add(txtName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 210, -1));
-
-        lblGender2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblGender2.setText("Type:");
-        panelProduct1.add(lblGender2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 110, -1));
-
-        lblName2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblName2.setText("Product Name:");
-        panelProduct1.add(lblName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 110, -1));
-
-        comboType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        panelProduct1.add(comboType1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 210, -1));
-
-        panelNutrition1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutrition Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 10))); // NOI18N
-        panelNutrition1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblFat1.setText("Total Fat:");
-        panelNutrition1.add(lblFat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
-
-        txtProtein1.setText("45");
-        panelNutrition1.add(txtProtein1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 210, -1));
-
-        lblRefQty1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblRefQty1.setText("Refrence Quantity:");
-        panelNutrition1.add(lblRefQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
-
-        lblCalorie1.setText("Calorie:");
-        panelNutrition1.add(lblCalorie1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
-
-        lblChol1.setText("Cholesterol:");
-        panelNutrition1.add(lblChol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
-
-        lblSodium1.setText("Sodium:");
-        panelNutrition1.add(lblSodium1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
-
-        lblCarbs1.setText("Carbohydrates:");
-        panelNutrition1.add(lblCarbs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
-
-        lblProtein1.setText("Protein:");
-        panelNutrition1.add(lblProtein1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
-
-        txtRefQty1.setText("100");
-        panelNutrition1.add(txtRefQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 210, -1));
-
-        txtCalorie1.setText("200");
-        panelNutrition1.add(txtCalorie1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 210, -1));
-
-        txtFat1.setText("10");
-        panelNutrition1.add(txtFat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 210, -1));
-
-        txtChol1.setText("13");
-        panelNutrition1.add(txtChol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 210, -1));
-
-        txtSodium1.setText("16");
-        panelNutrition1.add(txtSodium1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 210, -1));
-
-        txtCarbs1.setText("5");
-        panelNutrition1.add(txtCarbs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 210, -1));
-
-        javax.swing.GroupLayout panelModifyLayout = new javax.swing.GroupLayout(panelModify);
-        panelModify.setLayout(panelModifyLayout);
-        panelModifyLayout.setHorizontalGroup(
-            panelModifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModifyLayout.createSequentialGroup()
-                .addContainerGap(395, Short.MAX_VALUE)
-                .addComponent(btnRegister1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnView2)
-                .addGap(334, 334, 334))
-            .addGroup(panelModifyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelModifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelModifyLayout.createSequentialGroup()
-                        .addComponent(panelProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelNutrition1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(panelModifyLayout.createSequentialGroup()
-                        .addComponent(panelAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3))))
-        );
-        panelModifyLayout.setVerticalGroup(
-            panelModifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelModifyLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(panelAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelModifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelProduct1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelNutrition1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))
-                .addGap(148, 148, 148)
-                .addGroup(panelModifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear1)
-                    .addComponent(btnView2)
-                    .addComponent(btnRegister1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabbedPane.addTab("View & Modify", panelModify);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -638,9 +376,9 @@ public class GSManageProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
         
     public void resetForm(){
-        
+    
         txtName.setText(null);
-        comboType.setSelectedItem(null);
+//        txtType.setText(null);
         txtRefQty.setText(null);
         txtCalorie.setText(null);
         txtFat.setText(null);
@@ -671,17 +409,92 @@ public class GSManageProduct extends javax.swing.JFrame {
 
     }//GEN-LAST:event_dateDOBKeyTyped
 
-    private void btnView2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView2ActionPerformed
+    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnView2ActionPerformed
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
 
-    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClear1ActionPerformed
+        if(tblProduct1.getSelectedRowCount()==1){
+            String name = txtName.getText();
+            String type = txtType.getText();
+            float refqty = Float.parseFloat(txtRefQty.getText());
+            float calorie = Float.parseFloat(txtCalorie.getText());
+            float fat = Float.parseFloat(txtFat.getText());
+            float chol = Float.parseFloat(txtChol.getText());
+            float sodium = Float.parseFloat(txtSodium.getText());
+            float carbs = Float.parseFloat(txtCarbs.getText());
+            float protein = Float.parseFloat(txtProtein.getText());
 
-    private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
+            ProductDirectory product = new ProductDirectory();
+            product.updateProduct(type,refqty,calorie,fat,chol,sodium,carbs,protein,name);
+            resetForm();
+            populateTable("");
+            JOptionPane.showMessageDialog(this, "Product is updated in the catalog!",
+                "Product updated",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnUpdate1ActionPerformed
+
+    private void btnSend1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSend1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegister1ActionPerformed
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
+
+        String product_name = model.getValueAt(selectedRow,0).toString();
+
+        ProductDirectory product = new ProductDirectory();
+
+        product.sendProduct(product_name);
+
+        JOptionPane.showMessageDialog(this, "Product is requested for approval!",
+            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnSend1ActionPerformed
+
+    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
+
+        String product_name = model.getValueAt(selectedRow,0).toString();
+
+        ProductDirectory product = new ProductDirectory();
+
+        product.deleteProduct(product_name);
+        populateTable("");
+        JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!",
+            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnDelete1ActionPerformed
+
+    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
+
+        String product_name = model.getValueAt(selectedRow,0).toString();
+        System.out.print(product_name + "XXXXX");
+        ProductDirectory product = new ProductDirectory();
+
+        ResultSet res = product.exactProductLookup(product_name);
+        System.out.print(res + "YYYY");
+        try {
+            txtName.setText(res.getString(1));
+            txtType.setText(res.getString(2));
+            txtRefQty.setText(res.getString(3));
+            txtCalorie.setText(res.getString(4));
+            txtFat.setText(res.getString(5));
+            txtChol.setText(res.getString(6));
+            txtSodium.setText(res.getString(7));
+            txtCarbs.setText(res.getString(8));
+            txtProtein.setText(res.getString(9));
+        } catch (SQLException ex) {
+            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
+        // TODO add your handling code here:
+        String search = txtSearch1.getText();
+        populateTable(search);
+    }//GEN-LAST:event_txtSearch1KeyReleased
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
@@ -694,7 +507,7 @@ public class GSManageProduct extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         String name = txtName.getText();
-        String type = comboType.getSelectedItem().toString();
+        String type = txtType.getText();
         float ref_qty = Float.parseFloat(txtRefQty.getText());
         float calorie = Float.parseFloat(txtCalorie.getText());
         float fat = Float.parseFloat(txtFat.getText());
@@ -702,26 +515,23 @@ public class GSManageProduct extends javax.swing.JFrame {
         float sodium = Float.parseFloat(txtSodium.getText());
         float carbs = Float.parseFloat(txtCarbs.getText());
         float protein = Float.parseFloat(txtProtein.getText());
-        
+
         ProductDirectory product = new ProductDirectory();
-        
+
         if(product.alreadyExist(name)){
             JOptionPane.showMessageDialog(this,"The given product already exists in thr product catalog",
-                    "Product already exists",JOptionPane.WARNING_MESSAGE);
+                "Product already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
-//            java.util.Date utilDate = new java.util.Date();
-//            Timestamp ts = new java.sql.Timestamp(utilDate.getTime());
-            product.addProduct(name, type, ref_qty, calorie, fat, chol, sodium, 
-                    carbs, protein,"Grocery Store Manager");
-            JOptionPane.showMessageDialog(this, "Product is added to the catalog", 
-                    "Product added",JOptionPane.INFORMATION_MESSAGE);
+            //            java.util.Date utilDate = new java.util.Date();
+            //            Timestamp ts = new java.sql.Timestamp(utilDate.getTime());
+            product.addProduct(name, type, ref_qty, calorie, fat, chol, sodium,
+                carbs, protein,"Grocery Store Manager");
+            JOptionPane.showMessageDialog(this, "Product is added to the catalog",
+                "Product added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
         }
-        
-        
-        
-        
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
@@ -740,131 +550,14 @@ public class GSManageProduct extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtNameKeyReleased
 
-    private void txtName1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName1KeyReleased
+    private void txtTypeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTypeKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1KeyReleased
+    }//GEN-LAST:event_txtTypeKeyReleased
 
-    private void txtName1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName1KeyTyped
+    private void txtTypeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTypeKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1KeyTyped
-
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        // TODO add your handling code here:
-        String search = txtSearch.getText();
-        populateTable(search);
-
-    }//GEN-LAST:event_txtSearchKeyReleased
-
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        
-            // TODO add your handling code here:
-            int selectedRow = tblProduct.getSelectedRow();
-            model = (DefaultTableModel) tblProduct.getModel();
-
-            String product_name = model.getValueAt(selectedRow,0).toString();
-            System.out.print(product_name + "XXXXX");
-            ProductDirectory product = new ProductDirectory();
-
-            ResultSet res = product.exactProductLookup(product_name);
-            System.out.print(res + "YYYY");
-            try {
-            txtName1.setText(res.getString(1));
-            comboType1.setSelectedItem(res.getString(2));
-            txtRefQty1.setText(res.getString(3));
-            txtCalorie1.setText(res.getString(4));
-            txtFat1.setText(res.getString(5));
-            txtChol1.setText(res.getString(6));
-            txtSodium1.setText(res.getString(7));
-            txtCarbs1.setText(res.getString(8));
-            txtProtein1.setText(res.getString(9));
-        } catch (SQLException ex) {
-            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnViewActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:\
-        int selectedRow = tblProduct.getSelectedRow();
-        model = (DefaultTableModel) tblProduct.getModel();
-
-        if(tblProduct.getSelectedRowCount()==1){
-            String name = txtName1.getText();
-            String type = comboType1.getSelectedItem().toString();
-            float refqty = Float.parseFloat(txtRefQty1.getText());
-            float calorie = Float.parseFloat(txtCalorie1.getText());
-            float fat = Float.parseFloat(txtFat1.getText());
-            float chol = Float.parseFloat(txtChol1.getText());
-            float sodium = Float.parseFloat(txtSodium1.getText());
-            float carbs = Float.parseFloat(txtCarbs1.getText());
-            float protein = Float.parseFloat(txtProtein1.getText());
-            
-            ProductDirectory product = new ProductDirectory();
-            product.updateProduct(type,refqty,calorie,fat,chol,sodium,carbs,protein,name);
-            
-            txtName1.setText(null);
-            comboType1.setSelectedItem(null);
-            txtRefQty1.setText(null);
-            txtCalorie1.setText(null);
-            txtFat1.setText(null);
-            txtChol1.setText(null);
-            txtSodium1.setText(null);
-            txtCarbs1.setText(null);
-            txtProtein1.setText(null);
-            populateTable("");
-            JOptionPane.showMessageDialog(this, "Product is updated in the catalog!", 
-                "Product updated",JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnUpdateActionPerformed
-    }
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblProduct.getSelectedRow();
-        model = (DefaultTableModel) tblProduct.getModel();
-
-        String product_name = model.getValueAt(selectedRow,0).toString();
-
-        ProductDirectory product = new ProductDirectory();
-
-        product.deleteProduct(product_name);
-        populateTable("");
-        JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!", 
-                "Product deleted",JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblProduct.getSelectedRow();
-        model = (DefaultTableModel) tblProduct.getModel();
-
-        String product_name = model.getValueAt(selectedRow,0).toString();
-
-        ProductDirectory product = new ProductDirectory();
-
-//        product.deleteProduct(product_name);
-        
-        JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!", 
-                "Product deleted",JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnSendActionPerformed
-
-    private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearch1KeyReleased
-
-    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnView1ActionPerformed
-
-    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDelete1ActionPerformed
-
-    private void btnSend1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSend1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSend1ActionPerformed
-
-    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
-       
+    }//GEN-LAST:event_txtTypeKeyTyped
+           
     
     
     
@@ -883,79 +576,47 @@ public class GSManageProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnClear1;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDelete1;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnRegister1;
-    private javax.swing.JButton btnSend;
     private javax.swing.JButton btnSend1;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpdate1;
-    private javax.swing.JButton btnView;
     private javax.swing.JButton btnView1;
-    private javax.swing.JButton btnView2;
-    private javax.swing.JComboBox<String> comboType;
-    private javax.swing.JComboBox<String> comboType1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCalorie;
-    private javax.swing.JLabel lblCalorie1;
     private javax.swing.JLabel lblCarbs;
-    private javax.swing.JLabel lblCarbs1;
     private javax.swing.JLabel lblChol;
-    private javax.swing.JLabel lblChol1;
     private javax.swing.JLabel lblFat;
-    private javax.swing.JLabel lblFat1;
     private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblGender2;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblName2;
     private javax.swing.JLabel lblProtein;
-    private javax.swing.JLabel lblProtein1;
     private javax.swing.JLabel lblRefQty;
-    private javax.swing.JLabel lblRefQty1;
     private javax.swing.JLabel lblSodium;
-    private javax.swing.JLabel lblSodium1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel panelAddress1;
     private javax.swing.JPanel panelAddress2;
-    private javax.swing.JPanel panelModify;
     private javax.swing.JPanel panelNutrition;
-    private javax.swing.JPanel panelNutrition1;
     private javax.swing.JPanel panelProduct;
-    private javax.swing.JPanel panelProduct1;
     private javax.swing.JPanel panelRegistration;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTable tblProduct;
     private javax.swing.JTable tblProduct1;
     private javax.swing.JTextField txtCalorie;
-    private javax.swing.JTextField txtCalorie1;
     private javax.swing.JTextField txtCarbs;
-    private javax.swing.JTextField txtCarbs1;
     private javax.swing.JTextField txtChol;
-    private javax.swing.JTextField txtChol1;
     private javax.swing.JTextField txtFat;
-    private javax.swing.JTextField txtFat1;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
     private javax.swing.JTextField txtProtein;
-    private javax.swing.JTextField txtProtein1;
     private javax.swing.JTextField txtRefQty;
-    private javax.swing.JTextField txtRefQty1;
-    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSodium;
-    private javax.swing.JTextField txtSodium1;
+    private javax.swing.JTextField txtType;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable(String search) {
         ProductDirectory product = new ProductDirectory();
         ResultSet res = product.getProductData(search);
-        tblProduct.setModel(DbUtils.resultSetToTableModel(res));
+        tblProduct1.setModel(DbUtils.resultSetToTableModel(res));
     }
 }

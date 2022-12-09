@@ -55,11 +55,12 @@ public class ProductDirectory {
        
         try {
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                                UPDATE TABLE productcatalog
+                                                                                UPDATE productcatalog
                                                                                 SET status = "Approved",
                                                                                 status2 = "Approved"
                                                                                 WHERE product_name = ?""");
             st.setString(1, product_name);
+            int res = st.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,11 +71,13 @@ public class ProductDirectory {
        
         try {
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                                UPDATE TABLE productcatalog
-                                                                                SET status2 = "Requested",
-                                                                                    status = "Pending"
-                                                                                WHERE product_name = ?""");
+                                                                                UPDATE productcatalog
+                                                                                SET status2 = 'Requested',
+                                                                                    status = 'Pending'
+                                                                                WHERE product_name = ?
+                                                                              """);
             st.setString(1, product_name);
+            st.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,7 +127,7 @@ public class ProductDirectory {
         try {
             Connection dbconn = DBconnection.connectDB();
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                            UPDATE TABLE productcatalog
+                                                                            UPDATE productcatalog
                                                                             SET type = ?,
                                                                                 reference_qty = ?,
                                                                                 calorie = ?,
@@ -210,7 +213,7 @@ public class ProductDirectory {
         }
     }
     
-    public ResultSet getTotalProducts(){
+    public String getTotalProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -219,20 +222,27 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
-                                                            added_by = 'Grocery Store Manager'
-                                                                     """);
+                                                            product_type = 'Grocery Store Product'
+                                                            """);
 
             ResultSet res = st.executeQuery();
-//            System.out.print(res.getString());
-
-            return res;
+            
+            
+            if (res.next()){
+                String val = res.getString(1);
+                return val;
+            }
+            else{
+                return "0";
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            return "0";
         }
     }
     
-    public ResultSet getApprovedProducts(){
+    public String getApprovedProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -241,19 +251,24 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
-                                                            added_by = 'Grocery Store Manager'
+                                                            product_type = 'Grocery Store Product'
                                                             and status2 = 'Approved'
                                                                      """);
-
             ResultSet res = st.executeQuery();
-            return res;
+            if (res.next()){
+                String val = res.getString(1);
+                return val;
+            }
+            else{
+                return "0";
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            return "0";
         }
     }
     
-    public ResultSet getPendingProducts(){
+    public String getPendingProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -262,15 +277,21 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
-                                                            added_by = 'Grocery Store Manager'
+                                                            product_type = 'Grocery Store Product'
                                                             and status2 = 'Pending'
                                                                      """);
 
             ResultSet res = st.executeQuery();
-            return res;
+            if (res.next()){
+                String val = res.getString(1);
+                return val;
+            }
+            else{
+                return "0";
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            return "0";
         }
     }
     

@@ -34,8 +34,6 @@ public class DBconnection {
             conn =  DriverManager.getConnection(connectionUrl);
 //            conn =  DriverManager.getConnection(connectionUrl, "root", "NEUgrad2024");
 //            System.out.println("Connected to the DB");
-//            conn =  DriverManager.getConnection(connectionUrl, "root", "NEUgrad2024");
-            System.out.println("Connected to the DB");
             return conn;
         } 
         catch (SQLException ex) {
