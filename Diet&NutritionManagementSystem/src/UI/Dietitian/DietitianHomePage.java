@@ -199,6 +199,9 @@ public class DietitianHomePage extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblApppointmentsMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblApppointmentsMouseEntered(evt);
+            }
         });
         jPanel3.add(lblApppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 160, -1));
 
@@ -269,6 +272,10 @@ public class DietitianHomePage extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblAccountMouseClicked
+
+    private void lblApppointmentsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblApppointmentsMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblApppointmentsMouseEntered
     
     public String getUserNameFromEmail(String email_id){
         
