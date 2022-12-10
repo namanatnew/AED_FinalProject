@@ -400,7 +400,7 @@ public class SignupFrame extends javax.swing.JFrame {
     private void userSignup(String email, String password, String name,String gender,Date dob,
             String address,long mobile) {
         Account ac = new Account();
-        ac.addUserCredential(email, password);
+        ac.addUserCredential(email, password, "User");
         ac.addPerson(email,name,gender,dob,address,mobile);
         ac.addUser(email,name,gender,dob,address,mobile);
 

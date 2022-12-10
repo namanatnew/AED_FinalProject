@@ -2,6 +2,7 @@ package UI.Authenticate;
 
 import Model.Account.Account;
 import Model.Database.DBconnection;
+import UI.Dietitian.DietitianHomePage;
 import UI.SystemAdmin.SAHomePage;
 import UI.User.UserHomePage;
 import java.awt.Color;
@@ -329,14 +330,14 @@ public class LoginFrame extends javax.swing.JFrame {
 //                  this.setVisible(false);
                             break;
                         }
-                    case "Dietician":
+                    case "Dietitian":
                         {
-                            SAHomePage mf = new SAHomePage();
+                            DietitianHomePage mf = new DietitianHomePage(email);
                             mf.setVisible(true);
 //                  this.setVisible(false);
                             break;
                         }
-                    case "Research Dietician":
+                    case "Research Dietitian":
                         {
                             SAHomePage mf = new SAHomePage();
                             mf.setVisible(true);
@@ -350,7 +351,9 @@ public class LoginFrame extends javax.swing.JFrame {
 //                  this.setVisible(false);
                             break;
                         }
+
                     case "System admin":
+
                         {
                             SAHomePage mf = new SAHomePage(email);
                             mf.setVisible(true);
