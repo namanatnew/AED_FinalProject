@@ -204,7 +204,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Add Product Information">
+                        <TitledBorder title="Add Meal Information">
                           <Font PropertyName="font" name="sansserif" size="10" style="3"/>
                         </TitledBorder>
                       </Border>
@@ -251,7 +251,7 @@
                     <Component class="javax.swing.JTextField" name="txtType">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="text" type="java.lang.String" value="Grocery Store Product"/>
+                        <Property name="text" type="java.lang.String" value="Meal Plan Product"/>
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTypeKeyReleased"/>
@@ -461,7 +461,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="View Information">
+                        <TitledBorder title="View &amp; Modify Information">
                           <Font PropertyName="font" name="sansserif" size="10" style="3"/>
                         </TitledBorder>
                       </Border>
