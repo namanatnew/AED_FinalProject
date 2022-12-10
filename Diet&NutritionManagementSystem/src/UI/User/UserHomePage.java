@@ -36,15 +36,13 @@ public class UserHomePage extends javax.swing.JFrame {
         this.userName = getUserNameFromEmail(email_id);
         System.out.println(userName);
         lblWelcome.setText("Welcome, " + this.userName);
-        
-        showDietInfo(this.userName);
     }
     
     //comment after testing
     public UserHomePage(String name, int i) {
         initComponents();
         this.userName = name;
-        showDietInfo(this.userName);
+        
     }
 
     /**
@@ -73,14 +71,6 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        panelMedical1 = new javax.swing.JPanel();
-        lblSodium = new javax.swing.JLabel();
-        lblCalories = new javax.swing.JLabel();
-        lblProtein = new javax.swing.JLabel();
-        lblCarbs = new javax.swing.JLabel();
-        lblFats = new javax.swing.JLabel();
-        lblCholesterol = new javax.swing.JLabel();
-        lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -105,11 +95,6 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
 
         lblClose.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         lblClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,9 +153,7 @@ public class UserHomePage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel5)))))
+                            .addComponent(jLabel5))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -254,47 +237,6 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelMedical1.setBackground(new java.awt.Color(255, 255, 255, 180));
-        panelMedical1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-        panelMedical1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblSodium.setBackground(new java.awt.Color(255, 255, 255));
-        lblSodium.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblSodium.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sodium", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, 70));
-
-        lblCalories.setBackground(new java.awt.Color(255, 255, 255));
-        lblCalories.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblCalories.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calories", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblCalories, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 70));
-
-        lblProtein.setBackground(new java.awt.Color(255, 255, 255));
-        lblProtein.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblProtein.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Protein", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 70));
-
-        lblCarbs.setBackground(new java.awt.Color(255, 255, 255));
-        lblCarbs.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblCarbs.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbs", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 100, 70));
-
-        lblFats.setBackground(new java.awt.Color(255, 255, 255));
-        lblFats.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblFats.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblFats, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 100, 70));
-
-        lblCholesterol.setBackground(new java.awt.Color(255, 255, 255));
-        lblCholesterol.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblCholesterol.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblCholesterol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
-
-        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
-
-        lblTitle.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
-        lblTitle.setText("Your Diet Plan (Daily Requirement)");
-        jPanel4.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
         setSize(new java.awt.Dimension(1019, 641));
@@ -343,43 +285,6 @@ public class UserHomePage extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblAccountMouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jLabel2MouseClicked
-    
-    
-    public void showDietInfo(String name){
-        
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
-        
-        try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dietplans WHERE username=?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
-            
-            while(res.next()){
-                lblCalories.setText(res.getString("calories"));
-                lblProtein.setText(res.getString("protein"));
-                lblCarbs.setText(res.getString("carbs"));
-                lblFats.setText(res.getString("fats"));
-                lblSodium.setText(res.getString("sodium"));
-                lblCholesterol.setText(res.getString("cholesterol"));
-                
-            }
-            System.out.println(this.userName);
-            
-        }
-        catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    }
-    
     
     public String getUserNameFromEmail(String email_id){
         
@@ -455,17 +360,9 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblAppointment;
-    private javax.swing.JLabel lblCalories;
-    private javax.swing.JLabel lblCarbs;
-    private javax.swing.JLabel lblCholesterol;
     private javax.swing.JLabel lblClose;
-    private javax.swing.JLabel lblFats;
     private javax.swing.JLabel lblHomePage;
     private javax.swing.JLabel lblLogout;
-    private javax.swing.JLabel lblProtein;
-    private javax.swing.JLabel lblSodium;
-    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWelcome;
-    private javax.swing.JPanel panelMedical1;
     // End of variables declaration//GEN-END:variables
 }
