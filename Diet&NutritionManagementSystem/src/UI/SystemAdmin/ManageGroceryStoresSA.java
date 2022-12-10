@@ -20,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author naman
  */
-public class SAManageGroceryStores extends javax.swing.JFrame {
+public class ManageGroceryStoresSA extends javax.swing.JFrame {
     DefaultTableModel model;
     
     /**
      * Creates new form NewJFrame
      */
 
-    public SAManageGroceryStores() {
+    public ManageGroceryStoresSA() {
         initComponents();
         populateTable("");
     }
@@ -347,7 +347,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        GSHomePage frame = new GSHomePage();
+        SAHomePage frame = new SAHomePage();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -409,7 +409,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 //            txtPassword.setText(res.getString(4));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageGroceryStoresSA.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnView1ActionPerformed
@@ -423,7 +423,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        SAManageGroceryStores frame = new SAManageGroceryStores();
+        ManageGroceryStoresSA frame = new ManageGroceryStoresSA();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
@@ -500,7 +500,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SAManageGroceryStores().setVisible(true);
+                new ManageGroceryStoresSA().setVisible(true);
             }
         });
     }

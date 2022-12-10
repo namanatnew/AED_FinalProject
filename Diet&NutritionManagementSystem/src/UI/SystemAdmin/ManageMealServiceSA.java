@@ -20,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author naman
  */
-public class SAManageMealService extends javax.swing.JFrame {
+public class ManageMealServiceSA extends javax.swing.JFrame {
     DefaultTableModel model;
     
     /**
      * Creates new form NewJFrame
      */
 
-    public SAManageMealService() {
+    public ManageMealServiceSA() {
         initComponents();
         populateTable("");
     }
@@ -346,7 +346,7 @@ public class SAManageMealService extends javax.swing.JFrame {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        GSHomePage frame = new GSHomePage();
+        SAHomePage frame = new SAHomePage();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -405,7 +405,7 @@ public class SAManageMealService extends javax.swing.JFrame {
             txtEmail.setText(res.getString(3));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SAManageMealService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageMealServiceSA.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnView1ActionPerformed
@@ -419,7 +419,7 @@ public class SAManageMealService extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        SAManageMealService frame = new SAManageMealService();
+        ManageMealServiceSA frame = new ManageMealServiceSA();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
@@ -496,7 +496,7 @@ public class SAManageMealService extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SAManageMealService().setVisible(true);
+                new ManageMealServiceSA().setVisible(true);
             }
         });
     }
