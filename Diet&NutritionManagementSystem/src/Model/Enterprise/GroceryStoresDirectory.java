@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.Enterprise;
+package Model.Organisation;
 
 //import Model.Account.Account;
 import Model.Database.DBconnection;
@@ -132,7 +132,7 @@ public class GroceryStoresDirectory {
             System.out.print("found it");
             return res;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
             return null;
     }
