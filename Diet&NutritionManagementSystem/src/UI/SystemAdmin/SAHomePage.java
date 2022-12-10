@@ -6,6 +6,7 @@ package UI.SystemAdmin;
 
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
+import UI.Hospital.ManageHospitalSA;
 import UI.User.UserRegistration;
 import java.awt.Color;
 
@@ -210,6 +211,11 @@ public class SAHomePage extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 170, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 580));
@@ -257,6 +263,15 @@ public class SAHomePage extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+           // TODO add your handling code here:
+        ManageHospitalSA frame1 = new ManageHospitalSA();
+        frame1.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
