@@ -54,7 +54,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="MANAGE GROCERY STORES"/>
+            <Property name="text" type="java.lang.String" value="MANAGE MEAL SERVICES"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -156,8 +156,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
-                          <Component id="btnRegister" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                          <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnClear" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -206,7 +206,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Add Grocery Store Information">
+                        <TitledBorder title="Add Meal Service Information">
                           <Font PropertyName="font" name="sansserif" size="10" style="3"/>
                         </TitledBorder>
                       </Border>
@@ -315,7 +315,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Add Store"/>
+                    <Property name="text" type="java.lang.String" value="Add Meal Service"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
@@ -383,11 +383,11 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tblStore">
+                        <Component class="javax.swing.JTable" name="tblService">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="0">
-                                <Column editable="false" title="Store Name" type="java.lang.Object"/>
+                                <Column editable="false" title="Meal Service Name" type="java.lang.Object"/>
                                 <Column editable="false" title="Contact" type="java.lang.Object"/>
                                 <Column editable="false" title="Email ID" type="java.lang.Object"/>
                                 <Column editable="false" title="Created At" type="java.lang.Object"/>

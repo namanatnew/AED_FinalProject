@@ -24,8 +24,6 @@ public class ProductDirectory {
             String addedBy){
         Connection dbconn = DBconnection.connectDB();
         try {
-            //    status column for nutrition admin
-            //    status2 column for meal service and grocery store
             PreparedStatement st = (PreparedStatement)dbconn
                     .prepareStatement("""
                                     INSERT INTO productcatalog (product_name, product_type, reference_qty, 

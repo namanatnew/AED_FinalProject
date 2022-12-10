@@ -132,7 +132,7 @@ public class GroceryStoresDirectory {
             System.out.print("found it");
             return res;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
             return null;
     }
