@@ -4,7 +4,7 @@
  */
 package UI.SystemAdmin;
 
-import Model.Organisation.MealServiceDirectory;
+import Model.Enterprise.MealServiceDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
 import javax.swing.JOptionPane;
