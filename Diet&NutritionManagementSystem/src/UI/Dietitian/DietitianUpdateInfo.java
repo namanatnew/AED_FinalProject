@@ -16,7 +16,6 @@ import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
-import Model.WorkRequest.DietitianAppointments;
 import UI.Authenticate.LoginFrame;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;

@@ -730,31 +730,6 @@ public class UserDailyIntake extends javax.swing.JFrame {
         DietIntake di = new DietIntake();
         di.updateRecordsByUser(calories,  protein, carbs, fats, sodium, cholesterol, this.userName);
         
-//        Connection dbconn = DBconnection.connectDB();
-//        try {
-//            String query = """
-//                            UPDATE dailyintake
-//                             SET calories = calories+?,
-//                                 protein = protein+?,
-//                                 carbs = carbs+?,
-//                                 fats = fats+?,
-//                                 sodium = sodium+?,
-//                                 cholesterol = cholesterol+?
-//                            WHERE username = ?
-//                            """;
-//            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement(query);
-//            st.setFloat(1, calories);
-//            st.setFloat(2, protein);
-//            st.setFloat(3, carbs);
-//            st.setFloat(4, fats);
-//            st.setFloat(5, sodium);
-//            st.setFloat(6, cholesterol);
-//            st.setString(7, this.userName);
-//            st.executeUpdate();
-//        } catch (SQLException ex) {
-//            System.out.println("update failed");
-//            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     
     }
     public void showDietInfo(String name){
