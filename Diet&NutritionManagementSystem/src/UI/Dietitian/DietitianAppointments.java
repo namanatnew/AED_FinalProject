@@ -2,11 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Model.WorkRequest;
+package UI.Dietitian;
 
 import UI.Dietitian.*;
 import UI.User.*;
 import Model.Database.DBconnection;
+import Model.Diet.DietIntake;
+import Model.Diet.DietPlan;
+import Model.People.DietitianDirectory;
+import Model.WorkRequest.DietitianAppointmentRequest;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -534,16 +538,13 @@ public class DietitianAppointments extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
 
         String name = String.valueOf(model.getValueAt(index,3));
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        
+        DietitianAppointmentRequest dq = new DietitianAppointmentRequest();
+        ResultSet res = dq.selectOwnConfirmedAppointmentDetails(this.userName);
+        
         
         try{
             
-            String query = "SELECT u.Name, u.Gender, u.Age, u.Food_preference, u.Purpose, u.Workout_Frequency, a.dietitianName, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=? AND a.status=?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, this.userName);
-            st.setString(2, "Confirmed");
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 
@@ -563,12 +564,10 @@ public class DietitianAppointments extends javax.swing.JFrame {
                 txtWorkout.setEditable(false);
                 
             }
-            System.out.println(res);
             
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -580,26 +579,12 @@ public class DietitianAppointments extends javax.swing.JFrame {
         //        User selectedUser =(User)model.getValueAt(rowIndex,1);
 
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
-
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
-
-        try{
-
-            String query = "UPDATE appointments SET status = ? WHERE appointmentID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, "Confirmed"); //bg
-            st.setInt(2, id);
-            st.executeUpdate();
-
-            populateTableData();
-            //            System.out.println(res);
-
-            //            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        DietitianAppointmentRequest dreq = new DietitianAppointmentRequest();
+        dreq.acceptRequestByID(id);
+        
+        populateTableData();
+        
 
     }//GEN-LAST:event_btnAcceptActionPerformed
 
@@ -611,25 +596,10 @@ public class DietitianAppointments extends javax.swing.JFrame {
 
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
 
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
-
-        try{
-
-            String query = "UPDATE appointments SET status = ? WHERE appointmentID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, "Declined"); //bg
-            st.setInt(2, id);
-            st.executeUpdate();
-
-            populateTableData();
-            //            System.out.println(res);
-
-            //            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DietitianAppointmentRequest dreq = new DietitianAppointmentRequest();
+        dreq.rejectRequestByID(id);
+        
+        populateTableData();
 
     }//GEN-LAST:event_btnRejectActionPerformed
 
@@ -666,48 +636,16 @@ public class DietitianAppointments extends javax.swing.JFrame {
             float sodium = Float.parseFloat(txtSodium.getText());
             float cholesterol = Float.parseFloat(txtCholesterol.getText());
             
-            Connection dbconn = DBconnection.connectDB();
-            PreparedStatement st;
-
-            try{
-                String query = "INSERT INTO dietplans(userName, calories, protein, carbs, fats, sodium, cholesterol) VALUES (?,?,?,?,?,?,?)";
-                st = (PreparedStatement)dbconn.prepareStatement(query);
-                st.setString(1, username); //bg
-                st.setFloat(2, calories);
-                st.setFloat(3, protein);
-                st.setFloat(4, carbs);
-                st.setFloat(5, fats);
-                st.setFloat(6, sodium);
-                st.setFloat(7, cholesterol);
-
-                st.executeUpdate();
-
-            }
-            catch(SQLException ex){
-                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            DietPlan dp = new DietPlan();
+            dp.insertRecords(username, calories, protein, carbs, fats, sodium, cholesterol);
             
-            createDailyIntakeRecord(username);
+            
+            
+            new DietIntake().createDailyIntakeDefaultRecord(username);
             resetForm();
         }
     }//GEN-LAST:event_btnBookActionPerformed
-    
-    public void createDailyIntakeRecord(String username){
-         Connection dbconn = DBconnection.connectDB();
-            PreparedStatement st;
 
-            try{
-                String query = "INSERT INTO dailyintake(userName) VALUES (?)";
-                st = (PreparedStatement)dbconn.prepareStatement(query);
-                st.setString(1, username);
-
-                st.executeUpdate();
-
-            }
-            catch(SQLException ex){
-                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }
     
     
     public void resetForm(){
@@ -749,45 +687,33 @@ public class DietitianAppointments extends javax.swing.JFrame {
     
     public String getUserNameFromEmail(String email_id){
         
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.getDietitianNameByEmail(email_id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from dietitians WHERE Email=?");
-            st.setString(1, email_id);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 this.userName = res.getString("Name");
             }
-            System.out.println(this.userName);
-            
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this.userName;
     }
     
     public void populateTableData(){
     
-        Connection dbconn = DBconnection.connectDB();
-        //Type-cast table model into default table model
+        
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
         
         //Clear the table 
         model.setRowCount(0);
         
-        PreparedStatement st;
+        DietitianAppointmentRequest dreq = new DietitianAppointmentRequest();
+        ResultSet res = dreq.selectOwnAllConfirmedAppointmentDetails(this.userName);
         
         try{
-            
-            String query = "SELECT u.Name, u.Gender, u.Age, u.Contact, u.Purpose, a.appointmentID, a.dietitianName, a.date, a.time, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, this.userName);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 Object[] row = new Object[9];
@@ -803,9 +729,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
                 
                 model.addRow(row);
             }
-            System.out.println(res);
             
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
             Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);

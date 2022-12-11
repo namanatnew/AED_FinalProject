@@ -8,7 +8,6 @@ import UI.User.*;
 import Model.Database.DBconnection;
 import Model.People.DietitianDirectory;
 import Model.People.UserDirectory;
-import Model.WorkRequest.DietitianAppointments;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;

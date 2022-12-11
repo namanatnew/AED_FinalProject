@@ -133,4 +133,22 @@ public class DietIntake {
         }
     
     }
+
+    public void createDailyIntakeDefaultRecord(String username){
+         Connection dbconn = DBconnection.connectDB();
+            PreparedStatement st;
+
+            try{
+                String query = "INSERT INTO dailyintake(userName) VALUES (?)";
+                st = (PreparedStatement)dbconn.prepareStatement(query);
+                st.setString(1, username);
+
+                st.executeUpdate();
+
+            }
+            catch(SQLException ex){
+                Logger.getLogger(DietIntake.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
 }
