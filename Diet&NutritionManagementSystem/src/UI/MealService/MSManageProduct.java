@@ -5,6 +5,7 @@
 package UI.MealService;
 
 import Model.Product.ProductDirectory;
+import Model.WorkRequest.ProductApproval;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSManageProduct;
 import UI.User.UserRegistration;
@@ -333,6 +334,8 @@ public class MSManageProduct extends javax.swing.JFrame {
         lblHeight.setText("Product Name");
         panelMedical.add(lblHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, -1));
 
+        txtType.setEditable(false);
+        txtType.setText("Meal Plan Product");
         txtType.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTypeKeyTyped(evt);
@@ -341,7 +344,7 @@ public class MSManageProduct extends javax.swing.JFrame {
         panelMedical.add(txtType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 190, 30));
 
         lblAllergies2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
-        lblAllergies2.setText("        Product Type");
+        lblAllergies2.setText("       Product Type");
         panelMedical.add(lblAllergies2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 130, -1));
 
         btnRegister.setBackground(new java.awt.Color(255, 51, 51));
@@ -589,7 +592,12 @@ public class MSManageProduct extends javax.swing.JFrame {
                 txtSearchActionPerformed(evt);
             }
         });
-        pnlView.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -60, 318, 28));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        pnlView.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 318, 30));
 
         btnUpdate.setBackground(new java.awt.Color(255, 51, 51));
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
@@ -624,7 +632,7 @@ public class MSManageProduct extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblProduct1);
 
-        pnlView.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 720, 160));
+        pnlView.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 720, 130));
 
         panelMedical2.setBackground(new java.awt.Color(255, 255, 255, 180));
         panelMedical2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
@@ -641,6 +649,7 @@ public class MSManageProduct extends javax.swing.JFrame {
         lblHeight1.setText("Product Name");
         panelMedical2.add(lblHeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, -1));
 
+        txtType1.setEditable(false);
         txtType1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtType1KeyTyped(evt);
@@ -958,6 +967,7 @@ public class MSManageProduct extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Meal is added to the catalog",
                 "Meal added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
+            populateTable("");
         }
         
         
@@ -970,6 +980,7 @@ public class MSManageProduct extends javax.swing.JFrame {
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -1004,7 +1015,7 @@ public class MSManageProduct extends javax.swing.JFrame {
 
         String product_name = model.getValueAt(selectedRow,0).toString();
 
-        ProductDirectory product = new ProductDirectory();
+        ProductApproval product = new ProductApproval();
 
         product.sendProduct(product_name);
 
@@ -1172,20 +1183,26 @@ public class MSManageProduct extends javax.swing.JFrame {
         ResultSet res = product.exactProductLookup(product_name);
         try {
             while(res.next()){
-            txtName.setText(res.getString(1));
-            txtType.setText(res.getString(2));
-            txtRefQty.setText(res.getString(3));
-            txtCalorie.setText(res.getString(4));
-            txtFat.setText(res.getString(5));
-            txtChol.setText(res.getString(6));
-            txtSodium.setText(res.getString(7));
-            txtCarbs.setText(res.getString(8));
-            txtProtein.setText(res.getString(9));
+            txtName2.setText(res.getString(1));
+            txtType1.setText(res.getString(2));
+            txtRefQty1.setText(res.getString(3));
+            txtCalorie1.setText(res.getString(4));
+            txtFat1.setText(res.getString(5));
+            txtChol1.setText(res.getString(6));
+            txtSodium1.setText(res.getString(7));
+            txtCarbs1.setText(res.getString(8));
+            txtProtein1.setText(res.getString(9));
         }}
             catch (SQLException ex) {
-            Logger.getLogger(MSManageProduct2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tblProduct1MouseClicked
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String search = txtSearch.getText();
+        populateTable(search);
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     
     /**
@@ -1240,7 +1257,7 @@ public class MSManageProduct extends javax.swing.JFrame {
     
     private void populateTable(String search) {
         ProductDirectory product = new ProductDirectory();
-        ResultSet res = product.getProductData(search);
+        ResultSet res = product.getProductData(search,"Meal Plan Product");
         tblProduct1.setModel(DbUtils.resultSetToTableModel(res));
     }
 

@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import Model.Database.DBconnection;
 import Model.People.User;
 import Model.People.UserDirectory;
+import Model.Utilities.SendEmail;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -519,6 +520,9 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
                 st.setString(6, "Requested");
                 
                 st.executeUpdate();
+                
+                
+                
                 
             }
             catch(SQLException ex){

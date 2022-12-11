@@ -211,7 +211,7 @@ public class SAHomePage extends javax.swing.JFrame {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel3.add(lblHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 180, -1));
+        jPanel3.add(lblHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, -1));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));

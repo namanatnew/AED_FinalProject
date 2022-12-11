@@ -5,17 +5,16 @@
 package UI.GroceryStore;
 
 import Model.Product.ProductDirectory;
+import Model.WorkRequest.ProductApproval;
 import UI.Authenticate.LoginFrame;
-import UI.GroceryStore.GSHomePage;
-import UI.Main.MainFrame;
-import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
+import UI.User.UserRegistration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -25,10 +24,9 @@ public class GSManageProduct extends javax.swing.JFrame {
     DefaultTableModel model;
     public String name;
     /**
-     * Creates new form NewJFrame
+     * Creates new form SAHomePage
      * @param name
      */
-
     public GSManageProduct(String name) {
         initComponents();
         this.name = name;
@@ -39,8 +37,6 @@ public class GSManageProduct extends javax.swing.JFrame {
         initComponents();
         populateTable("");
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,151 +47,566 @@ public class GSManageProduct extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
+        panelTop = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblClose = new javax.swing.JLabel();
+        panelControl = new javax.swing.JPanel();
+        panellGreen = new javax.swing.JPanel();
+        panelLogout = new javax.swing.JLabel();
+        panelRed = new javax.swing.JPanel();
+        panelProducts = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        panelMain = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
-        panelRegistration = new javax.swing.JPanel();
-        panelProduct = new javax.swing.JPanel();
+        pnlRegistration = new javax.swing.JPanel();
+        panelMedical = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
-        lblGender = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
+        lblHeight = new javax.swing.JLabel();
         txtType = new javax.swing.JTextField();
-        panelNutrition = new javax.swing.JPanel();
-        lblFat = new javax.swing.JLabel();
-        txtProtein = new javax.swing.JTextField();
-        lblRefQty = new javax.swing.JLabel();
-        lblCalorie = new javax.swing.JLabel();
-        lblChol = new javax.swing.JLabel();
-        lblSodium = new javax.swing.JLabel();
-        lblCarbs = new javax.swing.JLabel();
-        lblProtein = new javax.swing.JLabel();
-        txtRefQty = new javax.swing.JTextField();
-        txtCalorie = new javax.swing.JTextField();
-        txtFat = new javax.swing.JTextField();
-        txtChol = new javax.swing.JTextField();
-        txtSodium = new javax.swing.JTextField();
-        txtCarbs = new javax.swing.JTextField();
-        panelAddress2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblProduct1 = new javax.swing.JTable();
-        txtSearch1 = new javax.swing.JTextField();
-        btnView1 = new javax.swing.JButton();
-        btnDelete1 = new javax.swing.JButton();
-        btnSend1 = new javax.swing.JButton();
-        btnUpdate1 = new javax.swing.JButton();
+        lblAllergies2 = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        panelDiet2 = new javax.swing.JPanel();
+        lblPurpose3 = new javax.swing.JLabel();
+        lblWorkoutFrequency10 = new javax.swing.JLabel();
+        txtRefQty = new javax.swing.JTextField();
+        lblWorkoutFrequency11 = new javax.swing.JLabel();
+        txtCarbs = new javax.swing.JTextField();
+        txtCalorie = new javax.swing.JTextField();
+        panelDiet3 = new javax.swing.JPanel();
+        lblPurpose4 = new javax.swing.JLabel();
+        lblWorkoutFrequency12 = new javax.swing.JLabel();
+        txtQualification4 = new javax.swing.JTextField();
+        lblWorkoutFrequency13 = new javax.swing.JLabel();
+        txtQualification5 = new javax.swing.JTextField();
+        txtQualification6 = new javax.swing.JTextField();
+        panelDiet4 = new javax.swing.JPanel();
+        lblPurpose5 = new javax.swing.JLabel();
+        lblWorkoutFrequency14 = new javax.swing.JLabel();
+        txtQualification7 = new javax.swing.JTextField();
+        lblWorkoutFrequency15 = new javax.swing.JLabel();
+        txtQualification8 = new javax.swing.JTextField();
+        txtQualification9 = new javax.swing.JTextField();
+        panelDiet5 = new javax.swing.JPanel();
+        lblPurpose6 = new javax.swing.JLabel();
+        lblWorkoutFrequency16 = new javax.swing.JLabel();
+        txtQualification10 = new javax.swing.JTextField();
+        lblWorkoutFrequency17 = new javax.swing.JLabel();
+        txtQualification11 = new javax.swing.JTextField();
+        txtQualification12 = new javax.swing.JTextField();
+        txtFat = new javax.swing.JTextField();
+        lblWorkoutFrequency22 = new javax.swing.JLabel();
+        txtChol = new javax.swing.JTextField();
+        lblWorkoutFrequency23 = new javax.swing.JLabel();
+        lblWorkoutFrequency24 = new javax.swing.JLabel();
+        txtProtein = new javax.swing.JTextField();
+        lblWorkoutFrequency25 = new javax.swing.JLabel();
+        txtSodium = new javax.swing.JTextField();
+        pnlView = new javax.swing.JPanel();
+        txtSearch = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblProduct1 = new javax.swing.JTable();
+        panelMedical2 = new javax.swing.JPanel();
+        txtName2 = new javax.swing.JTextField();
+        lblHeight1 = new javax.swing.JLabel();
+        txtType1 = new javax.swing.JTextField();
+        lblAllergies3 = new javax.swing.JLabel();
+        panelDiet6 = new javax.swing.JPanel();
+        lblPurpose7 = new javax.swing.JLabel();
+        lblWorkoutFrequency18 = new javax.swing.JLabel();
+        txtRefQty1 = new javax.swing.JTextField();
+        lblWorkoutFrequency19 = new javax.swing.JLabel();
+        txtCarbs1 = new javax.swing.JTextField();
+        txtCalorie1 = new javax.swing.JTextField();
+        panelDiet7 = new javax.swing.JPanel();
+        lblPurpose8 = new javax.swing.JLabel();
+        lblWorkoutFrequency20 = new javax.swing.JLabel();
+        txtQualification13 = new javax.swing.JTextField();
+        lblWorkoutFrequency21 = new javax.swing.JLabel();
+        txtQualification14 = new javax.swing.JTextField();
+        txtQualification15 = new javax.swing.JTextField();
+        panelDiet8 = new javax.swing.JPanel();
+        lblPurpose9 = new javax.swing.JLabel();
+        lblWorkoutFrequency26 = new javax.swing.JLabel();
+        txtQualification16 = new javax.swing.JTextField();
+        lblWorkoutFrequency27 = new javax.swing.JLabel();
+        txtQualification17 = new javax.swing.JTextField();
+        txtQualification18 = new javax.swing.JTextField();
+        panelDiet9 = new javax.swing.JPanel();
+        lblPurpose10 = new javax.swing.JLabel();
+        lblWorkoutFrequency28 = new javax.swing.JLabel();
+        txtQualification19 = new javax.swing.JTextField();
+        lblWorkoutFrequency29 = new javax.swing.JLabel();
+        txtQualification20 = new javax.swing.JTextField();
+        txtQualification21 = new javax.swing.JTextField();
+        txtFat1 = new javax.swing.JTextField();
+        lblWorkoutFrequency30 = new javax.swing.JLabel();
+        txtChol1 = new javax.swing.JTextField();
+        lblWorkoutFrequency31 = new javax.swing.JLabel();
+        lblWorkoutFrequency32 = new javax.swing.JLabel();
+        txtProtein1 = new javax.swing.JTextField();
+        lblWorkoutFrequency33 = new javax.swing.JLabel();
+        txtSodium1 = new javax.swing.JTextField();
+        btnSend = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(66, 179, 172));
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblTitle.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("MANAGE PRODUCT & NUTRITION");
-        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
-
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(939, 6, 75, -1));
-
-        btnHome.setText("Home");
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 75, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
+        panelTop.setBackground(new java.awt.Color(121, 237, 39));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
-        tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
-        tabbedPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tabbedPane.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
 
-        panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
-        panelProduct.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Product Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
-        panelProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
+        jLabel4.setText("Welcome");
+
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("Diet Management System");
+
+        lblClose.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        lblClose.setForeground(new java.awt.Color(255, 255, 255));
+        lblClose.setText("X");
+        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelTopLayout = new javax.swing.GroupLayout(panelTop);
+        panelTop.setLayout(panelTopLayout);
+        panelTopLayout.setHorizontalGroup(
+            panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTopLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 575, Short.MAX_VALUE)
+                .addComponent(lblClose)
+                .addGap(18, 18, 18))
+            .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopLayout.createSequentialGroup()
+                    .addContainerGap(842, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(59, 59, 59)))
+        );
+        panelTopLayout.setVerticalGroup(
+            panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTopLayout.createSequentialGroup()
+                .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelTopLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelTopLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblClose)
+                            .addComponent(jLabel5))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addContainerGap()))
+        );
+
+        getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 60));
+
+        panelControl.setBackground(new java.awt.Color(51, 51, 51));
+        panelControl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panellGreen.setBackground(new java.awt.Color(121, 237, 39));
+        panellGreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        panelLogout.setForeground(new java.awt.Color(255, 255, 255));
+        panelLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Exit_26px_2.png"))); // NOI18N
+        panelLogout.setText("   Logout");
+        panelLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelLogoutMouseClicked(evt);
+            }
+        });
+        panellGreen.add(panelLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, -1));
+
+        panelControl.add(panellGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 190, 45));
+
+        panelRed.setBackground(new java.awt.Color(255, 51, 51));
+
+        panelProducts.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        panelProducts.setForeground(new java.awt.Color(255, 255, 255));
+        panelProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        panelProducts.setText(" Manage Products");
+        panelProducts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelProductsMouseClicked(evt);
+            }
+        });
+        panelProducts.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                panelProductsKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRedLayout = new javax.swing.GroupLayout(panelRed);
+        panelRed.setLayout(panelRedLayout);
+        panelRedLayout.setHorizontalGroup(
+            panelRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+            .addGroup(panelRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRedLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        panelRedLayout.setVerticalGroup(
+            panelRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 45, Short.MAX_VALUE)
+            .addGroup(panelRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRedLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelProducts)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelControl.add(panelRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        jLabel6.setText("  Home Page");
+        panelControl.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 150, -1));
+
+        getContentPane().add(panelControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 580));
+
+        panelMain.setBackground(new java.awt.Color(255, 255, 255));
+        panelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabbedPane.setBackground(new java.awt.Color(255, 51, 51));
+        tabbedPane.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabbedPane.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        tabbedPane.setName(""); // NOI18N
+
+        pnlRegistration.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelMedical.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelMedical.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNameKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameKeyTyped(evt);
             }
         });
-        panelProduct.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 210, -1));
+        panelMedical.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, 30));
 
-        lblGender.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblGender.setText("Type:");
-        panelProduct.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 110, -1));
-
-        lblName.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblName.setText("Product Name:");
-        panelProduct.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 110, -1));
+        lblHeight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
+        lblHeight.setText("Product Name");
+        panelMedical.add(lblHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, -1));
 
         txtType.setEditable(false);
         txtType.setText("Grocery Store Product");
         txtType.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTypeKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTypeKeyTyped(evt);
             }
         });
-        panelProduct.add(txtType, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, -1));
+        panelMedical.add(txtType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 190, 30));
 
-        panelNutrition.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Nutrition Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 10))); // NOI18N
-        panelNutrition.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        lblAllergies2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
+        lblAllergies2.setText("        Product Type");
+        panelMedical.add(lblAllergies2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 130, -1));
 
-        lblFat.setText("Total Fat:");
-        panelNutrition.add(lblFat, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
-        panelNutrition.add(txtProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 210, -1));
+        btnRegister.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
-        lblRefQty.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblRefQty.setText("Refrence Quantity:");
-        panelNutrition.add(lblRefQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+        btnClear.setBackground(new java.awt.Color(255, 51, 51));
+        btnClear.setForeground(new java.awt.Color(255, 255, 255));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
-        lblCalorie.setText("Calorie:");
-        panelNutrition.add(lblCalorie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        panelDiet2.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblChol.setText("Cholesterol:");
-        panelNutrition.add(lblChol, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+        lblPurpose3.setText("Reference Quantity");
+        panelDiet2.add(lblPurpose3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
-        lblSodium.setText("Sodium:");
-        panelNutrition.add(lblSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+        lblWorkoutFrequency10.setText("Calorie");
+        panelDiet2.add(lblWorkoutFrequency10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
-        lblCarbs.setText("Carbohydrates:");
-        panelNutrition.add(lblCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        txtRefQty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRefQtyKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtRefQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 200, 30));
 
-        lblProtein.setText("Protein:");
-        panelNutrition.add(lblProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
-        panelNutrition.add(txtRefQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 210, -1));
-        panelNutrition.add(txtCalorie, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 210, -1));
-        panelNutrition.add(txtFat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 210, -1));
-        panelNutrition.add(txtChol, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 210, -1));
-        panelNutrition.add(txtSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 210, -1));
-        panelNutrition.add(txtCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 210, -1));
+        lblWorkoutFrequency11.setText("Carbohydrates");
+        panelDiet2.add(lblWorkoutFrequency11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
-        panelAddress2.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        txtCarbs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCarbsKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 200, 30));
+
+        txtCalorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCalorieActionPerformed(evt);
+            }
+        });
+        txtCalorie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCalorieKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtCalorie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet3.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose4.setText("Product Name");
+        panelDiet3.add(lblPurpose4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblWorkoutFrequency12.setText("Type");
+        panelDiet3.add(lblWorkoutFrequency12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        txtQualification4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification4KeyTyped(evt);
+            }
+        });
+        panelDiet3.add(txtQualification4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
+
+        lblWorkoutFrequency13.setText("Added By");
+        panelDiet3.add(lblWorkoutFrequency13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtQualification5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification5KeyTyped(evt);
+            }
+        });
+        panelDiet3.add(txtQualification5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 200, 70));
+
+        txtQualification6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification6KeyTyped(evt);
+            }
+        });
+        panelDiet3.add(txtQualification6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet2.add(panelDiet3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 770, 150));
+
+        panelDiet4.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose5.setText("Product Name");
+        panelDiet4.add(lblPurpose5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblWorkoutFrequency14.setText("Type");
+        panelDiet4.add(lblWorkoutFrequency14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        txtQualification7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification7KeyTyped(evt);
+            }
+        });
+        panelDiet4.add(txtQualification7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
+
+        lblWorkoutFrequency15.setText("Added By");
+        panelDiet4.add(lblWorkoutFrequency15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtQualification8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification8KeyTyped(evt);
+            }
+        });
+        panelDiet4.add(txtQualification8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 200, 70));
+
+        txtQualification9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification9KeyTyped(evt);
+            }
+        });
+        panelDiet4.add(txtQualification9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet5.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose6.setText("Product Name");
+        panelDiet5.add(lblPurpose6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblWorkoutFrequency16.setText("Type");
+        panelDiet5.add(lblWorkoutFrequency16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        txtQualification10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification10KeyTyped(evt);
+            }
+        });
+        panelDiet5.add(txtQualification10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
+
+        lblWorkoutFrequency17.setText("Added By");
+        panelDiet5.add(lblWorkoutFrequency17, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtQualification11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification11KeyTyped(evt);
+            }
+        });
+        panelDiet5.add(txtQualification11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 200, 70));
+
+        txtQualification12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification12KeyTyped(evt);
+            }
+        });
+        panelDiet5.add(txtQualification12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet4.add(panelDiet5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 770, 150));
+
+        panelDiet2.add(panelDiet4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 770, 150));
+
+        txtFat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFatKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtFat, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 200, 30));
+
+        lblWorkoutFrequency22.setText("Total Fat");
+        panelDiet2.add(lblWorkoutFrequency22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+
+        txtChol.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCholKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtChol, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
+
+        lblWorkoutFrequency23.setText("Cholesterol");
+        panelDiet2.add(lblWorkoutFrequency23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+
+        lblWorkoutFrequency24.setText("Protein");
+        panelDiet2.add(lblWorkoutFrequency24, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
+
+        txtProtein.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProteinKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 200, 30));
+
+        lblWorkoutFrequency25.setText("Sodium");
+        panelDiet2.add(lblWorkoutFrequency25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+
+        txtSodium.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSodiumKeyTyped(evt);
+            }
+        });
+        panelDiet2.add(txtSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 200, 30));
+
+        javax.swing.GroupLayout pnlRegistrationLayout = new javax.swing.GroupLayout(pnlRegistration);
+        pnlRegistration.setLayout(pnlRegistrationLayout);
+        pnlRegistrationLayout.setHorizontalGroup(
+            pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelDiet2, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
+            .addGroup(pnlRegistrationLayout.createSequentialGroup()
+                .addGap(319, 319, 319)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlRegistrationLayout.setVerticalGroup(
+            pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegistrationLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(panelDiet2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
+
+        tabbedPane.addTab("Registration", pnlRegistration);
+
+        pnlView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        pnlView.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 318, 30));
+
+        btnUpdate.setBackground(new java.awt.Color(255, 51, 51));
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        pnlView.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 102, 35));
 
         tblProduct1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,156 +624,266 @@ public class GSManageProduct extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblProduct1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProduct1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblProduct1);
 
-        txtSearch1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearch1KeyReleased(evt);
+        pnlView.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 720, 130));
+
+        panelMedical2.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelMedical2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelMedical2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtName2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtName2KeyTyped(evt);
             }
         });
+        panelMedical2.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, 30));
 
-        btnView1.setText("View");
-        btnView1.addActionListener(new java.awt.event.ActionListener() {
+        lblHeight1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
+        lblHeight1.setText("Product Name");
+        panelMedical2.add(lblHeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, -1));
+
+        txtType1.setEditable(false);
+        txtType1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtType1KeyTyped(evt);
+            }
+        });
+        panelMedical2.add(txtType1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 190, 30));
+
+        lblAllergies3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
+        lblAllergies3.setText("        Product Type");
+        panelMedical2.add(lblAllergies3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 130, -1));
+
+        pnlView.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 751, 80));
+
+        panelDiet6.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose7.setText("Reference Quantity");
+        panelDiet6.add(lblPurpose7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+
+        lblWorkoutFrequency18.setText("Calorie");
+        panelDiet6.add(lblWorkoutFrequency18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
+        txtRefQty1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRefQty1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtRefQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 200, 30));
+
+        lblWorkoutFrequency19.setText("Carbohydrates");
+        panelDiet6.add(lblWorkoutFrequency19, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
+
+        txtCarbs1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCarbs1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtCarbs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 200, 30));
+
+        txtCalorie1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnView1ActionPerformed(evt);
+                txtCalorie1ActionPerformed(evt);
             }
         });
+        txtCalorie1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCalorie1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtCalorie1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
 
-        btnDelete1.setText("Delete");
-        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
+        panelDiet7.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose8.setText("Product Name");
+        panelDiet7.add(lblPurpose8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblWorkoutFrequency20.setText("Type");
+        panelDiet7.add(lblWorkoutFrequency20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        txtQualification13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification13KeyTyped(evt);
+            }
+        });
+        panelDiet7.add(txtQualification13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
+
+        lblWorkoutFrequency21.setText("Added By");
+        panelDiet7.add(lblWorkoutFrequency21, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtQualification14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification14KeyTyped(evt);
+            }
+        });
+        panelDiet7.add(txtQualification14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 200, 70));
+
+        txtQualification15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification15KeyTyped(evt);
+            }
+        });
+        panelDiet7.add(txtQualification15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet6.add(panelDiet7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 770, 150));
+
+        panelDiet8.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose9.setText("Product Name");
+        panelDiet8.add(lblPurpose9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblWorkoutFrequency26.setText("Type");
+        panelDiet8.add(lblWorkoutFrequency26, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        txtQualification16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification16KeyTyped(evt);
+            }
+        });
+        panelDiet8.add(txtQualification16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
+
+        lblWorkoutFrequency27.setText("Added By");
+        panelDiet8.add(lblWorkoutFrequency27, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtQualification17.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification17KeyTyped(evt);
+            }
+        });
+        panelDiet8.add(txtQualification17, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 200, 70));
+
+        txtQualification18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification18KeyTyped(evt);
+            }
+        });
+        panelDiet8.add(txtQualification18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet9.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelDiet9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nutritional Facts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelDiet9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPurpose10.setText("Product Name");
+        panelDiet9.add(lblPurpose10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblWorkoutFrequency28.setText("Type");
+        panelDiet9.add(lblWorkoutFrequency28, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        txtQualification19.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification19KeyTyped(evt);
+            }
+        });
+        panelDiet9.add(txtQualification19, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 200, 30));
+
+        lblWorkoutFrequency29.setText("Added By");
+        panelDiet9.add(lblWorkoutFrequency29, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtQualification20.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification20KeyTyped(evt);
+            }
+        });
+        panelDiet9.add(txtQualification20, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 200, 70));
+
+        txtQualification21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQualification21KeyTyped(evt);
+            }
+        });
+        panelDiet9.add(txtQualification21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
+
+        panelDiet8.add(panelDiet9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 770, 150));
+
+        panelDiet6.add(panelDiet8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 770, 150));
+
+        txtFat1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFat1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtFat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 200, 30));
+
+        lblWorkoutFrequency30.setText("Total Fat");
+        panelDiet6.add(lblWorkoutFrequency30, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+
+        txtChol1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtChol1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtChol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
+
+        lblWorkoutFrequency31.setText("Cholesterol");
+        panelDiet6.add(lblWorkoutFrequency31, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+
+        lblWorkoutFrequency32.setText("Protein");
+        panelDiet6.add(lblWorkoutFrequency32, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
+
+        txtProtein1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProtein1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtProtein1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 200, 30));
+
+        lblWorkoutFrequency33.setText("Sodium");
+        panelDiet6.add(lblWorkoutFrequency33, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+
+        txtSodium1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSodium1KeyTyped(evt);
+            }
+        });
+        panelDiet6.add(txtSodium1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 200, 30));
+
+        pnlView.add(panelDiet6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 750, 190));
+
+        btnSend.setBackground(new java.awt.Color(255, 51, 51));
+        btnSend.setForeground(new java.awt.Color(255, 255, 255));
+        btnSend.setText("Request Approval");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelete1ActionPerformed(evt);
+                btnSendActionPerformed(evt);
             }
         });
+        pnlView.add(btnSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 130, 35));
 
-        btnSend1.setText("Request to add product");
-        btnSend1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(new java.awt.Color(255, 51, 51));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSend1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
+        pnlView.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 102, 35));
 
-        btnUpdate1.setText("Update");
-        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdate1ActionPerformed(evt);
-            }
-        });
+        tabbedPane.addTab("Modifications", pnlView);
 
-        javax.swing.GroupLayout panelAddress2Layout = new javax.swing.GroupLayout(panelAddress2);
-        panelAddress2.setLayout(panelAddress2Layout);
-        panelAddress2Layout.setHorizontalGroup(
-            panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddress2Layout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelAddress2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAddress2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnView1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDelete1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnUpdate1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(56, 56, 56))
-                    .addGroup(panelAddress2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSend1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))))
-        );
-        panelAddress2Layout.setVerticalGroup(
-            panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddress2Layout.createSequentialGroup()
-                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelAddress2Layout.createSequentialGroup()
-                        .addComponent(btnSend1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnView1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete1))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
+        panelMain.add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -9, 820, 620));
 
-        javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
-        panelRegistration.setLayout(panelRegistrationLayout);
-        panelRegistrationLayout.setHorizontalGroup(
-            panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
-                        .addComponent(panelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelNutrition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelAddress2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelRegistrationLayout.setVerticalGroup(
-            panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelNutrition, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                    .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(panelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
-        tabbedPane.addTab("Registration", panelRegistration);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 41, -1, -1));
-
-        btnRegister.setBackground(new java.awt.Color(255, 51, 51));
-        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText("Add Product");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, -1, -1));
-
-        btnClear.setBackground(new java.awt.Color(255, 51, 51));
-        btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, 75, -1));
-
-        setSize(new java.awt.Dimension(1039, 706));
+        setSize(new java.awt.Dimension(1019, 641));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-        
+
     public void resetForm(){
     
         txtName.setText(null);
-//        txtType.setText(null);
         txtRefQty.setText(null);
         txtCalorie.setText(null);
         txtFat.setText(null);
@@ -370,123 +891,56 @@ public class GSManageProduct extends javax.swing.JFrame {
         txtSodium.setText(null);
         txtCarbs.setText(null);
         txtProtein.setText(null);
-             
-         
+
     }
     
-    
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         // TODO add your handling code here:
-        LoginFrame newLoginPage = new LoginFrame();
-        newLoginPage.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnLogoutActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_lblCloseMouseClicked
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    private void panelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelLogoutMouseClicked
         // TODO add your handling code here:
-        GSHomePage frame = new GSHomePage();
+        LoginFrame frame = new LoginFrame();
         frame.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btnHomeActionPerformed
+    }//GEN-LAST:event_panelLogoutMouseClicked
 
-    private void dateDOBKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dateDOBKeyTyped
-
-    }//GEN-LAST:event_dateDOBKeyTyped
-
-    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        int selectedRow = tblProduct1.getSelectedRow();
-        model = (DefaultTableModel) tblProduct1.getModel();
-
-        if(tblProduct1.getSelectedRowCount()==1){
-            String name = txtName.getText();
-            String type = txtType.getText();
-            float refqty = Float.parseFloat(txtRefQty.getText());
-            float calorie = Float.parseFloat(txtCalorie.getText());
-            float fat = Float.parseFloat(txtFat.getText());
-            float chol = Float.parseFloat(txtChol.getText());
-            float sodium = Float.parseFloat(txtSodium.getText());
-            float carbs = Float.parseFloat(txtCarbs.getText());
-            float protein = Float.parseFloat(txtProtein.getText());
-
-            ProductDirectory product = new ProductDirectory();
-            product.updateProduct(type,refqty,calorie,fat,chol,sodium,carbs,protein,name);
-            resetForm();
-            populateTable("");
-            JOptionPane.showMessageDialog(this, "Product is updated in the catalog!",
-                "Product updated",JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
-
-    private void btnSend1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSend1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblProduct1.getSelectedRow();
-        model = (DefaultTableModel) tblProduct1.getModel();
-
-        String product_name = model.getValueAt(selectedRow,0).toString();
-
-        ProductDirectory product = new ProductDirectory();
-
-        product.sendProduct(product_name);
-
-        JOptionPane.showMessageDialog(this, "Product is requested for approval!",
-            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnSend1ActionPerformed
-
-    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblProduct1.getSelectedRow();
-        model = (DefaultTableModel) tblProduct1.getModel();
-
-        String product_name = model.getValueAt(selectedRow,0).toString();
-
-        ProductDirectory product = new ProductDirectory();
-
-        product.deleteProduct(product_name);
-        populateTable("");
-        JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!",
-            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnDelete1ActionPerformed
-
-    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblProduct1.getSelectedRow();
-        model = (DefaultTableModel) tblProduct1.getModel();
-
-        String product_name = model.getValueAt(selectedRow,0).toString();
-        ProductDirectory product = new ProductDirectory();
-
-        ResultSet res = product.exactProductLookup(product_name);
-        try {
-            while(res.next()){
-            txtName.setText(res.getString(1));
-            txtType.setText(res.getString(2));
-            txtRefQty.setText(res.getString(3));
-            txtCalorie.setText(res.getString(4));
-            txtFat.setText(res.getString(5));
-            txtChol.setText(res.getString(6));
-            txtSodium.setText(res.getString(7));
-            txtCarbs.setText(res.getString(8));
-            txtProtein.setText(res.getString(9));
-        }}
-            catch (SQLException ex) {
-            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnView1ActionPerformed
-
-    private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
-        // TODO add your handling code here:
-        String search = txtSearch1.getText();
-        populateTable(search);
-    }//GEN-LAST:event_txtSearch1KeyReleased
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
-        resetForm();
-        GSManageProduct frame = new GSManageProduct();
+        UserRegistration frame = new UserRegistration();
         frame.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnClearActionPerformed
+        dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void panelProductsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelProductsKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_panelProductsKeyPressed
+
+    private void panelProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductsMouseClicked
+        // TODO add your handling code here:
+        System.out.print("open register");
+        GSManageProduct addprd = new GSManageProduct();
+        addprd.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_panelProductsMouseClicked
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char typedName = evt.getKeyChar();
+        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+            evt.consume();
+        }
+        //Restrict the length to 256
+        if(txtName.getText().length() > 255){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void txtTypeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTypeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTypeKeyTyped
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
@@ -503,7 +957,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         ProductDirectory product = new ProductDirectory();
 
         if(product.alreadyExist(pname)){
-            JOptionPane.showMessageDialog(this,"The given product already exists in thr product catalog",
+            JOptionPane.showMessageDialog(this,"The given product already exists in the product catalog",
                 "Product already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
@@ -512,42 +966,287 @@ public class GSManageProduct extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Product is added to the catalog",
                 "Product added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
+            populateTable("");
         }
-
+        
+        
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
-            evt.consume();
+        resetForm();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
+
+        if(tblProduct1.getSelectedRowCount()==1){
+            String pname = txtName.getText();
+            String type = txtType.getText();
+            float refqty = Float.parseFloat(txtRefQty.getText());
+            float calorie = Float.parseFloat(txtCalorie.getText());
+            float fat = Float.parseFloat(txtFat.getText());
+            float chol = Float.parseFloat(txtChol.getText());
+            float sodium = Float.parseFloat(txtSodium.getText());
+            float carbs = Float.parseFloat(txtCarbs.getText());
+            float protein = Float.parseFloat(txtProtein.getText());
+
+            ProductDirectory product = new ProductDirectory();
+            product.updateProduct(type,refqty,calorie,fat,chol,sodium,carbs,protein,pname);
+            resetForm();
+            populateTable("");
+            JOptionPane.showMessageDialog(this, "Product is updated in the catalog!",
+                "Product updated",JOptionPane.INFORMATION_MESSAGE);
         }
-        //Restrict the length to 256
-        if(txtName.getText().length() > 255){
-            evt.consume();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
+
+        String product_name = model.getValueAt(selectedRow,0).toString();
+
+        ProductApproval product = new ProductApproval();
+        
+
+        product.sendProduct(product_name);
+
+        JOptionPane.showMessageDialog(this, "Product is requested for approval!",
+            "Product requested",JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_btnSendActionPerformed
+
+    private void txtRefQtyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRefQtyKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRefQtyKeyTyped
+
+    private void txtCarbsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCarbsKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarbsKeyTyped
+
+    private void txtCalorieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalorieKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCalorieKeyTyped
+
+    private void txtQualification4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification4KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification4KeyTyped
+
+    private void txtQualification5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification5KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification5KeyTyped
+
+    private void txtQualification6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification6KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification6KeyTyped
+
+    private void txtQualification7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification7KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification7KeyTyped
+
+    private void txtQualification8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification8KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification8KeyTyped
+
+    private void txtQualification9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification9KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification9KeyTyped
+
+    private void txtQualification10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification10KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification10KeyTyped
+
+    private void txtQualification11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification11KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification11KeyTyped
+
+    private void txtQualification12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification12KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification12KeyTyped
+
+    private void txtFatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFatKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFatKeyTyped
+
+    private void txtCholKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCholKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCholKeyTyped
+
+    private void txtProteinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProteinKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProteinKeyTyped
+
+    private void txtSodiumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSodiumKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSodiumKeyTyped
+
+    private void txtCalorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalorieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCalorieActionPerformed
+
+    private void txtName2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtName2KeyTyped
+
+    private void txtType1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtType1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtType1KeyTyped
+
+    private void txtRefQty1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRefQty1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRefQty1KeyTyped
+
+    private void txtCarbs1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCarbs1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarbs1KeyTyped
+
+    private void txtCalorie1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalorie1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCalorie1ActionPerformed
+
+    private void txtCalorie1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalorie1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCalorie1KeyTyped
+
+    private void txtQualification13KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification13KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification13KeyTyped
+
+    private void txtQualification14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification14KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification14KeyTyped
+
+    private void txtQualification15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification15KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification15KeyTyped
+
+    private void txtQualification16KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification16KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification16KeyTyped
+
+    private void txtQualification17KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification17KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification17KeyTyped
+
+    private void txtQualification18KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification18KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification18KeyTyped
+
+    private void txtQualification19KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification19KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification19KeyTyped
+
+    private void txtQualification20KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification20KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification20KeyTyped
+
+    private void txtQualification21KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQualification21KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQualification21KeyTyped
+
+    private void txtFat1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFat1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFat1KeyTyped
+
+    private void txtChol1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChol1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtChol1KeyTyped
+
+    private void txtProtein1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProtein1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProtein1KeyTyped
+
+    private void txtSodium1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSodium1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSodium1KeyTyped
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblProduct1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProduct1MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tblProduct1.getSelectedRow();
+        model = (DefaultTableModel) tblProduct1.getModel();
+
+        String product_name = model.getValueAt(selectedRow,0).toString();
+        ProductDirectory product = new ProductDirectory();
+
+        ResultSet res = product.exactProductLookup(product_name);
+        try {
+            while(res.next()){
+            txtName2.setText(res.getString(1));
+            txtType1.setText(res.getString(2));
+            txtRefQty1.setText(res.getString(3));
+            txtCalorie1.setText(res.getString(4));
+            txtFat1.setText(res.getString(5));
+            txtChol1.setText(res.getString(6));
+            txtSodium1.setText(res.getString(7));
+            txtCarbs1.setText(res.getString(8));
+            txtProtein1.setText(res.getString(9));
+        }}
+            catch (SQLException ex) {
+            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_txtNameKeyTyped
+    }//GEN-LAST:event_tblProduct1MouseClicked
 
-    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
-
-    }//GEN-LAST:event_txtNameKeyReleased
-
-    private void txtTypeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTypeKeyReleased
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTypeKeyReleased
+        String search = txtSearch.getText();
+        populateTable(search);
+    }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void txtTypeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTypeKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTypeKeyTyped
-           
-    
-    
     
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GSManageProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GSManageProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GSManageProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GSManageProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -555,50 +1254,121 @@ public class GSManageProduct extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void populateTable(String search) {
+        ProductDirectory product = new ProductDirectory();
+        ResultSet res = product.getProductData(search,"Grocery Store Product");
+        tblProduct1.setModel(DbUtils.resultSetToTableModel(res));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDelete1;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnSend1;
-    private javax.swing.JButton btnUpdate1;
-    private javax.swing.JButton btnView1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblCalorie;
-    private javax.swing.JLabel lblCarbs;
-    private javax.swing.JLabel lblChol;
-    private javax.swing.JLabel lblFat;
-    private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblProtein;
-    private javax.swing.JLabel lblRefQty;
-    private javax.swing.JLabel lblSodium;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel panelAddress2;
-    private javax.swing.JPanel panelNutrition;
-    private javax.swing.JPanel panelProduct;
-    private javax.swing.JPanel panelRegistration;
+    private javax.swing.JLabel lblAllergies2;
+    private javax.swing.JLabel lblAllergies3;
+    private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblHeight;
+    private javax.swing.JLabel lblHeight1;
+    private javax.swing.JLabel lblPurpose10;
+    private javax.swing.JLabel lblPurpose3;
+    private javax.swing.JLabel lblPurpose4;
+    private javax.swing.JLabel lblPurpose5;
+    private javax.swing.JLabel lblPurpose6;
+    private javax.swing.JLabel lblPurpose7;
+    private javax.swing.JLabel lblPurpose8;
+    private javax.swing.JLabel lblPurpose9;
+    private javax.swing.JLabel lblWorkoutFrequency10;
+    private javax.swing.JLabel lblWorkoutFrequency11;
+    private javax.swing.JLabel lblWorkoutFrequency12;
+    private javax.swing.JLabel lblWorkoutFrequency13;
+    private javax.swing.JLabel lblWorkoutFrequency14;
+    private javax.swing.JLabel lblWorkoutFrequency15;
+    private javax.swing.JLabel lblWorkoutFrequency16;
+    private javax.swing.JLabel lblWorkoutFrequency17;
+    private javax.swing.JLabel lblWorkoutFrequency18;
+    private javax.swing.JLabel lblWorkoutFrequency19;
+    private javax.swing.JLabel lblWorkoutFrequency20;
+    private javax.swing.JLabel lblWorkoutFrequency21;
+    private javax.swing.JLabel lblWorkoutFrequency22;
+    private javax.swing.JLabel lblWorkoutFrequency23;
+    private javax.swing.JLabel lblWorkoutFrequency24;
+    private javax.swing.JLabel lblWorkoutFrequency25;
+    private javax.swing.JLabel lblWorkoutFrequency26;
+    private javax.swing.JLabel lblWorkoutFrequency27;
+    private javax.swing.JLabel lblWorkoutFrequency28;
+    private javax.swing.JLabel lblWorkoutFrequency29;
+    private javax.swing.JLabel lblWorkoutFrequency30;
+    private javax.swing.JLabel lblWorkoutFrequency31;
+    private javax.swing.JLabel lblWorkoutFrequency32;
+    private javax.swing.JLabel lblWorkoutFrequency33;
+    private javax.swing.JPanel panelControl;
+    private javax.swing.JPanel panelDiet2;
+    private javax.swing.JPanel panelDiet3;
+    private javax.swing.JPanel panelDiet4;
+    private javax.swing.JPanel panelDiet5;
+    private javax.swing.JPanel panelDiet6;
+    private javax.swing.JPanel panelDiet7;
+    private javax.swing.JPanel panelDiet8;
+    private javax.swing.JPanel panelDiet9;
+    private javax.swing.JLabel panelLogout;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelMedical;
+    private javax.swing.JPanel panelMedical2;
+    private javax.swing.JLabel panelProducts;
+    private javax.swing.JPanel panelRed;
+    private javax.swing.JPanel panelTop;
+    private javax.swing.JPanel panellGreen;
+    private javax.swing.JPanel pnlRegistration;
+    private javax.swing.JPanel pnlView;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable tblProduct1;
     private javax.swing.JTextField txtCalorie;
+    private javax.swing.JTextField txtCalorie1;
     private javax.swing.JTextField txtCarbs;
+    private javax.swing.JTextField txtCarbs1;
     private javax.swing.JTextField txtChol;
+    private javax.swing.JTextField txtChol1;
     private javax.swing.JTextField txtFat;
+    private javax.swing.JTextField txtFat1;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtName2;
     private javax.swing.JTextField txtProtein;
+    private javax.swing.JTextField txtProtein1;
+    private javax.swing.JTextField txtQualification10;
+    private javax.swing.JTextField txtQualification11;
+    private javax.swing.JTextField txtQualification12;
+    private javax.swing.JTextField txtQualification13;
+    private javax.swing.JTextField txtQualification14;
+    private javax.swing.JTextField txtQualification15;
+    private javax.swing.JTextField txtQualification16;
+    private javax.swing.JTextField txtQualification17;
+    private javax.swing.JTextField txtQualification18;
+    private javax.swing.JTextField txtQualification19;
+    private javax.swing.JTextField txtQualification20;
+    private javax.swing.JTextField txtQualification21;
+    private javax.swing.JTextField txtQualification4;
+    private javax.swing.JTextField txtQualification5;
+    private javax.swing.JTextField txtQualification6;
+    private javax.swing.JTextField txtQualification7;
+    private javax.swing.JTextField txtQualification8;
+    private javax.swing.JTextField txtQualification9;
     private javax.swing.JTextField txtRefQty;
-    private javax.swing.JTextField txtSearch1;
+    private javax.swing.JTextField txtRefQty1;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSodium;
+    private javax.swing.JTextField txtSodium1;
     private javax.swing.JTextField txtType;
+    private javax.swing.JTextField txtType1;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable(String search) {
-        ProductDirectory product = new ProductDirectory();
-        ResultSet res = product.getProductData(search);
-        tblProduct1.setModel(DbUtils.resultSetToTableModel(res));
-    }
+    
 }
