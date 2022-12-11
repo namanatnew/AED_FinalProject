@@ -51,37 +51,6 @@ public class ProductDirectory {
     }
     
     public void approveProduct(String product_name){
-
-       Connection dbconn = DBconnection.connectDB();
-       
-        try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                                UPDATE productcatalog
-                                                                                SET status = 'Approved'
-                                                                                WHERE product_name = ?""");
-            st.setString(1, product_name);
-            int res = st.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void sendProduct(String product_name){
-       Connection dbconn = DBconnection.connectDB();
-       
-        try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                                UPDATE productcatalog
-                                                                                SET status = 'Pending'
-                                                                                WHERE product_name = ?
-                                                                              """);
-            st.setString(1, product_name);
-            st.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
         Connection dbconn = DBconnection.connectDB();
         
          try {
@@ -111,7 +80,6 @@ public class ProductDirectory {
              Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
          }
      }
-
     
      public ResultSet exactProductLookup(String product_name){
          
@@ -136,29 +104,6 @@ public class ProductDirectory {
     }
         return null;
 }
-    
-    public ResultSet exactNutritionLookup(String product_name){
-    
-        Connection dbconn = DBconnection.connectDB();
-            
-        try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-
-                                                                        SELECT perc_calories, perc_protein
-                                                                        ,perc_carbs, perc_fats
-                                                                        ,perc_sodium, perc_cholesterol
-
-                                                                        FROM productcatalog
-                                                                        WHERE product_name = ?""");
-        
-            st.setString(1, product_name);
-            ResultSet res = st.executeQuery();
-            return res;
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            return null;
-    }
     
     public ResultSet exactNutritionLookup(String product_name){
     
@@ -369,7 +314,6 @@ public class ProductDirectory {
             return "0";
         }
     }
-
     
     
     public String getApprovedProducts(){
@@ -383,7 +327,6 @@ public class ProductDirectory {
                                                             from productcatalog where 
                                                             product_type = 'Grocery Store Product'
                                                             and status = 'Approved'
-
                                                                      """);
             ResultSet res = st.executeQuery();
             if (res.next()){
@@ -409,7 +352,6 @@ public class ProductDirectory {
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
                                                             status = 'Approved'
-
                                                                      """);
             ResultSet res = st.executeQuery();
             if (res.next()){
@@ -425,33 +367,9 @@ public class ProductDirectory {
         }
     }
     
-
-    public String getOverallApprovedProducts(){
-        try {
-            Connection dbconn = DBconnection.connectDB();
-            
-            PreparedStatement st;
-            
-            st = (PreparedStatement)dbconn.prepareStatement("""
-                                                            select count(product_name) as cnt 
-                                                            from productcatalog where 
-                                                            status = 'Approved'
-                                                                     """);
-            ResultSet res = st.executeQuery();
-            if (res.next()){
-                String val = res.getString(1);
-                return val;
-            }
-            else{
-                return "0";
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-            return "0";
-        }
-    }
     
-
+    
+    
     public String getPendingProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();

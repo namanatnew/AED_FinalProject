@@ -267,9 +267,7 @@
             </Component>
           </SubComponents>
         </Container>
-
         <Component class="javax.swing.JLabel" name="jLabel12">
-
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Semilight" size="16" style="1"/>
@@ -327,9 +325,7 @@
             <Property name="text" type="java.lang.String" value=" Manage Hospitals"/>
           </Properties>
           <Events>
-
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel14MouseClicked"/>
-
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
