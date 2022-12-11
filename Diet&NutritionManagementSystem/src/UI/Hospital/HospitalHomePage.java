@@ -4,6 +4,10 @@
  */
 package UI.Hospital;
 
+import UI.Authenticate.LoginFrame;
+import UI.Main.MainFrame;
+import java.awt.Color;
+
 /**
  *
  * @author anuja

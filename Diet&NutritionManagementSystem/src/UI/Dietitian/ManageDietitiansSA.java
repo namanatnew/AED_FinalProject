@@ -4,7 +4,7 @@
  */
 package UI.Dietitian;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,11 @@ import Model.People.DietitianDirectory;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
+import UI.Hospital.ManageHospitalSA;
+import UI.SystemAdmin.ManageGroceryStoresSA;
+import UI.SystemAdmin.ManageMealServiceSA;
 import UI.SystemAdmin.SAHomePage;
+import UI.User.UserRegistration;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
@@ -29,7 +33,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-
 
 /**
  *
@@ -145,12 +148,13 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        lblStore = new javax.swing.JLabel();
+        lblService = new javax.swing.JLabel();
 
         txtAllergies4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -266,11 +270,6 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Health", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelMedical.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameKeyTyped(evt);
@@ -697,16 +696,15 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
 
         pnlSideOptions.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 190, 45));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
-        jLabel7.setText(" Manage Products");
-        pnlSideOptions.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 170, -1));
-
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 170, -1));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
@@ -721,7 +719,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, -1));
 
         pnlSideOptions.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
@@ -737,9 +735,31 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
                 jLabel18MouseClicked(evt);
             }
         });
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, -1));
 
         pnlSideOptions.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
+
+        lblStore.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblStore.setForeground(new java.awt.Color(255, 255, 255));
+        lblStore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblStore.setText(" Manage Stores");
+        lblStore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStoreMouseClicked(evt);
+            }
+        });
+        pnlSideOptions.add(lblStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 180, -1));
+
+        lblService.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblService.setForeground(new java.awt.Color(255, 255, 255));
+        lblService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblService.setText(" Manage Services");
+        lblService.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblServiceMouseClicked(evt);
+            }
+        });
+        pnlSideOptions.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 180, -1));
 
         getContentPane().add(pnlSideOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 620));
 
@@ -748,7 +768,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
 
-public void resetUpdateForm(){
+    public void resetUpdateForm(){
       
         txtName1.setText(null);
         dateDOB1.setDate(null);
@@ -792,6 +812,7 @@ public void resetUpdateForm(){
         return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
     
+    
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         
@@ -834,7 +855,7 @@ public void resetUpdateForm(){
             JOptionPane.showMessageDialog(this, "Password doesn't match!");
         }
         else{
-            Account ac = new Account();
+            AccountDirectory ac = new AccountDirectory();
             ac.addUserCredential(email, password, "Dietitian");
         }
            
@@ -891,51 +912,19 @@ public void resetUpdateForm(){
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        String name = txtName1.getText();
+        Date dob = dateDOB1.getDate();
+        String gender = comboGender1.getSelectedItem().toString();
+        Long contact = Long.parseLong(txtContact1.getText());
+        String address = txtAddress1.getText();
+        Date doj = dateDOJ1.getDate();
+        String qualification = txtQualification1.getText();
+        String hospital = comboHospital1.getSelectedItem().toString();
+        String type = comboType1.getSelectedItem().toString();
+        int slots = Integer.parseInt(txtSlots1.getText());
         
-        try{
-             
-            String query = "UPDATE dietitians SET Name = ?,"
-                    + " DOB = ?, Gender = ?, Contact = ?, "
-                    + "Address = ?, DOJ = ?, Experience = ?, "
-                    + "Qualification = ?, Hospital = ? , Type = ?, Slots = ?, Age = ? WHERE ID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, txtName1.getText()); //bg
-            st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOB1.getDate()));
-            st.setString(3, comboGender1.getSelectedItem().toString());
-            st.setLong(4, Long.parseLong(txtContact1.getText()));
-            st.setString(5, txtAddress1.getText());
-
-            
-            LocalDate today = LocalDate.now();
-            st.setDate(6, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOJ1.getDate()));
-            int exp = Period.between(convertToLocalDateViaInstant(dateDOJ1.getDate()), today).getYears();
-            st.setInt(7, exp); //age
-            
-            st.setString(8, txtQualification1.getText());
-            st.setString(9, comboHospital1.getSelectedItem().toString());
-            st.setString(10, comboType1.getSelectedItem().toString());
-            st.setInt(11, Integer.parseInt(txtSlots1.getText()));
-            
-            int age = Period.between(convertToLocalDateViaInstant(dateDOB1.getDate()), today).getYears();
-            
-            st.setInt(12, age); // exp
-            
-            
-            st.setInt(13, id);
-            
-            st.executeUpdate();
-            
-            populateTableData();
-            resetUpdateForm();
-//            System.out.println(res);
-            
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DietitianDirectory dd = new DietitianDirectory();
+        dd.updateRecordsByID(name, dob, gender, contact, address, doj, qualification, hospital, type, slots, id);
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -969,23 +958,9 @@ public void resetUpdateForm(){
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
         
-        try{
-            String query = "DELETE FROM dietitians WHERE ID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setInt(1, id);
-            st.executeUpdate();
-            
-            populateTableData();
-            resetUpdateForm();
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        DietitianDirectory dd = new DietitianDirectory();
+        dd.deleteDietitianFromDB(id);
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -996,13 +971,10 @@ public void resetUpdateForm(){
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.selectRecordsByID(id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM dietitians WHERE ID = ?");
-            st.setInt(1, id);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 
@@ -1020,9 +992,7 @@ public void resetUpdateForm(){
                 txtSlots1.setText(String.valueOf(res.getInt("Slots")));
                 
             }
-            System.out.println(res);
             
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
             Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
@@ -1111,14 +1081,183 @@ public void resetUpdateForm(){
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
+        UserRegistration frame = new UserRegistration();
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+        ManageHospitalSA frame = new ManageHospitalSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void lblStoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStoreMouseClicked
+        // TODO add your handling code here:
+        ManageGroceryStoresSA frame = new ManageGroceryStoresSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblStoreMouseClicked
+
+    private void lblServiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblServiceMouseClicked
+        // TODO add your handling code here:
+        ManageMealServiceSA frame = new ManageMealServiceSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblServiceMouseClicked
     
     boolean isDataValid(){
-
+//        String id, name, emailId, gender, community, city, state, username ;
+//        String houseNumber, zipCode, age, bloodGroup, height, weight;
+//        String contactDetails;
+////        Date dob;
+//        //String patternEmail = "^[A-Za-z0-9+_.-]+@(.+)$";
+//        String patternEmail = "^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$";
+//        String bmi = "[(0-9\\.)]{2,}$";
+//               
+//        id = txtDoctorID.getText();
+//        name = txtName.getText();
+//        emailId = txtEmail.getText();
+//        contactDetails = txtContact.getText();
+//        age = txtAge.getText();
+////        dob = DOBtxt.getDate();
+//        if(comboPurpose.getSelectedItem() == null){
+//            houseNumber = "";
+//        }
+//        else{
+//            houseNumber = comboPurpose.getSelectedItem().toString();
+//        }
+//        
+//        
+//        if(comboCommunity.getSelectedItem() == null){
+//            community = "";
+//        }
+//        else{
+//            community = comboCommunity.getSelectedItem().toString();
+//        }
+//        
+//        
+//        if(comboCity.getSelectedItem() == null){
+//            city = "";
+//        }
+//        else{
+//            city = comboCity.getSelectedItem().toString();
+//        }
+//        state = txtState.getText();
+//        zipCode = txtZipCode.getText();
+//        //bloodGroup = (String) patientBloodGroupTxt.getSelectedItem();
+//        String qualification = txtQualification.getText();
+//        String specialization = txtSpecialization.getText();
+//        String slots = txtHeight.getText();
+//        String password = new String(txtPassword.getText());
+//        String rePassword = new String(txtPassword2.getPassword());
+//        
+//        
+//       
+//        if(comboGender.getSelectedItem() == null){
+//            gender = "";
+//        }
+//        else{
+//            gender = comboGender.getSelectedItem().toString(); 
+//        }
+//        
+//        String hospital;
+//        if(comboBloodGroup.getSelectedItem() == null){
+//            hospital = "";
+//        }
+//        else{
+//            hospital = comboBloodGroup.getSelectedItem().toString(); 
+//        }
+//        
+//        
+//        if (id.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter Patient ID");
+//            return false;
+//        }
+//       
+//        if (name.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter name");
+//            return false;
+//        }
+//        
+//        if (gender.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please select gender");
+//            return false;
+//        }
+//        
+//        if (hospital.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please select hospital");
+//            return false;
+//        }
+//        
+//        if (contactDetails.equals("") || !(txtContact.getText().length()==10))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter valid contact Number");
+//            txtContact.setText("");
+//           
+//            return false;
+//        }
+//        //emailIDTxt.getText().isBlank() &&
+//        if( !txtEmail.getText().matches(patternEmail)){
+//                JOptionPane.showMessageDialog(this, "Please enter a valid Email.");
+//                txtEmail.setText("");
+//                return false;
+//            }
+//       
+//        if (age.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter age");
+//            return false;
+//        }
+//       
+//        if (slots.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter number of slots available");
+//            return false;
+//        }
+//        
+//        if (qualification.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter qualification");
+//            return false;
+//        }
+//        if (specialization.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter specialization");
+//            return false;
+//        }
+       
+       
+//        if (zipCode.equals("") || !(txtZipCode.getText().length()==5))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter zipCode");
+//            txtZipCode.setText("");
+//            return false;
+//        }
+//       
+//   
+//       
+//        if (password.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter password");
+//            return false;
+//        }
+//       
+//        if (rePassword.equals(""))
+//        {
+//            JOptionPane.showMessageDialog(this, "Please enter rePassword");
+//            return false;
+//        }
+//       
+//        if (!(password).equals(rePassword)){
+//            JOptionPane.showMessageDialog(this, "Password doesn't match");
+//            return false;
+//        }
        
         return true;
        
@@ -1126,21 +1265,18 @@ public void resetUpdateForm(){
     
     private void populateTableData() {
         
-        Connection dbconn = DBconnection.connectDB();
         //Type-cast table model into default table model
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
-        System.out.println("hereeeeeeeeeee");
+        
         sorter = new TableRowSorter<>(model);
 
         tableView.setRowSorter(sorter);
         //Clear the table 
         model.setRowCount(0);
         
-        PreparedStatement st;
-        
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.selectAllRecords();
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Address, Hospital, Type, Qualification, Experience, Slots from dietitians");
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 Object[] row = new Object[11];
@@ -1229,7 +1365,6 @@ public void resetUpdateForm(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
@@ -1257,6 +1392,8 @@ public void resetUpdateForm(){
     private javax.swing.JLabel lblHeight2;
     private javax.swing.JLabel lblPurpose;
     private javax.swing.JLabel lblPurpose2;
+    private javax.swing.JLabel lblService;
+    private javax.swing.JLabel lblStore;
     private javax.swing.JLabel lblWeight;
     private javax.swing.JLabel lblWeight2;
     private javax.swing.JLabel lblWorkoutFrequency2;

@@ -6,7 +6,8 @@ package UI.Dietitian;
 
 import UI.User.*;
 import Model.Database.DBconnection;
-import Model.WorkRequest.DietitianAppointments;
+import Model.People.DietitianDirectory;
+import Model.People.UserDirectory;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -272,24 +273,17 @@ public class DietitianHomePage extends javax.swing.JFrame {
     
     public String getUserNameFromEmail(String email_id){
         
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
+        DietitianDirectory ud = new DietitianDirectory();
+        ResultSet res = ud.getDietitianNameByEmail(email_id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from dietitians WHERE Email=?");
-            st.setString(1, email_id);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 this.userName = res.getString("Name");
             }
-            System.out.println(this.userName);
-            
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DietitianHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this.userName;
     }

@@ -12,10 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
+import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
-import Model.WorkRequest.DietitianAppointments;
 import UI.Authenticate.LoginFrame;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
@@ -348,14 +348,10 @@ public class DietitianUpdateInfo extends javax.swing.JFrame {
 
     public void viewDetails(String name){
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.selectRecordsByName(name);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM dietitians WHERE Name = ?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
-            
             while(res.next()){
                 comboHospital1.setSelectedItem(res.getString("Hospital"));
                 txtQualification1.setText(res.getString("Qualification"));
@@ -368,7 +364,7 @@ public class DietitianUpdateInfo extends javax.swing.JFrame {
 //            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DietitianUpdateInfo.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }

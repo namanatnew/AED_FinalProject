@@ -4,9 +4,9 @@
  */
 package UI.GroceryStore;
 
-import Model.Product.ProductDirectory;
+import Model.Enterprise.GroceryStoresDirectory;
+import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.Product.GSManageProduct;
 import UI.User.UserRegistration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +23,18 @@ public class GSHomePage extends javax.swing.JFrame {
     /**
      * Creates new form SAHomePage
      */
+    public String email;
+    public String name;
+    public GSHomePage(String email) {
+        initComponents();
+        this.email = email;
+        GroceryStoresDirectory store = new GroceryStoresDirectory();
+        this.name = store.getUserNameFromEmail(email);
+        System.out.println(name);
+        lblWelcome.setText("Welcome, " + this.name);
+        show_stats();
+        populateTable();
+    }
     public GSHomePage() {
         initComponents();
         show_stats();
@@ -41,7 +53,7 @@ public class GSHomePage extends javax.swing.JFrame {
         panelTop = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblWelcome = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblClose = new javax.swing.JLabel();
         panelControl = new javax.swing.JPanel();
@@ -53,12 +65,10 @@ public class GSHomePage extends javax.swing.JFrame {
         panelMain = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProducts = new javax.swing.JTable();
-        lblPending = new javax.swing.JLabel();
+        panelMedical1 = new javax.swing.JPanel();
         lblTotal = new javax.swing.JLabel();
+        lblPending = new javax.swing.JLabel();
         lblApproved = new javax.swing.JLabel();
-        lblPendingval = new javax.swing.JLabel();
-        lblApprovedval = new javax.swing.JLabel();
-        lblTotalval = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -84,10 +94,10 @@ public class GSHomePage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
-        jLabel4.setText("Welcome, Grocery Store");
+        lblWelcome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(51, 51, 51));
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
+        lblWelcome.setText("Welcome");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
@@ -119,8 +129,8 @@ public class GSHomePage extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
             .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopLayout.createSequentialGroup()
-                    .addContainerGap(734, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
+                    .addContainerGap(842, Short.MAX_VALUE)
+                    .addComponent(lblWelcome)
                     .addGap(59, 59, 59)))
         );
         panelTopLayout.setVerticalGroup(
@@ -141,7 +151,7 @@ public class GSHomePage extends javax.swing.JFrame {
             .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblWelcome)
                     .addContainerGap()))
         );
 
@@ -216,25 +226,31 @@ public class GSHomePage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblProducts);
 
-        panelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 770, 240));
+        panelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 770, 240));
 
-        lblPending.setText("Total Pending Products");
-        panelMain.add(lblPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        panelMedical1.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelMedical1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelMedical1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTotal.setText("Total Products in Store");
-        panelMain.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        lblTotal.setBackground(new java.awt.Color(255, 255, 255));
+        lblTotal.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total Products", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 170, 70));
 
-        lblApproved.setText("Total Approved Products");
-        panelMain.add(lblApproved, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        lblPending.setBackground(new java.awt.Color(255, 255, 255));
+        lblPending.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblPending.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPending.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pending Products", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical1.add(lblPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 170, 70));
 
-        lblPendingval.setText("jLabel9");
-        panelMain.add(lblPendingval, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+        lblApproved.setBackground(new java.awt.Color(255, 255, 255));
+        lblApproved.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblApproved.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblApproved.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Approved Products", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical1.add(lblApproved, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 170, 70));
 
-        lblApprovedval.setText("jLabel9");
-        panelMain.add(lblApprovedval, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 40, -1));
-
-        lblTotalval.setText("jLabel9");
-        panelMain.add(lblTotalval, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+        panelMain.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
 
         getContentPane().add(panelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
@@ -269,7 +285,7 @@ public class GSHomePage extends javax.swing.JFrame {
     private void panelProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductsMouseClicked
         // TODO add your handling code here:
         System.out.print("open register");
-        GSManageProduct addprd = new GSManageProduct();
+        GSManageProduct addprd = new GSManageProduct(name);
         addprd.setVisible(true);
         dispose();
     }//GEN-LAST:event_panelProductsMouseClicked
@@ -313,21 +329,19 @@ public class GSHomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblApproved;
-    private javax.swing.JLabel lblApprovedval;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblPending;
-    private javax.swing.JLabel lblPendingval;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblTotalval;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel panelControl;
     private javax.swing.JLabel panelLogout;
     private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelMedical1;
     private javax.swing.JLabel panelProducts;
     private javax.swing.JPanel panelRed;
     private javax.swing.JPanel panelTop;
@@ -343,12 +357,13 @@ public class GSHomePage extends javax.swing.JFrame {
     
     private void show_stats(){
             ProductDirectory product = new ProductDirectory();
-            String res1 = product.getTotalProducts();
-            String res2 = product.getApprovedProducts();
-            String res3 = product.getPendingProducts();
-            lblTotalval.setText(res1);
-            lblApprovedval.setText(res2);
-            lblPendingval.setText(res3);
+
+            String res1 = product.getTotalProducts(this.name);
+            String res2 = product.getApprovedProducts(this.name);
+            String res3 = product.getPendingProducts(this.name);
+            lblTotal.setText(res1);
+            lblApproved.setText(res2);
+            lblPending.setText(res3);
         
     }
 }

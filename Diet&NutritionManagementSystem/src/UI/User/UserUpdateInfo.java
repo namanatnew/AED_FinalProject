@@ -431,13 +431,10 @@ public class UserUpdateInfo extends javax.swing.JFrame {
 
     public void viewDetails(String name){
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
-        
+        UserDirectory ud = new UserDirectory();
+        ResultSet res = ud.selectRecordsByName(name);
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM end_users WHERE Name = ?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
+            
             
             while(res.next()){
                 comboBloodGroup.setSelectedItem(res.getString("BloodGroup"));
@@ -466,7 +463,7 @@ public class UserUpdateInfo extends javax.swing.JFrame {
 //            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserUpdateInfo.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
@@ -559,34 +556,30 @@ public class UserUpdateInfo extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if(true){
-            Connection dbconn = DBconnection.connectDB();
-            PreparedStatement st;
+            
+            String bp = "";
+            float height = Float.parseFloat(txtHeight.getText());
+            float weight = Float.parseFloat(txtWeight.getText());
+
+            String diab;
+            if(comboDiabetic.getSelectedItem().toString().equals("Yes")){
+                    diab="1";                
+            }
+            else{
+                diab= "0";
+            }
+            String allergies = txtAllergies.getText();
+            String purpose = comboPurpose.getSelectedItem().toString();
+            String preference = comboPreference.getSelectedItem().toString();
+            String workout = comboWorkoutFrequency.getSelectedItem().toString();
+            String favorite = new UtilityFunctions().commaSeparate( listFavorites.getSelectedValuesList());
+            
+            
+            UserDirectory ud = new UserDirectory();
+            ud.updateRecordsByName(bp, height, weight, diab, allergies, purpose, preference, workout, favorite, this.userName);
         
-            try{
-                String query = "UPDATE end_users SET BloodGroup = ?, Height = ?, Weight = ?, Diabetic = ?, Allergies = ?, Purpose = ?, Food_Preference = ?, Workout_Frequency = ?, Favorites = ? WHERE Name = ?";
-                st = (PreparedStatement)dbconn.prepareStatement(query);
-                st.setString(1, comboBloodGroup.getSelectedItem().toString()); //bg
-                st.setString(2, txtHeight.getText());
-                st.setString(3, txtWeight.getText());
-                if(comboDiabetic.getSelectedItem().toString().equals("Yes")){
-                    st.setString(4, "1");                
-                }
-                else{
-                    st.setString(4, "0");
-                }
-                st.setString(5, txtAllergies.getText());
-                st.setString(6, comboPurpose.getSelectedItem().toString());
-                st.setString(7, comboPreference.getSelectedItem().toString());
-                st.setString(8, comboWorkoutFrequency.getSelectedItem().toString());
-                st.setString(9, new UtilityFunctions().commaSeparate( listFavorites.getSelectedValuesList()));
-                st.setString(10, this.userName);
-                st.executeUpdate();
-                
-            }
-            catch(SQLException ex){
-                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                resetForm();
+        
+            resetForm();
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 

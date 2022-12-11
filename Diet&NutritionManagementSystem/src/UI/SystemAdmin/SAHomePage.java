@@ -49,11 +49,12 @@ public class SAHomePage extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lblHome = new javax.swing.JLabel();
+        lblUsers = new javax.swing.JLabel();
+        lblDietitians = new javax.swing.JLabel();
+        lblHospitals = new javax.swing.JLabel();
+        lblStores = new javax.swing.JLabel();
+        lblServices = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -171,52 +172,68 @@ public class SAHomePage extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 51, 51));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
-        jLabel6.setText("  Home Page");
-        jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        lblHome.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblHome.setForeground(new java.awt.Color(255, 255, 255));
+        lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        lblHome.setText("  Home Page");
+        jPanel7.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, -1));
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
-        jLabel7.setText(" Manage Products");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 170, -1));
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
-        jLabel12.setText(" Manage Users");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblUsers.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblUsers.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
+        lblUsers.setText(" Manage Users");
+        lblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                lblUsersMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, -1));
+        jPanel3.add(lblUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 180, -1));
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
-        jLabel13.setText(" Manage Dietitians");
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblDietitians.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblDietitians.setForeground(new java.awt.Color(255, 255, 255));
+        lblDietitians.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
+        lblDietitians.setText(" Manage Dietitians");
+        lblDietitians.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
+                lblDietitiansMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, -1));
+        jPanel3.add(lblDietitians, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 180, -1));
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
-        jLabel14.setText(" Manage Hospitals");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblHospitals.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblHospitals.setForeground(new java.awt.Color(255, 255, 255));
+        lblHospitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
+        lblHospitals.setText(" Manage Hospitals");
+        lblHospitals.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 170, -1));
+        jPanel3.add(lblHospitals, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, -1));
+
+        lblStores.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        lblStores.setForeground(new java.awt.Color(255, 255, 255));
+        lblStores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblStores.setText("Manage Grocery Stores");
+        lblStores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStoresMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lblStores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 190, -1));
+
+        lblServices.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        lblServices.setForeground(new java.awt.Color(255, 255, 255));
+        lblServices.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblServices.setText("Manage Meal Services");
+        lblServices.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblServicesMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lblServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 180, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 580));
 
@@ -240,12 +257,12 @@ public class SAHomePage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void lblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsersMouseClicked
         // TODO add your handling code here:
         UserRegistration frame = new UserRegistration();
         frame.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_lblUsersMouseClicked
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         // TODO add your handling code here:
@@ -257,21 +274,55 @@ public class SAHomePage extends javax.swing.JFrame {
         jLabel3.setForeground(Color.white);
     }//GEN-LAST:event_jLabel3MouseExited
 
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+    private void lblDietitiansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDietitiansMouseClicked
         // TODO add your handling code here:
         ManageDietitiansSA frame = new ManageDietitiansSA();
         frame.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel13MouseClicked
+    }//GEN-LAST:event_lblDietitiansMouseClicked
+
+    private void lblHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHospitalMouseClicked
+        // TODO add your handling code here:
+        ManageHospitalSA frame = new ManageHospitalSA();
+        frame.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_lblHospitalMouseClicked
+
+    private void lblStoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStoreMouseClicked
+        // TODO add your handling code here:
+        ManageGroceryStoresSA frame = new ManageGroceryStoresSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblStoreMouseClicked
+
+    private void lblServiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblServiceMouseClicked
+        // TODO add your handling code here:
+        ManageMealServiceSA frame = new ManageMealServiceSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblServiceMouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
-           // TODO add your handling code here:
-        ManageHospitalSA frame1 = new ManageHospitalSA();
-        frame1.setVisible(true);
+        ManageHospitalSA fr = new ManageHospitalSA();
+        fr.setVisible(true);
         dispose();
-        
     }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void lblStoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStoresMouseClicked
+        // TODO add your handling code here:
+        ManageGroceryStoresSA fr = new ManageGroceryStoresSA();
+        fr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblStoresMouseClicked
+
+    private void lblServicesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblServicesMouseClicked
+        // TODO add your handling code here:
+        ManageMealServiceSA fr = new ManageMealServiceSA();
+        fr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblServicesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -310,20 +361,21 @@ public class SAHomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lblDietitians;
+    private javax.swing.JLabel lblHome;
+    private javax.swing.JLabel lblHospitals;
+    private javax.swing.JLabel lblServices;
+    private javax.swing.JLabel lblStores;
+    private javax.swing.JLabel lblUsers;
     // End of variables declaration//GEN-END:variables
 }
