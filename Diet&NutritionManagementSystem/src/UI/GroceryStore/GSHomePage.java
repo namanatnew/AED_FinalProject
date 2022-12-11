@@ -343,10 +343,10 @@ public class GSHomePage extends javax.swing.JFrame {
     
     private void show_stats(){
             ProductDirectory product = new ProductDirectory();
-            String res1 = product.getTotalProducts();
+//            String res1 = product.getTotalProducts();
             String res2 = product.getApprovedProducts();
             String res3 = product.getPendingProducts();
-            lblTotalval.setText(res1);
+//            lblTotalval.setText(res1);
             lblApprovedval.setText(res2);
             lblPendingval.setText(res3);
         

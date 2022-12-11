@@ -5,7 +5,7 @@
 package UI.SystemAdmin;
 
 import Model.Account.Account;
-import Model.Enterprise.GroceryStoresDirectory;
+import Model.Enterprise.MealServiceDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
 import javax.swing.JOptionPane;
@@ -21,14 +21,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author naman
  */
-public class SAManageGroceryStores extends javax.swing.JFrame {
+public class ManageMealServiceSA extends javax.swing.JFrame {
     DefaultTableModel model;
     
     /**
      * Creates new form NewJFrame
      */
 
-    public SAManageGroceryStores() {
+    public ManageMealServiceSA() {
         initComponents();
         populateTable("");
     }
@@ -62,7 +62,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         panelAddress2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblStore = new javax.swing.JTable();
+        tblService = new javax.swing.JTable();
         txtSearch1 = new javax.swing.JTextField();
         btnUpdate1 = new javax.swing.JButton();
         btnView1 = new javax.swing.JButton();
@@ -78,7 +78,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
         lblTitle.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("MANAGE GROCERY STORES");
+        lblTitle.setText("MANAGE MEAL SERVICES");
         jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         btnLogout.setText("Logout");
@@ -99,16 +99,16 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
         tabbedPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        panelRegistration.setBackground(new java.awt.Color(255, 255, 255));
+        panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
 
         panelStore.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelStore.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Grocery Store Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelStore.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Meal Service Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelStore.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -169,7 +169,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
         btnRegister.setBackground(new java.awt.Color(255, 51, 51));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText("Add Store");
+        btnRegister.setText("Add Meal Service");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -188,12 +188,12 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         panelAddress2.setBackground(new java.awt.Color(255, 255, 255, 150));
         panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View & Modify Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
 
-        tblStore.setModel(new javax.swing.table.DefaultTableModel(
+        tblService.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Store Name", "Contact", "Email ID", "Created At"
+                "Meal Service Name", "Contact", "Email ID", "Created At"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,7 +204,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblStore);
+        jScrollPane2.setViewportView(tblService);
 
         txtSearch1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,8 +271,8 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         panelRegistrationLayout.setHorizontalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistrationLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(186, 186, 186)
+                .addComponent(btnRegister)
                 .addGap(18, 18, 18)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -334,8 +334,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         txtName.setText(null);
         txtContact.setText(null);
         txtEmail.setText(null);
-        txtPassword.setText(null);           
-         
+        txtPassword.setText(null);    
     }
     
     
@@ -348,7 +347,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        GSHomePage frame = new GSHomePage();
+        SAHomePage frame = new SAHomePage();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -359,58 +358,55 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
     private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblStore.getSelectedRow();
-        model = (DefaultTableModel) tblStore.getModel();
+        int selectedRow = tblService.getSelectedRow();
+        model = (DefaultTableModel) tblService.getModel();
 
-        if(tblStore.getSelectedRowCount()==1){
+        if(tblService.getSelectedRowCount()==1){
             String name = txtName.getText();
             String contact = txtContact.getText();
             String email = txtEmail.getText();        
             String password = txtPassword.getText();
 
-            GroceryStoresDirectory store = new GroceryStoresDirectory();
-            store.updateStore(name, contact, email, password);
+            MealServiceDirectory store = new MealServiceDirectory();
+            store.updateService(name, contact, email, password);
             resetForm();
             populateTable("");
-            JOptionPane.showMessageDialog(this, "Store is updated in the directory!",
-                "Store updated",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Meal Service is updated in the directory!",
+                "Meal Service updated",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdate1ActionPerformed
 
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblStore.getSelectedRow();
-        model = (DefaultTableModel) tblStore.getModel();
+        int selectedRow = tblService.getSelectedRow();
+        model = (DefaultTableModel) tblService.getModel();
 
         String store_name = model.getValueAt(selectedRow,0).toString();
 
-        GroceryStoresDirectory store = new GroceryStoresDirectory();
-        store.deleteStore(store_name);
+        MealServiceDirectory store = new MealServiceDirectory();
+        store.deleteService(store_name);
         populateTable("");
-        JOptionPane.showMessageDialog(this, "Store is deleted from the directory!",
-            "Store deleted",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Meal Service is deleted from the directory!",
+            "Meal Service deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
         try {
             // TODO add your handling code here:
-            int selectedRow = tblStore.getSelectedRow();
-            model = (DefaultTableModel) tblStore.getModel();
+            int selectedRow = tblService.getSelectedRow();
+            model = (DefaultTableModel) tblService.getModel();
             
             String store_name = model.getValueAt(selectedRow,0).toString();
-//        System.out.print(store_name + "XXXXX");
-            GroceryStoresDirectory store = new GroceryStoresDirectory();
+            MealServiceDirectory store = new MealServiceDirectory();
 
-            ResultSet res = store.exactStoreLookup(store_name);
-//        System.out.print(res + "YYYY");
+            ResultSet res = store.exactServiceLookup(store_name);
             while(res.next()){
             txtName.setText(res.getString(1));
             txtContact.setText(res.getString(2));
             txtEmail.setText(res.getString(3));
-//            txtPassword.setText(res.getString(4));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageMealServiceSA.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnView1ActionPerformed
@@ -424,7 +420,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        SAManageGroceryStores frame = new SAManageGroceryStores();
+        ManageMealServiceSA frame = new ManageMealServiceSA();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
@@ -436,17 +432,17 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         String email = txtEmail.getText();        
         String password = txtPassword.getText();
 
-        GroceryStoresDirectory store = new GroceryStoresDirectory();
+        MealServiceDirectory store = new MealServiceDirectory();
         Account ac = new Account();
         if(store.alreadyExist(name)){
-            JOptionPane.showMessageDialog(this,"The given store already exists in the directory",
-                "Store already exists",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"The given Meal Service already exists in the directory",
+                "Meal Service already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            store.addStore(name, contact, email);
-            ac.addUserCredential(email, password, "Grocery Store");
-            JOptionPane.showMessageDialog(this, "Store is added to the directory",
-                "Store added",JOptionPane.INFORMATION_MESSAGE);
+            store.addMealService(name, contact, email);
+            ac.addUserCredential(email, password, "Meal Service");
+            JOptionPane.showMessageDialog(this, "Meal Service is added to the directory",
+                "Meal Service added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
             populateTable("");
         }
@@ -501,7 +497,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SAManageGroceryStores().setVisible(true);
+                new ManageMealServiceSA().setVisible(true);
             }
         });
     }
@@ -526,7 +522,7 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     private javax.swing.JPanel panelRegistration;
     private javax.swing.JPanel panelStore;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTable tblStore;
+    private javax.swing.JTable tblService;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
@@ -535,8 +531,8 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable(String search) {
-        GroceryStoresDirectory store = new GroceryStoresDirectory();
-        ResultSet res = store.getStoreData(search);
-        tblStore.setModel(DbUtils.resultSetToTableModel(res));
+        MealServiceDirectory store = new MealServiceDirectory();
+        ResultSet res = store.getServiceData(search);
+        tblService.setModel(DbUtils.resultSetToTableModel(res));
     }
 }
