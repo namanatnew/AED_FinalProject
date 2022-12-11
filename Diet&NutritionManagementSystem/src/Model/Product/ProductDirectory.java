@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -41,7 +43,7 @@ public class ProductDirectory {
             st.setString(10,addedBy);
             
             int res = st.executeUpdate();
-//            System.out.println("product added"); 
+            System.out.println("product added"); 
             
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,6 +98,27 @@ public class ProductDirectory {
             System.out.print("tryy");
             ResultSet res = st.executeQuery();
             System.out.print("found it");
+            return res;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return null;
+    }
+    
+    public ResultSet exactNutritionLookup(String product_name){
+    
+        Connection dbconn = DBconnection.connectDB();
+            
+        try {
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
+                                                                        SELECT perc_calories, perc_protein
+                                                                        ,perc_carbs, perc_fats
+                                                                        ,perc_sodium, perc_cholesterol
+                                                                        FROM productcatalog
+                                                                        WHERE product_name = ?""");
+        
+            st.setString(1, product_name);
+            ResultSet res = st.executeQuery();
             return res;
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
@@ -239,6 +262,34 @@ public class ProductDirectory {
         }
     }
     
+    
+    public List<String> getAllProducts(){
+        List<String> list = new ArrayList<String>();
+        try {
+            Connection dbconn = DBconnection.connectDB();
+            
+            PreparedStatement st;
+            
+            st = (PreparedStatement)dbconn.prepareStatement("""
+                                                            select product_name  
+                                                            from productcatalog 
+                                                            """);
+
+            ResultSet res = st.executeQuery();
+            
+            
+            while(res.next()){
+                list.add(res.getString("product_name"));
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return list;
+    }
+    
     public String getOverallProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();
@@ -315,6 +366,7 @@ public class ProductDirectory {
             return "0";
         }
     }
+    
     
     
     
