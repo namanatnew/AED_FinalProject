@@ -24,6 +24,13 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -38,6 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
     private TableRowSorter sorter;
     public MainFrame() {
         initComponents();
+        showChart();
         //this.records = records;
         
 //        populateTableData();
@@ -77,6 +85,9 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         pnlWorkArea = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        pnlReport = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(66, 179, 172));
@@ -273,6 +284,34 @@ public class MainFrame extends javax.swing.JFrame {
 
         pnlWorkArea.setBackground(new java.awt.Color(255, 255, 255));
         pnlWorkArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+
+        pnlReport.setBackground(new java.awt.Color(204, 255, 255));
+        pnlReport.setBorder(javax.swing.BorderFactory.createTitledBorder("Report"));
+        pnlReport.setLayout(new javax.swing.BoxLayout(pnlReport, javax.swing.BoxLayout.LINE_AXIS));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(pnlReport, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(pnlReport, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2);
+
+        pnlWorkArea.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 680, 500));
+
         getContentPane().add(pnlWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 63, 810, 610));
 
         setSize(new java.awt.Dimension(1014, 673));
@@ -280,6 +319,33 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  
     
+    public void showChart(){
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        
+        
+        dcd.setValue(100, "Quantity (gm)", "Calories");
+        dcd.setValue(67, "Quantity (gm)", "Protein");
+        dcd.setValue(167, "Quantity (gm)", "Carbs");
+        dcd.setValue(10, "Quantity (gm)", "Fats");
+        dcd.setValue(0.5, "Quantity (gm)", "Sodium");
+        dcd.setValue(0.4, "Quantity (gm)", "Cholesterol");
+        
+        JFreeChart chart = ChartFactory.createBarChart("Target vs Achievement", "Nutrition", "Quantity (gm)", dcd, PlotOrientation.VERTICAL, true, true, false);
+        
+        CategoryPlot plot = chart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.black);
+        
+        ChartFrame cf = new ChartFrame("---", chart, true);
+        cf.setVisible(true);
+        cf.setSize(500,400);
+        ChartPanel cp = new ChartPanel(chart);
+        
+        pnlReport.removeAll();
+        pnlReport.add(cp);
+        pnlReport.updateUI();
+        
+    
+    }
     
     public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -344,13 +410,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel pnlReport;
     private javax.swing.JPanel pnlSideOptions;
     private javax.swing.JPanel pnlTitleBar;
     private javax.swing.JPanel pnlWorkArea;

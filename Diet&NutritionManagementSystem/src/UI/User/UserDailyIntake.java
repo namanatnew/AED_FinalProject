@@ -22,6 +22,7 @@ import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import java.awt.Color;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -551,7 +552,8 @@ public class UserDailyIntake extends javax.swing.JFrame {
 
     private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
         // TODO add your handling code here:
-        UserHomePage frame = new UserHomePage(this.userName, 0);
+        UserHomePage frame = null;
+        frame = new UserHomePage(this.userName, 0);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHomePageMouseClicked
