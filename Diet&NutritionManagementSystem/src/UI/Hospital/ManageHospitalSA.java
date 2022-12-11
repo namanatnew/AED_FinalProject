@@ -5,9 +5,9 @@
 package UI.Hospital;
 
 import java.sql.Connection;
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import Model.Database.DBconnection;
-import Model.HospitalDir.HospitalDirectory;
+import Model.Enterprise.HospitalDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -726,7 +726,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Password doesn't match!");
             }
             else{
-                Account ac = new Account();
+                AccountDirectory ac = new AccountDirectory();
                 ac.addUserCredential(email, password, "Hospital");
               
             }

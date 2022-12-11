@@ -5,6 +5,9 @@
 package UI.User;
 
 import Model.Database.DBconnection;
+import Model.Diet.DietIntake;
+import Model.Diet.DietPlan;
+import Model.People.UserDirectory;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -46,6 +49,7 @@ public class UserHomePage extends javax.swing.JFrame {
         initComponents();
         this.userName = name;
         showDietInfo(this.userName);
+        showIntakeInfo(this.userName);
     }
 
     /**
@@ -298,7 +302,7 @@ public class UserHomePage extends javax.swing.JFrame {
         lblCholesterol.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
         panelMedical1.add(lblCholesterol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
 
-        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 770, 120));
+        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
         lblTitle.setText("Your Consumption (Today)");
@@ -338,7 +342,7 @@ public class UserHomePage extends javax.swing.JFrame {
         lblCholesterol1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
         panelMedical2.add(lblCholesterol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
 
-        jPanel4.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
+        jPanel4.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 770, 120));
 
         lblTitle1.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
         lblTitle1.setText("Your Diet Plan (Daily Requirement)");
@@ -400,45 +404,36 @@ public class UserHomePage extends javax.swing.JFrame {
     
     public void showIntakeInfo(String name){
         
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
+        DietIntake di = new DietIntake();
+        ResultSet res = di.selectRecordsByUser( this.userName);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dailyintake WHERE username=?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
-                lblCalories.setText(res.getString("calories"));
-                lblProtein.setText(res.getString("protein"));
-                lblCarbs.setText(res.getString("carbs"));
-                lblFats.setText(res.getString("fats"));
-                lblSodium.setText(res.getString("sodium"));
-                lblCholesterol.setText(res.getString("cholesterol"));
+                lblCalories1.setText(res.getString("calories"));
+                lblProtein1.setText(res.getString("protein"));
+                lblCarbs1.setText(res.getString("carbs"));
+                lblFats1.setText(res.getString("fats"));
+                lblSodium1.setText(res.getString("sodium"));
+                lblCholesterol1.setText(res.getString("cholesterol"));
                 
             }
             System.out.println(this.userName);
             
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
     
     public void showDietInfo(String name){
         
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
+        DietPlan dp = new DietPlan();
+        ResultSet res = dp.selectRecordsByName(name);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dietplans WHERE username=?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
+            
             
             while(res.next()){
                 lblCalories.setText(res.getString("calories"));
@@ -453,7 +448,7 @@ public class UserHomePage extends javax.swing.JFrame {
             
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
@@ -461,23 +456,22 @@ public class UserHomePage extends javax.swing.JFrame {
     
     public String getUserNameFromEmail(String email_id){
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        UserDirectory ud = new UserDirectory();
+        ResultSet res = ud.getUserNameByEmail(email_id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from end_users WHERE Email=?");
-            st.setString(1, email_id);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 this.userName = res.getString("Name");
+                
             }
-            System.out.println(this.userName);     
+            return this.userName;
+            
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        return this.userName;
     }
     
     /**
