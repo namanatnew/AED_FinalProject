@@ -9,6 +9,9 @@ import UI.User.*;
 import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Organization.ProductDirectory;
+import Model.WorkRequest.ProductApproval;
+
+import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
@@ -887,7 +890,7 @@ public class ManageProductsNA extends javax.swing.JFrame {
 
         String product_name = model.getValueAt(selectedRow,0).toString();
 
-        ProductDirectory product = new ProductDirectory();
+        ProductApproval product = new ProductApproval();
 
         product.approveProduct(product_name);
 

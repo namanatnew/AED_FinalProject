@@ -18,6 +18,8 @@ public class Product {
     private float sodium;
     private float carbohydrates;
     private float protein;
+    private String added_by;
+    private String status;
 
     public String getProduct_name() {
         return product_name;
@@ -91,6 +93,24 @@ public class Product {
     public void setReference_qty(float reference_qty) {
         this.reference_qty = reference_qty;
     }
+
+    public String getAdded_by() {
+        return added_by;
+    }
+
+    public void setAdded_by(String added_by) {
+        this.added_by = added_by;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
 
     public Product(String product_name, String product_type, float reference_qty, float calorie, float fat, float cholesterol, float sodium, float carbohydrates, float protein) {
         this.product_name = product_name;

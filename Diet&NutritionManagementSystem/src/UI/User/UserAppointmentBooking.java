@@ -15,6 +15,7 @@ import Model.Database.DBconnection;
 import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
+import Model.Utilities.SendEmail;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -506,7 +507,29 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             String hospitalName = txtHospitalName.getText();
             Date date = dateAppointment.getDate();
             LocalTime time = timeAppointment.getTime(); 
-            
+      
+            Connection dbconn = DBconnection.connectDB();
+            PreparedStatement st;
+        
+            try{
+                String query = "INSERT INTO appointments(userName, dietitianName, hospital, date, time, status) VALUES (?,?,?,?,?,?)";
+                st = (PreparedStatement)dbconn.prepareStatement(query);
+                st.setString(1, this.userName); //bg
+                st.setString(2, dietitianName);
+                st.setString(3, hospitalName);
+                st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
+                st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
+                st.setString(6, "Requested");
+                
+                st.executeUpdate();
+                
+                
+                
+                
+            }
+            catch(SQLException ex){
+                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            }
             AppointmentDirectory ad = new AppointmentDirectory();
             ad.addAppointment(this.userName, dietitianName, hospitalName, date, time);
 //            Connection dbconn = DBconnection.connectDB();
