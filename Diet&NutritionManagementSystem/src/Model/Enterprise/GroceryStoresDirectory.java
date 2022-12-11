@@ -151,4 +151,29 @@ public class GroceryStoresDirectory {
             Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public String getUserNameFromEmail(String email_id){
+        
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        String name = null;
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT name from grocerystores WHERE email=?");
+            st.setString(1, email_id);
+            ResultSet res = st.executeQuery();
+            
+            while(res.next()){
+                name = res.getString("Name");
+                System.out.println(name);     
+            }
+            return name;
+        }
+        catch(SQLException ex){
+            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        return null;
+        }
+        
+        
+        
+    }
 }

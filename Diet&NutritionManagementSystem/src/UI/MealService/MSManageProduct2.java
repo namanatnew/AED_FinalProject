@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.Product;
+package UI.MealService;
 
 import Model.Product.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
-import UI.Main.MainFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.sql.ResultSet;
@@ -21,14 +20,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author naman
  */
-public class GSManageProduct extends javax.swing.JFrame {
+public class MSManageProduct2 extends javax.swing.JFrame {
     DefaultTableModel model;
-    
+    public String name;
     /**
      * Creates new form NewJFrame
+     * @param name
      */
 
-    public GSManageProduct() {
+    public MSManageProduct2(String name) {
+        initComponents();
+        this.name = name;
+        populateTable("");
+    }
+    
+    public MSManageProduct2() {
         initComponents();
         populateTable("");
     }
@@ -120,7 +126,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
 
         panelProduct.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Product Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Meal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -142,7 +148,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         panelProduct.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 110, -1));
 
         txtType.setEditable(false);
-        txtType.setText("Grocery Store Product");
+        txtType.setText("Meal Plan Product");
         txtType.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTypeKeyReleased(evt);
@@ -218,7 +224,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         panelNutrition.add(txtCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 210, -1));
 
         panelAddress2.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View & Modify Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
 
         tblProduct1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -310,7 +316,7 @@ public class GSManageProduct extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnDelete1))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
@@ -365,20 +371,19 @@ public class GSManageProduct extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 41, -1, -1));
 
-        setSize(new java.awt.Dimension(1039, 648));
+        setSize(new java.awt.Dimension(1039, 699));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         
     public void resetForm(){
     
         txtName.setText(null);
-//        txtType.setText(null);
         txtRefQty.setText(null);
         txtCalorie.setText(null);
         txtFat.setText(null);
@@ -386,8 +391,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         txtSodium.setText(null);
         txtCarbs.setText(null);
         txtProtein.setText(null);
-             
-         
+
     }
     
     
@@ -429,8 +433,8 @@ public class GSManageProduct extends javax.swing.JFrame {
             product.updateProduct(type,refqty,calorie,fat,chol,sodium,carbs,protein,name);
             resetForm();
             populateTable("");
-            JOptionPane.showMessageDialog(this, "Product is updated in the catalog!",
-                "Product updated",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Meal is updated in the catalog!",
+                "Meal updated",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdate1ActionPerformed
 
@@ -445,8 +449,8 @@ public class GSManageProduct extends javax.swing.JFrame {
 
         product.sendProduct(product_name);
 
-        JOptionPane.showMessageDialog(this, "Product is requested for approval!",
-            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Meal is requested for approval!",
+            "Meal requested",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSend1ActionPerformed
 
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
@@ -460,8 +464,8 @@ public class GSManageProduct extends javax.swing.JFrame {
 
         product.deleteProduct(product_name);
         populateTable("");
-        JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!",
-            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Meal is deleted from the catalog!",
+            "Meal deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
@@ -488,7 +492,7 @@ public class GSManageProduct extends javax.swing.JFrame {
             txtProtein.setText(res.getString(9));
         }}
             catch (SQLException ex) {
-            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MSManageProduct2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnView1ActionPerformed
 
@@ -501,14 +505,14 @@ public class GSManageProduct extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        GSManageProduct frame = new GSManageProduct();
+        MSManageProduct2 frame = new MSManageProduct2();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getText();
+        String pname = txtName.getText();
         String type = txtType.getText();
         float ref_qty = Float.parseFloat(txtRefQty.getText());
         float calorie = Float.parseFloat(txtCalorie.getText());
@@ -520,17 +524,17 @@ public class GSManageProduct extends javax.swing.JFrame {
 
         ProductDirectory product = new ProductDirectory();
 
-        if(product.alreadyExist(name)){
-            JOptionPane.showMessageDialog(this,"The given product already exists in thr product catalog",
-                "Product already exists",JOptionPane.WARNING_MESSAGE);
+        if(product.alreadyExist(pname)){
+            JOptionPane.showMessageDialog(this,"The given Meal already exists in the Meal catalog",
+                "Meal already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
             //            java.util.Date utilDate = new java.util.Date();
             //            Timestamp ts = new java.sql.Timestamp(utilDate.getTime());
-            product.addProduct(name, type, ref_qty, calorie, fat, chol, sodium,
-                carbs, protein,"Grocery Store Manager");
-            JOptionPane.showMessageDialog(this, "Product is added to the catalog",
-                "Product added",JOptionPane.INFORMATION_MESSAGE);
+            product.addProduct(pname, type, ref_qty, calorie, fat, chol, sodium,
+                carbs, protein,this.name);
+            JOptionPane.showMessageDialog(this, "Meal is added to the catalog",
+                "Meal added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
         }
 
@@ -571,7 +575,7 @@ public class GSManageProduct extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GSManageProduct().setVisible(true);
+                new MSManageProduct2().setVisible(true);
             }
         });
     }

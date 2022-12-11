@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.Product;
+package UI.GroceryStore;
 
 import Model.Product.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
+import UI.Main.MainFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.sql.ResultSet;
@@ -20,17 +21,26 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author naman
  */
-public class MSManageProduct extends javax.swing.JFrame {
+public class GSManageProduct extends javax.swing.JFrame {
     DefaultTableModel model;
-    
+    public String name;
     /**
      * Creates new form NewJFrame
+     * @param name
      */
 
-    public MSManageProduct() {
+    public GSManageProduct(String name) {
+        initComponents();
+        this.name = name;
+        populateTable("");
+    }
+    
+    public GSManageProduct() {
         initComponents();
         populateTable("");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,8 +63,6 @@ public class MSManageProduct extends javax.swing.JFrame {
         lblGender = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         txtType = new javax.swing.JTextField();
-        btnRegister = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
         panelNutrition = new javax.swing.JPanel();
         lblFat = new javax.swing.JLabel();
         txtProtein = new javax.swing.JTextField();
@@ -78,6 +86,8 @@ public class MSManageProduct extends javax.swing.JFrame {
         btnDelete1 = new javax.swing.JButton();
         btnSend1 = new javax.swing.JButton();
         btnUpdate1 = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(66, 179, 172));
@@ -119,7 +129,7 @@ public class MSManageProduct extends javax.swing.JFrame {
         panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
 
         panelProduct.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Meal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelProduct.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Product Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
         panelProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -141,7 +151,7 @@ public class MSManageProduct extends javax.swing.JFrame {
         panelProduct.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 110, -1));
 
         txtType.setEditable(false);
-        txtType.setText("Meal Plan Product");
+        txtType.setText("Grocery Store Product");
         txtType.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTypeKeyReleased(evt);
@@ -152,31 +162,11 @@ public class MSManageProduct extends javax.swing.JFrame {
         });
         panelProduct.add(txtType, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, -1));
 
-        btnRegister.setBackground(new java.awt.Color(255, 51, 51));
-        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText("Add Product");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
-            }
-        });
-
-        btnClear.setBackground(new java.awt.Color(255, 51, 51));
-        btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
         panelNutrition.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Nutrition Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 10))); // NOI18N
         panelNutrition.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblFat.setText("Total Fat:");
         panelNutrition.add(lblFat, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
-
-        txtProtein.setText("45");
         panelNutrition.add(txtProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 210, -1));
 
         lblRefQty.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -197,27 +187,15 @@ public class MSManageProduct extends javax.swing.JFrame {
 
         lblProtein.setText("Protein:");
         panelNutrition.add(lblProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
-
-        txtRefQty.setText("100");
         panelNutrition.add(txtRefQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 210, -1));
-
-        txtCalorie.setText("200");
         panelNutrition.add(txtCalorie, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 210, -1));
-
-        txtFat.setText("10");
         panelNutrition.add(txtFat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 210, -1));
-
-        txtChol.setText("13");
         panelNutrition.add(txtChol, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 210, -1));
-
-        txtSodium.setText("16");
         panelNutrition.add(txtSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 210, -1));
-
-        txtCarbs.setText("5");
         panelNutrition.add(txtCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 210, -1));
 
         panelAddress2.setBackground(new java.awt.Color(255, 255, 255, 150));
-        panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View & Modify Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelAddress2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
 
         tblProduct1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -292,7 +270,7 @@ public class MSManageProduct extends javax.swing.JFrame {
                     .addGroup(panelAddress2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btnSend1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(20, Short.MAX_VALUE))))
         );
         panelAddress2Layout.setVerticalGroup(
             panelAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,19 +287,13 @@ public class MSManageProduct extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnDelete1))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
         panelRegistration.setLayout(panelRegistrationLayout);
         panelRegistrationLayout.setHorizontalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
-                .addContainerGap(373, Short.MAX_VALUE)
-                .addComponent(btnRegister)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(439, 439, 439))
             .addGroup(panelRegistrationLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,9 +304,6 @@ public class MSManageProduct extends javax.swing.JFrame {
                     .addComponent(panelAddress2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        panelRegistrationLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnRegister});
-
         panelRegistrationLayout.setVerticalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistrationLayout.createSequentialGroup()
@@ -344,10 +313,6 @@ public class MSManageProduct extends javax.swing.JFrame {
                     .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
-                    .addComponent(btnRegister))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -370,13 +335,34 @@ public class MSManageProduct extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 41, -1, -1));
 
-        setSize(new java.awt.Dimension(1039, 648));
+        btnRegister.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("Add Product");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, -1, -1));
+
+        btnClear.setBackground(new java.awt.Color(255, 51, 51));
+        btnClear.setForeground(new java.awt.Color(255, 255, 255));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, 75, -1));
+
+        setSize(new java.awt.Dimension(1039, 706));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         
     public void resetForm(){
     
         txtName.setText(null);
+//        txtType.setText(null);
         txtRefQty.setText(null);
         txtCalorie.setText(null);
         txtFat.setText(null);
@@ -384,7 +370,8 @@ public class MSManageProduct extends javax.swing.JFrame {
         txtSodium.setText(null);
         txtCarbs.setText(null);
         txtProtein.setText(null);
-
+             
+         
     }
     
     
@@ -426,8 +413,8 @@ public class MSManageProduct extends javax.swing.JFrame {
             product.updateProduct(type,refqty,calorie,fat,chol,sodium,carbs,protein,name);
             resetForm();
             populateTable("");
-            JOptionPane.showMessageDialog(this, "Meal is updated in the catalog!",
-                "Meal updated",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Product is updated in the catalog!",
+                "Product updated",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdate1ActionPerformed
 
@@ -442,8 +429,8 @@ public class MSManageProduct extends javax.swing.JFrame {
 
         product.sendProduct(product_name);
 
-        JOptionPane.showMessageDialog(this, "Meal is requested for approval!",
-            "Meal deleted",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Product is requested for approval!",
+            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSend1ActionPerformed
 
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
@@ -457,8 +444,8 @@ public class MSManageProduct extends javax.swing.JFrame {
 
         product.deleteProduct(product_name);
         populateTable("");
-        JOptionPane.showMessageDialog(this, "Meal is deleted from the catalog!",
-            "Meal deleted",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Product is deleted from the catalog!",
+            "Product deleted",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
@@ -467,11 +454,9 @@ public class MSManageProduct extends javax.swing.JFrame {
         model = (DefaultTableModel) tblProduct1.getModel();
 
         String product_name = model.getValueAt(selectedRow,0).toString();
-//        System.out.print(product_name + "XXXXX");
         ProductDirectory product = new ProductDirectory();
 
         ResultSet res = product.exactProductLookup(product_name);
-//        System.out.print(res + "YYYY");
         try {
             while(res.next()){
             txtName.setText(res.getString(1));
@@ -485,7 +470,7 @@ public class MSManageProduct extends javax.swing.JFrame {
             txtProtein.setText(res.getString(9));
         }}
             catch (SQLException ex) {
-            Logger.getLogger(MSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GSManageProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnView1ActionPerformed
 
@@ -498,14 +483,14 @@ public class MSManageProduct extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        MSManageProduct frame = new MSManageProduct();
+        GSManageProduct frame = new GSManageProduct();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getText();
+        String pname = txtName.getText();
         String type = txtType.getText();
         float ref_qty = Float.parseFloat(txtRefQty.getText());
         float calorie = Float.parseFloat(txtCalorie.getText());
@@ -517,17 +502,15 @@ public class MSManageProduct extends javax.swing.JFrame {
 
         ProductDirectory product = new ProductDirectory();
 
-        if(product.alreadyExist(name)){
-            JOptionPane.showMessageDialog(this,"The given Meal already exists in the Meal catalog",
-                "Meal already exists",JOptionPane.WARNING_MESSAGE);
+        if(product.alreadyExist(pname)){
+            JOptionPane.showMessageDialog(this,"The given product already exists in thr product catalog",
+                "Product already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //            java.util.Date utilDate = new java.util.Date();
-            //            Timestamp ts = new java.sql.Timestamp(utilDate.getTime());
-            product.addProduct(name, type, ref_qty, calorie, fat, chol, sodium,
-                carbs, protein,"Meal Service Manager");
-            JOptionPane.showMessageDialog(this, "Meal is added to the catalog",
-                "Meal added",JOptionPane.INFORMATION_MESSAGE);
+            product.addProduct(pname, type, ref_qty, calorie, fat, chol, sodium,
+                carbs, protein,this.name);
+            JOptionPane.showMessageDialog(this, "Product is added to the catalog",
+                "Product added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
         }
 
@@ -568,7 +551,7 @@ public class MSManageProduct extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MSManageProduct().setVisible(true);
+                new GSManageProduct().setVisible(true);
             }
         });
     }
