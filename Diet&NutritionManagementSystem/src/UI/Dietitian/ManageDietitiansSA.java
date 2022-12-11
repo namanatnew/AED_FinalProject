@@ -15,7 +15,11 @@ import Model.People.DietitianDirectory;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
+import UI.Hospital.ManageHospitalSA;
+import UI.SystemAdmin.ManageGroceryStoresSA;
+import UI.SystemAdmin.ManageMealServiceSA;
 import UI.SystemAdmin.SAHomePage;
+import UI.User.UserRegistration;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
@@ -144,12 +148,13 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        lblStore = new javax.swing.JLabel();
+        lblService = new javax.swing.JLabel();
 
         txtAllergies4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -691,16 +696,15 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
 
         pnlSideOptions.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 190, 45));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
-        jLabel7.setText(" Manage Products");
-        pnlSideOptions.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 170, -1));
-
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 170, -1));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
@@ -715,7 +719,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, -1));
 
         pnlSideOptions.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
@@ -731,9 +735,31 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
                 jLabel18MouseClicked(evt);
             }
         });
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, -1));
 
         pnlSideOptions.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 190, 45));
+
+        lblStore.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblStore.setForeground(new java.awt.Color(255, 255, 255));
+        lblStore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblStore.setText(" Manage Stores");
+        lblStore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStoreMouseClicked(evt);
+            }
+        });
+        pnlSideOptions.add(lblStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 180, -1));
+
+        lblService.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblService.setForeground(new java.awt.Color(255, 255, 255));
+        lblService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblService.setText(" Manage Services");
+        lblService.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblServiceMouseClicked(evt);
+            }
+        });
+        pnlSideOptions.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 180, -1));
 
         getContentPane().add(pnlSideOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 620));
 
@@ -1102,7 +1128,31 @@ public void resetUpdateForm(){
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
+        UserRegistration frame = new UserRegistration();
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        ManageHospitalSA frame = new ManageHospitalSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void lblStoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStoreMouseClicked
+        // TODO add your handling code here:
+        ManageGroceryStoresSA frame = new ManageGroceryStoresSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblStoreMouseClicked
+
+    private void lblServiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblServiceMouseClicked
+        // TODO add your handling code here:
+        ManageMealServiceSA frame = new ManageMealServiceSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblServiceMouseClicked
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;
@@ -1365,7 +1415,6 @@ public void resetUpdateForm(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
@@ -1393,6 +1442,8 @@ public void resetUpdateForm(){
     private javax.swing.JLabel lblHeight2;
     private javax.swing.JLabel lblPurpose;
     private javax.swing.JLabel lblPurpose2;
+    private javax.swing.JLabel lblService;
+    private javax.swing.JLabel lblStore;
     private javax.swing.JLabel lblWeight;
     private javax.swing.JLabel lblWeight2;
     private javax.swing.JLabel lblWorkoutFrequency2;

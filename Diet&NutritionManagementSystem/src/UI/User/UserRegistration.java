@@ -18,7 +18,12 @@ import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
+
+import UI.Hospital.ManageHospitalSA;
+
 import UI.Main.MainFrame;
+import UI.SystemAdmin.ManageGroceryStoresSA;
+import UI.SystemAdmin.ManageMealServiceSA;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -717,6 +722,11 @@ public class UserRegistration extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         pnlSideOptions.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 170, -1));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
@@ -786,6 +796,10 @@ public void resetUpdateForm(){
         pwdPassword.setText(null);
         pwdRePassword.setText(null);
          
+        txtEmail.setText(null);
+        pwdPassword.setText(null);
+        pwdRePassword.setText(null);
+         
     }
     
     
@@ -834,7 +848,7 @@ public void resetUpdateForm(){
            String email = txtEmail.getText();
            String password =new String(pwdPassword.getPassword());
            String confirmpassword = new String(pwdRePassword.getPassword());
-           
+
            new UserDirectory().addNewUserToDB(name, dob, age, gender, contact, address, height, weight, diabetic, allergies, puposeList, preference, workoutFrequency, favorites,  email);
            
         if (email.equals("Enter Email") || password.equals("Enter Password") 
@@ -1111,12 +1125,14 @@ public void resetUpdateForm(){
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressKeyTyped
 
+
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
         ManageDietitiansSA frame = new ManageDietitiansSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
+
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;

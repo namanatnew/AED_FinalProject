@@ -6,7 +6,7 @@ package UI.MealService;
 
 import Model.Product.ProductDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.Product.GSManageProduct;
+import UI.GroceryStore.GSManageProduct;
 import UI.User.UserRegistration;
 import java.sql.ResultSet;
 import net.proteanit.sql.DbUtils;
@@ -266,7 +266,7 @@ public class MSHomePage extends javax.swing.JFrame {
     private void panelProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductsMouseClicked
         // TODO add your handling code here:
         System.out.print("open register");
-        GSManageProduct addprd = new GSManageProduct();
+        MSManageProduct addprd = new MSManageProduct();
         addprd.setVisible(true);
         dispose();
     }//GEN-LAST:event_panelProductsMouseClicked
@@ -342,7 +342,9 @@ public class MSHomePage extends javax.swing.JFrame {
     
     private void show_stats(){
             ProductDirectory product = new ProductDirectory();
-//            String res1 = product.getTotalProducts();
+
+            String res1 = product.getTotalProducts("Grocery Store Product");
+
             String res2 = product.getApprovedProducts();
             String res3 = product.getPendingProducts();
 //            lblTotalval.setText(res1);
