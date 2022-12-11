@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Utilities.UtilityFunctions;
+import UI.User.UserRegistration;
+import java.awt.Color;
+import java.sql.ResultSet;
 /**
  *
  * @author Vipul
@@ -84,37 +87,154 @@ public class UserDirectory {
             
             int res = st.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(PersonDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void deleteUserFromDB(User p){
+    public void deleteUserFromDB(int id){
         
         Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
         try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("DELETE * FROM end_users WHERE `Name` = ? AND `Address` = ?");
-            st.setString(1, p.getName());
-            st.setString(2, p.getAddress());
-            
-            
+            String query = "DELETE FROM end_users WHERE UserID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setInt(1, id);
+            st.executeUpdate();
+               
         } catch (SQLException ex) {
-            Logger.getLogger(PersonDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-//    public boolean checkPID(int pID){
-//        int flag = 0;
-//        for(User p: getPatientList()){
-//            if(p.getpID() == pID)
-//                flag = 1;
-//            else
-//                flag = 0;
-//        }
-//        if(flag>0)
-//            return true;
-//        else
-//            return false;
-//    }
-  
+    public ResultSet getUserNameByEmail(String email){
     
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from end_users WHERE Email=?");
+            st.setString(1, email);
+            ResultSet res = st.executeQuery();
+            
+            return res;
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+     
+    }
+    
+    public void updateRecordsByID(String bp, float height, float weight, String diab, String allergies, String purpose, String preference, String workout, String favorite, int id){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            String query = "UPDATE end_users SET BloodGroup = ?, Height = ?, Weight = ?, Diabetic = ?, Allergies = ?, Purpose = ?, Food_Preference = ?, Workout_Frequency = ?, Favorites = ? WHERE UserID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, bp); //bg
+            st.setFloat(2, height);
+            st.setFloat(3, weight);
+            st.setString(4, diab);                
+           
+            st.setString(5, allergies);
+            st.setString(6, purpose);
+            st.setString(7, preference);
+            st.setString(8, workout);
+            st.setString(9, favorite);
+            st.setInt(10, id);
+            st.executeUpdate();
+            
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+    
+    
+    public void updateRecordsByName(String bp, float height, float weight, String diab, String allergies, String purpose, String preference, String workout, String favorite, String name){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            String query = "UPDATE end_users SET BloodGroup = ?, Height = ?, Weight = ?, Diabetic = ?, Allergies = ?, Purpose = ?, Food_Preference = ?, Workout_Frequency = ?, Favorites = ? WHERE Name = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, bp); //bg
+            st.setFloat(2, height);
+            st.setFloat(3, weight);
+            st.setString(4, diab);                
+           
+            st.setString(5, allergies);
+            st.setString(6, purpose);
+            st.setString(7, preference);
+            st.setString(8, workout);
+            st.setString(9, favorite);
+            st.setString(10, name);
+            st.executeUpdate();
+            
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+    
+    public ResultSet selectRecordsByID(int id){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM end_users WHERE UserID = ?");
+            st.setInt(1, id);
+            ResultSet res = st.executeQuery();
+            return res;
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public ResultSet selectRecordsByName(String name){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM end_users WHERE Name = ?");
+            st.setString(1, name);
+            ResultSet res = st.executeQuery();
+            return res;
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public ResultSet selectAllRecords(){
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT UserID, Name, Gender, Age, Contact, Address, Height, Weight, BloodGroup, Diabetic, Allergies from end_users");
+            
+            ResultSet res = st.executeQuery();
+            return res;
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    
+    }
 }

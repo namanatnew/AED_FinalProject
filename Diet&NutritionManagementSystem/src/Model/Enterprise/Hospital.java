@@ -2,31 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.HospitalDir;
+package Model.Enterprise;
 
-import java.util.Date;
+import Model.Account.Account;
+
 
 /**
  *
  * @author anuja
  */
-public class Hospital {
+public class Hospital extends Account{
     
-    private int Id;
+    
+    private String licenseNo;
     private String name;
     private long phNumber;
     private String address;
-    private String email;
+//    private String email;
 
    
     
-    public Hospital(int Id, String name, long phNumber, String email, String address ){
-        
-        this.Id  = Id;
+    public Hospital(String email, String password, String type, String licenseNo, String name, long phNumber, String address ){
+        super(email, password, type);
+        this.licenseNo  = licenseNo;
         this.name = name;
         this.phNumber = phNumber;
         this.address = address;
-        this.email = email;
        
     }     
 
@@ -55,22 +56,20 @@ public class Hospital {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-     public String getEmail() {
-        return email;
+
+    public String getLicenseNo() {
+        return licenseNo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-     public int getId() {
-        return Id;
+    public void setLicenseNo(String licenseNo) {
+        this.licenseNo = licenseNo;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public Hospital(String email, String password, String type) {
+        super(email, password, type);
     }
+    
+    
     
 
 }

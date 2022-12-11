@@ -4,7 +4,7 @@
  */
 package UI.GroceryStore;
 
-import Model.Product.ProductDirectory;
+import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
 import UI.Main.MainFrame;

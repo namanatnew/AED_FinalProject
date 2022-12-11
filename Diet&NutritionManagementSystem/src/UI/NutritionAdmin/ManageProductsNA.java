@@ -8,7 +8,7 @@ import UI.Main.*;
 import UI.User.*;
 import Model.People.User;
 import Model.People.UserDirectory;
-import Model.Product.ProductDirectory;
+import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;

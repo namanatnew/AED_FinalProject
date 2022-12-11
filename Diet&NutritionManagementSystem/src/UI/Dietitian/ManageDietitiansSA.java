@@ -4,7 +4,7 @@
  */
 package UI.Dietitian;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -768,7 +768,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
 
-public void resetUpdateForm(){
+    public void resetUpdateForm(){
       
         txtName1.setText(null);
         dateDOB1.setDate(null);
@@ -855,7 +855,7 @@ public void resetUpdateForm(){
             JOptionPane.showMessageDialog(this, "Password doesn't match!");
         }
         else{
-            Account ac = new Account();
+            AccountDirectory ac = new AccountDirectory();
             ac.addUserCredential(email, password, "Dietitian");
         }
            
@@ -912,47 +912,19 @@ public void resetUpdateForm(){
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        String name = txtName1.getText();
+        Date dob = dateDOB1.getDate();
+        String gender = comboGender1.getSelectedItem().toString();
+        Long contact = Long.parseLong(txtContact1.getText());
+        String address = txtAddress1.getText();
+        Date doj = dateDOJ1.getDate();
+        String qualification = txtQualification1.getText();
+        String hospital = comboHospital1.getSelectedItem().toString();
+        String type = comboType1.getSelectedItem().toString();
+        int slots = Integer.parseInt(txtSlots1.getText());
         
-        try{
-             
-            String query = "UPDATE dietitians SET Name = ?, DOB = ?, Gender = ?, Contact = ?, Address = ?, DOJ = ?, Experience = ?, Qualification = ?, Hospital = ? , Type = ?, Slots = ?, Age = ? WHERE ID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, txtName1.getText()); //bg
-            st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOB1.getDate()));
-            st.setString(3, comboGender1.getSelectedItem().toString());
-            st.setLong(4, Long.parseLong(txtContact1.getText()));
-            st.setString(5, txtAddress1.getText());
-            
-            LocalDate today = LocalDate.now();
-            st.setDate(6, new UtilityFunctions().convertFromJAVADateToSQLDate(dateDOJ1.getDate()));
-            int exp = Period.between(convertToLocalDateViaInstant(dateDOJ1.getDate()), today).getYears();
-            st.setInt(7, exp); //age
-            
-            st.setString(8, txtQualification1.getText());
-            st.setString(9, comboHospital1.getSelectedItem().toString());
-            st.setString(10, comboType1.getSelectedItem().toString());
-            st.setInt(11, Integer.parseInt(txtSlots1.getText()));
-            
-            int age = Period.between(convertToLocalDateViaInstant(dateDOB1.getDate()), today).getYears();
-            
-            st.setInt(12, age); // exp
-            
-            
-            st.setInt(13, id);
-            
-            st.executeUpdate();
-            
-            populateTableData();
-            resetUpdateForm();
-//            System.out.println(res);
-            
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DietitianDirectory dd = new DietitianDirectory();
+        dd.updateRecordsByID(name, dob, gender, contact, address, doj, qualification, hospital, type, slots, id);
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -986,23 +958,9 @@ public void resetUpdateForm(){
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
         
-        try{
-            String query = "DELETE FROM dietitians WHERE ID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setInt(1, id);
-            st.executeUpdate();
-            
-            populateTableData();
-            resetUpdateForm();
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        DietitianDirectory dd = new DietitianDirectory();
+        dd.deleteDietitianFromDB(id);
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -1013,13 +971,10 @@ public void resetUpdateForm(){
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.selectRecordsByID(id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM dietitians WHERE ID = ?");
-            st.setInt(1, id);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 
@@ -1037,9 +992,7 @@ public void resetUpdateForm(){
                 txtSlots1.setText(String.valueOf(res.getInt("Slots")));
                 
             }
-            System.out.println(res);
             
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
             Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
@@ -1312,21 +1265,18 @@ public void resetUpdateForm(){
     
     private void populateTableData() {
         
-        Connection dbconn = DBconnection.connectDB();
         //Type-cast table model into default table model
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
-        System.out.println("hereeeeeeeeeee");
+        
         sorter = new TableRowSorter<>(model);
 
         tableView.setRowSorter(sorter);
         //Clear the table 
         model.setRowCount(0);
         
-        PreparedStatement st;
-        
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.selectAllRecords();
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Address, Hospital, Type, Qualification, Experience, Slots from dietitians");
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 Object[] row = new Object[11];

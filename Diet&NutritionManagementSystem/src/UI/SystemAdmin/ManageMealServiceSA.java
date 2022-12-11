@@ -4,7 +4,7 @@
  */
 package UI.SystemAdmin;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import Model.Enterprise.MealServiceDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
@@ -433,7 +433,7 @@ public class ManageMealServiceSA extends javax.swing.JFrame {
         String password = txtPassword.getText();
 
         MealServiceDirectory store = new MealServiceDirectory();
-        Account ac = new Account();
+        AccountDirectory ac = new AccountDirectory();
         if(store.alreadyExist(name)){
             JOptionPane.showMessageDialog(this,"The given Meal Service already exists in the directory",
                 "Meal Service already exists",JOptionPane.WARNING_MESSAGE);

@@ -1,6 +1,6 @@
 package UI.Authenticate;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import Model.Database.DBconnection;
 import UI.Dietitian.DietitianHomePage;
 import UI.GroceryStore.GSHomePage;
@@ -320,7 +320,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void userLogin(String email,String password){
         
         try {
-            Account ac = new Account();
+            AccountDirectory ac = new AccountDirectory();
             ResultSet res = ac.checkCredential(email, password);
             if(res.next()){
                 dispose();

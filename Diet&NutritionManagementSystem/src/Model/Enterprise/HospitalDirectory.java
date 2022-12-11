@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.HospitalDir;
+package Model.Enterprise;
+
 
 import Model.Database.DBconnection;
 import Model.People.Dietitian;
@@ -33,14 +34,10 @@ public class HospitalDirectory {
         this.hospitalList = hospitalList;
     }
     
-   public Hospital addNewHospital(int Id, String name, long phNumber, String address, String email){
+   public Hospital addNewHospital(String licenseNo, String name, long phNumber, String address, String email, String pwd, String type){
         
-        Hospital newHospital = new Hospital(Id, name, phNumber, address, email);
+        Hospital newHospital = new Hospital(email, pwd, type,  licenseNo,  name,  phNumber,  address);
         
-       // hospitalList.add(newHospital);
-        
-        //Add user details to DB
-        addNewHospitalToDB( Id, name, phNumber,  address, email);
         return newHospital;
     }
     
@@ -57,27 +54,6 @@ public class HospitalDirectory {
         try {
             
             
-            /*
-           
-            CREATE TABLE `dietitians` (
-                `ID` int NOT NULL AUTO_INCREMENT,
-                `Name` varchar(255) DEFAULT NULL,
-                `DOB` date DEFAULT NULL,
-                `Gender` varchar(10) DEFAULT NULL,
-                `Contact` long DEFAULT NULL,
-                `Address` varchar(255) DEFAULT NULL,
-                `DOJ` date DEFAULT NULL,
-                `Experience` int ,
-                `Qualification` varchar(100) NOT NULL,
-                `Specialization` varchar(10) DEFAULT NULL,
-                `Hospital` varchar(10) DEFAULT NULL,
-                `Type` varchar(50) DEFAULT NULL
-                `Slots` int ,
-                `Age` int NOT NULL,
-                PRIMARY KEY (`ID`)
-            )
-            
-            */
            
 //            PreparedStatement query = (PreparedStatement)dbconn.prepareStatement("")
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO Hospital(Id,HospitalName,PhoneNo,Email, address) VALUES(?,?,?,?,?)");

@@ -6,7 +6,7 @@ package Model.Enterprise;
 
 //import Model.Account.Account;
 import Model.Database.DBconnection;
-import Model.Product.ProductDirectory;
+import Model.Organization.ProductDirectory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

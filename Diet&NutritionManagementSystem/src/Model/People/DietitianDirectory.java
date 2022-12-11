@@ -8,12 +8,18 @@ import Model.Database.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Utilities.UtilityFunctions;
+import UI.Dietitian.ManageDietitiansSA;
+import UI.User.UserRegistration;
+import java.time.LocalDate;
+import java.time.Period;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Vipul
@@ -52,29 +58,6 @@ public class DietitianDirectory {
         Connection dbconn = DBconnection.connectDB();
         try {
             
-            
-            /*
-           
-            CREATE TABLE `dietitians` (
-                `ID` int NOT NULL AUTO_INCREMENT,
-                `Name` varchar(255) DEFAULT NULL,
-                `DOB` date DEFAULT NULL,
-                `Gender` varchar(10) DEFAULT NULL,
-                `Contact` long DEFAULT NULL,
-                `Address` varchar(255) DEFAULT NULL,
-                `DOJ` date DEFAULT NULL,
-                `Experience` int ,
-                `Qualification` varchar(100) NOT NULL,
-                `Specialization` varchar(10) DEFAULT NULL,
-                `Hospital` varchar(10) DEFAULT NULL,
-                `Type` varchar(50) DEFAULT NULL
-                `Slots` int ,
-                `Age` int NOT NULL,
-                PRIMARY KEY (`ID`)
-            )
-            
-            */
-           
 //            PreparedStatement query = (PreparedStatement)dbconn.prepareStatement("")
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `DOJ`,`Experience`, `Qualification`, `Hospital`, `Type`, `Slots`, `Email`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
@@ -97,18 +80,167 @@ public class DietitianDirectory {
         }
     }
     
-    public void deletePatientFromDB(int id){
+    public void deleteDietitianFromDB(int id){
         
         Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
         try {
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("DELETE * FROM end_users WHERE ID = ?");
-            st.setString(1, String.valueOf(id));
-            
-            
+            String query = "DELETE FROM dietitians WHERE ID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setInt(1, id);
+            st.executeUpdate();
+               
         } catch (SQLException ex) {
-            Logger.getLogger(PersonDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    public void updateSlots(String name){
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+                String query = "UPDATE dietitians SET Slots = Slots - 1 WHERE Name=?";
+                st = (PreparedStatement)dbconn.prepareStatement(query);
+                st.setString(1, name); //bg
+                
+                st.executeUpdate();
+                
+            }
+            catch(SQLException ex){
+                Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+    }
+    
+    public ResultSet viewDietitians(String type){
+        
+        
+        PreparedStatement st;
+        
+        try{
+            Connection dbconn = DBconnection.connectDB();
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ?");
+            st.setString(1, type);
+            ResultSet res = st.executeQuery();
+            return res;
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public ResultSet getDietitianNameByEmail(String email){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from dietitians WHERE Email=?");
+            st.setString(1, email);
+            ResultSet res = st.executeQuery();
+            
+            return res;
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+     
+    }
+    
+    public void updateRecordsByID(String name, Date dob, String gender, Long contact, String address, Date doj, String qualification, String hospital, String type, int slots, int id){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+             
+            String query = "UPDATE dietitians SET Name = ?, DOB = ?, Gender = ?, Contact = ?, Address = ?, DOJ = ?, Experience = ?, Qualification = ?, Hospital = ? , Type = ?, Slots = ?, Age = ? WHERE ID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, name); //bg
+            st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));
+            st.setString(3, gender);
+            st.setLong(4, contact);
+            st.setString(5, address);
+            
+            LocalDate today = LocalDate.now();
+            st.setDate(6, new UtilityFunctions().convertFromJAVADateToSQLDate(doj));
+            int exp = Period.between(new ManageDietitiansSA().convertToLocalDateViaInstant(doj), today).getYears();
+            st.setInt(7, exp); //age
+            
+            st.setString(8, qualification);
+            st.setString(9, hospital);
+            st.setString(10, type);
+            st.setInt(11, slots);
+            
+            int age = Period.between(new ManageDietitiansSA().convertToLocalDateViaInstant(dob), today).getYears();
+            
+            st.setInt(12, age); 
+            st.setInt(13, id);
+            
+            st.executeUpdate();
+            
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+    
+    
+    public ResultSet selectRecordsByID(int id){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM dietitians WHERE ID = ?");
+            st.setInt(1, id);
+            ResultSet res = st.executeQuery();
+            return res;
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public ResultSet selectAllRecords(){
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Address, Hospital, Type, Qualification, Experience, Slots from dietitians");
+            ResultSet res = st.executeQuery();
+            return res;
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    
+    }
 
+    public ResultSet selectRecordsByName(String name){
+    
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM dietitians WHERE Name = ?");
+            st.setString(1, name);
+            ResultSet res = st.executeQuery();
+            return res;
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }
