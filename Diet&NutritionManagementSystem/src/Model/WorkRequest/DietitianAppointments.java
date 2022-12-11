@@ -686,10 +686,29 @@ public class DietitianAppointments extends javax.swing.JFrame {
             catch(SQLException ex){
                 Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
+            createDailyIntakeRecord(username);
             resetForm();
         }
     }//GEN-LAST:event_btnBookActionPerformed
+    
+    public void createDailyIntakeRecord(String username){
+         Connection dbconn = DBconnection.connectDB();
+            PreparedStatement st;
+
+            try{
+                String query = "INSERT INTO dailyintake(userName) VALUES (?)";
+                st = (PreparedStatement)dbconn.prepareStatement(query);
+                st.setString(1, username);
+
+                st.executeUpdate();
+
+            }
+            catch(SQLException ex){
+                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
     
     public void resetForm(){
     

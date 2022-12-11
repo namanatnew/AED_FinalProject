@@ -4,6 +4,7 @@
  */
 package UI.SystemAdmin;
 
+import Model.Account.Account;
 import Model.Enterprise.GroceryStoresDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
@@ -98,13 +99,13 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
         tabbedPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        panelRegistration.setBackground(new java.awt.Color(51, 51, 51));
+        panelRegistration.setBackground(new java.awt.Color(255, 255, 255));
 
         panelStore.setBackground(new java.awt.Color(255, 255, 255, 150));
         panelStore.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Grocery Store Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
@@ -436,14 +437,14 @@ public class SAManageGroceryStores extends javax.swing.JFrame {
         String password = txtPassword.getText();
 
         GroceryStoresDirectory store = new GroceryStoresDirectory();
-
+        Account ac = new Account();
         if(store.alreadyExist(name)){
             JOptionPane.showMessageDialog(this,"The given store already exists in the directory",
                 "Store already exists",JOptionPane.WARNING_MESSAGE);
         }
         else{
             store.addStore(name, contact, email);
-            store.addUserCredential(email, password);
+            ac.addUserCredential(email, password, "Grocery Store");
             JOptionPane.showMessageDialog(this, "Store is added to the directory",
                 "Store added",JOptionPane.INFORMATION_MESSAGE);
             resetForm();
