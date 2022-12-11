@@ -41,7 +41,7 @@ public class ProductDirectory {
             st.setString(10,addedBy);
             
             int res = st.executeUpdate();
-            System.out.println("product added"); 
+//            System.out.println("product added"); 
             
         } catch (SQLException ex) {
             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,8 +54,7 @@ public class ProductDirectory {
         try {
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
                                                                                 UPDATE productcatalog
-                                                                                SET status = "Approved",
-                                                                                status2 = "Approved"
+                                                                                SET status = 'Approved'
                                                                                 WHERE product_name = ?""");
             st.setString(1, product_name);
             int res = st.executeUpdate();
@@ -70,8 +69,7 @@ public class ProductDirectory {
         try {
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
                                                                                 UPDATE productcatalog
-                                                                                SET status2 = 'Requested',
-                                                                                    status = 'Pending'
+                                                                                SET status = 'Pending'
                                                                                 WHERE product_name = ?
                                                                               """);
             st.setString(1, product_name);
@@ -90,7 +88,7 @@ public class ProductDirectory {
                                                                         SELECT product_name, product_type
                                                                         ,reference_qty, calorie
                                                                         ,fat, cholesterol,sodium
-                                                                        ,carbohydrates, protein
+                                                                        ,carbohydrates, protein, added_by
                                                                         FROM productcatalog
                                                                         WHERE product_name = ?""");
         
@@ -179,7 +177,7 @@ public class ProductDirectory {
             PreparedStatement st;
             
             st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                    SELECT product_name, product_type, status2
+                                                                    SELECT product_name, product_type, status
                                                                     FROM productcatalog
                                                                     WHERE product_name like ? """);
             
@@ -199,9 +197,9 @@ public class ProductDirectory {
             PreparedStatement st;
             
             st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                    SELECT product_name as Name, product_type as Type, status2 as Status
+                                                                    SELECT product_name as Name, product_type as Type, status as Status
                                                                     FROM productcatalog
-                                                                    WHERE status2 = 'Requested' """);
+                                                                    WHERE status = 'Pending' """);
 
             ResultSet res = st.executeQuery();
             return res;
@@ -211,7 +209,7 @@ public class ProductDirectory {
         }
     }
     
-    public String getTotalProducts(){
+    public String getTotalProducts(String type){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -220,9 +218,10 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
-                                                            product_type = 'Grocery Store Product'
+                                                            added_by = ?
                                                             """);
-
+            st.setString(1,type);
+//            'Grocery Store Product'
             ResultSet res = st.executeQuery();
             
             
@@ -240,6 +239,32 @@ public class ProductDirectory {
         }
     }
     
+    public String getOverallProducts(){
+        try {
+            Connection dbconn = DBconnection.connectDB();
+            
+            PreparedStatement st;
+            
+            st = (PreparedStatement)dbconn.prepareStatement("""
+                                                            select count(product_name) as cnt 
+                                                            from productcatalog
+                                                            """);
+            ResultSet res = st.executeQuery();
+            if (res.next()){
+                String val = res.getString(1);
+                return val;
+            }
+            else{
+                return "0";
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return "0";
+        }
+    }
+
+    
     public String getApprovedProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();
@@ -250,7 +275,7 @@ public class ProductDirectory {
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
                                                             product_type = 'Grocery Store Product'
-                                                            and status2 = 'Approved'
+                                                            and status = 'Approved'
                                                                      """);
             ResultSet res = st.executeQuery();
             if (res.next()){
@@ -266,6 +291,33 @@ public class ProductDirectory {
         }
     }
     
+    public String getOverallApprovedProducts(){
+        try {
+            Connection dbconn = DBconnection.connectDB();
+            
+            PreparedStatement st;
+            
+            st = (PreparedStatement)dbconn.prepareStatement("""
+                                                            select count(product_name) as cnt 
+                                                            from productcatalog where 
+                                                            status = 'Approved'
+                                                                     """);
+            ResultSet res = st.executeQuery();
+            if (res.next()){
+                String val = res.getString(1);
+                return val;
+            }
+            else{
+                return "0";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return "0";
+        }
+    }
+    
+    
+    
     public String getPendingProducts(){
         try {
             Connection dbconn = DBconnection.connectDB();
@@ -276,7 +328,33 @@ public class ProductDirectory {
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
                                                             product_type = 'Grocery Store Product'
-                                                            and status2 = 'Pending'
+                                                            and status = 'Pending'
+                                                                     """);
+
+            ResultSet res = st.executeQuery();
+            if (res.next()){
+                String val = res.getString(1);
+                return val;
+            }
+            else{
+                return "0";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            return "0";
+        }
+    }
+    
+    public String getOverallPendingProducts(){
+        try {
+            Connection dbconn = DBconnection.connectDB();
+            
+            PreparedStatement st;
+            
+            st = (PreparedStatement)dbconn.prepareStatement("""
+                                                            select count(product_name) as cnt 
+                                                            from productcatalog where 
+                                                            status = 'Pending'
                                                                      """);
 
             ResultSet res = st.executeQuery();

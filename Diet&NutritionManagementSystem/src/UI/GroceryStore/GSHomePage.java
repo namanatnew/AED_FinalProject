@@ -4,9 +4,9 @@
  */
 package UI.GroceryStore;
 
+import Model.Enterprise.GroceryStoresDirectory;
 import Model.Product.ProductDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.Product.GSManageProduct;
 import UI.User.UserRegistration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +23,18 @@ public class GSHomePage extends javax.swing.JFrame {
     /**
      * Creates new form SAHomePage
      */
+    public String email;
+    public String name;
+    public GSHomePage(String email) {
+        initComponents();
+        this.email = email;
+        GroceryStoresDirectory store = new GroceryStoresDirectory();
+        this.name = store.getUserNameFromEmail(email);
+        System.out.println(name);
+        lblWelcome.setText("Welcome, " + this.name);
+        show_stats();
+        populateTable();
+    }
     public GSHomePage() {
         initComponents();
         show_stats();
@@ -41,7 +53,7 @@ public class GSHomePage extends javax.swing.JFrame {
         panelTop = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblWelcome = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblClose = new javax.swing.JLabel();
         panelControl = new javax.swing.JPanel();
@@ -84,10 +96,10 @@ public class GSHomePage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
-        jLabel4.setText("Welcome, Grocery Store");
+        lblWelcome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(51, 51, 51));
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
+        lblWelcome.setText("Welcome");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
@@ -119,8 +131,8 @@ public class GSHomePage extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
             .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopLayout.createSequentialGroup()
-                    .addContainerGap(734, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
+                    .addContainerGap(842, Short.MAX_VALUE)
+                    .addComponent(lblWelcome)
                     .addGap(59, 59, 59)))
         );
         panelTopLayout.setVerticalGroup(
@@ -141,7 +153,7 @@ public class GSHomePage extends javax.swing.JFrame {
             .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblWelcome)
                     .addContainerGap()))
         );
 
@@ -269,7 +281,7 @@ public class GSHomePage extends javax.swing.JFrame {
     private void panelProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductsMouseClicked
         // TODO add your handling code here:
         System.out.print("open register");
-        GSManageProduct addprd = new GSManageProduct();
+        GSManageProduct addprd = new GSManageProduct(name);
         addprd.setVisible(true);
         dispose();
     }//GEN-LAST:event_panelProductsMouseClicked
@@ -313,7 +325,6 @@ public class GSHomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
@@ -325,6 +336,7 @@ public class GSHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblPendingval;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotalval;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel panelControl;
     private javax.swing.JLabel panelLogout;
     private javax.swing.JPanel panelMain;
@@ -343,7 +355,7 @@ public class GSHomePage extends javax.swing.JFrame {
     
     private void show_stats(){
             ProductDirectory product = new ProductDirectory();
-            String res1 = product.getTotalProducts();
+            String res1 = product.getTotalProducts("Grocery Store Product");
             String res2 = product.getApprovedProducts();
             String res3 = product.getPendingProducts();
             lblTotalval.setText(res1);

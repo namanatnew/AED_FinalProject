@@ -6,6 +6,7 @@ package UI.SystemAdmin;
 
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
+import UI.Hospital.ManageHospitalSA;
 import UI.User.UserRegistration;
 import java.awt.Color;
 
@@ -282,6 +283,9 @@ public class SAHomePage extends javax.swing.JFrame {
 
     private void lblHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHospitalMouseClicked
         // TODO add your handling code here:
+        ManageHospitalSA frame = new ManageHospitalSA();
+        frame.setVisible(true);
+        dispose();
         
     }//GEN-LAST:event_lblHospitalMouseClicked
 

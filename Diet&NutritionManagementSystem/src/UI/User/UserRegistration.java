@@ -16,6 +16,7 @@ import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
+import UI.Hospital.ManageHospitalSA;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import UI.SystemAdmin.ManageMealServiceSA;
@@ -1056,6 +1057,9 @@ public void resetUpdateForm(){
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
 //        hospital
+        ManageHospitalSA frame = new ManageHospitalSA();
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void lblStoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStoreMouseClicked

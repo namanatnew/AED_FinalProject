@@ -384,8 +384,6 @@ public class UserHomePage extends javax.swing.JFrame {
     public String getUserNameFromEmail(String email_id){
         
         Connection dbconn = DBconnection.connectDB();
-        
-        
         PreparedStatement st;
         
         try{
@@ -396,8 +394,7 @@ public class UserHomePage extends javax.swing.JFrame {
             while(res.next()){
                 this.userName = res.getString("Name");
             }
-            System.out.println(this.userName);
-            
+            System.out.println(this.userName);     
         }
         catch(SQLException ex){
             Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
