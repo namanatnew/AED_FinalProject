@@ -49,14 +49,12 @@ public class SAHomePage extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-
-        jLabel6 = new javax.swing.JLabel();
+        lblHome = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lblDietician = new javax.swing.JLabel();
+        lblHospital = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -182,42 +180,38 @@ public class SAHomePage extends javax.swing.JFrame {
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
-
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
         jLabel12.setText(" Manage Users");
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblServiceMouseClicked(evt);
-            }
-        });
-        jPanel3.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 180, -1));
-
-        lblUsers.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        lblUsers.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
-        lblUsers.setText(" Manage Users");
-        lblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblUsersMouseClicked(evt);
             }
         });
-        jPanel3.add(lblUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 180, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 180, -1));
 
+        lblDietician.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblDietician.setForeground(new java.awt.Color(255, 255, 255));
+        lblDietician.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
+        lblDietician.setText(" Manage Dietitians");
+        lblDietician.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDieticianMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lblDietician, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 180, -1));
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
-        jLabel14.setText(" Manage Hospitals");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblHospital.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblHospital.setForeground(new java.awt.Color(255, 255, 255));
+        lblHospital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
+        lblHospital.setText(" Manage Hospitals");
+        lblHospital.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 170, -1));
-
+        jPanel3.add(lblHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 180, -1));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,15 +361,13 @@ public class SAHomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -385,8 +377,5 @@ public class SAHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblDietician;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblHospital;
-    private javax.swing.JLabel lblService;
-    private javax.swing.JLabel lblStore;
-    private javax.swing.JLabel lblUsers;
     // End of variables declaration//GEN-END:variables
 }
