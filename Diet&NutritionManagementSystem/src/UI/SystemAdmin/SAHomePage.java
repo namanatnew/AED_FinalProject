@@ -290,14 +290,14 @@ public class SAHomePage extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-        SAManageGroceryStores fr = new SAManageGroceryStores();
+        ManageGroceryStoresSA fr = new ManageGroceryStoresSA();
         fr.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-        SAManageMealService fr = new SAManageMealService();
+        ManageMealServiceSA fr = new ManageMealServiceSA();
         fr.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel9MouseClicked

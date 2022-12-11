@@ -17,6 +17,7 @@ import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
+import UI.Dietitian.ManageDietitiansSA;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
 import java.awt.Color;
@@ -705,6 +706,11 @@ public class UserRegistration extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small.png"))); // NOI18N
         jLabel13.setText(" Manage Dietitians");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
         pnlSideOptions.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
@@ -1104,6 +1110,13 @@ public void resetUpdateForm(){
     private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressKeyTyped
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+        ManageDietitiansSA frame = new ManageDietitiansSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel13MouseClicked
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;

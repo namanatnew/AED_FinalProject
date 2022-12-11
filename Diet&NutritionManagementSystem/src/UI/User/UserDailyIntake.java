@@ -19,7 +19,7 @@ import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
-import UI.SystemAdmin.SAManageGroceryStores;
+import UI.SystemAdmin.ManageGroceryStoresSA;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
@@ -597,7 +597,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             System.out.println("perc calc failed");
-            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDailyIntake.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -635,7 +635,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             System.out.println("perc calc failed");
-            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDailyIntake.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -673,7 +673,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             System.out.println("perc calc failed");
-            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDailyIntake.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -711,7 +711,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             System.out.println("perc calc failed");
-            Logger.getLogger(SAManageGroceryStores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDailyIntake.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
