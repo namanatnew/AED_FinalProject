@@ -38,6 +38,7 @@ public class UserHomePage extends javax.swing.JFrame {
         lblWelcome.setText("Welcome, " + this.userName);
         
         showDietInfo(this.userName);
+        showIntakeInfo(this.userName);
     }
     
     //comment after testing
@@ -81,6 +82,14 @@ public class UserHomePage extends javax.swing.JFrame {
         lblFats = new javax.swing.JLabel();
         lblCholesterol = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
+        panelMedical2 = new javax.swing.JPanel();
+        lblSodium1 = new javax.swing.JLabel();
+        lblCalories1 = new javax.swing.JLabel();
+        lblProtein1 = new javax.swing.JLabel();
+        lblCarbs1 = new javax.swing.JLabel();
+        lblFats1 = new javax.swing.JLabel();
+        lblCholesterol1 = new javax.swing.JLabel();
+        lblTitle1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -289,11 +298,51 @@ public class UserHomePage extends javax.swing.JFrame {
         lblCholesterol.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
         panelMedical1.add(lblCholesterol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
 
-        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
+        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 770, 120));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
-        lblTitle.setText("Your Diet Plan (Daily Requirement)");
-        jPanel4.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        lblTitle.setText("Your Consumption (Today)");
+        jPanel4.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        panelMedical2.setBackground(new java.awt.Color(255, 255, 255, 180));
+        panelMedical2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
+        panelMedical2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSodium1.setBackground(new java.awt.Color(255, 255, 255));
+        lblSodium1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblSodium1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sodium", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical2.add(lblSodium1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, 70));
+
+        lblCalories1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCalories1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblCalories1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calories", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical2.add(lblCalories1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 70));
+
+        lblProtein1.setBackground(new java.awt.Color(255, 255, 255));
+        lblProtein1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblProtein1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Protein", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical2.add(lblProtein1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 70));
+
+        lblCarbs1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCarbs1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblCarbs1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbs", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical2.add(lblCarbs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 100, 70));
+
+        lblFats1.setBackground(new java.awt.Color(255, 255, 255));
+        lblFats1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblFats1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical2.add(lblFats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 100, 70));
+
+        lblCholesterol1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCholesterol1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblCholesterol1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        panelMedical2.add(lblCholesterol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
+
+        jPanel4.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
+
+        lblTitle1.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
+        lblTitle1.setText("Your Diet Plan (Daily Requirement)");
+        jPanel4.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
@@ -315,7 +364,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        UserDailyIntake frame = new UserDailyIntake(this.userName);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
@@ -349,6 +398,35 @@ public class UserHomePage extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jLabel2MouseClicked
     
+    public void showIntakeInfo(String name){
+        
+        Connection dbconn = DBconnection.connectDB();
+        
+        
+        PreparedStatement st;
+        
+        try{
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dailyintake WHERE username=?");
+            st.setString(1, name);
+            ResultSet res = st.executeQuery();
+            
+            while(res.next()){
+                lblCalories.setText(res.getString("calories"));
+                lblProtein.setText(res.getString("protein"));
+                lblCarbs.setText(res.getString("carbs"));
+                lblFats.setText(res.getString("fats"));
+                lblSodium.setText(res.getString("sodium"));
+                lblCholesterol.setText(res.getString("cholesterol"));
+                
+            }
+            System.out.println(this.userName);
+            
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
     
     public void showDietInfo(String name){
         
@@ -453,16 +531,24 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblAppointment;
     private javax.swing.JLabel lblCalories;
+    private javax.swing.JLabel lblCalories1;
     private javax.swing.JLabel lblCarbs;
+    private javax.swing.JLabel lblCarbs1;
     private javax.swing.JLabel lblCholesterol;
+    private javax.swing.JLabel lblCholesterol1;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblFats;
+    private javax.swing.JLabel lblFats1;
     private javax.swing.JLabel lblHomePage;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblProtein;
+    private javax.swing.JLabel lblProtein1;
     private javax.swing.JLabel lblSodium;
+    private javax.swing.JLabel lblSodium1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel panelMedical1;
+    private javax.swing.JPanel panelMedical2;
     // End of variables declaration//GEN-END:variables
 }

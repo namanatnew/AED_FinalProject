@@ -3,6 +3,8 @@ package UI.Authenticate;
 import Model.Account.Account;
 import Model.Database.DBconnection;
 import UI.Dietitian.DietitianHomePage;
+import UI.GroceryStore.GSHomePage;
+import UI.MealService.MSHomePage;
 import UI.SystemAdmin.SAHomePage;
 import UI.User.UserHomePage;
 import java.awt.Color;
@@ -357,6 +359,22 @@ public class LoginFrame extends javax.swing.JFrame {
                             mf.setVisible(true);
 //                  this.setVisible(false);
                             break;
+                        }
+                    case "Grocer Store":
+                        {
+                            GSHomePage mf = new GSHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        
+                        }
+                    case "Meal Service":
+                        {
+                            MSHomePage mf = new MSHomePage();
+                            mf.setVisible(true);
+//                  this.setVisible(false);
+                            break;
+                        
                         }
                     default:
                         break;

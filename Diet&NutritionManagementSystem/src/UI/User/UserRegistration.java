@@ -18,7 +18,9 @@ import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
+
 import UI.Hospital.ManageHospitalSA;
+
 import UI.Main.MainFrame;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import UI.SystemAdmin.ManageMealServiceSA;
@@ -789,6 +791,10 @@ public void resetUpdateForm(){
         listFavorites.setSelectedIndex(-1);
         comboPreference.setSelectedIndex(-1);
         comboWorkoutFrequency.setSelectedIndex(-1);
+        
+        txtEmail.setText(null);
+        pwdPassword.setText(null);
+        pwdRePassword.setText(null);
          
         txtEmail.setText(null);
         pwdPassword.setText(null);
@@ -1118,6 +1124,15 @@ public void resetUpdateForm(){
     private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressKeyTyped
+
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+        ManageDietitiansSA frame = new ManageDietitiansSA();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel13MouseClicked
+
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;

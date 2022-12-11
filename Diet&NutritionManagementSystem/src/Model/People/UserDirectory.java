@@ -30,24 +30,13 @@ public class UserDirectory {
         this.userList = userList;
     }
     
-    public User addNewUser(String name, Date dob, int age, String gender, long phNumber, String address, String bloodGroup, float height, float weight, boolean diabetic, String allergies, String purposeOfDiet, String foodPreference, String workoutFrequency, List<String> favorites){
-        
-        User newUser = new User(name, dob, age, gender, phNumber, address, bloodGroup, height, weight, diabetic, allergies, purposeOfDiet, foodPreference, workoutFrequency, favorites);
-        
-        userList.add(newUser);
-        
-        //Add user details to DB
-        addNewUserToDB(name, dob, age, gender, phNumber, address, bloodGroup, height, weight, diabetic, allergies, purposeOfDiet, foodPreference, workoutFrequency, favorites);
-        return newUser;
-    }
-    
    
-    
     public void deleteUser(User p){
         userList.remove(p);
     }
     
-    public void addNewUserToDB(String name, Date dob, int age, String gender, long phNumber, String address, String bloodGroup, float height, float weight, boolean diabetic, String allergies, String purposeOfDiet, String foodPreference, String workoutFrequency, List<String> favorites){
+    //name, dob, age, gender, contact, address, height, weight, diabetic, allergies, puposeList, preference, workoutFrequency, favorites,  email
+    public void addNewUserToDB(String name, Date dob, int age, String gender, long phNumber, String address, float height, float weight, boolean diabetic, String allergies, String purposeOfDiet, String foodPreference, String workoutFrequency, List<String> favorites, String email){
     
         Connection dbconn = DBconnection.connectDB();
         try {
@@ -74,24 +63,24 @@ public class UserDirectory {
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
             */
             
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO end_users(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `BloodGroup`,`Height`, `Weight`, `Diabetic`, `Allergies`, `Purpose`, `Food_Preference`, `Workout_Frequency`, `Favorites`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO end_users(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`,`Height`, `Weight`, `Diabetic`, `Allergies`, `Purpose`, `Food_Preference`, `Workout_Frequency`, `Favorites`, `Email`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));
             st.setInt(3, age);
             st.setString(4,gender);
             st.setLong(5, phNumber);
             st.setString(6, address);
-            st.setString(7, bloodGroup);
-            st.setFloat(8, height);
-            st.setFloat(9, weight);
+            st.setFloat(7, height);
+            st.setFloat(8, weight);
             
             
-            st.setBoolean(10, diabetic);
-            st.setString(11, allergies);
-            st.setString(12, purposeOfDiet);
-            st.setString(13, foodPreference);
-            st.setString(14, workoutFrequency);
-            st.setString(15, new UtilityFunctions().commaSeparate(favorites));
+            st.setBoolean(9, diabetic);
+            st.setString(10, allergies);
+            st.setString(11, purposeOfDiet);
+            st.setString(12, foodPreference);
+            st.setString(13, workoutFrequency);
+            st.setString(14, new UtilityFunctions().commaSeparate(favorites));
+            st.setString(15, email);
             
             int res = st.executeUpdate();
         } catch (SQLException ex) {
