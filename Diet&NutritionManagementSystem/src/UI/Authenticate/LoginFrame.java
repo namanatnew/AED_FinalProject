@@ -1,6 +1,6 @@
 package UI.Authenticate;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import Model.Database.DBconnection;
 import UI.Dietitian.DietitianHomePage;
 import UI.GroceryStore.GSHomePage;
@@ -8,6 +8,7 @@ import UI.MealService.MSHomePage;
 import UI.SystemAdmin.SAHomePage;
 import UI.User.UserHomePage;
 import java.awt.Color;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -243,7 +244,11 @@ public class LoginFrame extends javax.swing.JFrame {
             lblInvalid.setText("Email or Password is empty!");
         }
         else{
-            userLogin(email,password);
+            try {
+                userLogin(email,password);
+            } catch (IOException ex) {
+                Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -317,10 +322,10 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPswrd;
     // End of variables declaration//GEN-END:variables
 
-    private void userLogin(String email,String password){
+    private void userLogin(String email,String password) throws IOException{
         
         try {
-            Account ac = new Account();
+            AccountDirectory ac = new AccountDirectory();
             ResultSet res = ac.checkCredential(email, password);
             if(res.next()){
                 dispose();

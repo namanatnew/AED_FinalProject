@@ -11,16 +11,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
+import Model.Diet.DietIntake;
 import Model.Enterprise.GroceryStoresDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
-import Model.Product.ProductDirectory;
+import Model.Organization.ProductDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Main.MainFrame;
 import UI.SystemAdmin.SAHomePage;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import java.awt.Color;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -224,7 +226,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
         pnlRegistration.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMedical.setBackground(new java.awt.Color(255, 255, 255, 180));
-        panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 14))); // NOI18N
+        panelMedical.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal 4", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 14))); // NOI18N
         panelMedical.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMedical.add(comboFood4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 30));
@@ -255,7 +257,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
         pnlRegistration.add(panelMedical, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 751, 80));
 
         panelMedical1.setBackground(new java.awt.Color(255, 255, 255, 180));
-        panelMedical1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 14))); // NOI18N
+        panelMedical1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal 2", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 14))); // NOI18N
         panelMedical1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMedical1.add(comboFood2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 30));
@@ -317,7 +319,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
         pnlRegistration.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 26, 751, 80));
 
         panelMedical3.setBackground(new java.awt.Color(255, 255, 255, 180));
-        panelMedical3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 14))); // NOI18N
+        panelMedical3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meal 3", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 14))); // NOI18N
         panelMedical3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMedical3.add(comboFood3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 30));
@@ -550,7 +552,8 @@ public class UserDailyIntake extends javax.swing.JFrame {
 
     private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
         // TODO add your handling code here:
-        UserHomePage frame = new UserHomePage(this.userName, 0);
+        UserHomePage frame = null;
+        frame = new UserHomePage(this.userName, 0);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHomePageMouseClicked
@@ -724,44 +727,17 @@ public class UserDailyIntake extends javax.swing.JFrame {
     
     public void updateDailyIntakeTable(float calories, float protein,float carbs,float fats,float sodium,float cholesterol){
         
-        Connection dbconn = DBconnection.connectDB();
-        try {
-            String query = """
-                            UPDATE dailyintake
-                             SET calories = calories+?,
-                                 protein = protein+?,
-                                 carbs = carbs+?,
-                                 fats = fats+?,
-                                 sodium = sodium+?,
-                                 cholesterol = cholesterol+?
-                            WHERE username = ?
-                            """;
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setFloat(1, calories);
-            st.setFloat(2, protein);
-            st.setFloat(3, carbs);
-            st.setFloat(4, fats);
-            st.setFloat(5, sodium);
-            st.setFloat(6, cholesterol);
-            st.setString(7, this.userName);
-            st.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("update failed");
-            Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DietIntake di = new DietIntake();
+        di.updateRecordsByUser(calories,  protein, carbs, fats, sodium, cholesterol, this.userName);
+        
     
     }
     public void showDietInfo(String name){
         
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
+        DietIntake di = new DietIntake();
+        ResultSet res = di.selectRecordsByUser( this.userName);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dailyintake WHERE username=?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 lblCalories.setText(res.getString("calories"));
@@ -776,7 +752,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
             
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDailyIntake.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }

@@ -4,7 +4,7 @@
  */
 package UI.MealService;
 
-import Model.Product.ProductDirectory;
+import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.User.UserRegistration;
 import java.sql.ResultSet;

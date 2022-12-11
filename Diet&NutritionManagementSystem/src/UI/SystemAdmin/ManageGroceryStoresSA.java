@@ -4,7 +4,7 @@
  */
 package UI.SystemAdmin;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import Model.Enterprise.GroceryStoresDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
@@ -437,7 +437,7 @@ public class ManageGroceryStoresSA extends javax.swing.JFrame {
         String password = txtPassword.getText();
 
         GroceryStoresDirectory store = new GroceryStoresDirectory();
-        Account ac = new Account();
+        AccountDirectory ac = new AccountDirectory();
         if(store.alreadyExist(name)){
             JOptionPane.showMessageDialog(this,"The given store already exists in the directory",
                 "Store already exists",JOptionPane.WARNING_MESSAGE);

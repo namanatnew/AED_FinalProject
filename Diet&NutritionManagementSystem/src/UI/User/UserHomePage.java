@@ -5,11 +5,16 @@
 package UI.User;
 
 import Model.Database.DBconnection;
+import Model.Diet.DietIntake;
+import Model.Diet.DietPlan;
+import Model.People.UserDirectory;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
 import UI.User.UserRegistration;
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +23,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -30,6 +43,7 @@ public class UserHomePage extends javax.swing.JFrame {
      */
     public String email_id;
     public String userName;
+    public JFreeChart chart;
     public UserHomePage(String email_id) {
         this.email_id = email_id;
         initComponents();
@@ -39,6 +53,11 @@ public class UserHomePage extends javax.swing.JFrame {
         
         showDietInfo(this.userName);
         showIntakeInfo(this.userName);
+        try {
+            showChart();
+        } catch (IOException ex) {
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     //comment after testing
@@ -46,6 +65,12 @@ public class UserHomePage extends javax.swing.JFrame {
         initComponents();
         this.userName = name;
         showDietInfo(this.userName);
+        showIntakeInfo(this.userName);
+        try {
+            showChart();
+        } catch (IOException ex) {
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -90,6 +115,10 @@ public class UserHomePage extends javax.swing.JFrame {
         lblFats1 = new javax.swing.JLabel();
         lblCholesterol1 = new javax.swing.JLabel();
         lblTitle1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        pnlReport = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -271,38 +300,38 @@ public class UserHomePage extends javax.swing.JFrame {
         lblSodium.setBackground(new java.awt.Color(255, 255, 255));
         lblSodium.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblSodium.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sodium", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, 70));
+        panelMedical1.add(lblSodium, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 120, 60));
 
         lblCalories.setBackground(new java.awt.Color(255, 255, 255));
         lblCalories.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblCalories.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calories", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblCalories, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 70));
+        panelMedical1.add(lblCalories, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 100, 60));
 
         lblProtein.setBackground(new java.awt.Color(255, 255, 255));
         lblProtein.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblProtein.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Protein", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 70));
+        panelMedical1.add(lblProtein, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 100, 60));
 
         lblCarbs.setBackground(new java.awt.Color(255, 255, 255));
         lblCarbs.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblCarbs.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbs", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 100, 70));
+        panelMedical1.add(lblCarbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 100, 60));
 
         lblFats.setBackground(new java.awt.Color(255, 255, 255));
         lblFats.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblFats.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblFats, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 100, 70));
+        panelMedical1.add(lblFats, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 100, 60));
 
         lblCholesterol.setBackground(new java.awt.Color(255, 255, 255));
         lblCholesterol.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblCholesterol.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical1.add(lblCholesterol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
+        panelMedical1.add(lblCholesterol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 120, 60));
 
-        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 770, 120));
+        jPanel4.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 80));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
         lblTitle.setText("Your Consumption (Today)");
-        jPanel4.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel4.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         panelMedical2.setBackground(new java.awt.Color(255, 255, 255, 180));
         panelMedical2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 3, 10))); // NOI18N
@@ -311,38 +340,76 @@ public class UserHomePage extends javax.swing.JFrame {
         lblSodium1.setBackground(new java.awt.Color(255, 255, 255));
         lblSodium1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblSodium1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sodium", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical2.add(lblSodium1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, 70));
+        panelMedical2.add(lblSodium1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 120, 60));
 
         lblCalories1.setBackground(new java.awt.Color(255, 255, 255));
         lblCalories1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblCalories1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calories", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical2.add(lblCalories1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 70));
+        panelMedical2.add(lblCalories1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 100, 60));
 
         lblProtein1.setBackground(new java.awt.Color(255, 255, 255));
         lblProtein1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblProtein1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Protein", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical2.add(lblProtein1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 70));
+        panelMedical2.add(lblProtein1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 100, 60));
 
         lblCarbs1.setBackground(new java.awt.Color(255, 255, 255));
         lblCarbs1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblCarbs1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbs", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical2.add(lblCarbs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 100, 70));
+        panelMedical2.add(lblCarbs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 100, 60));
 
         lblFats1.setBackground(new java.awt.Color(255, 255, 255));
         lblFats1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblFats1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical2.add(lblFats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 100, 70));
+        panelMedical2.add(lblFats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 100, 60));
 
         lblCholesterol1.setBackground(new java.awt.Color(255, 255, 255));
         lblCholesterol1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblCholesterol1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cholesterol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
-        panelMedical2.add(lblCholesterol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 70));
+        panelMedical2.add(lblCholesterol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 120, 60));
 
-        jPanel4.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
+        jPanel4.add(panelMedical2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 770, 80));
 
         lblTitle1.setFont(new java.awt.Font("Segoe UI Semibold", 3, 14)); // NOI18N
         lblTitle1.setText("Your Diet Plan (Daily Requirement)");
         jPanel4.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlReport.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Requirement vs Consumption", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP));
+        pnlReport.setLayout(new javax.swing.BoxLayout(pnlReport, javax.swing.BoxLayout.LINE_AXIS));
+
+        jButton1.setText("Download");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(74, 74, 74)
+                .addComponent(pnlReport, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlReport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel5.add(jPanel9);
+
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 770, 310));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
@@ -397,48 +464,121 @@ public class UserHomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ChartUtilities.saveChartAsPNG(new File("D:\\Git Repo\\AED_FinalProject\\requirement_vs_consumption.png"), chart, 600, 300);
+        } catch (IOException ex) {
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public void showIntakeInfo(String name){
         
-        Connection dbconn = DBconnection.connectDB();
-        
-        
-        PreparedStatement st;
+        DietIntake di = new DietIntake();
+        ResultSet res = di.selectRecordsByUser( this.userName);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dailyintake WHERE username=?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
-                lblCalories.setText(res.getString("calories"));
-                lblProtein.setText(res.getString("protein"));
-                lblCarbs.setText(res.getString("carbs"));
-                lblFats.setText(res.getString("fats"));
-                lblSodium.setText(res.getString("sodium"));
-                lblCholesterol.setText(res.getString("cholesterol"));
+                lblCalories1.setText(res.getString("calories"));
+                lblProtein1.setText(res.getString("protein"));
+                lblCarbs1.setText(res.getString("carbs"));
+                lblFats1.setText(res.getString("fats"));
+                lblSodium1.setText(res.getString("sodium"));
+                lblCholesterol1.setText(res.getString("cholesterol"));
                 
             }
             System.out.println(this.userName);
             
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
     
-    public void showDietInfo(String name){
+    public void showChart() throws IOException{
         
-        Connection dbconn = DBconnection.connectDB();
+        DietPlan dp = new DietPlan();
+        ResultSet res = dp.selectRecordsByName(this.userName);
         
-        
-        PreparedStatement st;
+        float cal_req =0, protein_req = 0, carbs_req = 0;
+        float cal_cons=0, protein_cons= 0, carbs_cons = 0;
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * from dietplans WHERE username=?");
-            st.setString(1, name);
-            ResultSet res = st.executeQuery();
+            while(res.next()){
+            
+                 cal_req = res.getFloat("calories");
+                 protein_req = res.getFloat("protein");
+                 carbs_req = res.getFloat("carbs");
+            }
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        DietIntake di = new DietIntake();
+        ResultSet res2 = di.selectRecordsByUser(this.userName);
+        
+        try{
+            while(res2.next()){
+            
+                 cal_cons = res2.getFloat("calories");
+                 protein_cons = res2.getFloat("protein");
+                 carbs_cons = res2.getFloat("carbs");
+            }
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        String req = "Requirement";
+        String cons = "Consumption";     
+        String calories = "calories";
+        String protein = "protein";
+        String carbs = "carbs";
+         
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset( );  
+         
+        // Player 1
+        dcd.addValue(cal_req, req, calories);
+        dcd.addValue(protein_req, req, protein);
+        dcd.addValue(carbs_req, req, carbs);
+         
+        // Player 2
+        dcd.addValue(cal_cons, cons, calories);
+        dcd.addValue(protein_cons, cons, protein);
+        dcd.addValue(carbs_cons, cons, carbs);
+        
+        
+        
+        this.chart = ChartFactory.createBarChart("Requirement vs Consumption", "Nutrition", "Quantity(gm)", dcd, PlotOrientation.VERTICAL, true, true, false);
+        
+        CategoryPlot plot = chart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.black);
+        
+        ChartFrame cf = new ChartFrame("---", chart, true);
+        cf.setVisible(true);
+        cf.setSize(400, 250);
+        ChartPanel cp = new ChartPanel(chart);
+        
+        pnlReport.removeAll();
+        pnlReport.add(cp);
+        pnlReport.updateUI();
+        
+//        ChartUtilities.saveChartAsPNG(new File("D:\\Git Repo\\AED_FinalProject\\requirement_vs_consumption.png"), chart, 600, 300);
+    }
+    
+    public void showDietInfo(String name){
+        
+        DietPlan dp = new DietPlan();
+        ResultSet res = dp.selectRecordsByName(name);
+        
+        try{
+            
             
             while(res.next()){
                 lblCalories.setText(res.getString("calories"));
@@ -453,7 +593,7 @@ public class UserHomePage extends javax.swing.JFrame {
             
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
@@ -461,23 +601,22 @@ public class UserHomePage extends javax.swing.JFrame {
     
     public String getUserNameFromEmail(String email_id){
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        UserDirectory ud = new UserDirectory();
+        ResultSet res = ud.getUserNameByEmail(email_id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT Name from end_users WHERE Email=?");
-            st.setString(1, email_id);
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 this.userName = res.getString("Name");
+                
             }
-            System.out.println(this.userName);     
+            return this.userName;
+            
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        return this.userName;
     }
     
     /**
@@ -517,6 +656,7 @@ public class UserHomePage extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -525,9 +665,11 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblAppointment;
     private javax.swing.JLabel lblCalories;
@@ -550,5 +692,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel panelMedical1;
     private javax.swing.JPanel panelMedical2;
+    private javax.swing.JPanel pnlReport;
     // End of variables declaration//GEN-END:variables
 }

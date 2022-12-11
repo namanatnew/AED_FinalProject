@@ -4,8 +4,8 @@
  */
 package UI.GroceryStore;
 
-import Model.Product.ProductDirectory;
 import Model.WorkRequest.ProductApproval;
+import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.User.UserRegistration;
 import java.sql.ResultSet;

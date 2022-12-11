@@ -4,6 +4,7 @@
  */
 package UI.User;
 
+import Model.Appointments.AppointmentDirectory;
 import java.sql.Connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
+import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Utilities.SendEmail;
@@ -222,7 +224,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         panelDiet.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 200, 30));
 
         lblWorkoutFrequency2.setText("Type");
-        panelDiet.add(lblWorkoutFrequency2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+        panelDiet.add(lblWorkoutFrequency2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         pnlRegistration.add(panelDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 770, 80));
 
@@ -262,9 +264,9 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         panelMedical1.add(lblDiabetes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 140, -1));
         panelMedical1.add(timeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 200, 30));
 
+        btnBook.setText("Send Appointment Request");
         btnBook.setBackground(new java.awt.Color(255, 51, 51));
         btnBook.setForeground(new java.awt.Color(255, 255, 255));
-        btnBook.setText("Send Appointment Request");
         btnBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBookActionPerformed(evt);
@@ -505,7 +507,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             String hospitalName = txtHospitalName.getText();
             Date date = dateAppointment.getDate();
             LocalTime time = timeAppointment.getTime(); 
-        
+      
             Connection dbconn = DBconnection.connectDB();
             PreparedStatement st;
         
@@ -528,18 +530,41 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             catch(SQLException ex){
                 Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
             }
+            AppointmentDirectory ad = new AppointmentDirectory();
+            ad.addAppointment(this.userName, dietitianName, hospitalName, date, time);
+//            Connection dbconn = DBconnection.connectDB();
+//            PreparedStatement st;
+//        
+//            try{
+//                String query = "INSERT INTO appointments(userName, dietitianName, hospital, date, time, status) VALUES (?,?,?,?,?,?)";
+//                st = (PreparedStatement)dbconn.prepareStatement(query);
+//                st.setString(1, this.userName); //bg
+//                st.setString(2, dietitianName);
+//                st.setString(3, hospitalName);
+//                st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
+//                st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
+//                st.setString(6, "Requested");
+//                
+//                st.executeUpdate();
+//                
+//            }
+//            catch(SQLException ex){
+//                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             
-            try{
-                String query = "UPDATE dietitians SET Slots = Slots - 1 WHERE Name=?";
-                st = (PreparedStatement)dbconn.prepareStatement(query);
-                st.setString(1, dietitianName); //bg
-                
-                st.executeUpdate();
-                
-            }
-            catch(SQLException ex){
-                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            DietitianDirectory dd = new DietitianDirectory();
+            dd.updateSlots(dietitianName);
+//            try{
+//                String query = "UPDATE dietitians SET Slots = Slots - 1 WHERE Name=?";
+//                st = (PreparedStatement)dbconn.prepareStatement(query);
+//                st.setString(1, dietitianName); //bg
+//                
+//                st.executeUpdate();
+//                
+//            }
+//            catch(SQLException ex){
+//                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             populateTableData();
             resetForm();
         }
@@ -772,20 +797,15 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
     
     private void populateTableData() {
         
-        Connection dbconn = DBconnection.connectDB();
         //Type-cast table model into default table model
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
         
         //Clear the table 
         model.setRowCount(0);
         
-        PreparedStatement st;
-        
+        DietitianDirectory dd = new DietitianDirectory();
+        ResultSet res = dd.viewDietitians(comboType.getSelectedItem().toString());
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ?");
-            st.setString(1, comboType.getSelectedItem().toString());
-            ResultSet res = st.executeQuery();
-            
             while(res.next()){
                 Object[] row = new Object[11];
                 row[0] = res.getInt("ID");
@@ -798,16 +818,11 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
                 row[8] = res.getString("Qualification");
                 row[9] = res.getInt("Experience");
                 row[10] = res.getInt("Slots");
-                
-                
+
                 model.addRow(row);
             }
-            System.out.println(res);
-            
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(SQLException ex){
+            Logger.getLogger(UserAppointmentBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
       
     }

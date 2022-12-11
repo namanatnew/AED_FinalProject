@@ -5,7 +5,7 @@
 package Model.WorkRequest;
 
 import Model.Database.DBconnection;
-import Model.Product.ProductDirectory;
+import Model.Organization.ProductDirectory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

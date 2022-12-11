@@ -4,7 +4,7 @@
  */
 package UI.User;
 
-import Model.Account.Account;
+import Model.Account.AccountDirectory;
 import java.sql.Connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -127,8 +127,6 @@ public class UserRegistration extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         panelMedicalUpdate = new javax.swing.JPanel();
         txtHeight1 = new javax.swing.JTextField();
-        comboBloodGroup1 = new javax.swing.JComboBox<>();
-        lblBloodGroup1 = new javax.swing.JLabel();
         lblWeight1 = new javax.swing.JLabel();
         comboDiabetic1 = new javax.swing.JComboBox<>();
         lblDiabetes1 = new javax.swing.JLabel();
@@ -521,19 +519,11 @@ public class UserRegistration extends javax.swing.JFrame {
                 txtHeight1KeyTyped(evt);
             }
         });
-        panelMedicalUpdate.add(txtHeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 200, 30));
-
-        comboBloodGroup1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "B+", "AB+", "O+", "A-", "B-", "AB-", "O-" }));
-        comboBloodGroup1.setSelectedIndex(-1);
-        panelMedicalUpdate.add(comboBloodGroup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, 30));
-
-        lblBloodGroup1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/bloodgrp_29px.png"))); // NOI18N
-        lblBloodGroup1.setText(" Blood Group:");
-        panelMedicalUpdate.add(lblBloodGroup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        panelMedicalUpdate.add(txtHeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 200, 30));
 
         lblWeight1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/weight_px.png"))); // NOI18N
         lblWeight1.setText("         Weight:");
-        panelMedicalUpdate.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        panelMedicalUpdate.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         comboDiabetic1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
         comboDiabetic1.setSelectedIndex(-1);
@@ -559,11 +549,11 @@ public class UserRegistration extends javax.swing.JFrame {
                 txtWeight1KeyTyped(evt);
             }
         });
-        panelMedicalUpdate.add(txtWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
+        panelMedicalUpdate.add(txtWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 200, 30));
 
         lblHeight1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
         lblHeight1.setText("          Height:");
-        panelMedicalUpdate.add(lblHeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
+        panelMedicalUpdate.add(lblHeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, -1));
 
         pnlView.add(panelMedicalUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 770, 160));
 
@@ -763,7 +753,6 @@ public void resetUpdateForm(){
 //        comboGender.setSelectedIndex(-1);
 //        txtAddress.setText(null);
         
-        comboBloodGroup1.setSelectedIndex(-1);
         txtHeight1.setText(null);
         txtWeight1.setText(null);
         comboDiabetic1.setSelectedIndex(-1);
@@ -863,7 +852,7 @@ public void resetUpdateForm(){
             JOptionPane.showMessageDialog(this, "Password doesn't match!");
         }
         else{
-            Account ac = new Account();
+            AccountDirectory ac = new AccountDirectory();
             ac.addUserCredential(email, password, "User");
         }
            JOptionPane.showMessageDialog(this, "Account Information Upodated");
@@ -924,39 +913,31 @@ public void resetUpdateForm(){
 //        User selectedUser =(User)model.getValueAt(rowIndex,1);
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
+        String bp = "";
+        float height = Float.parseFloat(txtHeight1.getText());
+        float weight = Float.parseFloat(txtWeight1.getText());
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        String diab;
+        if(comboDiabetic1.getSelectedItem().toString().equals("Yes")){
+                diab="1";                
+        }
+        else{
+            diab= "0";
+        }
+        String allergies = txtAllergies1.getText();
+        String purpose = comboPurpose1.getSelectedItem().toString();
+        String preference = comboPreference1.getSelectedItem().toString();
+        String workout = comboWorkoutFrequency1.getSelectedItem().toString();
+        String favorite = new UtilityFunctions().commaSeparate( listFavorites1.getSelectedValuesList());
         
-        try{
-            String query = "UPDATE end_users SET BloodGroup = ?, Height = ?, Weight = ?, Diabetic = ?, Allergies = ?, Purpose = ?, Food_Preference = ?, Workout_Frequency = ?, Favorites = ? WHERE UserID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, comboBloodGroup1.getSelectedItem().toString()); //bg
-            st.setString(2, txtHeight1.getText());
-            st.setString(3, txtWeight1.getText());
-            if(comboDiabetic1.getSelectedItem().toString().equals("Yes")){
-                st.setString(4, "1");                
-            }
-            else{
-                st.setString(4, "0");
-            }
-            st.setString(5, txtAllergies1.getText());
-            st.setString(6, comboPurpose1.getSelectedItem().toString());
-            st.setString(7, comboPreference1.getSelectedItem().toString());
-            st.setString(8, comboWorkoutFrequency1.getSelectedItem().toString());
-            st.setString(9, new UtilityFunctions().commaSeparate( listFavorites1.getSelectedValuesList()));
-            st.setString(10, String.valueOf(id));
-            st.executeUpdate();
-            
-            populateTableData();
-            resetUpdateForm();
-//            System.out.println(res);
-            
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        UserDirectory ud = new UserDirectory();
+        ud.updateRecordsByID(bp, height, weight, diab, allergies, purpose, preference, workout, favorite, id);
+        
+        
+        populateTableData();
+        resetUpdateForm();
+
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -1017,23 +998,11 @@ public void resetUpdateForm(){
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        UserDirectory ud = new UserDirectory();
+        ud.deleteUserFromDB(id);
         
-        try{
-            String query = "DELETE FROM end_users WHERE UserID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setString(1, String.valueOf(id));
-            st.executeUpdate();
-            
-            populateTableData();
-            resetUpdateForm();
-        }
-        catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        populateTableData();
+        resetUpdateForm();
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -1044,16 +1013,13 @@ public void resetUpdateForm(){
         
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
         
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        UserDirectory ud = new UserDirectory();
+        ResultSet res = ud.selectRecordsByID(id);
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM end_users WHERE UserID = ?");
-            st.setInt(1, id);
-            ResultSet res = st.executeQuery();
+            
             
             while(res.next()){
-                comboBloodGroup1.setSelectedItem(res.getString("BloodGroup"));
                 txtHeight1.setText(String.valueOf(res.getFloat("Height")));
                 txtWeight1.setText(String.valueOf(res.getFloat("Weight")));
                 txtAllergies1.setText(res.getString("Allergies"));
@@ -1294,21 +1260,18 @@ public void resetUpdateForm(){
     
     private void populateTableData() {
         
-        Connection dbconn = DBconnection.connectDB();
         //Type-cast table model into default table model
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
-        System.out.println("hereeeeeeeeeee");
+        
         sorter = new TableRowSorter<>(model);
 
         tableView.setRowSorter(sorter);
-        //Clear the table 
         model.setRowCount(0);
         
-        PreparedStatement st;
+        UserDirectory ud = new UserDirectory();
+        ResultSet res = ud.selectAllRecords();
         
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT UserID, Name, Gender, Age, Contact, Address, Height, Weight, BloodGroup, Diabetic, Allergies from end_users");
-            ResultSet res = st.executeQuery();
             
             while(res.next()){
                 Object[] row = new Object[11];
@@ -1328,7 +1291,6 @@ public void resetUpdateForm(){
             }
             System.out.println(res);
             
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
             Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
@@ -1377,7 +1339,6 @@ public void resetUpdateForm(){
     private javax.swing.ButtonGroup btnGroupGender;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> comboBloodGroup1;
     private javax.swing.JComboBox<String> comboDiabetic;
     private javax.swing.JComboBox<String> comboDiabetic1;
     private javax.swing.JComboBox<String> comboGender;
@@ -1417,7 +1378,6 @@ public void resetUpdateForm(){
     private javax.swing.JLabel lblAllergies1;
     private javax.swing.JLabel lblAllergies2;
     private javax.swing.JLabel lblBloodGroup;
-    private javax.swing.JLabel lblBloodGroup1;
     private javax.swing.JLabel lblDiabetes;
     private javax.swing.JLabel lblDiabetes1;
     private javax.swing.JLabel lblDiabetes2;
