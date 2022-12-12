@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Utilities.UtilityFunctions;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.awt.Color;
 import java.sql.ResultSet;
 /**

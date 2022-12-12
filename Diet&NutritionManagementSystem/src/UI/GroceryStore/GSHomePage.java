@@ -4,10 +4,10 @@
  */
 package UI.GroceryStore;
 
-import Model.Enterprise.GroceryStoresDirectory;
+import Model.Enterprise.GroceryStores.GroceryStoresDirectory;
 import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -75,7 +75,7 @@ public class GSHomePage extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelTop.setBackground(new java.awt.Color(121, 237, 39));
+        panelTop.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -95,13 +95,13 @@ public class GSHomePage extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
         lblWelcome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lblWelcome.setForeground(new java.awt.Color(51, 51, 51));
+        lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
         lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
         lblWelcome.setText("Welcome");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Diet Management System");
 
         lblClose.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
@@ -160,7 +160,7 @@ public class GSHomePage extends javax.swing.JFrame {
         panelControl.setBackground(new java.awt.Color(51, 51, 51));
         panelControl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panellGreen.setBackground(new java.awt.Color(121, 237, 39));
+        panellGreen.setBackground(new java.awt.Color(192, 202, 97));
         panellGreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -272,7 +272,7 @@ public class GSHomePage extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel12MouseClicked

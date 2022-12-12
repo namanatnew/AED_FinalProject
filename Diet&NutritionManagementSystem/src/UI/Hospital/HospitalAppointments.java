@@ -11,14 +11,14 @@ import UI.User.*;
 import Model.Database.DBconnection;
 import Model.Diet.DietIntake;
 import Model.Diet.DietPlan;
-import Model.Enterprise.HospitalDirectory;
+import Model.Enterprise.Hospital.HospitalDirectory;
 import Model.People.DietitianDirectory;
 import Model.WorkRequest.DietitianAppointmentRequest;
 import Model.WorkRequest.HospitalAppointmentRequest;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -92,7 +92,7 @@ public class HospitalAppointments extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -179,7 +179,7 @@ public class HospitalAppointments extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -311,7 +311,7 @@ public class HospitalAppointments extends javax.swing.JFrame {
 
     private void lblApppointmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblApppointmentsMouseClicked
         // TODO add your handling code here:
-//        UserRegistration frame = new UserRegistration();
+//        ManageUsersSA frame = new ManageUsersSA();
 //        frame.setVisible(true);
 //        dispose();
     }//GEN-LAST:event_lblApppointmentsMouseClicked
