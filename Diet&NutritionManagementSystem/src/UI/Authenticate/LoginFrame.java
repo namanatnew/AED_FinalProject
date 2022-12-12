@@ -58,6 +58,8 @@ public class LoginFrame extends javax.swing.JFrame {
         txtPswrd = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         btnLogin1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -116,7 +118,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 txtPswrdFocusLost(evt);
             }
         });
-        rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 30));
+        rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 200, 30));
 
         btnLogin.setBackground(new java.awt.Color(192, 202, 97));
         btnLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
@@ -139,7 +141,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 40));
+        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 140, 40));
 
         btnLogin1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
         btnLogin1.setForeground(new java.awt.Color(51, 51, 51));
@@ -163,6 +165,12 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         rPanel.add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 190, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/icons/icons8-mail-50.png"))); // NOI18N
+        rPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 60, 60));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/icons/pwd_50px.png"))); // NOI18N
+        rPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 60, 50));
 
         getContentPane().add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 400, 630));
 
@@ -336,6 +344,8 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblInvalid;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel rPanel;

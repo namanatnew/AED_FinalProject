@@ -4,7 +4,7 @@
  */
 package UI.Hospital;
 
-import Model.Enterprise.HospitalDirectory;
+import Model.Enterprise.Hospital.HospitalDirectory;
 import Model.People.UserDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.Main.MainFrame;
@@ -75,11 +75,13 @@ public class HospitalHomePage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         pnlWorkArea = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -160,7 +162,7 @@ public class HospitalHomePage extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -233,6 +235,14 @@ public class HospitalHomePage extends javax.swing.JFrame {
 
         pnlWorkArea.setBackground(new java.awt.Color(255, 255, 255));
         pnlWorkArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255, 180));
+        jLabel7.setOpaque(true);
+        pnlWorkArea.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 610));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/grilled-chicken-rice-spicy-chickpeas-avocado-cabbage-pepper-buddha-bowl-dark-top-view.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        pnlWorkArea.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 880, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -362,7 +372,9 @@ public class HospitalHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;

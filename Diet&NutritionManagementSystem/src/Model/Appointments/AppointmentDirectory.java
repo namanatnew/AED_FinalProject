@@ -6,7 +6,7 @@ package Model.Appointments;
 
 import Model.Database.DBconnection;
 import Model.Utilities.UtilityFunctions;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

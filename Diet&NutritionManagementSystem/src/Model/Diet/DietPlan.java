@@ -6,7 +6,7 @@ package Model.Diet;
 
 import Model.Database.DBconnection;
 import UI.User.UserHomePage;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +41,7 @@ public class DietPlan {
 
             }
             catch(SQLException ex){
-                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ManageUsersSA.class.getName()).log(Level.SEVERE, null, ex);
             }
     
     }
