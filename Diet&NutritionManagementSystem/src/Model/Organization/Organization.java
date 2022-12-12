@@ -29,7 +29,7 @@ public abstract class Organization {
         MSProductTeam("Meal Services Product Organization"),
         HospitalNutritionTeam("Hospital Nutrition Team Organization"),
         HospitalResearchTeam("Hospital Research Team Organization"),
-        
+        Product("Product Team Organization")
         ;
         private String value;
         private Type(String value) {

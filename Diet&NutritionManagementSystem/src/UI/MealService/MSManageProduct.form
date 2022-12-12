@@ -441,6 +441,10 @@
                       </Constraints>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtType">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="text" type="java.lang.String" value="Meal Plan Product"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTypeKeyTyped"/>
                       </Events>
@@ -455,7 +459,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/pictures/userIcons/icons8-allergy-29.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="        Product Type"/>
+                        <Property name="text" type="java.lang.String" value="       Product Type"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -927,10 +931,11 @@
                 <Component class="javax.swing.JTextField" name="txtSearch">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchActionPerformed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyReleased"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="230" y="-60" width="318" height="28"/>
+                      <AbsoluteConstraints x="230" y="20" width="318" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -959,7 +964,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="50" y="20" width="720" height="160"/>
+                      <AbsoluteConstraints x="50" y="60" width="720" height="130"/>
                     </Constraint>
                   </Constraints>
 
@@ -1031,6 +1036,9 @@
                       </Constraints>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtType1">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtType1KeyTyped"/>
                       </Events>

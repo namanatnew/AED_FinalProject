@@ -50,36 +50,36 @@ public class ProductDirectory {
         }
     }
     
-    public void approveProduct(String product_name){
-        Connection dbconn = DBconnection.connectDB();
-        
-         try {
-             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                                 UPDATE productcatalog
-                                                                                 SET status = 'Approved'
-                                                                                 WHERE product_name = ?""");
-             st.setString(1, product_name);
-             int res = st.executeUpdate();
-         } catch (SQLException ex) {
-             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-         }
-     }
-    
-     public void sendProduct(String product_name){
-        Connection dbconn = DBconnection.connectDB();
-        
-         try {
-             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                                 UPDATE productcatalog
-                                                                                 SET status = 'Pending'
-                                                                                 WHERE product_name = ?
-                                                                               """);
-             st.setString(1, product_name);
-             st.executeUpdate();
-         } catch (SQLException ex) {
-             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
-         }
-     }
+//    public void approveProduct(String product_name){
+//        Connection dbconn = DBconnection.connectDB();
+//        
+//         try {
+//             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
+//                                                                                 UPDATE productcatalog
+//                                                                                 SET status = 'Approved'
+//                                                                                 WHERE product_name = ?""");
+//             st.setString(1, product_name);
+//             int res = st.executeUpdate();
+//         } catch (SQLException ex) {
+//             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+//         }
+//     }
+//    
+//     public void sendProduct(String product_name){
+//        Connection dbconn = DBconnection.connectDB();
+//        
+//         try {
+//             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
+//                                                                                 UPDATE productcatalog
+//                                                                                 SET status = 'Pending'
+//                                                                                 WHERE product_name = ?
+//                                                                               """);
+//             st.setString(1, product_name);
+//             st.executeUpdate();
+//         } catch (SQLException ex) {
+//             Logger.getLogger(ProductDirectory.class.getName()).log(Level.SEVERE, null, ex);
+//         }
+//     }
     
      public ResultSet exactProductLookup(String product_name){
          
@@ -193,7 +193,7 @@ public class ProductDirectory {
             
     }
     
-    public ResultSet getProductData(String search_name){
+    public ResultSet getProductData(String search_name, String type){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -202,9 +202,12 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                                     SELECT product_name, product_type, status
                                                                     FROM productcatalog
-                                                                    WHERE product_name like ? """);
+                                                                    WHERE product_name like ? AND
+                                                                    product_type = ?
+                                                                    """);
             
             st.setString(1, '%'+search_name+'%');
+            st.setString(2, type);
             ResultSet res = st.executeQuery();
             return res;
         } catch (SQLException ex) {
@@ -316,7 +319,7 @@ public class ProductDirectory {
     }
     
     
-    public String getApprovedProducts(){
+    public String getApprovedProducts(String type){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -325,9 +328,10 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
-                                                            product_type = 'Grocery Store Product'
+                                                            product_type = ?
                                                             and status = 'Approved'
                                                                      """);
+            st.setString(1,type);
             ResultSet res = st.executeQuery();
             if (res.next()){
                 String val = res.getString(1);
@@ -370,7 +374,7 @@ public class ProductDirectory {
     
     
     
-    public String getPendingProducts(){
+    public String getPendingProducts(String type){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -379,10 +383,10 @@ public class ProductDirectory {
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                             select count(product_name) as cnt 
                                                             from productcatalog where 
-                                                            product_type = 'Grocery Store Product'
+                                                            product_type = ?
                                                             and status = 'Pending'
                                                                      """);
-
+            st.setString(1,type);
             ResultSet res = st.executeQuery();
             if (res.next()){
                 String val = res.getString(1);

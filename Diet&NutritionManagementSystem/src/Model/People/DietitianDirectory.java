@@ -59,7 +59,7 @@ public class DietitianDirectory {
         try {
             
 //            PreparedStatement query = (PreparedStatement)dbconn.prepareStatement("")
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `DOJ`,`Experience`, `Qualification`, `Hospital`, `Type`, `Slots`, `Email`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(Name, DOB, Age, Gender, Contact, Address, DOJ, Experience, Qualification, Hospital, Type, Slots, Email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));
             st.setInt(3, age);

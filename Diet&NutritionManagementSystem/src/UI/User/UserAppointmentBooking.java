@@ -16,6 +16,7 @@ import Model.Enterprise.HospitalDirectory;
 import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
+import Model.Utilities.SendMail;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -32,6 +33,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.*;
+import javax.mail.MessagingException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -51,6 +53,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     String userName;
+    String email_id;
     
     private TableRowSorter sorter;
     public UserAppointmentBooking(String userName) {
@@ -60,6 +63,17 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         lblWelcome.setText("Welcome, " + this.userName);
         generateHospitalDropDown();
         
+    }
+    
+    public UserAppointmentBooking() {
+        initComponents();
+        
+    }
+
+    UserAppointmentBooking(String userName, String email_id) {
+        initComponents();
+        this.userName = userName;
+        this.email_id = email_id;
     }
     
 
@@ -538,6 +552,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             Date date = dateAppointment.getDate();
             LocalTime time = timeAppointment.getTime(); 
             
+
             String status;
             if (hospitalName.equals("NA")){
                 
@@ -562,11 +577,24 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             DietitianDirectory dd = new DietitianDirectory();
             dd.updateSlots(dietitianName);
 
+
             populateTableData();
             resetForm();
+            try {
+                sendEmailTo(email_id,"Appointment Requested!","Hi " + this.userName + ",\nYour appointment with Dietitian " 
+                        + dietitianName  + " for " + date + " at " + time+ " is requested. "
+                                + "You will be informed, once appointment is approved.");
+            } catch (Exception ex) {
+                Logger.getLogger(UserAppointmentBooking.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_btnBookActionPerformed
 
+    public void sendEmailTo(String mailto, String sub, String body) throws Exception{
+        SendMail mail = new SendMail(mailto, sub, body);     
+    }
+    
     private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
         // TODO add your handling code here:
         UserHomePage frame = new UserHomePage(this.userName, 0);
@@ -846,15 +874,15 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new UserUpdateInfo().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UserAppointmentBooking().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBook;

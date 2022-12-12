@@ -2,15 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.Organization;
+package Model.Enterprise;
 
 /**
  *
- * @author vipul
+ * @author naman
  */
-public class AdminTeam {
+public class MealServiceEnterprise extends Enterprise{
 
-    public AdminTeam() {
+    public MealServiceEnterprise(String name, EnterpriseType type) {
+        super(name, EnterpriseType.MealService);
     }
     
 }
