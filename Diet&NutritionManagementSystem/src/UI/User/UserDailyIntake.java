@@ -709,6 +709,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
                 fats = (qty * res.getFloat("perc_fats"))/100;   
                 sodium = (qty * res.getFloat("perc_sodium"))/100;
                 cholesterol = (qty * res.getFloat("perc_cholesterol"))/100; 
+                
                 System.out.println("@@@@");
                 System.out.println(calories);
             }

@@ -39,7 +39,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class UserHomePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form SAHomePage
+     * Creates new form UserHomePage
      */
     public String email_id;
     public String userName;
@@ -236,11 +236,11 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 51, 51));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHomePage.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblHomePage.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblHomePage.setForeground(new java.awt.Color(255, 255, 255));
         lblHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
-        lblHomePage.setText("  Home Page");
-        jPanel7.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        lblHomePage.setText("      Home Page");
+        jPanel7.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, -1));
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
@@ -253,7 +253,7 @@ public class UserHomePage extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 160, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 170, -1));
 
         lblAppointment.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblAppointment.setForeground(new java.awt.Color(255, 255, 255));
@@ -448,7 +448,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
     private void lblAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAppointmentMouseClicked
         // TODO add your handling code here:
-        UserAppointmentBooking frame = new UserAppointmentBooking(this.userName);
+        UserAppointmentBooking frame = new UserAppointmentBooking(this.userName, this.email_id);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblAppointmentMouseClicked
@@ -467,7 +467,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            ChartUtilities.saveChartAsPNG(new File("D:\\Git Repo\\AED_FinalProject\\requirement_vs_consumption.png"), chart, 600, 300);
+            ChartUtilities.saveChartAsPNG(new File("requirement_vs_consumption.png"), chart, 600, 300);
         } catch (IOException ex) {
             Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }

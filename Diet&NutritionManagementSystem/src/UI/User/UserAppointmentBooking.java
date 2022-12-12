@@ -15,7 +15,7 @@ import Model.Database.DBconnection;
 import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
-import Model.Utilities.SendEmail;
+import Model.Utilities.SendMail;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.*;
+import javax.mail.MessagingException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -51,6 +52,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     String userName;
+    String email_id;
     
     private TableRowSorter sorter;
     public UserAppointmentBooking(String userName) {
@@ -59,6 +61,17 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         //this.records = records;
         lblWelcome.setText("Welcome, " + this.userName);
         
+    }
+    
+    public UserAppointmentBooking() {
+        initComponents();
+        
+    }
+
+    UserAppointmentBooking(String userName, String email_id) {
+        initComponents();
+        this.userName = userName;
+        this.email_id = email_id;
     }
     
 
@@ -507,69 +520,29 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             String hospitalName = txtHospitalName.getText();
             Date date = dateAppointment.getDate();
             LocalTime time = timeAppointment.getTime(); 
-      
-            Connection dbconn = DBconnection.connectDB();
-            PreparedStatement st;
-        
-            try{
-                String query = "INSERT INTO appointments(userName, dietitianName, hospital, date, time, status) VALUES (?,?,?,?,?,?)";
-                st = (PreparedStatement)dbconn.prepareStatement(query);
-                st.setString(1, this.userName); //bg
-                st.setString(2, dietitianName);
-                st.setString(3, hospitalName);
-                st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
-                st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
-                st.setString(6, "Requested");
-                
-                st.executeUpdate();
-                
-                
-                
-                
-            }
-            catch(SQLException ex){
-                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
             AppointmentDirectory ad = new AppointmentDirectory();
             ad.addAppointment(this.userName, dietitianName, hospitalName, date, time);
-//            Connection dbconn = DBconnection.connectDB();
-//            PreparedStatement st;
-//        
-//            try{
-//                String query = "INSERT INTO appointments(userName, dietitianName, hospital, date, time, status) VALUES (?,?,?,?,?,?)";
-//                st = (PreparedStatement)dbconn.prepareStatement(query);
-//                st.setString(1, this.userName); //bg
-//                st.setString(2, dietitianName);
-//                st.setString(3, hospitalName);
-//                st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
-//                st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
-//                st.setString(6, "Requested");
-//                
-//                st.executeUpdate();
-//                
-//            }
-//            catch(SQLException ex){
-//                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            
+
             DietitianDirectory dd = new DietitianDirectory();
             dd.updateSlots(dietitianName);
-//            try{
-//                String query = "UPDATE dietitians SET Slots = Slots - 1 WHERE Name=?";
-//                st = (PreparedStatement)dbconn.prepareStatement(query);
-//                st.setString(1, dietitianName); //bg
-//                
-//                st.executeUpdate();
-//                
-//            }
-//            catch(SQLException ex){
-//                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-//            }
             populateTableData();
             resetForm();
+            try {
+                sendEmailTo(email_id,"Appointment Requested!","Hi " + this.userName + ",\nYour appointment with Dietitian " 
+                        + dietitianName  + " for " + date + " at " + time+ " is requested. "
+                                + "You will be informed, once appointment is approved.");
+            } catch (Exception ex) {
+                Logger.getLogger(UserAppointmentBooking.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_btnBookActionPerformed
 
+    public void sendEmailTo(String mailto, String sub, String body) throws Exception{
+        SendMail mail = new SendMail(mailto, sub, body);     
+    }
+    
     private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
         // TODO add your handling code here:
         UserHomePage frame = new UserHomePage(this.userName, 0);
@@ -829,15 +802,15 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new UserUpdateInfo().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UserAppointmentBooking().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBook;
