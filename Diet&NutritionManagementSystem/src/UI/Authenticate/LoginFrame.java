@@ -4,6 +4,7 @@ import Model.Account.AccountDirectory;
 import Model.Database.DBconnection;
 import UI.Dietitian.DietitianHomePage;
 import UI.GroceryStore.GSHomePage;
+import UI.Hospital.HospitalHomePage;
 import UI.MealService.MSHomePage;
 import UI.SystemAdmin.SAHomePage;
 import UI.User.UserHomePage;
@@ -50,10 +51,6 @@ public class LoginFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
-        mainPanel = new javax.swing.JPanel();
-        lPanel = new javax.swing.JPanel();
-        lblIcon = new javax.swing.JLabel();
         rPanel = new javax.swing.JPanel();
         txtEmail = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
@@ -61,26 +58,16 @@ public class LoginFrame extends javax.swing.JFrame {
         txtPswrd = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         btnLogin1 = new javax.swing.JButton();
-
-        jPasswordField1.setText("jPasswordField1");
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lPanel.setBackground(new java.awt.Color(121, 237, 39));
-        lPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/balanced-diet_256x256.png"))); // NOI18N
-        lPanel.add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 300, 270));
-
-        mainPanel.add(lPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 500));
-
-        rPanel.setBackground(new java.awt.Color(255, 255, 255));
+        rPanel.setBackground(new java.awt.Color(255, 255, 255, 100));
+        rPanel.setOpaque(true);
         rPanel.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 rPanelFocusGained(evt);
@@ -102,7 +89,7 @@ public class LoginFrame extends javax.swing.JFrame {
         rPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 200, 30));
 
         lblTitle.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(121, 237, 39));
+        lblTitle.setForeground(new java.awt.Color(51, 51, 51));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("My HEALTH Buddy");
         lblTitle.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -115,7 +102,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lblInvalid.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         lblInvalid.setForeground(new java.awt.Color(255, 51, 51));
         lblInvalid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rPanel.add(lblInvalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 380, -1));
+        rPanel.add(lblInvalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 380, 10));
 
         txtPswrd.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         txtPswrd.setText("Enter Password");
@@ -131,9 +118,9 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         rPanel.add(txtPswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 30));
 
-        btnLogin.setBackground(new java.awt.Color(121, 237, 39));
-        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setBackground(new java.awt.Color(192, 202, 97));
+        btnLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(51, 51, 51));
         btnLogin.setText("Login");
         btnLogin.setBorder(null);
         btnLogin.setBorderPainted(false);
@@ -152,15 +139,16 @@ public class LoginFrame extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 30));
+        rPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 40));
 
-        btnLogin1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnLogin1.setForeground(new java.awt.Color(121, 237, 39));
+        btnLogin1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
+        btnLogin1.setForeground(new java.awt.Color(51, 51, 51));
         btnLogin1.setText("New User? Sign Up Here");
         btnLogin1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnLogin1.setBorderPainted(false);
         btnLogin1.setFocusPainted(false);
         btnLogin1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin1.setOpaque(true);
         btnLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnLogin1MouseEntered(evt);
@@ -174,19 +162,62 @@ public class LoginFrame extends javax.swing.JFrame {
                 btnLogin1ActionPerformed(evt);
             }
         });
-        rPanel.add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 180, 30));
+        rPanel.add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 190, 30));
 
-        mainPanel.add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 400, 500));
+        getContentPane().add(rPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 400, 630));
 
-        getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel2.setText("X");
+        jLabel2.setOpaque(true);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vipul\\Downloads\\flat-lay-healthy-immunity-boosting-foods.jpg")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 670));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // TODO add your handling code here:
+        if ("Enter Email".equals(txtEmail.getText())){
+            txtEmail.setText(null);
+            txtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmailFocusGained
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if(txtEmail.getText().length()==0){
+            txtEmail.setText("Enter Email");
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void lblTitleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblTitleFocusGained
+        // TODO add your handling code here:
+        this.requestFocusInWindow();
+    }//GEN-LAST:event_lblTitleFocusGained
+
     private void txtPswrdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPswrdFocusGained
         // TODO add your handling code here:
-        if ("Enter Password".equals(txtPswrd.getText())){ 
+        if ("Enter Password".equals(txtPswrd.getText())){
             txtPswrd.setText(null);
             txtPswrd.requestFocus();
             txtPswrd.setEchoChar('*');
@@ -201,40 +232,15 @@ public class LoginFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPswrdFocusLost
 
-    private void rPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rPanelFocusGained
-        // TODO add your handling code here:
-        this.requestFocusInWindow();
-    }//GEN-LAST:event_rPanelFocusGained
-
-    private void lblTitleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblTitleFocusGained
-        // TODO add your handling code here:
-        this.requestFocusInWindow();
-    }//GEN-LAST:event_lblTitleFocusGained
-
-    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        // TODO add your handling code here:
-        if ("Enter Email".equals(txtEmail.getText())){ 
-            txtEmail.setText(null);
-            txtEmail.requestFocus();
-        }
-    }//GEN-LAST:event_txtEmailFocusGained
-
-    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        // TODO add your handling code here:
-        if(txtEmail.getText().length()==0){
-            txtEmail.setText("Enter Email");
-        }
-    }//GEN-LAST:event_txtEmailFocusLost
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnCloseActionPerformed
-
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
         // TODO add your handling code here:
-        btnLogin.setBackground(new Color(0,204,51));
+        btnLogin.setBackground(new Color(101,153,98));
     }//GEN-LAST:event_btnLoginMouseEntered
+
+    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(192,202,97));
+    }//GEN-LAST:event_btnLoginMouseExited
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
@@ -252,17 +258,14 @@ public class LoginFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
-        // TODO add your handling code here:
-        btnLogin.setBackground(new Color(121,237,39));
-    }//GEN-LAST:event_btnLoginMouseExited
-
     private void btnLogin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogin1MouseEntered
         // TODO add your handling code here:
+        btnLogin1.setBackground(new Color(192,202,97));
     }//GEN-LAST:event_btnLogin1MouseEntered
 
     private void btnLogin1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogin1MouseExited
         // TODO add your handling code here:
+        btnLogin1.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_btnLogin1MouseExited
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
@@ -272,6 +275,26 @@ public class LoginFrame extends javax.swing.JFrame {
         sf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLogin1ActionPerformed
+
+    private void rPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rPanelFocusGained
+        // TODO add your handling code here:
+        this.requestFocusInWindow();
+    }//GEN-LAST:event_rPanelFocusGained
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+        jLabel2.setForeground(Color.red);
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        // TODO add your handling code here:
+        jLabel2.setForeground(Color.black);
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
     
     /**
      * @param args the command line arguments
@@ -311,12 +334,10 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogin1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPanel lPanel;
-    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblInvalid;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rPanel;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPswrd;
@@ -381,6 +402,13 @@ public class LoginFrame extends javax.swing.JFrame {
                             break;
                         
                         }
+                        
+                    case "Hospital":
+                    {
+                        HospitalHomePage mf = new HospitalHomePage(email);
+                        mf.setVisible(true);
+                        break;
+                    }
                     default:
                         break;
                 }

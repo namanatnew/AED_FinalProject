@@ -113,15 +113,16 @@ public class DietitianDirectory {
     
     }
     
-    public ResultSet viewDietitians(String type){
+    public ResultSet viewDietitians(String type, String hospital){
         
         
         PreparedStatement st;
         
         try{
             Connection dbconn = DBconnection.connectDB();
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ?");
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ? AND Hospital = ?");
             st.setString(1, type);
+            st.setString(2, hospital);
             ResultSet res = st.executeQuery();
             return res;
         }

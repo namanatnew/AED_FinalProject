@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
+import Model.Enterprise.HospitalDirectory;
 import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
@@ -57,6 +58,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         this.userName = userName;
         //this.records = records;
         lblWelcome.setText("Welcome, " + this.userName);
+        generateHospitalDropDown();
         
     }
     
@@ -83,6 +85,9 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         panelDiet = new javax.swing.JPanel();
         comboType = new javax.swing.JComboBox<>();
         lblWorkoutFrequency2 = new javax.swing.JLabel();
+        comboHospital = new javax.swing.JComboBox<>();
+        lblWorkoutFrequency3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         panelMedical1 = new javax.swing.JPanel();
         txtDietitianName = new javax.swing.JTextField();
         lblDiabetes2 = new javax.swing.JLabel();
@@ -133,18 +138,18 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
+        jLabel5.setText("Diet Management System");
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Diet Management System");
 
+        jLabel3.setText("X");
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("X");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -157,9 +162,9 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             }
         });
 
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
         lblWelcome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
-        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlTitleBarLayout = new javax.swing.GroupLayout(pnlTitleBar);
         pnlTitleBar.setLayout(pnlTitleBarLayout);
@@ -210,20 +215,36 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consultant", "Clinical", "Pediatric", "Sports", "Research" }));
         comboType.setSelectedIndex(-1);
-        comboType.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboTypeItemStateChanged(evt);
-            }
-        });
         comboType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboTypeActionPerformed(evt);
             }
         });
-        panelDiet.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 200, 30));
+        panelDiet.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 200, 30));
 
-        lblWorkoutFrequency2.setText("Type");
-        panelDiet.add(lblWorkoutFrequency2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        lblWorkoutFrequency2.setText("Dietitian Type");
+        panelDiet.add(lblWorkoutFrequency2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
+
+        comboHospital.setSelectedIndex(-1);
+        comboHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboHospitalActionPerformed(evt);
+            }
+        });
+        panelDiet.add(comboHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 200, 30));
+
+        lblWorkoutFrequency3.setText("Hospital");
+        panelDiet.add(lblWorkoutFrequency3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("View");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelDiet.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 80, 30));
 
         pnlRegistration.add(panelDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 770, 80));
 
@@ -308,7 +329,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableView);
 
-        pnlRegistration.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 770, 130));
+        pnlRegistration.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 770, 130));
 
         pnlWorkArea.add(pnlRegistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 610));
 
@@ -446,7 +467,17 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
-
+    public void generateHospitalDropDown() {
+        
+        HospitalDirectory hd = new HospitalDirectory();
+        List<String> hospitalList = hd.getAllHospitalsList();
+        
+        String[] foodDropdown = hospitalList.toArray(new String[hospitalList.size()]);
+        DefaultComboBoxModel<String> yearsSDropdownModel = new DefaultComboBoxModel<>(foodDropdown);
+        comboHospital.setModel(yearsSDropdownModel);
+        comboHospital.setSelectedIndex(-1);
+        
+    }
     
     public void resetForm(){
         
@@ -507,41 +538,30 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
             Date date = dateAppointment.getDate();
             LocalTime time = timeAppointment.getTime(); 
             
-            AppointmentDirectory ad = new AppointmentDirectory();
-            ad.addAppointment(this.userName, dietitianName, hospitalName, date, time);
-//            Connection dbconn = DBconnection.connectDB();
-//            PreparedStatement st;
-//        
-//            try{
-//                String query = "INSERT INTO appointments(userName, dietitianName, hospital, date, time, status) VALUES (?,?,?,?,?,?)";
-//                st = (PreparedStatement)dbconn.prepareStatement(query);
-//                st.setString(1, this.userName); //bg
-//                st.setString(2, dietitianName);
-//                st.setString(3, hospitalName);
-//                st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
-//                st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
-//                st.setString(6, "Requested");
-//                
-//                st.executeUpdate();
-//                
-//            }
-//            catch(SQLException ex){
-//                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            String status;
+            if (hospitalName.equals("NA")){
+                
+                AppointmentDirectory ad = new AppointmentDirectory();
+                 status = "Requested";
+                ad.addAppointment(this.userName, dietitianName, hospitalName, date, time, status);
+
+                DietitianDirectory dd = new DietitianDirectory();
+                dd.updateSlots(dietitianName);
+            }
+            else{
+                AppointmentDirectory ad = new AppointmentDirectory();
+                 status = "Pending";
+                ad.addAppointment(this.userName, dietitianName, hospitalName, date, time, status);
+                
+                
+            }
             
+//            AppointmentDirectory ad = new AppointmentDirectory();
+//            ad.addAppointment(this.userName, dietitianName, hospitalName, date, time, status);
+
             DietitianDirectory dd = new DietitianDirectory();
             dd.updateSlots(dietitianName);
-//            try{
-//                String query = "UPDATE dietitians SET Slots = Slots - 1 WHERE Name=?";
-//                st = (PreparedStatement)dbconn.prepareStatement(query);
-//                st.setString(1, dietitianName); //bg
-//                
-//                st.executeUpdate();
-//                
-//            }
-//            catch(SQLException ex){
-//                Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+
             populateTableData();
             resetForm();
         }
@@ -577,11 +597,6 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTypeActionPerformed
 
-    private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
-        // TODO add your handling code here:
-        populateTableData();
-    }//GEN-LAST:event_comboTypeItemStateChanged
-
     private void txtDietitianNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDietitianNameKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();
@@ -615,6 +630,15 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         LocalTime appointmentTime = timeAppointment.getTime();
         
     }//GEN-LAST:event_tableViewMouseClicked
+
+    private void comboHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboHospitalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboHospitalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        populateTableData();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     boolean isDataValid(){
 //        String id, name, emailId, gender, community, city, state, username ;
@@ -780,8 +804,24 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         //Clear the table 
         model.setRowCount(0);
         
+        String hospital, type;
+        if(comboHospital.getSelectedIndex() == -1){
+            hospital = "";
+        }
+        else{
+            hospital = comboHospital.getSelectedItem().toString();
+        }
+        
+        if(comboType.getSelectedIndex() == -1){
+            type = "";
+        }
+        else{
+            type = comboType.getSelectedItem().toString();
+        }
+        
+        System.out.println(type +  hospital);
         DietitianDirectory dd = new DietitianDirectory();
-        ResultSet res = dd.viewDietitians(comboType.getSelectedItem().toString());
+        ResultSet res = dd.viewDietitians(type, hospital);
         try{
             while(res.next()){
                 Object[] row = new Object[11];
@@ -790,11 +830,11 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
                 row[2] = res.getString("Gender");
                 row[3] = res.getInt("Age");
                 row[4] = res.getLong("Contact");
-                row[6] = res.getString("Hospital");
-                row[7] = res.getString("Type");
-                row[8] = res.getString("Qualification");
-                row[9] = res.getInt("Experience");
-                row[10] = res.getInt("Slots");
+                row[5] = res.getString("Hospital");
+                row[6] = res.getString("Type");
+                row[7] = res.getString("Qualification");
+                row[8] = res.getInt("Experience");
+                row[9] = res.getInt("Slots");
 
                 model.addRow(row);
             }
@@ -820,8 +860,10 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
     private javax.swing.JButton btnBook;
     private javax.swing.ButtonGroup btnGroupDiabetes;
     private javax.swing.ButtonGroup btnGroupGender;
+    private javax.swing.JComboBox<String> comboHospital;
     private javax.swing.JComboBox<String> comboType;
     private com.toedter.calendar.JDateChooser dateAppointment;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -849,6 +891,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblWorkoutFrequency2;
+    private javax.swing.JLabel lblWorkoutFrequency3;
     private javax.swing.JPanel panelDiet;
     private javax.swing.JPanel panelMedical1;
     private javax.swing.JPanel pnlRegistration;
