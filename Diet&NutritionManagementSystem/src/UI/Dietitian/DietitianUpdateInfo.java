@@ -4,6 +4,7 @@
  */
 package UI.Dietitian;
 
+import UI.SystemAdmin.ManageUsersSA;
 import UI.User.*;
 import java.sql.Connection;
 import java.sql.Connection;
@@ -107,7 +108,7 @@ public class DietitianUpdateInfo extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -269,7 +270,7 @@ public class DietitianUpdateInfo extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel6MouseClicked(evt);
@@ -448,7 +449,7 @@ public class DietitianUpdateInfo extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed

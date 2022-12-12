@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.Hospital;
+package UI.SystemAdmin;
 
 import java.sql.Connection;
 import Model.Account.AccountDirectory;
 import Model.Database.DBconnection;
-import Model.Enterprise.HospitalDirectory;
+import Model.Enterprise.Hospital.HospitalDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import UI.SystemAdmin.ManageMealServiceSA;
 import UI.SystemAdmin.SAHomePage;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 //import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -28,18 +28,20 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author anuja
  */
-public class ManageHospitalSA extends javax.swing.JFrame {
+public class ManageNGOSA extends javax.swing.JFrame {
 
     /**
      * Creates new form ManageHospitalSA
      */
     private TableRowSorter sorter;
-    public ManageHospitalSA() {
+    public HospitalDirectory hospD = new HospitalDirectory();
+    public ManageNGOSA() {
         initComponents();
         
          populateTableData();
@@ -67,7 +69,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
         lblAllergies = new javax.swing.JLabel();
-        txtContact = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         lblAddress = new javax.swing.JLabel();
@@ -77,7 +79,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         pwdRePassword = new javax.swing.JPasswordField();
         pwdPassword = new javax.swing.JPasswordField();
         lblId = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtLicense = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         pnlView = new javax.swing.JPanel();
@@ -116,10 +118,12 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         lblStore = new javax.swing.JLabel();
         lblService = new javax.swing.JLabel();
+        lblService1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -224,26 +228,26 @@ public class ManageHospitalSA extends javax.swing.JFrame {
                 txtNameKeyTyped(evt);
             }
         });
-        panelMedical.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 200, 30));
+        panelMedical.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 200, 30));
 
         lblPhone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/weight_px.png"))); // NOI18N
         lblPhone.setText("            Phone");
-        panelMedical.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        panelMedical.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         lblAllergies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
         lblAllergies.setText("Confirm Password");
         panelMedical.add(lblAllergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
 
-        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContactKeyTyped(evt);
+                txtPhoneKeyTyped(evt);
             }
         });
-        panelMedical.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 200, 30));
+        panelMedical.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 200, 30));
 
         lblName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/height_29px.png"))); // NOI18N
-        lblName.setText("             Name");
-        panelMedical.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
+        lblName.setText("Hospital Name");
+        panelMedical.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 120, -1));
 
         txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -253,7 +257,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         panelMedical.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 190, 30));
 
         lblAddress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
-        lblAddress.setText("                  Address");
+        lblAddress.setText("               Address");
         panelMedical.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -264,29 +268,29 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         panelMedical.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 190, 30));
 
         lblEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
-        lblEmail.setText("                      Email");
+        lblEmail.setText("                   Email");
         panelMedical.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/userIcons/icons8-allergy-29.png"))); // NOI18N
-        lblPassword.setText("               Password");
+        lblPassword.setText("            Password");
         panelMedical.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
         panelMedical.add(pwdRePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 190, 30));
         panelMedical.add(pwdPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 190, 30));
 
-        lblId.setText("ID");
-        panelMedical.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+        lblId.setText("License No");
+        panelMedical.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        txtLicense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                txtLicenseActionPerformed(evt);
             }
         });
-        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtLicense.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIdKeyTyped(evt);
+                txtLicenseKeyTyped(evt);
             }
         });
-        panelMedical.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 30));
+        panelMedical.add(txtLicense, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 200, 30));
 
         btnRegister.setBackground(new java.awt.Color(255, 51, 51));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,8 +314,8 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         pnlRegistration.setLayout(pnlRegistrationLayout);
         pnlRegistrationLayout.setHorizontalGroup(
             pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+            .addGroup(pnlRegistrationLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
                         .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,14 +324,14 @@ public class ManageHospitalSA extends javax.swing.JFrame {
                         .addGap(302, 302, 302))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrationLayout.createSequentialGroup()
                         .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))))
+                        .addGap(29, 29, 29))))
         );
         pnlRegistrationLayout.setVerticalGroup(
             pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRegistrationLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(157, 157, 157)
+                .addGap(135, 135, 135)
+                .addComponent(panelMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148)
                 .addGroup(pnlRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -347,22 +351,22 @@ public class ManageHospitalSA extends javax.swing.JFrame {
 
         tableView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "HospitalName", "PhoneNo", "Email", "Address"
+                "Id", "License No", "HospitalName", "PhoneNo", "Email", "Address"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Long.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Long.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -460,8 +464,8 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         panelMedical1.add(pwdRePassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 190, 30));
         panelMedical1.add(pwdPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 190, 30));
 
-        lblId1.setText("ID");
-        panelMedical1.add(lblId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+        lblId1.setText("License No");
+        panelMedical1.add(lblId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
         txtId1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,7 +483,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -565,6 +569,11 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
 
         pnlSideOptions.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 190, 50));
@@ -583,13 +592,24 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         lblService.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblService.setForeground(new java.awt.Color(255, 255, 255));
         lblService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
-        lblService.setText(" Manage Services");
+        lblService.setText(" Manage NGOs");
         lblService.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblServiceMouseClicked(evt);
             }
         });
-        pnlSideOptions.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 180, -1));
+        pnlSideOptions.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 180, -1));
+
+        lblService1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblService1.setForeground(new java.awt.Color(255, 255, 255));
+        lblService1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblService1.setText(" Manage Services");
+        lblService1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblService1MouseClicked(evt);
+            }
+        });
+        pnlSideOptions.add(lblService1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -627,9 +647,9 @@ public class ManageHospitalSA extends javax.swing.JFrame {
 
        public void resetForm(){
         
-        txtId.setText(null);
+        txtLicense.setText(null);
         txtName.setText(null);
-        txtContact.setText(null);
+        txtPhone.setText(null);
         txtAddress.setText(null);    
         txtEmail.setText(null);
         pwdPassword.setText(null);
@@ -680,17 +700,17 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNameKeyTyped
 
-    private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
+    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
         // TODO add your handling code here:
         char typedPhoneNumber = evt.getKeyChar();
         if(!Character.isDigit(typedPhoneNumber)){
             evt.consume();
         }
         //Restrict the length to 10
-        if(txtContact.getText().length() > 9){
+        if(txtPhone.getText().length() > 9){
             evt.consume();
         }
-    }//GEN-LAST:event_txtContactKeyTyped
+    }//GEN-LAST:event_txtPhoneKeyTyped
 
     private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
         // TODO add your handling code here:
@@ -706,16 +726,15 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         if(true)
         {
             //Personal Info
-            int Id = Integer.parseInt(txtId.getText());
+            String license = txtLicense.getText();
             String name = txtName.getText();
-            long contact = Long.parseLong(txtContact.getText());
+            long contact = Long.parseLong(txtPhone.getText());
             String address = txtAddress.getText();
             String email = txtEmail.getText();
             String password =new String(pwdPassword.getPassword());
             String confirmpassword = new String(pwdRePassword.getPassword());
 
-           // new DietitianDirectory().addNewDietitianToDB(name, dob, age, gender, contact, address, doj, experience, qualification, slots, hospital, type);
-             new HospitalDirectory().addNewHospitalToDB(Id, name, contact, address, email);
+             new HospitalDirectory().addNewHospitalToDB(license, name, contact, address, email);
             if (email.equals("Enter Email") || password.equals("Enter Password")
                 || confirmpassword.equals("Confirm Password") ){
                 JOptionPane.showMessageDialog(this, "Please fill all the fields!");
@@ -726,6 +745,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Password doesn't match!");
             }
             else{
+                System.out.println("account created");
                 AccountDirectory ac = new AccountDirectory();
                 ac.addUserCredential(email, password, "Hospital");
               
@@ -754,33 +774,29 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         // TODO add your handling code here:
         int rowIndex = tableView.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
-
+        
+        System.out.println(rowIndex);
+        
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
+        
+        
 
-          Connection dbconn = DBconnection.connectDB();
-    
-          PreparedStatement st;
+        ResultSet res = hospD.selectRecordsByID(id);
 
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT * FROM hospital WHERE ID = ?");
-            st.setInt(1, id);
-            ResultSet res = st.executeQuery();
-
             while(res.next()){
-                txtId1.setText(res.getString("Id"));
+                txtId1.setText(res.getString("licenseNo"));
                 txtName1.setText(res.getString("HospitalName"));
                 txtContact1.setText(String.valueOf(res.getLong("PhoneNo")));
                 txtEmail1.setText(res.getString("Email"));
                 txtAddress1.setText(res.getString("Address"));
               
 
-            }
-            System.out.println(res);
-
-            //            tableView.setModel(DbUtils.resultSetToTableModel(res));
+            }          
+//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(ManageHospitalSA.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageNGOSA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_tableViewMouseClicked
@@ -795,28 +811,17 @@ public class ManageHospitalSA extends javax.swing.JFrame {
 
         Connection dbconn = DBconnection.connectDB();
         PreparedStatement st;
-
-        try{
-
-            String query = "UPDATE hospital SET Id = ?, HospitalName = ?, PhoneNo = ?, Email = ?, Address = ? WHERE Id = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-              st.setInt(1, Integer.parseInt(txtId1.getText())); //bg
-              st.setString(2, txtName1.getText()); //bg
-              st.setLong(3, Long.parseLong(txtContact1.getText()));
-              st.setString(4, txtAddress1.getText());
-              st.setString(5, txtEmail1.getText());
-                  st.setInt(6, id);
-            st.executeUpdate();
-
-            populateTableData();
-            resetUpdateForm();
-            //            System.out.println(res);
-
-            //            tableView.setModel(DbUtils.resultSetToTableModel(res));
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageHospitalSA.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        String license = txtId1.getText();
+        String name = txtName1.getText();
+        Long contact = Long.parseLong(txtContact1.getText());
+        String address = txtAddress1.getText();
+        String email = txtEmail1.getText();
+        hospD.updateRecordsByID(license, name, contact, address, email, id);
+        
+        populateTableData();
+        resetUpdateForm();
+        
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -827,21 +832,12 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
 
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
+        
+        hospD.deleteHospitalFromDB(id);
 
-        try{
-            String query = "DELETE FROM hospital WHERE ID = ?";
-            st = (PreparedStatement)dbconn.prepareStatement(query);
-            st.setInt(1, id);
-            st.executeUpdate();
-
-            populateTableData();
-            resetUpdateForm();
-        }
-        catch(SQLException ex){
-            Logger.getLogger(ManageDietitiansSA.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        populateTableData();
+        resetUpdateForm();
+        
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -900,7 +896,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
@@ -909,13 +905,13 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtId1ActionPerformed
 
-    private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
+    private void txtLicenseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLicenseKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdKeyTyped
+    }//GEN-LAST:event_txtLicenseKeyTyped
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void txtLicenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLicenseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_txtLicenseActionPerformed
 
     private void lblStoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStoreMouseClicked
         // TODO add your handling code here:
@@ -930,6 +926,17 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblServiceMouseClicked
+
+    private void lblService1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblService1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblService1MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        ManageHospitalSA fr = new ManageHospitalSA();
+        fr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
   boolean isDataValid()
   {
   return true;
@@ -938,7 +945,6 @@ public class ManageHospitalSA extends javax.swing.JFrame {
     
     private void populateTableData() {
         
-        Connection dbconn = DBconnection.connectDB();
         //Type-cast table model into default table model
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
         
@@ -948,30 +954,23 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         //Clear the table 
         model.setRowCount(0);
         
-        PreparedStatement st;
-        
+        ResultSet res = hospD.selectAllRecords();
         try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT  Id, HospitalName, PhoneNo,  Email, Address from Hospital");
-            ResultSet res = st.executeQuery();
-           
             while(res.next()){
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
                 row[0] = res.getInt("Id");
-                row[1] = res.getString("HospitalName");
-                row[2] = res.getLong("PhoneNo");
-                row[3] = res.getString("Email");
-                row[4] = res.getString("Address");
+                row[1] = res.getString("licenseNo");
+                row[2] = res.getString("HospitalName");
+                row[3] = res.getLong("PhoneNo");
+                row[4] = res.getString("Email");
+                row[5] = res.getString("Address");
          
                 model.addRow(row);
-                 //System.out.println("hereeeeeeeeeee");
             }
-            // System.out.println("hereeeeeeeeeee");
-            System.out.println(res);
             
-//            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(ManageHospitalSA.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageNGOSA.class.getName()).log(Level.SEVERE, null, ex);
         }
       
       //--------------
@@ -1014,20 +1013,21 @@ public class ManageHospitalSA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageHospitalSA().setVisible(true);
+                new ManageNGOSA().setVisible(true);
             }
         });
     }
@@ -1069,6 +1069,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblRePassword1;
     private javax.swing.JLabel lblService;
+    private javax.swing.JLabel lblService1;
     private javax.swing.JLabel lblStore;
     private javax.swing.JLabel lblWeight2;
     private javax.swing.JPanel panelMedical;
@@ -1086,14 +1087,14 @@ public class ManageHospitalSA extends javax.swing.JFrame {
     private javax.swing.JTable tableView;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAddress1;
-    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtContact1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmail1;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtId1;
+    private javax.swing.JTextField txtLicense;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtName1;
+    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

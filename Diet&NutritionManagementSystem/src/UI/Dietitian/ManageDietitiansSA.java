@@ -11,22 +11,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
+import Model.Enterprise.Hospital.HospitalDirectory;
 import Model.People.DietitianDirectory;
 import Model.People.UserDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
-import UI.Hospital.ManageHospitalSA;
+import UI.SystemAdmin.ManageHospitalSA;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import UI.SystemAdmin.ManageMealServiceSA;
 import UI.SystemAdmin.SAHomePage;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -50,6 +53,10 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         //this.records = records;
         
         populateTableData();
+        
+        
+        generateHospitalDropDown();
+        generateHospitalDropDown1();
     }
 
     /**
@@ -168,7 +175,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -371,8 +378,6 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         });
         panelDiet.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 200, 30));
 
-        comboHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Independent", "Boston General", "Noble Care" }));
-        comboHospital.setSelectedIndex(-1);
         panelDiet.add(comboHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, 30));
 
         lblWorkoutFrequency2.setText("Type");
@@ -631,7 +636,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -767,7 +772,30 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
-
+    public void generateHospitalDropDown() {
+        
+        HospitalDirectory hd = new HospitalDirectory();
+        List<String> hospitalList = hd.getAllHospitalsList();
+        
+        String[] foodDropdown = hospitalList.toArray(new String[hospitalList.size()]);
+        DefaultComboBoxModel<String> yearsSDropdownModel = new DefaultComboBoxModel<>(foodDropdown);
+        comboHospital.setModel(yearsSDropdownModel);
+        comboHospital.setSelectedIndex(-1);
+        
+    }
+    
+    public void generateHospitalDropDown1() {
+        
+        HospitalDirectory hd = new HospitalDirectory();
+        List<String> hospitalList = hd.getAllHospitalsList();
+        
+        String[] foodDropdown = hospitalList.toArray(new String[hospitalList.size()]);
+        DefaultComboBoxModel<String> yearsSDropdownModel = new DefaultComboBoxModel<>(foodDropdown);
+        comboHospital1.setModel(yearsSDropdownModel);
+        comboHospital1.setSelectedIndex(-1);
+        
+    }
+    
     public void resetUpdateForm(){
       
         txtName1.setText(null);
@@ -926,6 +954,8 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
         DietitianDirectory dd = new DietitianDirectory();
         dd.updateRecordsByID(name, dob, gender, contact, address, doj, qualification, hospital, type, slots, id);
         
+        populateTableData();
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
@@ -1081,7 +1111,7 @@ public class ManageDietitiansSA extends javax.swing.JFrame {
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel18MouseClicked

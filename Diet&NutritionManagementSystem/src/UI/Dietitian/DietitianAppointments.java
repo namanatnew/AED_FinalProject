@@ -10,11 +10,14 @@ import Model.Database.DBconnection;
 import Model.Diet.DietIntake;
 import Model.Diet.DietPlan;
 import Model.People.DietitianDirectory;
+import Model.People.UserDirectory;
+import Model.Utilities.SendMail;
 import Model.WorkRequest.DietitianAppointmentRequest;
+import Model.WorkRequest.PrescribeDietPlan;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -73,12 +76,10 @@ public class DietitianAppointments extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblLogout = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        lblHomePage = new javax.swing.JLabel();
         lblApppointments = new javax.swing.JLabel();
         lblAccount = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        lblHomePage = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableView = new javax.swing.JTable();
@@ -118,7 +119,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -205,7 +206,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -221,25 +222,6 @@ public class DietitianAppointments extends javax.swing.JFrame {
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 190, 45));
 
-        jPanel7.setBackground(new java.awt.Color(255, 51, 51));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblHomePage.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
-        lblHomePage.setForeground(new java.awt.Color(255, 255, 255));
-        lblHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
-        lblHomePage.setText("  Home Page");
-        lblHomePage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHomePageMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblHomePageMouseEntered(evt);
-            }
-        });
-        jPanel7.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
-
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
-
         lblApppointments.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblApppointments.setForeground(new java.awt.Color(255, 255, 255));
         lblApppointments.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/users_sadmin_29px.png"))); // NOI18N
@@ -254,7 +236,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
         lblAccount.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblAccount.setForeground(new java.awt.Color(255, 255, 255));
         lblAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
-        lblAccount.setText("         Account");
+        lblAccount.setText("       Account");
         lblAccount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAccountMouseClicked(evt);
@@ -262,16 +244,23 @@ public class DietitianAppointments extends javax.swing.JFrame {
         });
         jPanel3.add(lblAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, -1));
 
-        jPanel8.setBackground(new java.awt.Color(255, 51, 51));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel9.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 190, 45));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
-        jLabel7.setText("  Home Page");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
-
-        jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
+        lblHomePage.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblHomePage.setForeground(new java.awt.Color(255, 255, 255));
+        lblHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
+        lblHomePage.setText("    Home Page");
+        lblHomePage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHomePageMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHomePageMouseEntered(evt);
+            }
+        });
+        jPanel3.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 580));
 
@@ -482,7 +471,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
 
     private void lblApppointmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblApppointmentsMouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblApppointmentsMouseClicked
@@ -504,20 +493,13 @@ public class DietitianAppointments extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblAccountMouseClicked
 
-    private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
-        // TODO add your handling code here:
-        DietitianHomePage fr = new DietitianHomePage(this.userName, 0);
-        fr.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblHomePageMouseClicked
-
     private void tableViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewMouseClicked
         // TODO add your handling code here:
         int rowIndex = tableView.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
 
         String status = String.valueOf(model.getValueAt(rowIndex,8));
-        
+        System.out.println(status);
         if(status.equals("Confirmed")){
             btnAccept.setEnabled(false);
             btnReject.setEnabled(false);
@@ -572,6 +554,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
     }
     
     
+    
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
         int rowIndex = tableView.getSelectedRow();
@@ -579,15 +562,32 @@ public class DietitianAppointments extends javax.swing.JFrame {
         //        User selectedUser =(User)model.getValueAt(rowIndex,1);
 
         int id = Integer.parseInt(model.getValueAt(rowIndex,0).toString());
-        
+        String name = model.getValueAt(rowIndex,3).toString();
+        UserDirectory ud = new UserDirectory();
+        ResultSet res = ud.selectRecordsByName(name);
+        String useremail = "User";
+        try {
+            useremail = res.getString("Email");
+        } catch (SQLException ex) {
+            Logger.getLogger(DietitianAppointments.class.getName()).log(Level.SEVERE, null, ex);
+        }
         DietitianAppointmentRequest dreq = new DietitianAppointmentRequest();
         dreq.acceptRequestByID(id);
         
         populateTableData();
-        
+        try {
+                sendEmailTo(useremail,"Appointment Confirmed!","Hi " + name + 
+                        ",\nThe appointment you requested for is confirmed.\nPlease be on time.");
+            } catch (Exception ex) {
+                Logger.getLogger(UserAppointmentBooking.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
     }//GEN-LAST:event_btnAcceptActionPerformed
 
+    public void sendEmailTo(String mailto, String sub, String body) throws Exception{
+        SendMail mail = new SendMail(mailto, sub, body);     
+    }
+    
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         int rowIndex = tableView.getSelectedRow();
@@ -602,10 +602,6 @@ public class DietitianAppointments extends javax.swing.JFrame {
         populateTableData();
 
     }//GEN-LAST:event_btnRejectActionPerformed
-
-    private void lblHomePageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblHomePageMouseEntered
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         // TODO add your handling code here:
@@ -636,9 +632,8 @@ public class DietitianAppointments extends javax.swing.JFrame {
             float sodium = Float.parseFloat(txtSodium.getText());
             float cholesterol = Float.parseFloat(txtCholesterol.getText());
             
-            DietPlan dp = new DietPlan();
-            dp.insertRecords(username, calories, protein, carbs, fats, sodium, cholesterol);
-            
+            PrescribeDietPlan dp = new PrescribeDietPlan();
+            dp.insertDietPlan(username, calories, protein, carbs, fats, sodium, cholesterol);
             
             
             new DietIntake().createDailyIntakeDefaultRecord(username);
@@ -684,6 +679,17 @@ public class DietitianAppointments extends javax.swing.JFrame {
     private void txtCholesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCholesterolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCholesterolActionPerformed
+
+    private void lblHomePageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblHomePageMouseEntered
+
+    private void lblHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomePageMouseClicked
+        // TODO add your handling code here:
+        DietitianHomePage fr = new DietitianHomePage(this.userName, 0);
+        fr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblHomePageMouseClicked
     
     public String getUserNameFromEmail(String email_id){
         
@@ -711,7 +717,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
         model.setRowCount(0);
         
         DietitianAppointmentRequest dreq = new DietitianAppointmentRequest();
-        ResultSet res = dreq.selectOwnAllConfirmedAppointmentDetails(this.userName);
+        ResultSet res = dreq.selectOwnAllAppointmentDetails(this.userName);
         
         try{
             
@@ -779,14 +785,12 @@ public class DietitianAppointments extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblApppointments;

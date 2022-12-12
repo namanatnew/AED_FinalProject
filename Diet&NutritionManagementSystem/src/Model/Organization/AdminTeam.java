@@ -9,5 +9,8 @@ package Model.Organization;
  * @author vipul
  */
 public class AdminTeam {
+
+    public AdminTeam() {
+    }
     
 }

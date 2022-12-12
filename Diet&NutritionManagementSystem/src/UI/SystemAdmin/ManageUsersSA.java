@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.User;
+package UI.SystemAdmin;
 
 import Model.Account.AccountDirectory;
 import java.sql.Connection;
@@ -19,7 +19,6 @@ import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
 
-import UI.Hospital.ManageHospitalSA;
 
 import UI.Main.MainFrame;
 import UI.SystemAdmin.ManageGroceryStoresSA;
@@ -47,14 +46,14 @@ import javax.swing.table.TableRowSorter;
  *
  * @author vipul
  */
-public class UserRegistration extends javax.swing.JFrame {
+public class ManageUsersSA extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
     UserDirectory records = new UserDirectory();
     private TableRowSorter sorter;
-    public UserRegistration() {
+    public ManageUsersSA() {
         initComponents();
         //this.records = records;
         
@@ -169,7 +168,7 @@ public class UserRegistration extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -627,7 +626,7 @@ public class UserRegistration extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -865,7 +864,7 @@ public void resetUpdateForm(){
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         resetForm();
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
@@ -954,7 +953,7 @@ public void resetUpdateForm(){
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
@@ -1045,7 +1044,7 @@ public void resetUpdateForm(){
 //            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageUsersSA.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -1293,7 +1292,7 @@ public void resetUpdateForm(){
             
         }
         catch(SQLException ex){
-            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageUsersSA.class.getName()).log(Level.SEVERE, null, ex);
         }
       
       //--------------
@@ -1327,7 +1326,7 @@ public void resetUpdateForm(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserRegistration().setVisible(true);
+                new ManageUsersSA().setVisible(true);
             }
         });
     }

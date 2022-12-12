@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 import Model.Database.DBconnection;
 import Model.Diet.DietIntake;
-import Model.Enterprise.GroceryStoresDirectory;
+import Model.Enterprise.GroceryStores.GroceryStoresDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
 import Model.Organization.ProductDirectory;
@@ -139,7 +139,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -154,18 +154,18 @@ public class UserDailyIntake extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
+        jLabel5.setText("Diet Management System");
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Diet Management System");
 
+        jLabel3.setText("X");
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("X");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -178,9 +178,9 @@ public class UserDailyIntake extends javax.swing.JFrame {
             }
         });
 
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
         lblWelcome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
-        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlTitleBarLayout = new javax.swing.GroupLayout(pnlTitleBar);
         pnlTitleBar.setLayout(pnlTitleBarLayout);
@@ -396,7 +396,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel6MouseClicked(evt);
@@ -404,10 +404,10 @@ public class UserDailyIntake extends javax.swing.JFrame {
         });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
-        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
         lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Exit_26px_2.png"))); // NOI18N
         lblLogout.setText("   Logout");
+        lblLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoutMouseClicked(evt);
@@ -709,6 +709,7 @@ public class UserDailyIntake extends javax.swing.JFrame {
                 fats = (qty * res.getFloat("perc_fats"))/100;   
                 sodium = (qty * res.getFloat("perc_sodium"))/100;
                 cholesterol = (qty * res.getFloat("perc_cholesterol"))/100; 
+                
                 System.out.println("@@@@");
                 System.out.println(calories);
             }

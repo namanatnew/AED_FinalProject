@@ -11,7 +11,7 @@ import Model.People.UserDirectory;
 import UI.SystemAdmin.*;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +39,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class UserHomePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form SAHomePage
+     * Creates new form UserHomePage
      */
     public String email_id;
     public String userName;
@@ -119,13 +119,15 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         pnlReport = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -140,18 +142,18 @@ public class UserHomePage extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
         });
 
+        lblClose.setText("X");
         lblClose.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         lblClose.setForeground(new java.awt.Color(255, 255, 255));
-        lblClose.setText("X");
         lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCloseMouseClicked(evt);
@@ -164,14 +166,14 @@ public class UserHomePage extends javax.swing.JFrame {
             }
         });
 
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
         lblWelcome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
-        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
 
+        jLabel5.setText("Diet Management System");
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Diet Management System");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -217,7 +219,7 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -236,11 +238,11 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 51, 51));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHomePage.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblHomePage.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblHomePage.setForeground(new java.awt.Color(255, 255, 255));
         lblHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
-        lblHomePage.setText("  Home Page");
-        jPanel7.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        lblHomePage.setText("      Home Page");
+        jPanel7.add(lblHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, -1));
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 190, 45));
 
@@ -253,7 +255,7 @@ public class UserHomePage extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 160, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 170, -1));
 
         lblAppointment.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblAppointment.setForeground(new java.awt.Color(255, 255, 255));
@@ -375,7 +377,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255, 180));
 
         pnlReport.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Requirement vs Consumption", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP));
         pnlReport.setLayout(new javax.swing.BoxLayout(pnlReport, javax.swing.BoxLayout.LINE_AXIS));
@@ -392,8 +394,9 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jButton1)
-                .addGap(74, 74, 74)
+                .addGap(59, 59, 59)
                 .addComponent(pnlReport, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(137, Short.MAX_VALUE))
         );
@@ -410,6 +413,15 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel5.add(jPanel9);
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 770, 310));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/grilled-chicken-rice-spicy-chickpeas-avocado-cabbage-pepper-buddha-bowl-dark-top-view.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setOpaque(true);
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 580));
+
+        jLabel3.setText("jLabel3");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 580));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
@@ -448,7 +460,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
     private void lblAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAppointmentMouseClicked
         // TODO add your handling code here:
-        UserAppointmentBooking frame = new UserAppointmentBooking(this.userName);
+        UserAppointmentBooking frame = new UserAppointmentBooking(this.userName, this.email_id);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblAppointmentMouseClicked
@@ -467,7 +479,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            ChartUtilities.saveChartAsPNG(new File("D:\\Git Repo\\AED_FinalProject\\requirement_vs_consumption.png"), chart, 600, 300);
+            ChartUtilities.saveChartAsPNG(new File("requirement_vs_consumption.png"), chart, 600, 300);
         } catch (IOException ex) {
             Logger.getLogger(UserHomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -561,7 +573,7 @@ public class UserHomePage extends javax.swing.JFrame {
         plot.setRangeGridlinePaint(Color.black);
         
         ChartFrame cf = new ChartFrame("---", chart, true);
-        cf.setVisible(true);
+//        cf.setVisible(true);
         cf.setSize(400, 250);
         ChartPanel cp = new ChartPanel(chart);
         
@@ -657,8 +669,10 @@ public class UserHomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

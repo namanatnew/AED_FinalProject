@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Utilities.UtilityFunctions;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.awt.Color;
 import java.sql.ResultSet;
 /**
@@ -43,29 +43,6 @@ public class UserDirectory {
     
         Connection dbconn = DBconnection.connectDB();
         try {
-            /*
-            Refer column names
-            CREATE TABLE `end_users` (
-                `UserID` int NOT NULL AUTO_INCREMENT,
-                `Name` varchar(255) DEFAULT NULL,
-                `DOB` date DEFAULT NULL,
-                `Gender` varchar(10) DEFAULT NULL,
-                `Contact` mediumtext,
-                `Address` varchar(255) DEFAULT NULL,
-                `Height` float DEFAULT NULL,
-                `Weight` float DEFAULT NULL,
-                `BloodGroup` varchar(10) DEFAULT NULL,
-                `Purpose` varchar(50) DEFAULT NULL,
-                `Diabetic` tinyint(1) DEFAULT NULL,
-                `Allergies` varchar(100) DEFAULT NULL,
-                `Food_Preference` varchar(100) NOT NULL,
-                `Workout_Frequency` varchar(10) DEFAULT NULL,
-                `Favorites` varchar(300) DEFAULT NULL,
-                `Age` int NOT NULL,
-                PRIMARY KEY (`UserID`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-            */
-            
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO end_users(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`,`Height`, `Weight`, `Diabetic`, `Allergies`, `Purpose`, `Food_Preference`, `Workout_Frequency`, `Favorites`, `Email`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));

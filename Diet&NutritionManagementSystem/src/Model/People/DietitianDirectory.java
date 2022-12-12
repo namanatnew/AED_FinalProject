@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Utilities.UtilityFunctions;
 import UI.Dietitian.ManageDietitiansSA;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.time.LocalDate;
 import java.time.Period;
 import javax.swing.table.DefaultTableModel;
@@ -59,7 +59,7 @@ public class DietitianDirectory {
         try {
             
 //            PreparedStatement query = (PreparedStatement)dbconn.prepareStatement("")
-            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(`Name`, `DOB`, `Age`, `Gender`, `Contact`, `Address`, `DOJ`,`Experience`, `Qualification`, `Hospital`, `Type`, `Slots`, `Email`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("INSERT INTO dietitians(Name, DOB, Age, Gender, Contact, Address, DOJ, Experience, Qualification, Hospital, Type, Slots, Email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             st.setString(1, name);
             st.setDate(2, new UtilityFunctions().convertFromJAVADateToSQLDate(dob));
             st.setInt(3, age);
@@ -113,15 +113,16 @@ public class DietitianDirectory {
     
     }
     
-    public ResultSet viewDietitians(String type){
+    public ResultSet viewDietitians(String type, String hospital){
         
         
         PreparedStatement st;
         
         try{
             Connection dbconn = DBconnection.connectDB();
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ?");
+            st = (PreparedStatement)dbconn.prepareStatement("SELECT ID, Name, Gender, Age, Contact, Hospital, Type, Qualification, Experience, Slots from dietitians WHERE Type = ? AND Hospital = ?");
             st.setString(1, type);
+            st.setString(2, hospital);
             ResultSet res = st.executeQuery();
             return res;
         }
