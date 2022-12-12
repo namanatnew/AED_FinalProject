@@ -14,11 +14,11 @@ import Model.Account.Account;
 public class Hospital extends Account{
     
     
-    private String licenseNo;
-    private String name;
-    private long phNumber;
-    private String address;
-//    private String email;
+    public String licenseNo;
+    public String name;
+    public long phNumber;
+    public String address;
+    public String email;
 
    
     
@@ -67,6 +67,14 @@ public class Hospital extends Account{
 
     public Hospital(String email, String password, String type) {
         super(email, password, type);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

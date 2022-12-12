@@ -32,7 +32,7 @@ public class AppointmentDirectory {
         AppointmentDirectory.appointmentList = appointmentList;
     }
     
-    public void addAppointment(String userName, String dietitianName, String hospitalName, Date date, LocalTime time){
+    public void addAppointment(String userName, String dietitianName, String hospitalName, Date date, LocalTime time, String status){
         Connection dbconn = DBconnection.connectDB();
             PreparedStatement st;
         
@@ -44,7 +44,7 @@ public class AppointmentDirectory {
                 st.setString(3, hospitalName);
                 st.setDate(4, new UtilityFunctions().convertFromJAVADateToSQLDate(date));
                 st.setTime(5, new UtilityFunctions().convertJavaTimeToSQLTime(time));
-                st.setString(6, "Requested");
+                st.setString(6, status);
                 
                 st.executeUpdate();
                 

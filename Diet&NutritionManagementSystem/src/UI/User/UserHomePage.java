@@ -561,7 +561,7 @@ public class UserHomePage extends javax.swing.JFrame {
         plot.setRangeGridlinePaint(Color.black);
         
         ChartFrame cf = new ChartFrame("---", chart, true);
-        cf.setVisible(true);
+//        cf.setVisible(true);
         cf.setSize(400, 250);
         ChartPanel cp = new ChartPanel(chart);
         

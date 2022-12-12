@@ -498,7 +498,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableView.getModel();
 
         String status = String.valueOf(model.getValueAt(rowIndex,8));
-        
+        System.out.println(status);
         if(status.equals("Confirmed")){
             btnAccept.setEnabled(false);
             btnReject.setEnabled(false);
@@ -717,7 +717,7 @@ public class DietitianAppointments extends javax.swing.JFrame {
         model.setRowCount(0);
         
         DietitianAppointmentRequest dreq = new DietitianAppointmentRequest();
-        ResultSet res = dreq.selectOwnAllConfirmedAppointmentDetails(this.userName);
+        ResultSet res = dreq.selectOwnAllAppointmentDetails(this.userName);
         
         try{
             

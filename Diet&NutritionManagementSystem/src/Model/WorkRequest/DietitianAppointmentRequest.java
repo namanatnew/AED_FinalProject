@@ -77,7 +77,7 @@ public class DietitianAppointmentRequest extends WorkRequest{
         
         try{
             
-            String query = "SELECT u.Name, u.Gender, u.Age, u.Food_preference, u.Purpose, u.Workout_Frequency, a.dietitianName, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=? AND a.status=?";
+            String query = "SELECT u.Name, u.Gender, u.Age, u.Food_preference, u.Purpose, u.Workout_Frequency, a.dietitianName, a.date, a.time , a.appointmentID, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=? AND a.status=?";
             st = (PreparedStatement)dbconn.prepareStatement(query);
             st.setString(1, name);
             st.setString(2, "Confirmed");
@@ -92,16 +92,17 @@ public class DietitianAppointmentRequest extends WorkRequest{
     
     }
     
-    public ResultSet selectOwnAllConfirmedAppointmentDetails(String name){
+    public ResultSet selectOwnAllAppointmentDetails(String name){
     
         Connection dbconn = DBconnection.connectDB();
         PreparedStatement st;
         
         try{
             
-            String query = "SELECT u.Name, u.Gender, u.Age, u.Food_preference, u.Purpose, u.Workout_Frequency, a.dietitianName, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=?";
+            String query = "SELECT u.Name, u.Gender, u.Age, u.contact, u.Food_preference, u.Purpose, u.Workout_Frequency, a.dietitianName, a.appointmentID, a.date, a.time, a.hospital, a.status FROM end_users as u RIGHT JOIN appointments as a ON u.Name = a.userName WHERE a.dietitianName=? AND a.status != ?";
             st = (PreparedStatement)dbconn.prepareStatement(query);
             st.setString(1, name);
+            st.setString(2, "Pending");
             ResultSet res = st.executeQuery();
             return res;
         }
@@ -144,6 +145,27 @@ public class DietitianAppointmentRequest extends WorkRequest{
             String query = "UPDATE appointments SET status = ? WHERE appointmentID = ?";
             st = (PreparedStatement)dbconn.prepareStatement(query);
             st.setString(1, "Declined"); //bg
+            st.setInt(2, id);
+            st.executeUpdate();
+
+        }
+        catch(SQLException ex){
+            Logger.getLogger(DietitianAppointmentRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+    
+    public void requestRequestByID(int id){
+        
+        Connection dbconn = DBconnection.connectDB();
+        PreparedStatement st;
+
+        try{
+
+            String query = "UPDATE appointments SET status = ? WHERE appointmentID = ?";
+            st = (PreparedStatement)dbconn.prepareStatement(query);
+            st.setString(1, "Requested"); //bg
             st.setInt(2, id);
             st.executeUpdate();
 
