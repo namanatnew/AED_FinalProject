@@ -2,17 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.Enterprise;
+package Model.Enterprise.MealService;
 
 /**
  *
  * @author naman
  */
-public class GroceryStores {
+public class MealService {
     String name;
     String email;
     String password;
-    long contact;
 
     public String getName() {
         return name;
@@ -37,15 +36,4 @@ public class GroceryStores {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public long getContact() {
-        return contact;
-    }
-
-    public void setContact(long contact) {
-        this.contact = contact;
-    }
-    
-    
-    
 }

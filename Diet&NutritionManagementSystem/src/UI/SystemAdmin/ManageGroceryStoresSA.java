@@ -5,7 +5,7 @@
 package UI.SystemAdmin;
 
 import Model.Account.AccountDirectory;
-import Model.Enterprise.GroceryStoresDirectory;
+import Model.Enterprise.GroceryStores.GroceryStoresDirectory;
 import UI.Authenticate.LoginFrame;
 import UI.GroceryStore.GSHomePage;
 import javax.swing.JOptionPane;
@@ -73,7 +73,7 @@ public class ManageGroceryStoresSA extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(100, 129, 152));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -81,6 +81,7 @@ public class ManageGroceryStoresSA extends javax.swing.JFrame {
         lblTitle.setText("MANAGE GROCERY STORES");
         jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
+        btnLogout.setBackground(new java.awt.Color(192, 202, 97));
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +90,7 @@ public class ManageGroceryStoresSA extends javax.swing.JFrame {
         });
         jPanel1.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(939, 6, 75, -1));
 
+        btnHome.setBackground(new java.awt.Color(192, 202, 97));
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,11 +99,11 @@ public class ManageGroceryStoresSA extends javax.swing.JFrame {
         });
         jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 75, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
+        tabbedPane.setBackground(new java.awt.Color(192, 202, 97));
         tabbedPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 

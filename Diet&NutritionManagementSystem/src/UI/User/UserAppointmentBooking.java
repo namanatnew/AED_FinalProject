@@ -4,6 +4,7 @@
  */
 package UI.User;
 
+import UI.SystemAdmin.ManageUsersSA;
 import Model.Appointments.AppointmentDirectory;
 import java.sql.Connection;
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Database.DBconnection;
-import Model.Enterprise.HospitalDirectory;
+import Model.Enterprise.Hospital.HospitalDirectory;
 import Model.People.DietitianDirectory;
 import Model.People.User;
 import Model.People.UserDirectory;
@@ -137,7 +138,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -239,7 +240,6 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         lblWorkoutFrequency2.setText("Dietitian Type");
         panelDiet.add(lblWorkoutFrequency2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
 
-        comboHospital.setSelectedIndex(-1);
         comboHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboHospitalActionPerformed(evt);
@@ -352,7 +352,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel6MouseClicked(evt);
@@ -530,7 +530,7 @@ public class UserAppointmentBooking extends javax.swing.JFrame {
 
     private void lblDailyIntakeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDailyIntakeMouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblDailyIntakeMouseClicked

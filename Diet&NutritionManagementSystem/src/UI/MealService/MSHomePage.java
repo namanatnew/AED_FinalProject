@@ -6,7 +6,7 @@ package UI.MealService;
 
 import Model.Organization.ProductDirectory;
 import UI.Authenticate.LoginFrame;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.sql.ResultSet;
 import net.proteanit.sql.DbUtils;
 
@@ -53,13 +53,15 @@ public class MSHomePage extends javax.swing.JFrame {
         lblTotal = new javax.swing.JLabel();
         lblPending = new javax.swing.JLabel();
         lblApproved = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelTop.setBackground(new java.awt.Color(121, 237, 39));
+        panelTop.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -79,13 +81,13 @@ public class MSHomePage extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
         jLabel4.setText("Welcome, Grocery Store");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Diet Management System");
 
         lblClose.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
@@ -144,7 +146,7 @@ public class MSHomePage extends javax.swing.JFrame {
         panelControl.setBackground(new java.awt.Color(51, 51, 51));
         panelControl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panellGreen.setBackground(new java.awt.Color(121, 237, 39));
+        panellGreen.setBackground(new java.awt.Color(192, 202, 97));
         panellGreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelLogout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -236,6 +238,13 @@ public class MSHomePage extends javax.swing.JFrame {
 
         panelMain.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255, 180));
+        jLabel7.setOpaque(true);
+        panelMain.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 580));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/grilled-chicken-rice-spicy-chickpeas-avocado-cabbage-pepper-buddha-bowl-dark-top-view.jpg"))); // NOI18N
+        panelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 580));
+
         getContentPane().add(panelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 830, 580));
 
         setSize(new java.awt.Dimension(1019, 641));
@@ -256,7 +265,7 @@ public class MSHomePage extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
@@ -314,10 +323,12 @@ public class MSHomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblApproved;

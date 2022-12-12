@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.Hospital;
+package UI.SystemAdmin;
 
 import java.sql.Connection;
 import Model.Account.AccountDirectory;
 import Model.Database.DBconnection;
-import Model.Enterprise.HospitalDirectory;
+import Model.Enterprise.Hospital.HospitalDirectory;
 import Model.Utilities.UtilityFunctions;
 import UI.Authenticate.LoginFrame;
 import UI.Dietitian.ManageDietitiansSA;
 import UI.SystemAdmin.ManageGroceryStoresSA;
 import UI.SystemAdmin.ManageMealServiceSA;
 import UI.SystemAdmin.SAHomePage;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 //import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -34,14 +34,14 @@ import net.proteanit.sql.DbUtils;
  *
  * @author anuja
  */
-public class ManageHospitalSA extends javax.swing.JFrame {
+public class ManageNGOSA extends javax.swing.JFrame {
 
     /**
      * Creates new form ManageHospitalSA
      */
     private TableRowSorter sorter;
     public HospitalDirectory hospD = new HospitalDirectory();
-    public ManageHospitalSA() {
+    public ManageNGOSA() {
         initComponents();
         
          populateTableData();
@@ -118,11 +118,12 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         lblStore = new javax.swing.JLabel();
         lblService = new javax.swing.JLabel();
+        lblService1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -482,7 +483,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -568,6 +569,11 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/Icon-Small_1.png"))); // NOI18N
         jLabel14.setText(" Manage Hospitals");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
 
         pnlSideOptions.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 190, 50));
@@ -586,13 +592,24 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         lblService.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         lblService.setForeground(new java.awt.Color(255, 255, 255));
         lblService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
-        lblService.setText(" Manage Services");
+        lblService.setText(" Manage NGOs");
         lblService.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblServiceMouseClicked(evt);
             }
         });
-        pnlSideOptions.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 180, -1));
+        pnlSideOptions.add(lblService, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 180, -1));
+
+        lblService1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        lblService1.setForeground(new java.awt.Color(255, 255, 255));
+        lblService1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/product_sadmin_29px.png"))); // NOI18N
+        lblService1.setText(" Manage Services");
+        lblService1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblService1MouseClicked(evt);
+            }
+        });
+        pnlSideOptions.add(lblService1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -779,7 +796,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
 //            tableView.setModel(DbUtils.resultSetToTableModel(res));
         }
         catch(SQLException ex){
-            Logger.getLogger(ManageHospitalSA.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageNGOSA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_tableViewMouseClicked
@@ -879,7 +896,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
-        UserRegistration frame = new UserRegistration();
+        ManageUsersSA frame = new ManageUsersSA();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
@@ -909,6 +926,17 @@ public class ManageHospitalSA extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblServiceMouseClicked
+
+    private void lblService1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblService1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblService1MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        ManageHospitalSA fr = new ManageHospitalSA();
+        fr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
   boolean isDataValid()
   {
   return true;
@@ -942,7 +970,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
             
         }
         catch(SQLException ex){
-            Logger.getLogger(ManageHospitalSA.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageNGOSA.class.getName()).log(Level.SEVERE, null, ex);
         }
       
       //--------------
@@ -985,20 +1013,21 @@ public class ManageHospitalSA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManageHospitalSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageNGOSA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageHospitalSA().setVisible(true);
+                new ManageNGOSA().setVisible(true);
             }
         });
     }
@@ -1040,6 +1069,7 @@ public class ManageHospitalSA extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblRePassword1;
     private javax.swing.JLabel lblService;
+    private javax.swing.JLabel lblService1;
     private javax.swing.JLabel lblStore;
     private javax.swing.JLabel lblWeight2;
     private javax.swing.JPanel panelMedical;

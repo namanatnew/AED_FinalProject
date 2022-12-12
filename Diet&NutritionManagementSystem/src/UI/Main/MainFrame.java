@@ -91,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -182,7 +182,7 @@ public class MainFrame extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N

@@ -81,6 +81,8 @@ public class NAHomePage extends javax.swing.JFrame {
         lblTotal = new javax.swing.JLabel();
         lblPending = new javax.swing.JLabel();
         lblApproved = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(66, 179, 172));
@@ -88,7 +90,7 @@ public class NAHomePage extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTitleBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlTitleBar.setBackground(new java.awt.Color(100, 129, 152));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -103,23 +105,23 @@ public class NAHomePage extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/male_user_50px.png"))); // NOI18N
         jLabel4.setText("Welcome, Nutrition Admin");
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel5.setText("Diet Management System");
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Diet Management System");
 
+        jLabel3.setText("X");
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("X");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -179,13 +181,13 @@ public class NAHomePage extends javax.swing.JFrame {
         pnlSideOptions.setBackground(new java.awt.Color(51, 51, 51));
         pnlSideOptions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(121, 237, 39));
+        jPanel6.setBackground(new java.awt.Color(192, 202, 97));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/adminIcons/adminIcons/icons8_Exit_26px_2.png"))); // NOI18N
         jLabel1.setText("   Logout");
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -271,17 +273,24 @@ public class NAHomePage extends javax.swing.JFrame {
         lblPending.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pending Products", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
         panelMedical1.add(lblPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 170, 70));
 
-        lblApproved.setBackground(new java.awt.Color(255, 255, 255));
-        lblApproved.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lblApproved.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblApproved.setBackground(new java.awt.Color(255, 255, 255));
         lblApproved.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Approved Products", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
+        lblApproved.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         panelMedical1.add(lblApproved, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 170, 70));
 
         pnlWorkArea.add(panelMedical1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 770, 120));
 
-        getContentPane().add(pnlWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 63, 810, 610));
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255, 180));
+        jLabel12.setOpaque(true);
+        pnlWorkArea.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 610));
 
-        setSize(new java.awt.Dimension(1014, 673));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/grilled-chicken-rice-spicy-chickpeas-avocado-cabbage-pepper-buddha-bowl-dark-top-view.jpg"))); // NOI18N
+        pnlWorkArea.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 610));
+
+        getContentPane().add(pnlWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 63, 820, 610));
+
+        setSize(new java.awt.Dimension(1012, 673));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
  
@@ -343,10 +352,12 @@ public class NAHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

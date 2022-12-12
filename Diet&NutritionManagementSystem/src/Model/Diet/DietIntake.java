@@ -6,7 +6,7 @@ package Model.Diet;
 
 import Model.Database.DBconnection;
 import Model.Organization.ProductDirectory;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

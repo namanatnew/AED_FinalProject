@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Utilities.UtilityFunctions;
 import UI.Dietitian.ManageDietitiansSA;
-import UI.User.UserRegistration;
+import UI.SystemAdmin.ManageUsersSA;
 import java.time.LocalDate;
 import java.time.Period;
 import javax.swing.table.DefaultTableModel;

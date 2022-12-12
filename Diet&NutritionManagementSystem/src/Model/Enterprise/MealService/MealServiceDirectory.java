@@ -2,11 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.Enterprise;
+package Model.Enterprise.MealService;
 
-//import Model.Account.Account;
 import Model.Database.DBconnection;
-import Model.Organization.ProductDirectory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,70 +16,69 @@ import java.util.logging.Logger;
  *
  * @author naman
  */
-public class GroceryStoresDirectory {
-    
-    public void addStore(String name, String contact, String email){
+public class MealServiceDirectory {
+    public void addMealService(String name, String contact, String email){
         Connection dbconn = DBconnection.connectDB();
         try {
             PreparedStatement st = (PreparedStatement)dbconn
                     .prepareStatement("""
-                                    INSERT INTO grocerystores (name, contact, email) 
+                                    INSERT INTO mealservice (name, contact, email) 
                                     VALUES(?,?,?)""");
             st.setString(1,name);            
             st.setString(2,contact);
             st.setString(3,email);            
             st.executeUpdate();
             
-            System.out.println("store added"); 
+            System.out.println("meal service added"); 
             
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public boolean alreadyExist(String store_name){
+    public boolean alreadyExist(String service_name){
         Connection dbconn = DBconnection.connectDB();
         
             PreparedStatement st;
             boolean isExist = false;
         try {
             st = (PreparedStatement)dbconn.prepareStatement("""
-                                                            SELECT * FROM grocerystores 
+                                                            SELECT * FROM mealservice 
                                                             WHERE name = ?""");
-            st.setString(1, store_name);
+            st.setString(1, service_name);
             ResultSet res = st.executeQuery();
             if(res.next()){
                 isExist = true;
             }
             return isExist;
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
             
             return isExist;
         }
             
     }
     
-    public void deleteStore(String store_name){
+    public void deleteService(String service_name){
         try {
             Connection dbconn = DBconnection.connectDB();
             
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                            DELETE FROM grocerystores
-                                                                            WHERE name = ? """);
+                                                                            DELETE FROM mealservice
+                                                                            WHERE name = ?""");
         
-            st.setString(1, store_name);
+            st.setString(1, service_name);
             st.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void updateStore(String name, String contact, String email, String password){
+    public void updateService(String name, String contact, String email, String password){
         try {
             Connection dbconn = DBconnection.connectDB();
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
-                                                                            UPDATE grocerystores
+                                                                            UPDATE mealservice
                                                                             SET name = ?,
                                                                             contact = ?
                                                                             WHERE name = ?""");
@@ -91,11 +88,11 @@ public class GroceryStoresDirectory {
             st.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public ResultSet getStoreData(String search_name){
+    public ResultSet getServiceData(String search_name){
         try {
             Connection dbconn = DBconnection.connectDB();
             
@@ -103,19 +100,19 @@ public class GroceryStoresDirectory {
             
             st = (PreparedStatement)dbconn.prepareStatement("""
                                                                     SELECT name, contact, email, created_at
-                                                                    FROM grocerystores
-                                                                    WHERE name like ? """);
+                                                                    FROM mealservice
+                                                                    WHERE name like ?""");
             
             st.setString(1, '%'+search_name+'%');
             ResultSet res = st.executeQuery();
             return res;
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
     
-    public ResultSet exactStoreLookup(String store_name){
+    public ResultSet exactServiceLookup(String service_name){
          
             Connection dbconn = DBconnection.connectDB();
             
@@ -123,16 +120,16 @@ public class GroceryStoresDirectory {
             PreparedStatement st = (PreparedStatement)dbconn.prepareStatement("""
                                                                         SELECT name ,contact , 
                                                                               email
-                                                                        FROM grocerystores
+                                                                        FROM mealservice
                                                                         WHERE name = ?""");
         
-            st.setString(1, store_name);
+            st.setString(1, service_name);
             System.out.print("tryy");
             ResultSet res = st.executeQuery();
             System.out.print("found it");
             return res;
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
             return null;
     }
@@ -145,35 +142,10 @@ public class GroceryStoresDirectory {
                     "INSERT INTO users (email,password,usertype) VALUES(?,?,?)");
             st.setString(1, email);
             st.setString(2, password);
-            st.setString(3,"Grocery Store Manager");
+            st.setString(3,"Meal Service Manager");
             int res = st.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MealServiceDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public String getUserNameFromEmail(String email_id){
-        
-        Connection dbconn = DBconnection.connectDB();
-        PreparedStatement st;
-        String name = null;
-        try{
-            st = (PreparedStatement)dbconn.prepareStatement("SELECT name from grocerystores WHERE email=?");
-            st.setString(1, email_id);
-            ResultSet res = st.executeQuery();
-            
-            while(res.next()){
-                name = res.getString("Name");
-                System.out.println(name);     
-            }
-            return name;
-        }
-        catch(SQLException ex){
-            Logger.getLogger(GroceryStoresDirectory.class.getName()).log(Level.SEVERE, null, ex);
-        return null;
-        }
-        
-        
-        
     }
 }
